@@ -1,0 +1,17 @@
+/////// WS
+
+// Base url
+
+http://drift.braycedenayce.com/drift_api/
+
+// version
+
+
+
+
+
+/////// Colors
+
+// rouge = [UIColor colorWithRed:1.00 green:0.38 blue:0.38 alpha:1.0];
+
+// vert = [UIColor colorWithRed:0.49 green:0.87 blue:0.82 alpha:1.0];
