@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,46 +18,83 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="540"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyG-vA-Xqy">
-                                <rect key="frame" x="40" y="65" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BG_login" translatesAutoresizingMaskIntoConstraints="NO" id="uc3-Rq-1oM">
+                                <rect key="frame" x="0.0" y="20" width="320" height="520"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drift_login_logo" translatesAutoresizingMaskIntoConstraints="NO" id="GyG-vA-Xqy" userLabel="Login">
+                                <rect key="frame" x="87" y="80" width="147" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="147" id="IkZ-79-IHh"/>
+                                    <constraint firstAttribute="height" constant="76" id="XKj-LP-0Kn"/>
+                                    <constraint firstAttribute="width" secondItem="GyG-vA-Xqy" secondAttribute="height" multiplier="167:76" id="tlh-O4-5zw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XKj-LP-0Kn"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XpT-tL-Prn">
-                                <rect key="frame" x="112" y="241" width="97" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="02L-C1-fKG">
-                                <rect key="frame" x="112" y="301" width="97" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfQ-b2-ezA">
-                                <rect key="frame" x="46" y="384" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lfQ-b2-ezA" userLabel="Facebook">
+                                <rect key="frame" x="50" y="381" width="92" height="44"/>
+                                <color key="backgroundColor" red="0.73756516699999997" green="0.93215373050000006" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Facebook"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUo-fr-s5h">
-                                <rect key="frame" x="150" y="384" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUo-fr-s5h" userLabel="Google">
+                                <rect key="frame" x="188" y="381" width="92" height="44"/>
+                                <color key="backgroundColor" red="0.73756516699999997" green="0.93215373050000006" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Google"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-sm-QPL">
-                                <rect key="frame" x="46" y="422" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ufw-sm-QPL" userLabel="Number">
+                                <rect key="frame" x="50" y="452" width="92" height="44"/>
+                                <color key="backgroundColor" red="0.73756516699999997" green="0.93215373050000006" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Number"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-tZ-tce">
-                                <rect key="frame" x="150" y="422" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzW-tZ-tce" userLabel="Fingerprint">
+                                <rect key="frame" x="188" y="452" width="92" height="44"/>
+                                <color key="backgroundColor" red="0.73756516699999997" green="0.93215373050000006" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Fingerprint"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uc3-Rq-1oM" secondAttribute="bottom" id="3a5-ZC-HAW"/>
                             <constraint firstItem="GyG-vA-Xqy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8bO-Bc-GxS"/>
+                            <constraint firstItem="uc3-Rq-1oM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="9Zn-mL-nd2"/>
+                            <constraint firstItem="yUo-fr-s5h" firstAttribute="top" secondItem="uc3-Rq-1oM" secondAttribute="bottom" id="JLe-tb-hKU"/>
+                            <constraint firstItem="uc3-Rq-1oM" firstAttribute="top" secondItem="GyG-vA-Xqy" secondAttribute="bottom" id="OI9-Bh-eCF"/>
+                            <constraint firstItem="GyG-vA-Xqy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="80" id="SCM-if-daR"/>
+                            <constraint firstItem="uc3-Rq-1oM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Vi9-gy-qjg"/>
+                            <constraint firstAttribute="trailing" secondItem="uc3-Rq-1oM" secondAttribute="trailing" id="pUL-ZU-mvb"/>
+                            <constraint firstItem="uc3-Rq-1oM" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zPH-xR-G9d"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="JLe-tb-hKU"/>
+                                <exclude reference="OI9-Bh-eCF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="540"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="314" y="442"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="BG_login" width="1080" height="1920"/>
+        <image name="drift_login_logo" width="334" height="152"/>
+    </resources>
 </document>
