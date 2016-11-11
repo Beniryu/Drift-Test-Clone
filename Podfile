@@ -8,5 +8,5 @@ target 'Drift' do
   # Pods for Drift
 
   pod 'AFNetworking', '~> 3.0'
-
+  pod 'IQKeyboardManager'
 end

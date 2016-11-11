@@ -23,6 +23,8 @@
 		DDA59A721DD4E6F4000B942B /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A691DD4E6F4000B942B /* Lato-Italic.ttf */; };
 		DDA59A731DD4E6F4000B942B /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A6A1DD4E6F4000B942B /* Lato-LightItalic.ttf */; };
 		DDA59A751DD50DF0000B942B /* Notes in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A741DD50DF0000B942B /* Notes */; };
+		DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA59A7B1DD51D6A000B942B /* DFTRoundedButton.m */; };
+		DDA59A811DD5202E000B942B /* UIColor+DFTStyles.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA59A801DD5202E000B942B /* UIColor+DFTStyles.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,10 @@
 		DDA59A691DD4E6F4000B942B /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		DDA59A6A1DD4E6F4000B942B /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		DDA59A741DD50DF0000B942B /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		DDA59A7A1DD51D6A000B942B /* DFTRoundedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTRoundedButton.h; sourceTree = "<group>"; };
+		DDA59A7B1DD51D6A000B942B /* DFTRoundedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTRoundedButton.m; sourceTree = "<group>"; };
+		DDA59A7F1DD5202E000B942B /* UIColor+DFTStyles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DFTStyles.h"; sourceTree = "<group>"; };
+		DDA59A801DD5202E000B942B /* UIColor+DFTStyles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DFTStyles.m"; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,12 +99,8 @@
 			children = (
 				DDA59A491DD3DACB000B942B /* DFTAppDelegate.h */,
 				DDA59A4A1DD3DACB000B942B /* DFTAppDelegate.m */,
-				DDA59A4C1DD3DACB000B942B /* DFTLoginViewController.h */,
-				DDA59A4D1DD3DACB000B942B /* DFTLoginViewController.m */,
-				DDA59A4F1DD3DACB000B942B /* Authent.storyboard */,
-				DDA59A541DD3DACB000B942B /* LaunchScreen.storyboard */,
-				DDA59A571DD3DACB000B942B /* Info.plist */,
-				DDA59A5D1DD4E28A000B942B /* Images.xcassets */,
+				DDA59A771DD51A7F000B942B /* Controllers */,
+				DDA59A761DD51A6E000B942B /* Views */,
 				DDA59A5F1DD4E6D6000B942B /* Resources */,
 				DDA59A461DD3DACB000B942B /* Supporting Files */,
 			);
@@ -108,6 +110,7 @@
 		DDA59A461DD3DACB000B942B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DDA59A571DD3DACB000B942B /* Info.plist */,
 				DDA59A471DD3DACB000B942B /* main.m */,
 				DDA59A741DD50DF0000B942B /* Notes */,
 			);
@@ -117,6 +120,7 @@
 		DDA59A5F1DD4E6D6000B942B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDA59A5D1DD4E28A000B942B /* Images.xcassets */,
 				DDA59A601DD4E6E6000B942B /* Fonts */,
 			);
 			name = Resources;
@@ -143,6 +147,60 @@
 				DDA59A6A1DD4E6F4000B942B /* Lato-LightItalic.ttf */,
 			);
 			path = Lato;
+			sourceTree = "<group>";
+		};
+		DDA59A761DD51A6E000B942B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDA59A7E1DD51F89000B942B /* Utils */,
+				DDA59A791DD51ABA000B942B /* Custom views */,
+				DDA59A7D1DD51F80000B942B /* Storyboards */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		DDA59A771DD51A7F000B942B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DDA59A781DD51AAD000B942B /* New Group */,
+				DDA59A4C1DD3DACB000B942B /* DFTLoginViewController.h */,
+				DDA59A4D1DD3DACB000B942B /* DFTLoginViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DDA59A781DD51AAD000B942B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		DDA59A791DD51ABA000B942B /* Custom views */ = {
+			isa = PBXGroup;
+			children = (
+				DDA59A7A1DD51D6A000B942B /* DFTRoundedButton.h */,
+				DDA59A7B1DD51D6A000B942B /* DFTRoundedButton.m */,
+			);
+			name = "Custom views";
+			sourceTree = "<group>";
+		};
+		DDA59A7D1DD51F80000B942B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				DDA59A4F1DD3DACB000B942B /* Authent.storyboard */,
+				DDA59A541DD3DACB000B942B /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		DDA59A7E1DD51F89000B942B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DDA59A7F1DD5202E000B942B /* UIColor+DFTStyles.h */,
+				DDA59A801DD5202E000B942B /* UIColor+DFTStyles.m */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		E39777A022B105FAD49548B9 /* Pods */ = {
@@ -285,7 +343,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA59A4E1DD3DACB000B942B /* DFTLoginViewController.m in Sources */,
+				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
+				DDA59A811DD5202E000B942B /* UIColor+DFTStyles.m in Sources */,
 				DDA59A481DD3DACB000B942B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
