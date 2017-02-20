@@ -26,6 +26,20 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Backgrounds
 
 /**
+ Gray backgrounds
+
+ @return Color #23252B
+ */
++ (instancetype)dft_darkGrayColor;
+
+/**
+ Dark Gray backgrounds
+ 23252B
+ @return Color #40464B
+ */
++ (instancetype)dft_grayColor;
+
+/**
  Light red color used in button backgrounds
 
  @return Color #F3F3F3
@@ -38,6 +52,13 @@ NS_ASSUME_NONNULL_BEGIN
  @return Color #3A3A3A
  */
 + (instancetype)dft_aquamarineColor;
+
+/**
+ Salmon (pink-ish light red) color
+
+ @return Color #FE5F5F
+ */
++ (instancetype)dft_salmonColor;
 
 @end
 

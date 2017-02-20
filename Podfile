@@ -2,11 +2,17 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 
 target 'Drift' do
-  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
 
-  # Pods for Drift
-
+  # Network
   pod 'AFNetworking', '~> 3.0'
-  pod 'IQKeyboardManager'
+
+  # Serialization
+  pod 'Mantle', '~> 2.1.0'
+
+  # UI
+  pod 'IQKeyboardManager', '~> 4.0.7'
+
+  # External SDK
+  pod 'Mapbox-iOS-SDK', '~> 3.3.7'
+
 end

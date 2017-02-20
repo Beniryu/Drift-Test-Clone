@@ -42,4 +42,27 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+/*- (void)changeRootViewControllerAnimatedFor:(UIViewController *)controller
+{
+	controller.view.alpha = 0.;
+	[UIView animateWithDuration:0.25
+						  delay:0.
+						options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseOut
+					 animations:^{
+						 [[self rootWindow] rootViewController].view.alpha = 0.;
+					 }
+					 completion:^(BOOL finished)
+	 {
+		 [[self rootWindow] setRootViewController:controller];
+		 [[self rootWindow] makeKeyAndVisible];
+		 [UIView animateWithDuration:0.5
+							   delay:0.
+							 options:UIViewAnimationOptionTransitionCrossDissolve|UIViewAnimationOptionCurveEaseIn
+						  animations:^
+		  {
+			  controller.view.alpha = 1.;
+		  } completion:nil];
+	 }];
+}*/
+
 @end

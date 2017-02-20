@@ -8,12 +8,15 @@
 
 #import "DFTLoginViewController.h"
 
+#import "DFTSessionManager.h"
+#import "DFTUserManager.h"
 #import "DFTRoundedButton.h"
 #import "UIColor+DFTStyles.h"
 
-@interface DFTLoginViewController ()
+@interface DFTLoginViewController () <UITextFieldDelegate>
 
 #pragma mark Alternative login buttons
+@property (weak, nonatomic) IBOutlet UILabel *alternativeLoginLabel;
 @property (weak, nonatomic) IBOutlet DFTRoundedButton *facebookButton;
 @property (weak, nonatomic) IBOutlet DFTRoundedButton *googleButton;
 @property (weak, nonatomic) IBOutlet DFTRoundedButton *numberButton;
@@ -40,6 +43,17 @@
 
 - (void)configureViews
 {
+	self.emailTextField.text = @"ng.thierry.d@gmail.com";
+	self.passwordTextField.text = @"driftapi";
+
+	self.emailTextField.delegate = self;
+	self.passwordTextField.delegate = self;
+	self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+	self.passwordTextField.secureTextEntry = YES;
+
+	self.alternativeLoginLabel.text = @"OR CONNECT WITH";
+	self.alternativeLoginLabel.textColor = [UIColor dft_slateBlueColor];
+
 	[self configureAlternativeButtons];
 	[self configureFormButtons];
 }
@@ -64,5 +78,88 @@
 	[self.facebookButton setImage:[UIImage imageNamed:@"facebook_icon"] forState:UIControlStateNormal];
 	[self.googleButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
 }
+
+#pragma mark
+#pragma mark - Actions
+
+- (IBAction)didTouchLoginButton:(DFTRoundedButton *)sender
+{
+	[self authenticateUser];
+}
+
+- (IBAction)didTouchSignUpButton:(DFTRoundedButton *)sender
+{
+	[self testCreate];
+}
+
+#pragma mark
+#pragma mark - Helpers
+
+- (void)testCreate
+{
+	DFTUserManager *manager = [DFTUserManager new];
+	DFTUser *user = [DFTUser new];
+
+	user.userId = @"0";
+	user.identifier = @"ecthelz@gmail.com";
+	user.email = @"ecthelz@gmail.com";
+	user.lastName = @"UserCreateLast";
+	user.firstName = @"UserCreateFirst";
+	user.registration = [NSDate date];
+	user.lastConnection = [NSDate date];
+
+	[manager createUser:user
+		 withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		if (error)
+		{
+			NSLog(@"Error creating User : %@\nError : %@", user, error);
+		}
+		else
+		{
+			NSLog(@"Login OK : %@", responseObject);
+		}
+	}];
+}
+
+- (void)testEdit
+{
+	DFTUserManager *manager = [DFTUserManager new];
+	DFTUser *user = [DFTSessionManager currentSession].user;
+
+	user.firstName = @"Test Modif";
+	[manager editUser: user
+	   withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		if (error)
+		{
+			NSLog(@"user edit not ok");
+		}
+		NSLog(@"user edit ok");
+	}];
+}
+
+- (void)authenticateUser
+{
+	DFTSessionManager *manager = [DFTSessionManager currentSession];
+
+	[manager createSessionTokenForUser:self.emailTextField.text
+						  withPassword:self.passwordTextField.text autoLogin:NO
+							completion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	 {
+		 if (error)
+		{
+			NSLog(@"Login not ok");
+		}
+		else
+		{
+//			[self changeRootV]
+			NSLog(@"Login OK");
+		}
+	}];
+}
+
+#pragma mark
+#pragma mark - UITextField Protocol
 
 @end
