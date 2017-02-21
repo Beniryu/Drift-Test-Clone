@@ -7,10 +7,13 @@
 //
 
 #import "DFTAddDropViewController.h"
+#import "DFTFirstSectionLayout.h"
 
 @interface DFTAddDropViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic) DFTFirstSectionLayout *firstSectionLayout;
 
 @end
 
@@ -23,14 +26,35 @@
 {
     [super viewDidLoad];
 
-	NSLog(@"viewDidLoad");
+	self.firstSectionLayout = [DFTFirstSectionLayout new];
+
+	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+
+	[self.collectionView addGestureRecognizer:pan];
+	[self configureCollectionView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
 
-	NSLog(@"viewDidAppear");
+}
+
+- (void)didPan:(UIPanGestureRecognizer *)sender
+{
+	if (sender.state == UIGestureRecognizerStateEnded)
+	{
+		CGPoint velocity = [sender velocityInView:self.collectionView];
+
+		if (velocity.y > 0)
+		{
+			NSLog (@"Pan down Go up");
+		}
+		else
+		{
+			NSLog (@"Pan Up Go down");
+		}
+	}
 }
 
 #pragma mark
@@ -38,8 +62,11 @@
 
 - (void)configureCollectionView
 {
-	self.collectionView.delegate = self;
+	self.collectionView.collectionViewLayout = self.firstSectionLayout;
+	self.collectionView.delegate = self.firstSectionLayout;
 	self.collectionView.dataSource = self;
+
+	self.collectionView.scrollEnabled = NO;
 }
 
 #pragma mark
@@ -57,8 +84,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	UICollectionViewCell *cell;
+	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Test" forIndexPath:indexPath];
 
+	cell.backgroundColor = [UIColor redColor];
 	return (cell);
 }
 
