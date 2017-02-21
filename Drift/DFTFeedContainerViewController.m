@@ -31,6 +31,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *dropsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dropsNumberLabel;
 
+// Header - Drift
+@property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
+@property (weak, nonatomic) IBOutlet UILabel *driftLabel;
+@property (weak, nonatomic) IBOutlet UILabel *driftLevelLabel;
+
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
 @property (nonatomic) NSUInteger currentPage;
 
@@ -47,6 +52,8 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	[self configureMapboxView];
     [self configureCurrentLocation];
     [self configureDrops];
+    [self configureDrift];
+    [self configureProfilPic];
 
 	self.currentPage = 0;
 
@@ -90,6 +97,28 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 {
     self.dropsLabel.text = @"DROPS TODAY";
     self.dropsNumberLabel.text = @"76";
+}
+
+- (void)configureDrift
+{
+    self.driftLabel.text = @"Name";
+    self.driftLevelLabel.text = @"Drift Level 40";
+}
+
+- (void)configureProfilPic
+{
+    // TODO: - Duplicate code taken from DFTFeedCell -> UIImageView category ?
+    CAShapeLayer *border = [CAShapeLayer new];
+    
+    border.frame = self.profilePictureImageView.bounds;
+    border.lineWidth = 4.;
+    border.path = [UIBezierPath bezierPathWithOvalInRect:border.bounds].CGPath;
+    border.strokeColor = [UIColor whiteColor].CGColor;
+    border.fillColor = [UIColor clearColor].CGColor;
+    [self.profilePictureImageView.layer addSublayer:border];
+    self.profilePictureImageView.clipsToBounds = YES;
+    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.;
+
 }
 
 - (IBAction)segmentChangedValue

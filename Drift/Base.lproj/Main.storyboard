@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="GOTHMBOK.TTF">
+            <string>Gotham-Book</string>
+        </array>
         <array key="GOTHMBOL.TTF">
             <string>Gotham-Bold</string>
         </array>
@@ -474,7 +477,7 @@
                                         <color key="textColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e6r-E4-UG7">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feed_cell_profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="e6r-E4-UG7">
                                         <rect key="frame" x="20" y="52" width="69" height="69"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="69" id="AhD-Dv-8p7"/>
@@ -510,17 +513,47 @@
                                             <constraint firstItem="2VK-NQ-KXJ" firstAttribute="top" secondItem="Stu-y5-bGj" secondAttribute="top" id="uO0-3U-2OD"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-dX-VEu" userLabel="DriftView">
+                                        <rect key="frame" x="97" y="70.5" width="56.5" height="32"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QM0-OW-icJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="20"/>
+                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drift Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-Mn-w49">
+                                                <rect key="frame" x="0.0" y="20" width="56.5" height="12"/>
+                                                <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="11"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="QM0-OW-icJ" firstAttribute="top" secondItem="GWQ-dX-VEu" secondAttribute="top" id="7CF-1p-Zl8"/>
+                                            <constraint firstAttribute="trailing" secondItem="xGv-Mn-w49" secondAttribute="trailing" id="L9a-kX-kaJ"/>
+                                            <constraint firstItem="QM0-OW-icJ" firstAttribute="leading" secondItem="GWQ-dX-VEu" secondAttribute="leading" id="M6M-gb-iE9"/>
+                                            <constraint firstAttribute="trailing" secondItem="QM0-OW-icJ" secondAttribute="trailing" id="QKZ-dI-3bV"/>
+                                            <constraint firstItem="xGv-Mn-w49" firstAttribute="top" secondItem="QM0-OW-icJ" secondAttribute="bottom" id="fb5-Jx-UGy"/>
+                                            <constraint firstAttribute="bottom" secondItem="xGv-Mn-w49" secondAttribute="bottom" id="yKo-JW-zPq"/>
+                                            <constraint firstItem="xGv-Mn-w49" firstAttribute="leading" secondItem="GWQ-dX-VEu" secondAttribute="leading" id="zrF-AL-NrJ"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KaH-UT-e5s" secondAttribute="trailing" constant="20" id="0za-Rq-2uA"/>
                                     <constraint firstItem="wwz-xj-e2U" firstAttribute="top" secondItem="KaH-UT-e5s" secondAttribute="bottom" id="2n8-Ih-KaK"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GWQ-dX-VEu" secondAttribute="trailing" constant="20" id="4qy-KV-ROC"/>
                                     <constraint firstAttribute="trailing" secondItem="wwz-xj-e2U" secondAttribute="trailing" constant="20" id="7Cx-uB-Dcx"/>
                                     <constraint firstItem="e6r-E4-UG7" firstAttribute="centerY" secondItem="XTS-2F-pdR" secondAttribute="centerY" constant="-31.5" id="CaC-J9-RrS"/>
                                     <constraint firstItem="Stu-y5-bGj" firstAttribute="leading" secondItem="XTS-2F-pdR" secondAttribute="leading" constant="26" id="Cs7-d8-UQ7"/>
+                                    <constraint firstItem="GWQ-dX-VEu" firstAttribute="leading" secondItem="e6r-E4-UG7" secondAttribute="trailing" constant="8" id="FWR-Hl-Hrn"/>
                                     <constraint firstAttribute="bottom" secondItem="wwz-xj-e2U" secondAttribute="bottom" constant="20" id="UNT-sv-KnB"/>
                                     <constraint firstItem="wwz-xj-e2U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Stu-y5-bGj" secondAttribute="trailing" constant="10" id="hWL-fC-t6m"/>
                                     <constraint firstAttribute="height" constant="235" id="hrO-uf-80v"/>
                                     <constraint firstItem="Stu-y5-bGj" firstAttribute="centerY" secondItem="wwz-xj-e2U" secondAttribute="centerY" id="ozD-P9-qND"/>
+                                    <constraint firstItem="GWQ-dX-VEu" firstAttribute="centerY" secondItem="e6r-E4-UG7" secondAttribute="centerY" id="rLI-2i-7iV"/>
                                     <constraint firstItem="e6r-E4-UG7" firstAttribute="leading" secondItem="XTS-2F-pdR" secondAttribute="leading" constant="20" id="vWq-Y1-lio"/>
                                 </constraints>
                             </view>
@@ -600,10 +633,15 @@
                     <connections>
                         <outlet property="currentLocationImageView" destination="2VK-NQ-KXJ" id="uit-z1-ykP"/>
                         <outlet property="currentLocationLabel" destination="kZF-QE-aHe" id="nMT-rC-fN0"/>
+                        <outlet property="driftLabel" destination="QM0-OW-icJ" id="yu0-Fc-l7A"/>
+                        <outlet property="driftLevelLabel" destination="xGv-Mn-w49" id="9Hd-UF-jee"/>
+                        <outlet property="dropsLabel" destination="KaH-UT-e5s" id="Ufo-nt-3yF"/>
+                        <outlet property="dropsNumberLabel" destination="wwz-xj-e2U" id="rSd-Pj-b1p"/>
                         <outlet property="globalFeedController" destination="ZHR-Xf-giH" id="GBi-fG-xen"/>
                         <outlet property="headerTopConstraint" destination="rZu-2L-Glh" id="ahM-FX-HbT"/>
                         <outlet property="mapTopConstraint" destination="98M-QJ-yXO" id="UBu-rF-gRz"/>
                         <outlet property="mapboxView" destination="jaS-zF-Cg0" id="3Bd-Kb-MVv"/>
+                        <outlet property="profilePictureImageView" destination="e6r-E4-UG7" id="sQw-l0-LJe"/>
                         <outlet property="scrollView" destination="32t-zn-ulx" id="Eet-Ak-JWy"/>
                         <outlet property="segmentedControl" destination="n91-oy-a5O" id="PMf-EB-Pec"/>
                     </connections>
@@ -867,6 +905,7 @@
         <image name="drift_tab_icon" width="30" height="34"/>
         <image name="drop_tab_icon" width="26" height="33"/>
         <image name="feed_cell_placeholder" width="184" height="152"/>
+        <image name="feed_cell_profile_pic_placeholder" width="38" height="38"/>
         <image name="feed_tab_icon" width="27" height="24"/>
         <image name="picto_location" width="13" height="17"/>
         <image name="profile_tab_icon" width="34" height="34"/>
