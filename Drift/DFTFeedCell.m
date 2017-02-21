@@ -12,10 +12,12 @@
 @interface DFTFeedCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundPictureImageView;
+
 
 @end
 
@@ -48,19 +50,9 @@
 
 - (void)configureLocationLabel
 {
-	NSTextAttachment *attachment = [NSTextAttachment new];
-	NSMutableAttributedString *attrText;
-	NSAttributedString *attachmentString;
-
-	attachment.image = [UIImage imageNamed:@"picto_location"];
-	attachmentString = [NSAttributedString attributedStringWithAttachment:attachment];
-	attrText = [[NSMutableAttributedString alloc] initWithString:@" "];
-	[attrText appendAttributedString:attachmentString];
-	[attrText appendAttributedString:[[NSAttributedString alloc] initWithString:@" London"]];
-
-	self.locationLabel.tintColor = [UIColor whiteColor];
-	self.locationLabel.textColor = [UIColor whiteColor];
-	self.locationLabel.attributedText = attrText;
+    self.locationLabel.text = @"LONDON";
+    self.locationImageView.image = [self.locationImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.locationImageView setTintColor:[UIColor whiteColor]];
 }
 
 #pragma mark

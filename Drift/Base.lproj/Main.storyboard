@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gW7-1H-VCS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gW7-1H-VCS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="GOTHMBOL.TTF">
+            <string>Gotham-Bold</string>
+        </array>
+        <array key="GOTHMTHI.TTF">
+            <string>Gotham-Thin</string>
+        </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
         </array>
@@ -464,7 +470,7 @@
                                             <constraint firstAttribute="height" constant="51" id="DmQ-vK-nqh"/>
                                             <constraint firstAttribute="width" constant="55" id="QkB-BT-13o"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="43"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Thin" family="Gotham-Thin" pointSize="48"/>
                                         <color key="textColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -476,19 +482,45 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaH-UT-e5s">
-                                        <rect key="frame" x="239.5" y="135.5" width="115.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="279" y="152.5" width="76" height="11.5"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stu-y5-bGj" userLabel="LocationView">
+                                        <rect key="frame" x="26" y="181" width="64.5" height="17"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="2VK-NQ-KXJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
+                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="2VK-NQ-KXJ" firstAttribute="leading" secondItem="Stu-y5-bGj" secondAttribute="leading" id="8fT-H7-9sB"/>
+                                            <constraint firstAttribute="bottom" secondItem="2VK-NQ-KXJ" secondAttribute="bottom" id="RL1-Dj-rNC"/>
+                                            <constraint firstAttribute="trailing" secondItem="kZF-QE-aHe" secondAttribute="trailing" id="aTm-bK-rlo"/>
+                                            <constraint firstItem="kZF-QE-aHe" firstAttribute="leading" secondItem="2VK-NQ-KXJ" secondAttribute="trailing" constant="5" id="aUQ-Pp-X8g"/>
+                                            <constraint firstItem="kZF-QE-aHe" firstAttribute="centerY" secondItem="2VK-NQ-KXJ" secondAttribute="centerY" id="bxE-Re-afh"/>
+                                            <constraint firstItem="2VK-NQ-KXJ" firstAttribute="top" secondItem="Stu-y5-bGj" secondAttribute="top" id="uO0-3U-2OD"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KaH-UT-e5s" secondAttribute="trailing" constant="20" id="0za-Rq-2uA"/>
-                                    <constraint firstItem="wwz-xj-e2U" firstAttribute="top" secondItem="KaH-UT-e5s" secondAttribute="bottom" constant="8" id="2n8-Ih-KaK"/>
+                                    <constraint firstItem="wwz-xj-e2U" firstAttribute="top" secondItem="KaH-UT-e5s" secondAttribute="bottom" id="2n8-Ih-KaK"/>
                                     <constraint firstAttribute="trailing" secondItem="wwz-xj-e2U" secondAttribute="trailing" constant="20" id="7Cx-uB-Dcx"/>
                                     <constraint firstItem="e6r-E4-UG7" firstAttribute="centerY" secondItem="XTS-2F-pdR" secondAttribute="centerY" constant="-31.5" id="CaC-J9-RrS"/>
+                                    <constraint firstItem="Stu-y5-bGj" firstAttribute="leading" secondItem="XTS-2F-pdR" secondAttribute="leading" constant="26" id="Cs7-d8-UQ7"/>
                                     <constraint firstAttribute="bottom" secondItem="wwz-xj-e2U" secondAttribute="bottom" constant="20" id="UNT-sv-KnB"/>
+                                    <constraint firstItem="wwz-xj-e2U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Stu-y5-bGj" secondAttribute="trailing" constant="10" id="hWL-fC-t6m"/>
                                     <constraint firstAttribute="height" constant="235" id="hrO-uf-80v"/>
+                                    <constraint firstItem="Stu-y5-bGj" firstAttribute="centerY" secondItem="wwz-xj-e2U" secondAttribute="centerY" id="ozD-P9-qND"/>
                                     <constraint firstItem="e6r-E4-UG7" firstAttribute="leading" secondItem="XTS-2F-pdR" secondAttribute="leading" constant="20" id="vWq-Y1-lio"/>
                                 </constraints>
                             </view>
@@ -566,6 +598,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="feed_tab_icon" id="xRf-hc-XiE"/>
                     <connections>
+                        <outlet property="currentLocationImageView" destination="2VK-NQ-KXJ" id="uit-z1-ykP"/>
+                        <outlet property="currentLocationLabel" destination="kZF-QE-aHe" id="nMT-rC-fN0"/>
                         <outlet property="globalFeedController" destination="ZHR-Xf-giH" id="GBi-fG-xen"/>
                         <outlet property="headerTopConstraint" destination="rZu-2L-Glh" id="ahM-FX-HbT"/>
                         <outlet property="mapTopConstraint" destination="98M-QJ-yXO" id="UBu-rF-gRz"/>
@@ -834,6 +868,7 @@
         <image name="drop_tab_icon" width="26" height="33"/>
         <image name="feed_cell_placeholder" width="184" height="152"/>
         <image name="feed_tab_icon" width="27" height="24"/>
+        <image name="picto_location" width="13" height="17"/>
         <image name="profile_tab_icon" width="34" height="34"/>
         <image name="settings_tab_icon" width="28" height="23"/>
     </resources>

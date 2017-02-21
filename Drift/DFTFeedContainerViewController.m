@@ -23,7 +23,13 @@
 
 @property (weak, nonatomic) IBOutlet UIView *globalFeedController;
 
+// Header - Location
+@property (weak, nonatomic) IBOutlet UILabel *currentLocationLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *currentLocationImageView;
 
+// Header - Drops
+@property (weak, nonatomic) IBOutlet UILabel *dropsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dropsNumberLabel;
 
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
 @property (nonatomic) NSUInteger currentPage;
@@ -39,6 +45,8 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	[super viewDidLoad];
 
 	[self configureMapboxView];
+    [self configureCurrentLocation];
+    [self configureDrops];
 
 	self.currentPage = 0;
 
@@ -69,6 +77,19 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.mapboxView.scrollEnabled = NO;
 	self.mapboxView.zoomLevel = 1;
 	self.mapboxView.delegate = self.mapboxDelegate;
+}
+
+- (void)configureCurrentLocation
+{
+    self.currentLocationLabel.text = @"LONDON";
+    self.currentLocationImageView.image = [self.currentLocationImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    [self.currentLocationImageView setTintColor:[UIColor dft_lightRedColor]];
+}
+
+- (void)configureDrops
+{
+    self.dropsLabel.text = @"DROPS TODAY";
+    self.dropsNumberLabel.text = @"76";
 }
 
 - (IBAction)segmentChangedValue
