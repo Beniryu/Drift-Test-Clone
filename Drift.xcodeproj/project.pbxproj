@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092317E61E5CF0A70043838D /* GOTHMBIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */; };
+		092317E71E5CF0A70043838D /* GOTHMBOL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D01E5CF0A60043838D /* GOTHMBOL.TTF */; };
+		092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D21E5CF0A60043838D /* GOTHMBOK.TTF */; };
+		092317E91E5CF0A70043838D /* GOTHMZIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D31E5CF0A60043838D /* GOTHMZIT.TTF */; };
+		092317EA1E5CF0A70043838D /* GOTHMLIG.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D51E5CF0A60043838D /* GOTHMLIG.TTF */; };
+		092317EB1E5CF0A70043838D /* GOTHMLIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D61E5CF0A60043838D /* GOTHMLIT.TTF */; };
+		092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D81E5CF0A60043838D /* GOTHMMED.TTF */; };
+		092317ED1E5CF0A70043838D /* GOTHMMIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D91E5CF0A60043838D /* GOTHMMIT.TTF */; };
+		092317EE1E5CF0A70043838D /* GothamRnd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317DB1E5CF0A60043838D /* GothamRnd-Bold.otf */; };
+		092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317DC1E5CF0A70043838D /* GothamRnd-BoldIta.otf */; };
+		092317F01E5CF0A70043838D /* GothamRnd-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317DD1E5CF0A70043838D /* GothamRnd-Book.otf */; };
+		092317F11E5CF0A70043838D /* GothamRnd-BookIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317DE1E5CF0A70043838D /* GothamRnd-BookIta.otf */; };
+		092317F21E5CF0A70043838D /* GothamRnd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317DF1E5CF0A70043838D /* GothamRnd-Light.otf */; };
+		092317F31E5CF0A70043838D /* GothamRnd-LightIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317E01E5CF0A70043838D /* GothamRnd-LightIta.otf */; };
+		092317F41E5CF0A70043838D /* GothamRnd-MedIta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317E11E5CF0A70043838D /* GothamRnd-MedIta.otf */; };
+		092317F51E5CF0A70043838D /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */; };
+		092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E41E5CF0A70043838D /* GOTHMTHI.TTF */; };
+		092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E51E5CF0A70043838D /* GOTHMTIT.TTF */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
@@ -63,6 +81,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBIT.TTF; sourceTree = "<group>"; };
+		092317D01E5CF0A60043838D /* GOTHMBOL.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBOL.TTF; sourceTree = "<group>"; };
+		092317D21E5CF0A60043838D /* GOTHMBOK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBOK.TTF; sourceTree = "<group>"; };
+		092317D31E5CF0A60043838D /* GOTHMZIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMZIT.TTF; sourceTree = "<group>"; };
+		092317D51E5CF0A60043838D /* GOTHMLIG.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMLIG.TTF; sourceTree = "<group>"; };
+		092317D61E5CF0A60043838D /* GOTHMLIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMLIT.TTF; sourceTree = "<group>"; };
+		092317D81E5CF0A60043838D /* GOTHMMED.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMMED.TTF; sourceTree = "<group>"; };
+		092317D91E5CF0A60043838D /* GOTHMMIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMMIT.TTF; sourceTree = "<group>"; };
+		092317DB1E5CF0A60043838D /* GothamRnd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Bold.otf"; sourceTree = "<group>"; };
+		092317DC1E5CF0A70043838D /* GothamRnd-BoldIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-BoldIta.otf"; sourceTree = "<group>"; };
+		092317DD1E5CF0A70043838D /* GothamRnd-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Book.otf"; sourceTree = "<group>"; };
+		092317DE1E5CF0A70043838D /* GothamRnd-BookIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-BookIta.otf"; sourceTree = "<group>"; };
+		092317DF1E5CF0A70043838D /* GothamRnd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Light.otf"; sourceTree = "<group>"; };
+		092317E01E5CF0A70043838D /* GothamRnd-LightIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-LightIta.otf"; sourceTree = "<group>"; };
+		092317E11E5CF0A70043838D /* GothamRnd-MedIta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-MedIta.otf"; sourceTree = "<group>"; };
+		092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
+		092317E41E5CF0A70043838D /* GOTHMTHI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTHI.TTF; sourceTree = "<group>"; };
+		092317E51E5CF0A70043838D /* GOTHMTIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTIT.TTF; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
@@ -171,19 +207,86 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		092317CD1E5CF0A60043838D /* Gotham */ = {
+			isa = PBXGroup;
+			children = (
+				092317CE1E5CF0A60043838D /* Bold */,
+				092317D11E5CF0A60043838D /* Book */,
+				092317D41E5CF0A60043838D /* Light */,
+				092317D71E5CF0A60043838D /* Medium */,
+				092317DA1E5CF0A60043838D /* Rounded */,
+				092317E31E5CF0A70043838D /* Thin */,
+			);
+			name = Gotham;
+			path = Fonts/Gotham;
+			sourceTree = "<group>";
+		};
+		092317CE1E5CF0A60043838D /* Bold */ = {
+			isa = PBXGroup;
+			children = (
+				092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */,
+				092317D01E5CF0A60043838D /* GOTHMBOL.TTF */,
+			);
+			path = Bold;
+			sourceTree = "<group>";
+		};
+		092317D11E5CF0A60043838D /* Book */ = {
+			isa = PBXGroup;
+			children = (
+				092317D21E5CF0A60043838D /* GOTHMBOK.TTF */,
+				092317D31E5CF0A60043838D /* GOTHMZIT.TTF */,
+			);
+			path = Book;
+			sourceTree = "<group>";
+		};
+		092317D41E5CF0A60043838D /* Light */ = {
+			isa = PBXGroup;
+			children = (
+				092317D51E5CF0A60043838D /* GOTHMLIG.TTF */,
+				092317D61E5CF0A60043838D /* GOTHMLIT.TTF */,
+			);
+			path = Light;
+			sourceTree = "<group>";
+		};
+		092317D71E5CF0A60043838D /* Medium */ = {
+			isa = PBXGroup;
+			children = (
+				092317D81E5CF0A60043838D /* GOTHMMED.TTF */,
+				092317D91E5CF0A60043838D /* GOTHMMIT.TTF */,
+			);
+			path = Medium;
+			sourceTree = "<group>";
+		};
+		092317DA1E5CF0A60043838D /* Rounded */ = {
+			isa = PBXGroup;
+			children = (
+				092317DB1E5CF0A60043838D /* GothamRnd-Bold.otf */,
+				092317DC1E5CF0A70043838D /* GothamRnd-BoldIta.otf */,
+				092317DD1E5CF0A70043838D /* GothamRnd-Book.otf */,
+				092317DE1E5CF0A70043838D /* GothamRnd-BookIta.otf */,
+				092317DF1E5CF0A70043838D /* GothamRnd-Light.otf */,
+				092317E01E5CF0A70043838D /* GothamRnd-LightIta.otf */,
+				092317E11E5CF0A70043838D /* GothamRnd-MedIta.otf */,
+				092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */,
+			);
+			path = Rounded;
+			sourceTree = "<group>";
+		};
+		092317E31E5CF0A70043838D /* Thin */ = {
+			isa = PBXGroup;
+			children = (
+				092317E41E5CF0A70043838D /* GOTHMTHI.TTF */,
+				092317E51E5CF0A70043838D /* GOTHMTIT.TTF */,
+			);
+			path = Thin;
+			sourceTree = "<group>";
+		};
 		2B9E2CF2ED71A52B629504A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F802EDC41987F133802A1305 /* libPods-Drift.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DD3B99D91E2152D20098208F /* Gotham */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Gotham;
 			sourceTree = "<group>";
 		};
 		DD4D6D6A1E3159DF00E3605A /* Controls */ = {
@@ -276,7 +379,7 @@
 		DDA59A601DD4E6E6000B942B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				DD3B99D91E2152D20098208F /* Gotham */,
+				092317CD1E5CF0A60043838D /* Gotham */,
 				DDA59A611DD4E6F4000B942B /* Lato */,
 			);
 			name = Fonts;
@@ -533,19 +636,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDA59A6E1DD4E6F4000B942B /* Lato-Bold.ttf in Resources */,
+				092317EE1E5CF0A70043838D /* GothamRnd-Bold.otf in Resources */,
 				DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */,
 				DDA59A5E1DD4E28A000B942B /* Images.xcassets in Resources */,
+				092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */,
+				092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */,
+				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
+				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
+				092317F11E5CF0A70043838D /* GothamRnd-BookIta.otf in Resources */,
+				092317F01E5CF0A70043838D /* GothamRnd-Book.otf in Resources */,
+				092317E71E5CF0A70043838D /* GOTHMBOL.TTF in Resources */,
+				092317E91E5CF0A70043838D /* GOTHMZIT.TTF in Resources */,
+				092317F31E5CF0A70043838D /* GothamRnd-LightIta.otf in Resources */,
+				092317F51E5CF0A70043838D /* GothamRnd-Medium.otf in Resources */,
 				DDA59A561DD3DACB000B942B /* LaunchScreen.storyboard in Resources */,
+				092317F21E5CF0A70043838D /* GothamRnd-Light.otf in Resources */,
+				092317ED1E5CF0A70043838D /* GOTHMMIT.TTF in Resources */,
+				092317EA1E5CF0A70043838D /* GOTHMLIG.TTF in Resources */,
 				DDA59A6D1DD4E6F4000B942B /* Lato-BlackItalic.ttf in Resources */,
 				DDA59A721DD4E6F4000B942B /* Lato-Italic.ttf in Resources */,
 				DDA59A6F1DD4E6F4000B942B /* Lato-BoldItalic.ttf in Resources */,
+				092317EB1E5CF0A70043838D /* GOTHMLIT.TTF in Resources */,
 				DDA59A751DD50DF0000B942B /* Notes in Resources */,
+				092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */,
 				DDA59A731DD4E6F4000B942B /* Lato-LightItalic.ttf in Resources */,
 				DD4A076F1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib in Resources */,
 				DDA59A701DD4E6F4000B942B /* Lato-Hairline.ttf in Resources */,
+				092317E61E5CF0A70043838D /* GOTHMBIT.TTF in Resources */,
 				DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */,
 				DDA59A6C1DD4E6F4000B942B /* Lato-Black.ttf in Resources */,
+				092317F41E5CF0A70043838D /* GothamRnd-MedIta.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
