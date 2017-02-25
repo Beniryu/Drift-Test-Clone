@@ -33,19 +33,14 @@
 - (void)setup
 {
 	self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
-	self.minimumInteritemSpacing = 0.;
-	self.minimumLineSpacing = 0.;
-	self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-	return ((CGSize){self.screenWidth, 80});
+//	self.minimumInteritemSpacing = 0.;
+	self.minimumLineSpacing = 80.;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	return ((CGSize){self.screenWidth, 60});
+//	return (UICollectionViewFlowLayoutAutomaticSize);
+	return ((CGSize){self.screenWidth, indexPath.item == 0 ? 250 : 200});
 }
 
 @end
