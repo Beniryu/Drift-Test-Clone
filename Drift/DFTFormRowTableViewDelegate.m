@@ -15,7 +15,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return (tableView.class == [DFTAddDropContentTableView class] ? 20 : 5);
+	return (tableView.class == [DFTAddDropContentTableView class] ? 4 : 5);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

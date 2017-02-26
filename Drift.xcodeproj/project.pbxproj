@@ -14,6 +14,7 @@
 		DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */; };
 		DD34C8641E61EC1B003853D6 /* DFTAddDropSettingsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */; };
 		DD34C8691E620D60003853D6 /* DFTAddDropStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */; };
+		DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
 		DD3B99B41E1EE93A0098208F /* DFTCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B31E1EE93A0098208F /* DFTCollectionsViewController.m */; };
 		DD3B99B71E214FD40098208F /* UIFont+Drift.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B61E214FD40098208F /* UIFont+Drift.m */; };
@@ -82,6 +83,8 @@
 		DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropSettingsTableView.m; sourceTree = "<group>"; };
 		DD34C8661E620BA5003853D6 /* DFTAddDropStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropStepCell.h; sourceTree = "<group>"; };
 		DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropStepCell.m; sourceTree = "<group>"; };
+		DD34C86A1E624495003853D6 /* DFTAddDropContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropContentCell.h; sourceTree = "<group>"; };
+		DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropContentCell.m; sourceTree = "<group>"; };
 		DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapboxDelegate.h; sourceTree = "<group>"; };
 		DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapboxDelegate.m; sourceTree = "<group>"; };
 		DD3B99B21E1EE93A0098208F /* DFTCollectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionsViewController.h; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 			children = (
 				DD34C8661E620BA5003853D6 /* DFTAddDropStepCell.h */,
 				DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */,
+				DD34C86A1E624495003853D6 /* DFTAddDropContentCell.h */,
+				DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */,
 			);
 			name = Drop;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
 				DDD6A0B91DE99A7200FF9741 /* DFTFeedViewController.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
+				DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */,
 				DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */,
 				DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */,
 				DDB50F4A1DDE542E00542EAA /* NSURL+DFTUtils.m in Sources */,

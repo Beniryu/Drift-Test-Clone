@@ -16,7 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic) DFTFirstSectionLayout *firstSectionLayout;
+@property (nonatomic) DFTFirstSectionLayout *collectionViewLayout;
 
 @property (nonatomic) DFTFormRowTableViewDelegate *tableViewsDelegate;
 @property (nonatomic) NSInteger currentSection;
@@ -33,19 +33,13 @@
     [super viewDidLoad];
 
 	self.currentSection = 0;
-	self.firstSectionLayout = [DFTFirstSectionLayout new];
+	self.collectionViewLayout = [DFTFirstSectionLayout new];
 	self.tableViewsDelegate = [DFTFormRowTableViewDelegate new];
 
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
 
 	[self.collectionView addGestureRecognizer:pan];
 	[self configureCollectionView];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-
 }
 
 - (NSInteger)previousSection
@@ -67,17 +61,30 @@
 
 		if (velocity.y > 0)
 		{
+			NSIndexPath *indexDeselect = [NSIndexPath indexPathForItem:1 inSection:0];
+
+			if (self.currentSection == 0)
+				return ;
 			self.currentSection = [self previousSection];
 			indexPath = [NSIndexPath indexPathForItem:self.currentSection inSection:0];
-
+			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
+			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
 		}
 		else
 		{
+			NSIndexPath *indexDeselect = [NSIndexPath indexPathForItem:0 inSection:0];
+
+			if (self.currentSection == 1)
+				return ;
 			self.currentSection = [self nextSection];
 			indexPath = [NSIndexPath indexPathForItem:self.currentSection inSection:0];
+			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
+			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
 		}
-//		[self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
-		[self.collectionView setContentOffset:(CGPointMake(0, self.currentSection == 0 ? -180 : 300)) animated:YES];
+		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+		[self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+		[self.collectionView setContentOffset:(CGPointMake(0, self.currentSection == 0 ? -180 : 200)) animated:YES];
+
 	}
 }
 
@@ -86,12 +93,15 @@
 
 - (void)configureCollectionView
 {
-	self.collectionView.collectionViewLayout = self.firstSectionLayout;
-	self.collectionView.delegate = self.firstSectionLayout;
+	self.collectionView.collectionViewLayout = self.collectionViewLayout;
+	self.collectionView.delegate = self.collectionViewLayout;
 	self.collectionView.dataSource = self;
 //	self.collectionView.contentOffset = CGPointMake(0, 140);
 	self.collectionView.contentInset = UIEdgeInsetsMake(180, 0, 0, 0);
 	self.collectionView.scrollEnabled = NO;
+	self.collectionView.allowsSelection = NO;
+
+	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 }
 
 #pragma mark
@@ -108,6 +118,7 @@
 
 	cell.tableView.delegate = self.tableViewsDelegate;
 	cell.tableView.dataSource = self.tableViewsDelegate;
+	[cell.tableView indexPathsForSelectedRows];
 
 	if (indexPath.section == 0)
 		cell.backgroundColor = [UIColor redColor];
@@ -116,6 +127,34 @@
 	if (indexPath.section == 2)
 			cell.backgroundColor = [UIColor greenColor];
 	return (cell);
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+
+	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
+
+	for (NSInteger i = 0; i < rowsNumber; i++)
+	{
+		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
+
+		[cell.tableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionNone];
+	}
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+
+	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
+
+	for (NSInteger i = 0; i < rowsNumber; i++)
+	{
+		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
+
+		[cell.tableView deselectRowAtIndexPath:index animated:YES];
+	}
 }
 
 @end

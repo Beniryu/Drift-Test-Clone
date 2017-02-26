@@ -12,8 +12,12 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-	if (self = [super initWithCoder:aDecoder]);
-//		self.scrollEnabled = NO;
+	if (self = [super initWithCoder:aDecoder])
+	{
+		self.scrollEnabled = NO;
+		self.allowsMultipleSelection = YES;
+		self.backgroundColor = [UIColor clearColor];
+	}
 	return (self);
 }
 
