@@ -17,7 +17,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+	[super viewDidLoad];
 
 	self.selectedIndex = 0;
 	self.tabBar.tintColor = [UIColor dft_salmonColor];
