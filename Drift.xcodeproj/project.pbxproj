@@ -60,7 +60,7 @@
 		DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */; };
 		DDD6A0C11DE9F4D400FF9741 /* DFTFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0C01DE9F4D400FF9741 /* DFTFeedCell.m */; };
 		DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */; };
-		DDDD04561E638CF0003DE070 /* DriftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD04551E638CF0003DE070 /* DriftViewController.m */; };
+		DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,8 +157,8 @@
 		DDD6A0BF1DE9F4D400FF9741 /* DFTFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedCell.h; sourceTree = "<group>"; };
 		DDD6A0C01DE9F4D400FF9741 /* DFTFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedCell.m; sourceTree = "<group>"; };
 		DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTFeedCell.xib; sourceTree = "<group>"; };
-		DDDD04541E638CF0003DE070 /* DriftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriftViewController.h; sourceTree = "<group>"; };
-		DDDD04551E638CF0003DE070 /* DriftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriftViewController.m; sourceTree = "<group>"; };
+		DDDD04541E638CF0003DE070 /* DFTDriftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDriftViewController.h; sourceTree = "<group>"; };
+		DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDriftViewController.m; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -469,8 +469,8 @@
 		DDDD04531E638CDB003DE070 /* Drift */ = {
 			isa = PBXGroup;
 			children = (
-				DDDD04541E638CF0003DE070 /* DriftViewController.h */,
-				DDDD04551E638CF0003DE070 /* DriftViewController.m */,
+				DDDD04541E638CF0003DE070 /* DFTDriftViewController.h */,
+				DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */,
 			);
 			name = Drift;
 			sourceTree = "<group>";
@@ -621,7 +621,7 @@
 				DDA59A4E1DD3DACB000B942B /* DFTLoginViewController.m in Sources */,
 				DD3D90411DF3268200B8A6CF /* DFTUser.m in Sources */,
 				DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */,
-				DDDD04561E638CF0003DE070 /* DriftViewController.m in Sources */,
+				DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */,
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,
 				DD3B99B41E1EE93A0098208F /* DFTCollectionsViewController.m in Sources */,
 				DD4A076E1E3FCACD00E4CF95 /* DFTInnerFeedCell.m in Sources */,

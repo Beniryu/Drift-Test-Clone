@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DriftViewController : UIViewController
+@interface DFTDriftViewController : UIViewController
 
 @end

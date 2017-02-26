@@ -8,7 +8,7 @@
 
 #import "DriftViewController.h"
 
-@interface DriftViewController ()
+@interface DFTDriftViewController ()
 
 @end
 
