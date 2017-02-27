@@ -33,6 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)dft_darkGrayColor;
 
 /**
+ Light Gray backgrounds
+ @return Color #ECECEC
+ */
++ (instancetype)dft_lightGrayColor;
+
+/**
  Dark Gray backgrounds
  23252B
  @return Color #40464B

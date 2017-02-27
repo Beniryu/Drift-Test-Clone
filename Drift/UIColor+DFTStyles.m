@@ -31,6 +31,11 @@
 	return ([UIColor colorWithRed:0.25 green:0.27 blue:0.29 alpha:1.0]);
 }
 
++ (instancetype)dft_lightGrayColor
+{
+    return ([UIColor colorWithRed:0.23 green:0.23 blue:0.23 alpha:1.0]);
+}
+
 + (instancetype)dft_lightRedColor
 {
 	return ([UIColor colorWithRed:1.00 green:0.38 blue:0.38 alpha:1.0]);

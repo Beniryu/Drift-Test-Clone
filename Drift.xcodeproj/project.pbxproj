@@ -25,6 +25,7 @@
 		092317F51E5CF0A70043838D /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */; };
 		092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E41E5CF0A70043838D /* GOTHMTHI.TTF */; };
 		092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E51E5CF0A70043838D /* GOTHMTIT.TTF */; };
+		09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
@@ -39,7 +40,6 @@
 		DD45C9A61E28219C00ED3E20 /* DFTInnerFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */; };
 		DD45C9A91E2821AE00ED3E20 /* DFTCollectionFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */; };
 		DD4A076E1E3FCACD00E4CF95 /* DFTInnerFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A076C1E3FCACD00E4CF95 /* DFTInnerFeedCell.m */; };
-		DD4A076F1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD4A076D1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib */; };
 		DD4A07721E3FD39B00E4CF95 /* DFTScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A07711E3FD39B00E4CF95 /* DFTScrollView.m */; };
 		DD4A07751E42790800E4CF95 /* DFTCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4A07741E42790800E4CF95 /* DFTCollectionView.m */; };
 		DD4D6D691E3150D600E3605A /* DFTDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D681E3150D600E3605A /* DFTDropViewController.m */; };
@@ -99,6 +99,8 @@
 		092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
 		092317E41E5CF0A70043838D /* GOTHMTHI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTHI.TTF; sourceTree = "<group>"; };
 		092317E51E5CF0A70043838D /* GOTHMTIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTIT.TTF; sourceTree = "<group>"; };
+		09A97CD61E64E11100381FB2 /* DFTCollectionFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionFeedCell.h; sourceTree = "<group>"; };
+		09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionFeedCell.m; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
@@ -127,7 +129,6 @@
 		DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionFeedViewController.m; sourceTree = "<group>"; };
 		DD4A076B1E3FCACD00E4CF95 /* DFTInnerFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTInnerFeedCell.h; sourceTree = "<group>"; };
 		DD4A076C1E3FCACD00E4CF95 /* DFTInnerFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTInnerFeedCell.m; sourceTree = "<group>"; };
-		DD4A076D1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTInnerFeedCell.xib; sourceTree = "<group>"; };
 		DD4A07701E3FD39B00E4CF95 /* DFTScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTScrollView.h; sourceTree = "<group>"; };
 		DD4A07711E3FD39B00E4CF95 /* DFTScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTScrollView.m; sourceTree = "<group>"; };
 		DD4A07731E42790800E4CF95 /* DFTCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionView.h; sourceTree = "<group>"; };
@@ -537,9 +538,10 @@
 				DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */,
 				DD4A076B1E3FCACD00E4CF95 /* DFTInnerFeedCell.h */,
 				DD4A076C1E3FCACD00E4CF95 /* DFTInnerFeedCell.m */,
-				DD4A076D1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib */,
 				DD3B9A0B1E258BDA0098208F /* DFTFeedHeaderView.h */,
 				DD3B9A0C1E258BDA0098208F /* DFTFeedHeaderView.m */,
+				09A97CD61E64E11100381FB2 /* DFTCollectionFeedCell.h */,
+				09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -661,7 +663,6 @@
 				DDA59A751DD50DF0000B942B /* Notes in Resources */,
 				092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */,
 				DDA59A731DD4E6F4000B942B /* Lato-LightItalic.ttf in Resources */,
-				DD4A076F1E3FCACD00E4CF95 /* DFTInnerFeedCell.xib in Resources */,
 				DDA59A701DD4E6F4000B942B /* Lato-Hairline.ttf in Resources */,
 				092317E61E5CF0A70043838D /* GOTHMBIT.TTF in Resources */,
 				DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */,
@@ -732,6 +733,7 @@
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,
 				DD3B99B41E1EE93A0098208F /* DFTCollectionsViewController.m in Sources */,
 				DD4A076E1E3FCACD00E4CF95 /* DFTInnerFeedCell.m in Sources */,
+				09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */,
 				DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */,
 				DD3D90471DF8A7EA00B8A6CF /* DFTUserManager.m in Sources */,
 				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
