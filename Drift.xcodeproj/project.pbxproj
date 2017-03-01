@@ -31,6 +31,7 @@
 		DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D761E369D5D00E3605A /* VLDContextSheet.m */; };
 		DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */; };
 		DD4D6D7D1E369D5D00E3605A /* VLDContextSheetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */; };
+		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
 		DDA59A481DD3DACB000B942B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA59A471DD3DACB000B942B /* main.m */; };
@@ -111,6 +112,8 @@
 		DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItem.m; sourceTree = "<group>"; };
 		DD4D6D791E369D5D00E3605A /* VLDContextSheetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItemView.h; sourceTree = "<group>"; };
 		DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItemView.m; sourceTree = "<group>"; };
+		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
+		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
 		DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedManager.m; sourceTree = "<group>"; };
 		DDA3C65E1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DFTNetworkClient+DFTDrop.h"; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 		DDD6A0B61DE995C200FF9741 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				DD90899C1E661DC000737B33 /* DFTMapManager.h */,
+				DD90899D1E661DC000737B33 /* DFTMapManager.m */,
 				DDB50F4E1DDE5F4D00542EAA /* DFTSessionManager.h */,
 				DDB50F4F1DDE5F4D00542EAA /* DFTSessionManager.m */,
 				DDB50F521DDE60F300542EAA /* DFTManagerConstants.h */,
@@ -650,6 +655,7 @@
 				DDA59A811DD5202E000B942B /* UIColor+DFTStyles.m in Sources */,
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
+				DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */,
 				DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */,
 				DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */,
 				DDB50F471DDE4E5A00542EAA /* DFTNetworkClient.m in Sources */,

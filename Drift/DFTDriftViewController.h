@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Mapbox/Mapbox.h>
 
-@interface DFTDriftViewController : UIViewController
+@interface DFTDriftViewController : UIViewController <MGLMapViewDelegate>
 
 @end

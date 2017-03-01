@@ -19,7 +19,6 @@
 
 @interface DFTDropViewController () <VLDContextSheetDelegate>
 
-@property (weak, nonatomic) IBOutlet MGLMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIImageView *veilImageView;
 @property (weak, nonatomic) IBOutlet DFTJellyTrigger *jellyTrigger;
 
@@ -39,20 +38,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.veilImageView.userInteractionEnabled = NO;
 
 	[self configureJelly];
-	[self configureMapbox];
-}
-
-- (void)configureMapbox
-{
-	self.mapView.userInteractionEnabled = NO;
-
-	self.mapDelegate = [DFTMapboxDelegate new];
-	self.mapView.styleURL = [NSURL URLWithString:(NSString *)mapStyleURL];
-	self.mapView.showsUserLocation = YES;
-	self.mapView.zoomEnabled = NO;
-	self.mapView.scrollEnabled = NO;
-	self.mapView.zoomLevel = 1;
-	self.mapView.delegate = self.mapDelegate;
 }
 
 - (void)configureJelly
