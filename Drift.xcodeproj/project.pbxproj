@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		092317E61E5CF0A70043838D /* GOTHMBIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */; };
-		092317E71E5CF0A70043838D /* GOTHMBOL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D01E5CF0A60043838D /* GOTHMBOL.TTF */; };
 		092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D21E5CF0A60043838D /* GOTHMBOK.TTF */; };
 		092317E91E5CF0A70043838D /* GOTHMZIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D31E5CF0A60043838D /* GOTHMZIT.TTF */; };
 		092317EA1E5CF0A70043838D /* GOTHMLIG.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317D51E5CF0A60043838D /* GOTHMLIG.TTF */; };
@@ -27,8 +25,16 @@
 		092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E51E5CF0A70043838D /* GOTHMTIT.TTF */; };
 		09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */; };
 		09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */; };
+		09DAA0431E678DEC00E92A1F /* GOTHMBIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 09DAA0411E678DEC00E92A1F /* GOTHMBIT.TTF */; };
+		09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 09DAA0421E678DEC00E92A1F /* GOTHMBOL.TTF */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
+		DD2CE56A1E5CE15100204E64 /* DFTFirstSectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */; };
+		DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */; };
+		DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */; };
+		DD34C8641E61EC1B003853D6 /* DFTAddDropSettingsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */; };
+		DD34C8691E620D60003853D6 /* DFTAddDropStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */; };
+		DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
 		DD3B99B71E214FD40098208F /* UIFont+Drift.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B61E214FD40098208F /* UIFont+Drift.m */; };
 		DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B9A0C1E258BDA0098208F /* DFTFeedHeaderView.m */; };
@@ -81,8 +87,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBIT.TTF; sourceTree = "<group>"; };
-		092317D01E5CF0A60043838D /* GOTHMBOL.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBOL.TTF; sourceTree = "<group>"; };
 		092317D21E5CF0A60043838D /* GOTHMBOK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBOK.TTF; sourceTree = "<group>"; };
 		092317D31E5CF0A60043838D /* GOTHMZIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMZIT.TTF; sourceTree = "<group>"; };
 		092317D51E5CF0A60043838D /* GOTHMLIG.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMLIG.TTF; sourceTree = "<group>"; };
@@ -103,10 +107,24 @@
 		09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionFeedCell.m; sourceTree = "<group>"; };
 		09DAA03C1E67826C00E92A1F /* DFTFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedViewController.h; sourceTree = "<group>"; };
 		09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedViewController.m; sourceTree = "<group>"; };
+		09DAA0411E678DEC00E92A1F /* GOTHMBIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBIT.TTF; sourceTree = "<group>"; };
+		09DAA0421E678DEC00E92A1F /* GOTHMBOL.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMBOL.TTF; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
 		DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropViewController.m; sourceTree = "<group>"; };
+		DD2CE5681E5CE15100204E64 /* DFTFirstSectionLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFirstSectionLayout.h; sourceTree = "<group>"; };
+		DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFirstSectionLayout.m; sourceTree = "<group>"; };
+		DD34C85B1E61E955003853D6 /* DFTFormRowTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFormRowTableViewDelegate.h; sourceTree = "<group>"; };
+		DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFormRowTableViewDelegate.m; sourceTree = "<group>"; };
+		DD34C85F1E61EB57003853D6 /* DFTAddDropContentTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropContentTableView.h; sourceTree = "<group>"; };
+		DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropContentTableView.m; sourceTree = "<group>"; };
+		DD34C8621E61EC1B003853D6 /* DFTAddDropSettingsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropSettingsTableView.h; sourceTree = "<group>"; };
+		DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropSettingsTableView.m; sourceTree = "<group>"; };
+		DD34C8661E620BA5003853D6 /* DFTAddDropStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropStepCell.h; sourceTree = "<group>"; };
+		DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropStepCell.m; sourceTree = "<group>"; };
+		DD34C86A1E624495003853D6 /* DFTAddDropContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropContentCell.h; sourceTree = "<group>"; };
+		DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropContentCell.m; sourceTree = "<group>"; };
 		DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapboxDelegate.h; sourceTree = "<group>"; };
 		DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapboxDelegate.m; sourceTree = "<group>"; };
 		DD3B99B51E214FD40098208F /* UIFont+Drift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Drift.h"; sourceTree = "<group>"; };
@@ -211,7 +229,7 @@
 		092317CD1E5CF0A60043838D /* Gotham */ = {
 			isa = PBXGroup;
 			children = (
-				092317CE1E5CF0A60043838D /* Bold */,
+				09DAA0401E678DEC00E92A1F /* Bold */,
 				092317D11E5CF0A60043838D /* Book */,
 				092317D41E5CF0A60043838D /* Light */,
 				092317D71E5CF0A60043838D /* Medium */,
@@ -220,15 +238,6 @@
 			);
 			name = Gotham;
 			path = Fonts/Gotham;
-			sourceTree = "<group>";
-		};
-		092317CE1E5CF0A60043838D /* Bold */ = {
-			isa = PBXGroup;
-			children = (
-				092317CF1E5CF0A60043838D /* GOTHMBIT.TTF */,
-				092317D01E5CF0A60043838D /* GOTHMBOL.TTF */,
-			);
-			path = Bold;
 			sourceTree = "<group>";
 		};
 		092317D11E5CF0A60043838D /* Book */ = {
@@ -295,12 +304,54 @@
 			name = Children;
 			sourceTree = "<group>";
 		};
+		09DAA0401E678DEC00E92A1F /* Bold */ = {
+			isa = PBXGroup;
+			children = (
+				09DAA0411E678DEC00E92A1F /* GOTHMBIT.TTF */,
+				09DAA0421E678DEC00E92A1F /* GOTHMBOL.TTF */,
+			);
+			path = Bold;
+			sourceTree = "<group>";
+		};
 		2B9E2CF2ED71A52B629504A2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F802EDC41987F133802A1305 /* libPods-Drift.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD2CE5671E5CE0D400204E64 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				DD2CE5681E5CE15100204E64 /* DFTFirstSectionLayout.h */,
+				DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */,
+				DD34C85B1E61E955003853D6 /* DFTFormRowTableViewDelegate.h */,
+				DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		DD34C85E1E61EA7F003853D6 /* TableViews */ = {
+			isa = PBXGroup;
+			children = (
+				DD34C85F1E61EB57003853D6 /* DFTAddDropContentTableView.h */,
+				DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */,
+				DD34C8621E61EC1B003853D6 /* DFTAddDropSettingsTableView.h */,
+				DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */,
+			);
+			name = TableViews;
+			sourceTree = "<group>";
+		};
+		DD34C8651E620B8A003853D6 /* Drop */ = {
+			isa = PBXGroup;
+			children = (
+				DD34C8661E620BA5003853D6 /* DFTAddDropStepCell.h */,
+				DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */,
+				DD34C86A1E624495003853D6 /* DFTAddDropContentCell.h */,
+				DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */,
+			);
+			name = Drop;
 			sourceTree = "<group>";
 		};
 		DD4D6D6A1E3159DF00E3605A /* Controls */ = {
@@ -330,6 +381,8 @@
 		DD4D6D7E1E369D7100E3605A /* Drop */ = {
 			isa = PBXGroup;
 			children = (
+				DD34C85E1E61EA7F003853D6 /* TableViews */,
+				DD2CE5671E5CE0D400204E64 /* Delegates */,
 				DD4D6D671E3150D600E3605A /* DFTDropViewController.h */,
 				DD4D6D681E3150D600E3605A /* DFTDropViewController.m */,
 				DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */,
@@ -538,6 +591,7 @@
 		DDD6A0BD1DE9F4A000FF9741 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DD34C8651E620B8A003853D6 /* Drop */,
 				DDD6A0BE1DE9F4AC00FF9741 /* Feed */,
 			);
 			name = Cells;
@@ -651,12 +705,13 @@
 				DDA59A5E1DD4E28A000B942B /* Images.xcassets in Resources */,
 				092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */,
 				092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */,
+				09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */,
+				09DAA0431E678DEC00E92A1F /* GOTHMBIT.TTF in Resources */,
 				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
 				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
 				092317F11E5CF0A70043838D /* GothamRnd-BookIta.otf in Resources */,
 				092317F01E5CF0A70043838D /* GothamRnd-Book.otf in Resources */,
-				092317E71E5CF0A70043838D /* GOTHMBOL.TTF in Resources */,
 				092317E91E5CF0A70043838D /* GOTHMZIT.TTF in Resources */,
 				092317F31E5CF0A70043838D /* GothamRnd-LightIta.otf in Resources */,
 				092317F51E5CF0A70043838D /* GothamRnd-Medium.otf in Resources */,
@@ -672,7 +727,6 @@
 				092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */,
 				DDA59A731DD4E6F4000B942B /* Lato-LightItalic.ttf in Resources */,
 				DDA59A701DD4E6F4000B942B /* Lato-Hairline.ttf in Resources */,
-				092317E61E5CF0A70043838D /* GOTHMBIT.TTF in Resources */,
 				DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */,
 				DDA59A6C1DD4E6F4000B942B /* Lato-Black.ttf in Resources */,
 				092317F41E5CF0A70043838D /* GothamRnd-MedIta.otf in Resources */,
@@ -736,6 +790,7 @@
 			files = (
 				DD3D90441DF32F6900B8A6CF /* DFTObject.m in Sources */,
 				DDA59A4E1DD3DACB000B942B /* DFTLoginViewController.m in Sources */,
+				DD34C8691E620D60003853D6 /* DFTAddDropStepCell.m in Sources */,
 				DD3D90411DF3268200B8A6CF /* DFTUser.m in Sources */,
 				DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */,
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,
@@ -759,11 +814,16 @@
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
 				DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
+				DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */,
+				DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */,
+				DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */,
 				DDB50F4A1DDE542E00542EAA /* NSURL+DFTUtils.m in Sources */,
 				DDB50F531DDE60F300542EAA /* DFTManagerConstants.m in Sources */,
+				DD34C8641E61EC1B003853D6 /* DFTAddDropSettingsTableView.m in Sources */,
 				DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */,
 				DD4D6D6D1E3159FA00E3605A /* DFTJellyButton.m in Sources */,
 				DD4D6D7D1E369D5D00E3605A /* VLDContextSheetItemView.m in Sources */,
+				DD2CE56A1E5CE15100204E64 /* DFTFirstSectionLayout.m in Sources */,
 				DDA59A811DD5202E000B942B /* UIColor+DFTStyles.m in Sources */,
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
