@@ -6,24 +6,20 @@
 //  Copyright © 2016 Thierry Ng. All rights reserved.
 //
 
-#import "DFTFeedViewController.h"
+#import "DFTGlobalFeedViewController.h"
 #import "DFTCollectionView.h"
 #import "DFTFeedCollectionViewLayout.h"
 #import "DFTFeedCell.h"
 
-@interface DFTFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@interface DFTGlobalFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTopConstraint;
-
-@property (nonatomic) BOOL isAnimating;
 
 @end
 
 static const NSString *feedCellIdentifier = @"DFTFeedCell";
 
 
-@implementation DFTFeedViewController
+@implementation DFTGlobalFeedViewController
 
 #pragma mark
 #pragma mark - Lifecycle
@@ -40,9 +36,6 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 //	[CATransaction commit];
 
 	[self configureCollectionView];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateFeedChange) name:@"DFTFeedsScaleAnimation" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shrinkFeed) name:@"DFTFeedsScaleShrink" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(expandFeed) name:@"DFTFeedsScaleExpand" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -75,50 +68,6 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 	[self.collectionView registerNib:[UINib nibWithNibName:(NSString *)feedCellIdentifier bundle:nil] forCellWithReuseIdentifier:(NSString *)feedCellIdentifier];
 }
 
-- (void)shrinkFeed
-{
-	[UIView animateWithDuration:0.2 animations:
-	 ^{
-		 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.97, 0.97);
-
-		 t = CGAffineTransformTranslate(t, 0, self.collectionView.frame.size.height * 0.03);
-		 self.collectionView.transform = t;
-	 }];
-}
-
-- (void)expandFeed
-{
-	[UIView animateWithDuration:0.2 animations:
-	 ^{
-		 self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
-	 }];
-}
-
-- (void)animateFeedChange
-{
-	if (!self.isAnimating)
-	{
-		self.isAnimating = YES;
-		[UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut
-		 animations:
-		 ^{
-			 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.95, 0.95);
-			 t = CGAffineTransformTranslate(t, 0, self.collectionView.frame.size.height * 0.05);
-
-			 self.collectionView.transform = t;
-		 } completion:^(BOOL finished)
-		 {
-			 [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut
-			  animations:
-			  ^{
-				  self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
-			  } completion:^(BOOL finished)
-			  {
-				  self.isAnimating = !finished;
-			  }];
-		 }];
-	}
-}
 
 #pragma mark
 #pragma mark - UICollectionView protocols
@@ -140,6 +89,9 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 	[cell configureWithDrop:nil];
 	return (cell);
 }
+
+#pragma mark
+#pragma mark - DFTFeedScreenDelegate protocol
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
