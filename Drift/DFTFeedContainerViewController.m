@@ -7,7 +7,7 @@
 //
 
 #import "DFTFeedContainerViewController.h"
-#import "DFTFeedViewController.h"
+#import "DFTGlobalFeedViewController.h"
 #import "DFTMapboxDelegate.h"
 #import "UIColor+DFTStyles.h"
 #import "DFTScrollView.h"
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTopConstraint;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *globalFeedController;
 
 // Header - Location
@@ -33,6 +34,7 @@
 
 // Header - Drift
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
+@property (weak, nonatomic) IBOutlet UIView *driftView;
 @property (weak, nonatomic) IBOutlet UILabel *driftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *driftLevelLabel;
 
@@ -135,8 +137,13 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)feedScreenDidScroll:(CGFloat)offset
 {
-	self.mapTopConstraint.constant = -((260 + offset) / 7);
-	self.headerTopConstraint.constant = -((260 + offset) / 7);
+	self.mapTopConstraint.constant = -((offset) / 7);
+	self.headerTopConstraint.constant = -((offset) / 7);
+    
+
+    self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
+    self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
+
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -155,7 +162,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 {
 	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
 	{
-		DFTFeedViewController *controller = segue.destinationViewController;
+		DFTGlobalFeedViewController *controller = segue.destinationViewController;
 
 		controller.delegate = self;
 	}

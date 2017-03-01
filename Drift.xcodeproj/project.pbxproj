@@ -26,10 +26,10 @@
 		092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E41E5CF0A70043838D /* GOTHMTHI.TTF */; };
 		092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E51E5CF0A70043838D /* GOTHMTIT.TTF */; };
 		09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */; };
+		09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
-		DD3B99B41E1EE93A0098208F /* DFTCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B31E1EE93A0098208F /* DFTCollectionsViewController.m */; };
 		DD3B99B71E214FD40098208F /* UIFont+Drift.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B61E214FD40098208F /* UIFont+Drift.m */; };
 		DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B9A0C1E258BDA0098208F /* DFTFeedHeaderView.m */; };
 		DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3D903D1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m */; };
@@ -74,7 +74,7 @@
 		DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB50F4F1DDE5F4D00542EAA /* DFTSessionManager.m */; };
 		DDB50F531DDE60F300542EAA /* DFTManagerConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB50F511DDE60F300542EAA /* DFTManagerConstants.m */; };
 		DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0B31DE7972F00FF9741 /* DFTDrop.m */; };
-		DDD6A0B91DE99A7200FF9741 /* DFTFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0B81DE99A7200FF9741 /* DFTFeedViewController.m */; };
+		DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0B81DE99A7200FF9741 /* DFTGlobalFeedViewController.m */; };
 		DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */; };
 		DDD6A0C11DE9F4D400FF9741 /* DFTFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD6A0C01DE9F4D400FF9741 /* DFTFeedCell.m */; };
 		DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */; };
@@ -101,14 +101,14 @@
 		092317E51E5CF0A70043838D /* GOTHMTIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTIT.TTF; sourceTree = "<group>"; };
 		09A97CD61E64E11100381FB2 /* DFTCollectionFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionFeedCell.h; sourceTree = "<group>"; };
 		09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionFeedCell.m; sourceTree = "<group>"; };
+		09DAA03C1E67826C00E92A1F /* DFTFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedViewController.h; sourceTree = "<group>"; };
+		09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedViewController.m; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
 		DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropViewController.m; sourceTree = "<group>"; };
 		DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapboxDelegate.h; sourceTree = "<group>"; };
 		DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapboxDelegate.m; sourceTree = "<group>"; };
-		DD3B99B21E1EE93A0098208F /* DFTCollectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionsViewController.h; sourceTree = "<group>"; };
-		DD3B99B31E1EE93A0098208F /* DFTCollectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionsViewController.m; sourceTree = "<group>"; };
 		DD3B99B51E214FD40098208F /* UIFont+Drift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Drift.h"; sourceTree = "<group>"; };
 		DD3B99B61E214FD40098208F /* UIFont+Drift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Drift.m"; sourceTree = "<group>"; };
 		DD3B9A0B1E258BDA0098208F /* DFTFeedHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedHeaderView.h; sourceTree = "<group>"; };
@@ -186,8 +186,8 @@
 		DDB50F521DDE60F300542EAA /* DFTManagerConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTManagerConstants.h; sourceTree = "<group>"; };
 		DDD6A0B21DE7972F00FF9741 /* DFTDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDrop.h; sourceTree = "<group>"; };
 		DDD6A0B31DE7972F00FF9741 /* DFTDrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDrop.m; sourceTree = "<group>"; };
-		DDD6A0B71DE99A7200FF9741 /* DFTFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedViewController.h; sourceTree = "<group>"; };
-		DDD6A0B81DE99A7200FF9741 /* DFTFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedViewController.m; sourceTree = "<group>"; };
+		DDD6A0B71DE99A7200FF9741 /* DFTGlobalFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTGlobalFeedViewController.h; sourceTree = "<group>"; };
+		DDD6A0B81DE99A7200FF9741 /* DFTGlobalFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTGlobalFeedViewController.m; sourceTree = "<group>"; };
 		DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedCollectionViewLayout.h; sourceTree = "<group>"; };
 		DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedCollectionViewLayout.m; sourceTree = "<group>"; };
 		DDD6A0BF1DE9F4D400FF9741 /* DFTFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedCell.h; sourceTree = "<group>"; };
@@ -280,6 +280,19 @@
 				092317E51E5CF0A70043838D /* GOTHMTIT.TTF */,
 			);
 			path = Thin;
+			sourceTree = "<group>";
+		};
+		09DAA03F1E67827100E92A1F /* Children */ = {
+			isa = PBXGroup;
+			children = (
+				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
+				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
+				DDD6A0B71DE99A7200FF9741 /* DFTGlobalFeedViewController.h */,
+				DDD6A0B81DE99A7200FF9741 /* DFTGlobalFeedViewController.m */,
+				DD45C9A71E2821AE00ED3E20 /* DFTCollectionFeedViewController.h */,
+				DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */,
+			);
+			name = Children;
 			sourceTree = "<group>";
 		};
 		2B9E2CF2ED71A52B629504A2 /* Frameworks */ = {
@@ -549,20 +562,15 @@
 		DDD6A0C41DEA012E00FF9741 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				09DAA03F1E67827100E92A1F /* Children */,
 				DD45C9A11E2594B700ED3E20 /* DFTFeedContainerViewController.h */,
 				DD45C9A21E2594B700ED3E20 /* DFTFeedContainerViewController.m */,
 				DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */,
 				DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */,
-				DD45C9A71E2821AE00ED3E20 /* DFTCollectionFeedViewController.h */,
-				DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */,
-				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
-				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
-				DDD6A0B71DE99A7200FF9741 /* DFTFeedViewController.h */,
-				DDD6A0B81DE99A7200FF9741 /* DFTFeedViewController.m */,
-				DD3B99B21E1EE93A0098208F /* DFTCollectionsViewController.h */,
-				DD3B99B31E1EE93A0098208F /* DFTCollectionsViewController.m */,
 				DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */,
 				DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */,
+				09DAA03C1E67826C00E92A1F /* DFTFeedViewController.h */,
+				09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -731,12 +739,12 @@
 				DD3D90411DF3268200B8A6CF /* DFTUser.m in Sources */,
 				DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */,
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,
-				DD3B99B41E1EE93A0098208F /* DFTCollectionsViewController.m in Sources */,
 				DD4A076E1E3FCACD00E4CF95 /* DFTInnerFeedCell.m in Sources */,
 				09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */,
 				DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */,
 				DD3D90471DF8A7EA00B8A6CF /* DFTUserManager.m in Sources */,
 				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
+				09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */,
 				DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */,
 				DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */,
 				DD4D6D701E315A0700E3605A /* DFTJellyTrigger.m in Sources */,
@@ -749,7 +757,7 @@
 				DDD6A0C11DE9F4D400FF9741 /* DFTFeedCell.m in Sources */,
 				DD45C9A61E28219C00ED3E20 /* DFTInnerFeedViewController.m in Sources */,
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
-				DDD6A0B91DE99A7200FF9741 /* DFTFeedViewController.m in Sources */,
+				DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
 				DDB50F4A1DDE542E00542EAA /* NSURL+DFTUtils.m in Sources */,
 				DDB50F531DDE60F300542EAA /* DFTManagerConstants.m in Sources */,

@@ -7,12 +7,10 @@
 //
 
 #import "DFTCollectionFeedViewController.h"
-#import "DFTCollectionView.h"
+#import "DFTCollectionFeedCell.h"
 #import "DFTFeedCollectionViewLayout.h"
 
 @interface DFTCollectionFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
-@property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
 
 @end
 
@@ -53,27 +51,11 @@ static const NSString *collectionFeedCellIdentifier = @"DFTCollectionFeedCell";
 {
 	return (16);
 }
-//
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//	UICollectionReusableView *reusView = nil;
-//
-//	if (kind == UICollectionElementKindSectionHeader)
-//	{
-//		DFTGlobalFeedHeaderView *headerView;
-//
-//		headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-//														withReuseIdentifier:NSStringFromClass([DFTGlobalFeedHeaderView class])
-//															   forIndexPath:indexPath];
-//		reusView = headerView;
-//	}
-//	return (reusView);
-//}
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//	DFTCollectionFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)innerFeedCellIdentifier forIndexPath:indexPath];
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)collectionFeedCellIdentifier forIndexPath:indexPath];
+	DFTCollectionFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)collectionFeedCellIdentifier forIndexPath:indexPath];
+//	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)collectionFeedCellIdentifier forIndexPath:indexPath];
 //	[cell configureWithItem:nil];
 	return (cell);
 }

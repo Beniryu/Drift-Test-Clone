@@ -10,12 +10,11 @@
 
 #import "DFTFeedCollectionViewLayout.h"
 #import "DFTInnerFeedCell.h"
-#import "DFTCollectionView.h"
 
 @interface DFTInnerFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
-@property (nonatomic) BOOL isAnimating;
+//@property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
+//@property (nonatomic) BOOL isAnimating;
 
 @end
 
@@ -29,11 +28,7 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
 	[self configureCollectionView];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateFeedChange) name:@"DFTFeedsScaleAnimation" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shrinkFeed) name:@"DFTFeedsScaleShrink" object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(expandFeed) name:@"DFTFeedsScaleExpand" object:nil];
 }
 
 #pragma mark
@@ -54,51 +49,6 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 	layout.itemSize = (CGSize){[[UIScreen mainScreen] bounds].size.width - 12., 156.};
 	layout.minimumLineSpacing = 4.;
 	self.collectionView.collectionViewLayout = layout;
-}
-
-- (void)animateFeedChange
-{
-	if (!self.isAnimating)
-	{
-		self.isAnimating = YES;
-		[UIView animateWithDuration:0.2 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut
-						 animations:
-		 ^{
-			 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.95, 0.95);
-			 t = CGAffineTransformTranslate(t, 0, self.collectionView.frame.size.height * 0.05);
-
-			 self.collectionView.transform = t;
-		 } completion:^(BOOL finished)
-		 {
-			 [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut
-							  animations:
-			  ^{
-				  self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
-			  } completion:^(BOOL finished)
-			  {
-				  self.isAnimating = !finished;
-			  }];
-		 }];
-	}
-}
-
-- (void)shrinkFeed
-{
-	[UIView animateWithDuration:0.2 animations:
-	 ^{
-		 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.97, 0.97);
-
-		 t = CGAffineTransformTranslate(t, 0, self.collectionView.frame.size.height * 0.03);
-		 self.collectionView.transform = t;
-	 }];
-}
-
-- (void)expandFeed
-{
-	[UIView animateWithDuration:0.2 animations:
-	 ^{
-		 self.collectionView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 1, 1);
-	 }];
 }
 
 #pragma mark

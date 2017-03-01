@@ -2,15 +2,16 @@
 //  DFTFeedViewController.h
 //  Drift
 //
-//  Created by Thierry Ng on 26/11/2016.
-//  Copyright © 2016 Thierry Ng. All rights reserved.
+//  Created by Jonathan Nguyen on 01/03/2017.
+//  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "DFTFeedContainerViewController.h"
+#import "DFTCollectionView.h"
 
 @interface DFTFeedViewController : UIViewController
 
-@property id<DFTFeedScreenProtocol> delegate;
+@property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
+@property (nonatomic) BOOL isAnimating;
 
 @end

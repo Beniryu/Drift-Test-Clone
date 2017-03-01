@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFTFeedViewController.h"
 
-@interface DFTInnerFeedViewController : UIViewController
+
+@interface DFTInnerFeedViewController : DFTFeedViewController
+
 
 @end

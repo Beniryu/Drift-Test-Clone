@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFTFeedViewController.h"
 
-@interface DFTCollectionFeedViewController : UIViewController
+@interface DFTCollectionFeedViewController : DFTFeedViewController
 
 @end
