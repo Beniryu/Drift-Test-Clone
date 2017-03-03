@@ -39,8 +39,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-//	return (UICollectionViewFlowLayoutAutomaticSize);
-	return ((CGSize){self.screenWidth, indexPath.item == 0 ? 250 : 200});
+	CGFloat height = 0;
+
+	if (indexPath.item == 0)
+	{
+		height = ([indexPath isEqual:self.selectedIndexPath] ? 250 : 180);
+	}
+	if (indexPath.item == 1)
+	{
+		height = ([indexPath isEqual:self.selectedIndexPath] ? 200 : 140);
+	}
+	return ((CGSize){self.screenWidth, height});
 }
 
 

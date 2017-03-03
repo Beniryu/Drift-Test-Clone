@@ -42,6 +42,13 @@
 	[self configureCollectionView];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+}
+
 - (NSInteger)previousSection
 {
 	return (self.currentSection == 0 ? self.currentSection : self.currentSection - 1);
@@ -75,16 +82,28 @@
 			NSIndexPath *indexDeselect = [NSIndexPath indexPathForItem:0 inSection:0];
 
 			if (self.currentSection == 1)
-				return ;
+				;
 			self.currentSection = [self nextSection];
 			indexPath = [NSIndexPath indexPathForItem:self.currentSection inSection:0];
 			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
 			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
 		}
-		[self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-		[self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
-		[self.collectionView setContentOffset:(CGPointMake(0, self.currentSection == 0 ? -180 : 200)) animated:YES];
 
+		[self.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+		[self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
+		self.collectionViewLayout.selectedIndexPath = indexPath;
+		//		[UIView animateWithDuration:0.5 animations:^{
+		//			UICollectionView *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
+		//
+		//			CGRect rect = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height - 40);
+		//			cell.frame = rect;
+		//		}];
+		[self.collectionView performBatchUpdates:^{
+			[self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+			[self.collectionView layoutIfNeeded];
+		} completion:^(BOOL finished) {
+			[self.collectionView setContentOffset:(CGPointMake(0, self.currentSection == 0 ? -180 : 200)) animated:YES];
+		}];
 	}
 }
 
@@ -96,10 +115,9 @@
 	self.collectionView.collectionViewLayout = self.collectionViewLayout;
 	self.collectionView.delegate = self.collectionViewLayout;
 	self.collectionView.dataSource = self;
-//	self.collectionView.contentOffset = CGPointMake(0, 140);
 	self.collectionView.contentInset = UIEdgeInsetsMake(180, 0, 0, 0);
 	self.collectionView.scrollEnabled = NO;
-	self.collectionView.allowsSelection = NO;
+	self.collectionView.allowsSelection = YES;
 
 	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 }
@@ -118,7 +136,6 @@
 
 	cell.tableView.delegate = self.tableViewsDelegate;
 	cell.tableView.dataSource = self.tableViewsDelegate;
-	[cell.tableView indexPathsForSelectedRows];
 
 	if (indexPath.section == 0)
 		cell.backgroundColor = [UIColor redColor];
@@ -132,29 +149,31 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-
 	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
 
+//	[collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 	for (NSInteger i = 0; i < rowsNumber; i++)
 	{
 		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
 
 		[cell.tableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionNone];
 	}
+//	[collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-
 	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
 
+//	[collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 	for (NSInteger i = 0; i < rowsNumber; i++)
 	{
 		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
 
 		[cell.tableView deselectRowAtIndexPath:index animated:YES];
 	}
+//	[collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 @end

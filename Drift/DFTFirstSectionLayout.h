@@ -10,4 +10,6 @@
 
 @interface DFTFirstSectionLayout : UICollectionViewFlowLayout <UICollectionViewDelegateFlowLayout>
 
+@property (nonatomic) NSIndexPath *selectedIndexPath;
+
 @end
