@@ -672,26 +672,19 @@
                                     <constraint firstAttribute="trailing" secondItem="by7-va-h5c" secondAttribute="trailing" constant="-750" id="sfP-St-tkk"/>
                                 </constraints>
                             </scrollView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n91-oy-a5O">
-                                <rect key="frame" x="250" y="30" width="105" height="36"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLY-k8-kl7">
+                                <rect key="frame" x="260" y="30" width="95" height="37"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="ADr-VV-1Ta"/>
-                                    <constraint firstAttribute="width" constant="105" id="jjA-jm-vLk"/>
+                                    <constraint firstAttribute="width" constant="95" id="Zlj-Dv-fus"/>
+                                    <constraint firstAttribute="height" constant="37" id="gTv-Yf-HjX"/>
                                 </constraints>
-                                <segments>
-                                    <segment title="A"/>
-                                    <segment title="B"/>
-                                    <segment title="C"/>
-                                </segments>
-                                <connections>
-                                    <action selector="segmentChangedValue" destination="S7r-QZ-w4N" eventType="valueChanged" id="MYD-nU-qVo"/>
-                                </connections>
-                            </segmentedControl>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="n91-oy-a5O" firstAttribute="top" secondItem="s91-zK-k7u" secondAttribute="bottom" constant="10" id="24g-M0-dzi"/>
                             <constraint firstAttribute="trailing" secondItem="jaS-zF-Cg0" secondAttribute="trailing" id="3ew-JE-h6r"/>
+                            <constraint firstItem="qLY-k8-kl7" firstAttribute="top" secondItem="s91-zK-k7u" secondAttribute="bottom" constant="10" id="44p-Sw-nqm"/>
                             <constraint firstAttribute="trailing" secondItem="32t-zn-ulx" secondAttribute="trailing" id="7UJ-kc-4DT"/>
                             <constraint firstAttribute="trailing" secondItem="XTS-2F-pdR" secondAttribute="trailing" id="8K1-gN-CRn"/>
                             <constraint firstItem="jaS-zF-Cg0" firstAttribute="top" secondItem="hby-Bg-EZc" secondAttribute="top" id="98M-QJ-yXO"/>
@@ -702,10 +695,10 @@
                             <constraint firstItem="32t-zn-ulx" firstAttribute="leading" secondItem="hby-Bg-EZc" secondAttribute="leading" id="kFv-QJ-gcj"/>
                             <constraint firstItem="32t-zn-ulx" firstAttribute="width" secondItem="hby-Bg-EZc" secondAttribute="width" id="mEh-p9-r6H"/>
                             <constraint firstItem="ZHR-Xf-giH" firstAttribute="width" secondItem="hby-Bg-EZc" secondAttribute="width" id="mfS-0B-mtY"/>
+                            <constraint firstAttribute="trailing" secondItem="qLY-k8-kl7" secondAttribute="trailing" constant="20" id="pwc-IF-d5P"/>
                             <constraint firstItem="XTS-2F-pdR" firstAttribute="top" secondItem="s91-zK-k7u" secondAttribute="bottom" id="rZu-2L-Glh"/>
                             <constraint firstItem="c67-Nq-3f2" firstAttribute="width" secondItem="hby-Bg-EZc" secondAttribute="width" id="sI6-d2-aEv"/>
                             <constraint firstItem="32t-zn-ulx" firstAttribute="top" secondItem="s91-zK-k7u" secondAttribute="bottom" constant="-20" id="ugT-K9-ggT"/>
-                            <constraint firstAttribute="trailing" secondItem="n91-oy-a5O" secondAttribute="trailing" constant="20" id="xoW-N4-hn5"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="feed_tab_icon" id="xRf-hc-XiE"/>
@@ -726,7 +719,7 @@
                         <outlet property="mapboxView" destination="jaS-zF-Cg0" id="3Bd-Kb-MVv"/>
                         <outlet property="profilePictureImageView" destination="e6r-E4-UG7" id="sQw-l0-LJe"/>
                         <outlet property="scrollView" destination="32t-zn-ulx" id="Eet-Ak-JWy"/>
-                        <outlet property="segmentedControl" destination="n91-oy-a5O" id="PMf-EB-Pec"/>
+                        <outlet property="segmentedContainerView" destination="qLY-k8-kl7" id="uN6-Bi-YHt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGB-eR-9NL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -779,13 +772,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERQ-aJ-V2k" userLabel="LocationView">
-                                                            <rect key="frame" x="16" y="122" width="49" height="17"/>
+                                                            <rect key="frame" x="16" y="122" width="48.5" height="17"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="RY6-D0-M6u">
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B17-4G-fv3" userLabel="locationLabel">
-                                                                    <rect key="frame" x="18" y="3" width="31" height="12"/>
+                                                                    <rect key="frame" x="18" y="3" width="30.5" height="12"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -835,7 +828,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#burgeraddict #junkfood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pen-tT-Yl0">
-                                                            <rect key="frame" x="16" y="89" width="126" height="11"/>
+                                                            <rect key="frame" x="16" y="89" width="125.5" height="11"/>
                                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                             <color key="textColor" red="0.34039598700000001" green="0.35976666210000002" blue="0.41789251570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -985,7 +978,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cxv-AW-PsL">
-                                                    <rect key="frame" x="63" y="11.5" width="91.5" height="36.5"/>
+                                                    <rect key="frame" x="63" y="12" width="91.5" height="36.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tatoo Family" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mc5-gJ-lmX">
                                                             <rect key="frame" x="0.0" y="0.0" width="91.5" height="15.5"/>
@@ -1000,7 +993,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-xk-iff" userLabel="locationLabel">
-                                                                    <rect key="frame" x="18" y="3" width="24.5" height="11"/>
+                                                                    <rect key="frame" x="18" y="2.5" width="24.5" height="11"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                                     <color key="textColor" red="0.34039598700000001" green="0.35976666210000002" blue="0.41789251570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>

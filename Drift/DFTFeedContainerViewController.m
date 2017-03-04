@@ -9,17 +9,20 @@
 #import "DFTFeedContainerViewController.h"
 #import "DFTGlobalFeedViewController.h"
 #import "DFTMapboxDelegate.h"
+#import "DFTSegmentedControl.h"
 #import "UIColor+DFTStyles.h"
 #import "DFTScrollView.h"
+#import "DFTSegmentedControl.h"
 #import <Mapbox/Mapbox.h>
 
-@interface DFTFeedContainerViewController () <UIScrollViewDelegate>
+@interface DFTFeedContainerViewController () <UIScrollViewDelegate, DFTSegmentedControlDelegate>
 
 @property (weak, nonatomic) IBOutlet MGLMapView *mapboxView;
 @property (weak, nonatomic) IBOutlet DFTScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTopConstraint;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
+
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIView *globalFeedController;
@@ -39,7 +42,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *driftLevelLabel;
 
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
-@property (nonatomic) NSUInteger currentPage;
+@property (nonatomic) NSInteger currentPage;
+@property (nonatomic) UIView *currentSegmentedIndexView;
+
 
 @end
 
@@ -56,12 +61,9 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self configureDrops];
     [self configureDrift];
     [self configureProfilPic];
-
-	self.currentPage = 0;
-
-	self.segmentedControl.backgroundColor = [UIColor dft_salmonColor];
-	self.segmentedControl.tintColor = [UIColor clearColor];
-	self.segmentedControl.layer.cornerRadius = self.segmentedControl.frame.size.height / 2.;
+    [self configureSegmentedControl];
+    
+    self.currentPage = 0;
 
 	self.scrollView.delegate = self;
 	self.scrollView.pagingEnabled = YES;
@@ -120,27 +122,35 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self.profilePictureImageView.layer addSublayer:border];
     self.profilePictureImageView.clipsToBounds = YES;
     self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.;
-
 }
 
-- (IBAction)segmentChangedValue
+- (void)configureSegmentedControl
 {
-	self.currentPage = self.segmentedControl.selectedSegmentIndex;
-	CGPoint point = (CGPoint){self.scrollView.frame.size.width * self.segmentedControl.selectedSegmentIndex, 0};
-	[[NSNotificationCenter defaultCenter]
-	 postNotificationName:@"DFTFeedsScaleAnimation"
-	 object:self];
-	[UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-		[self.scrollView setContentOffset:point];
-	} completion:nil];
+    DFTSegmentedControl *segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    segmentedControl.delegate = self;
+    [self.segmentedContainerView addSubview:segmentedControl];
 }
+
+
+#pragma mark - DFTSegmentedControl Delegate
+- (void)segmentedControlValueChanged:(NSInteger)index
+{
+    CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"DFTFeedsScaleAnimation"
+     object:self];
+    [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self.scrollView setContentOffset:point];
+    } completion:nil];
+
+}
+
+#pragma mark - UIScrollView Delegate
 
 - (void)feedScreenDidScroll:(CGFloat)offset
 {
 	self.mapTopConstraint.constant = -((offset) / 7);
 	self.headerTopConstraint.constant = -((offset) / 7);
-    
-
     self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
     self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
 
@@ -163,7 +173,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
 	{
 		DFTGlobalFeedViewController *controller = segue.destinationViewController;
-
 		controller.delegate = self;
 	}
 }

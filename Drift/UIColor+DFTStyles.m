@@ -51,4 +51,9 @@
 	return ([UIColor colorWithRed:1.00 green:0.37 blue:0.37 alpha:1.0]);
 }
 
++ (instancetype)dft_darkRedColor
+{
+    return ([UIColor colorWithRed:0.52 green:0.18 blue:0.18 alpha:1.0]);
+}
+
 @end

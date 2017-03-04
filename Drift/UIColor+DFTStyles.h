@@ -53,6 +53,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)dft_lightRedColor;
 
 /**
+ Dark red color used in button backgrounds
+ 
+ @return Color #852F2F
+ */
++ (instancetype)dft_darkRedColor;
+
+
+/**
  Aquamarine (greenish light blue) color used in button backgrounds
 
  @return Color #3A3A3A
