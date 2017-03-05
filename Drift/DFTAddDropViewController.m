@@ -12,13 +12,29 @@
 #import "DFTFormRowTableViewDelegate.h"
 #import "DFTAddDropStepCell.h"
 
-@interface DFTAddDropViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+#import "UIColor+DFTStyles.h"
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+#import <AMTagListView.h>
 
-@property (nonatomic) DFTFirstSectionLayout *collectionViewLayout;
+@interface DFTAddDropViewController () <UIScrollViewDelegate, UITextFieldDelegate, AMTagListDelegate>
 
-@property (nonatomic) DFTFormRowTableViewDelegate *tableViewsDelegate;
+#pragma mark - Outlets -
+#pragma mark Global
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+#pragma mark Step 01
+@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UITextView *titleTextView;
+@property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
+@property (weak, nonatomic) IBOutlet AMTagListView *tagsView;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+#pragma mark Step 02
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+
 @property (nonatomic) NSInteger currentSection;
 
 @end
@@ -26,28 +42,47 @@
 @implementation DFTAddDropViewController
 
 #pragma mark
-#pragma mark - UICollectionView
+#pragma mark - Lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
 	self.currentSection = 0;
-	self.collectionViewLayout = [DFTFirstSectionLayout new];
-	self.tableViewsDelegate = [DFTFormRowTableViewDelegate new];
 
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
 
-	[self.collectionView addGestureRecognizer:pan];
-	[self configureCollectionView];
+	[self.view addGestureRecognizer:pan];
+
+	[self configureScrollView];
+	[self configureTags];
 }
 
-- (void)viewWillAppear:(BOOL)animated
+#pragma mark
+#pragma mark - Configure
+- (void)configureScrollView
 {
-	[super viewWillAppear:animated];
-
-	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:NO scrollPosition:UICollectionViewScrollPositionNone];
+	self.scrollView.delegate = self;
+	self.scrollView.showsVerticalScrollIndicator = NO;
 }
+
+- (void)configureTags
+{
+	self.tagsTextField.delegate = self;
+
+	self.tagsView.tagListDelegate = self;
+
+	[self.tagsView setTapHandler:^(AMTagView *tag) {
+		[self.tagsView removeTag:tag];
+	}];
+	[[AMTagView appearance] setTagLength:0];
+	[[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
+	[[AMTagView appearance] setInnerTagColor:[UIColor dft_salmonColor]];
+	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tab_icon"]];
+}
+
+#pragma mark
+#pragma mark - Helpers
 
 - (NSInteger)previousSection
 {
@@ -63,116 +98,40 @@
 {
 	if (sender.state == UIGestureRecognizerStateEnded)
 	{
-		CGPoint velocity = [sender velocityInView:self.collectionView];
-		NSIndexPath *indexPath = nil;
+		CGPoint velocity = [sender velocityInView:self.view];
 
 		if (velocity.y > 0)
 		{
-			NSIndexPath *indexDeselect = [NSIndexPath indexPathForItem:1 inSection:0];
-
 			if (self.currentSection == 0)
 				return ;
 			self.currentSection = [self previousSection];
-			indexPath = [NSIndexPath indexPathForItem:self.currentSection inSection:0];
-			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
-			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
+			// trigger animation for step 2 inactive
 		}
 		else
 		{
-			NSIndexPath *indexDeselect = [NSIndexPath indexPathForItem:0 inSection:0];
-
 			if (self.currentSection == 1)
-				;
+				return ;
 			self.currentSection = [self nextSection];
-			indexPath = [NSIndexPath indexPathForItem:self.currentSection inSection:0];
-			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
-			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
+			// trigger animation for step 1 inactive
 		}
-		[self.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-		[self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
-		self.collectionViewLayout.selectedIndexPath = indexPath;
-		//		[UIView animateWithDuration:0.5 animations:^{
-		//			UICollectionView *cell = [self.collectionView cellForItemAtIndexPath:indexPath];
-		//
-		//			CGRect rect = CGRectMake(cell.frame.origin.x, cell.frame.origin.y, cell.frame.size.width, cell.frame.size.height - 40);
-		//			cell.frame = rect;
-		//		}];
-		[self.collectionView performBatchUpdates:^{
-			[self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
-			[self.collectionView layoutIfNeeded];
-		} completion:^(BOOL finished) {
-			[self.collectionView setContentOffset:(CGPointMake(0, self.currentSection == 0 ? -180 : 200)) animated:YES];
-		}];
 	}
 }
 
 #pragma mark
-#pragma mark - UICollectionView
+#pragma mark - UITextField
 
-- (void)configureCollectionView
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	self.collectionView.collectionViewLayout = self.collectionViewLayout;
-	self.collectionView.delegate = self.collectionViewLayout;
-	self.collectionView.dataSource = self;
-	self.collectionView.contentInset = UIEdgeInsetsMake(180, 0, 0, 0);
-	self.collectionView.scrollEnabled = NO;
-	self.collectionView.allowsSelection = YES;
-
-	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-}
-
-#pragma mark
-#pragma mark - UICollectionView
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-	return (2);
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	DFTAddDropStepCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddDropStepCell" forIndexPath:indexPath];
-
-	cell.tableView.delegate = self.tableViewsDelegate;
-	cell.tableView.dataSource = self.tableViewsDelegate;
-
-	if (indexPath.section == 0)
-		cell.backgroundColor = [UIColor redColor];
-	if (indexPath.section == 1)
-		cell.backgroundColor = [UIColor cyanColor];
-	if (indexPath.section == 2)
-			cell.backgroundColor = [UIColor greenColor];
-	return (cell);
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
-
-//	[collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-	for (NSInteger i = 0; i < rowsNumber; i++)
+	if ([string isEqualToString:@" "])
 	{
-		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
-
-		[cell.tableView selectRowAtIndexPath:index animated:YES scrollPosition:UITableViewScrollPositionNone];
+		if (textField.text.length > 0)
+		{
+			[self.tagsView addTag:textField.text];
+			textField.text = @"";
+		}
+		return (NO);
 	}
-//	[collectionView reloadItemsAtIndexPaths:@[indexPath]];
-}
-
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	DFTAddDropStepCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-	NSInteger rowsNumber = [cell.tableView numberOfRowsInSection:0];
-
-//	[collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-	for (NSInteger i = 0; i < rowsNumber; i++)
-	{
-		NSIndexPath *index = [NSIndexPath indexPathForRow:i inSection:0];
-
-		[cell.tableView deselectRowAtIndexPath:index animated:YES];
-	}
-//	[collectionView reloadItemsAtIndexPaths:@[indexPath]];
+	return (YES);
 }
 
 @end
