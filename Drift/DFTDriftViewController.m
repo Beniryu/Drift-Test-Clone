@@ -7,7 +7,6 @@
 //
 
 #import "DFTDriftViewController.h"
-
 #import "DFTDrop.h"
 #import "DFTMapManager.h"
 
@@ -34,11 +33,12 @@
 
 	UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
 
-	layout.itemSize = (CGSize){self.collectionView.frame.size.width - 32, 167};
-	layout.sectionInset = UIEdgeInsetsMake(0, 16, 0, 16);
-	layout.minimumLineSpacing = 16.;
+	layout.itemSize = (CGSize){self.view.frame.size.width, 167};
+	layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = 0;
 	layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-
+    
 	self.collectionView.backgroundColor = [UIColor clearColor];
 	self.collectionView.collectionViewLayout = layout;
 	self.collectionView.showsHorizontalScrollIndicator = NO;
@@ -68,13 +68,13 @@
 	return (cell);
 }
 
+
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
 	[mapView
 	 setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates]
 	 zoomLevel:15
 	 animated:YES];
-
 }
 
 - (MGLAnnotationImage *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation {
