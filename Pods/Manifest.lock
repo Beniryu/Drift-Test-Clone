@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AMTagListView (1.4.0)
   - IQKeyboardManager (4.0.7)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
@@ -22,16 +23,18 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - AMTagListView
   - IQKeyboardManager (~> 4.0.7)
   - Mantle (~> 2.1.0)
   - Mapbox-iOS-SDK (~> 3.3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AMTagListView: d05b3f080d7128aa6e9fe5a286ac63703dc95c11
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
 
-PODFILE CHECKSUM: 5b7dc4e26b840a911bc096b64c5f6398238fea53
+PODFILE CHECKSUM: 1f5688160c870c5d4356eefc1403e2ad7cde8405
 
 COCOAPODS: 1.1.1

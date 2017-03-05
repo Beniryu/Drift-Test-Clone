@@ -11,7 +11,8 @@ target 'Drift' do
 
   # UI
   pod 'IQKeyboardManager', '~> 4.0.7'
-
+  pod 'AMTagListView'
+ 
   # External SDK
   pod 'Mapbox-iOS-SDK', '~> 3.3.7'
 
