@@ -139,6 +139,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
         self.currentDriftViewAlpha = self.profilePictureImageView.alpha;
     }
     self.feedType = index;
+    [self updateHeaderIfNeeded];
 }
 
 - (void)updateHeaderIfNeeded
@@ -167,14 +168,13 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
     self.isManualScrolling = NO;
-    [self updateFeedType:index];
 
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"DFTFeedsScaleAnimation"
      object:self];
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        [self updateHeaderIfNeeded];
+        [self updateFeedType:index];
         [self.scrollView setContentOffset:point];
     } completion:nil];
 
@@ -216,7 +216,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
             previousPage = page;
             [self.segmentedControl showSegment:page];
             [self updateFeedType:page];
-            [self updateHeaderIfNeeded];
         }
     }
 }
