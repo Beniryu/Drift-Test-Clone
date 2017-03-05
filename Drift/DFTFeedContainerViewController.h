@@ -18,6 +18,14 @@ typedef NS_ENUM(NSUInteger, kScrollDirection)
 	ScrollDirectionCrazy,
 };
 
+
+typedef enum FeedType : NSInteger {
+    GlobalFeed = 0,
+    InnerFeed = 1,
+    CollectionFeed = 2
+} FeedType;
+
+
 @protocol DFTFeedScreenProtocol <NSObject>
 
 - (void)feedScreenDidScroll:(CGFloat)offset;

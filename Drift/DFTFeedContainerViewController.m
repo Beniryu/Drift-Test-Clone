@@ -44,6 +44,8 @@
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
 @property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
 @property (nonatomic) BOOL isManualScrolling;
+@property (nonatomic) FeedType feedType;
+@property (nonatomic) CGFloat currentDriftViewAlpha;
 
 @end
 
@@ -67,6 +69,8 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.scrollView.showsHorizontalScrollIndicator = NO;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	[self.scrollView setContentInset:UIEdgeInsetsZero];
+    
+    self.feedType = GlobalFeed;
 }
 
 - (void)viewDidLayoutSubviews
@@ -128,21 +132,49 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
 
+- (void)updateFeedType:(NSInteger) index
+{
+    // We need to memorize alpha set to global feed in case we need to show it again
+    if (self.feedType == GlobalFeed) {
+        self.currentDriftViewAlpha = self.profilePictureImageView.alpha;
+    }
+    self.feedType = index;
+}
+
 - (void)updateHeaderIfNeeded
 {
-    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         switch (self.feedType) {
+                             case GlobalFeed:
+                                 self.profilePictureImageView.alpha = self.currentDriftViewAlpha;
+                                 self.driftView.alpha = self.currentDriftViewAlpha;
+                                 break;
+                                 
+                             default:
+                                 self.profilePictureImageView.alpha = 0;
+                                 self.driftView.alpha = 0;
+                                 break;
+                         }
+                     }
+                     completion:nil];
 }
+
+
 
 
 #pragma mark - DFTSegmentedControl Delegate
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
     self.isManualScrolling = NO;
+    [self updateFeedType:index];
+
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"DFTFeedsScaleAnimation"
      object:self];
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        [self updateHeaderIfNeeded];
         [self.scrollView setContentOffset:point];
     } completion:nil];
 
@@ -183,6 +215,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
         if (previousPage != page) {
             previousPage = page;
             [self.segmentedControl showSegment:page];
+            [self updateFeedType:page];
             [self updateHeaderIfNeeded];
         }
     }
