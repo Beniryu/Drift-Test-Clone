@@ -48,10 +48,8 @@
 }
 
 - (void)valueChanged:(id)sender
-{
-    
+{    
     [self animateToIndex: self.segmentedControl.selectedSegmentIndex];
-   
     [delegate segmentedControlValueChanged:self.segmentedControl.selectedSegmentIndex];
 }
 

@@ -43,6 +43,7 @@
 
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
 @property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
+@property (nonatomic) BOOL isManualScrolling;
 
 @end
 
@@ -127,10 +128,16 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
 
+- (void)updateHeaderIfNeeded
+{
+    
+}
+
 
 #pragma mark - DFTSegmentedControl Delegate
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
+    self.isManualScrolling = NO;
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"DFTFeedsScaleAnimation"
@@ -154,6 +161,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleShrink" object:self];
+    self.isManualScrolling = YES;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -165,14 +173,18 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    // Updating segmentedControl
-    static NSInteger previousPage = 0;
-    CGFloat pageWidth = self.scrollView.frame.size.width;
-    float fractionalPage = self.scrollView.contentOffset.x / pageWidth;
-    NSInteger page = lround(fractionalPage);
-    if (previousPage != page) {
-        previousPage = page;
-        [self.segmentedControl showSegment:page];
+    if (self.isManualScrolling)
+    {
+        // Updating segmentedControl
+        static NSInteger previousPage = 0;
+        CGFloat pageWidth = self.scrollView.frame.size.width;
+        float fractionalPage = self.scrollView.contentOffset.x / pageWidth;
+        NSInteger page = lround(fractionalPage);
+        if (previousPage != page) {
+            previousPage = page;
+            [self.segmentedControl showSegment:page];
+            [self updateHeaderIfNeeded];
+        }
     }
 }
 
