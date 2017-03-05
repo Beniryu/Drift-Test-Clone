@@ -49,6 +49,14 @@
 
 - (void)valueChanged:(id)sender
 {
+    
+    [self animateToIndex: self.segmentedControl.selectedSegmentIndex];
+   
+    [delegate segmentedControlValueChanged:self.segmentedControl.selectedSegmentIndex];
+}
+
+- (void)animateToIndex:(NSInteger) index
+{
     // Final frame
     CGRect finalSelectedIndexFrame = self.currentSegmentedIndexView.bounds;
     finalSelectedIndexFrame.origin.x = self.segmentWidth * self.segmentedControl.selectedSegmentIndex;
@@ -68,7 +76,7 @@
     {
         expandAnimationTemporaryFrame.size.width = expandingWidth;
     }
-
+    
     // Animation: expand then set final size
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -81,12 +89,14 @@
                                           }];
                      }];
     self.currentPage = self.segmentedControl.selectedSegmentIndex;
-    
-    [delegate segmentedControlValueChanged:self.segmentedControl.selectedSegmentIndex];
 }
 
+- (void)showSegment:(NSInteger) index
+{
+    self.segmentedControl.selectedSegmentIndex = index ;
+    [self animateToIndex:self.segmentedControl.selectedSegmentIndex];
 
-
+}
 
 
 @end

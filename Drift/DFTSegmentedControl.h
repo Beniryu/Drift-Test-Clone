@@ -16,4 +16,7 @@
 @interface DFTSegmentedControl : UIView
 @property (nonatomic, weak) id <DFTSegmentedControlDelegate> delegate;
 
+- (void)showSegment:(NSInteger) index;
+
+
 @end

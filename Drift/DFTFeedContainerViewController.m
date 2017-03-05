@@ -42,9 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *driftLevelLabel;
 
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
-@property (nonatomic) NSInteger currentPage;
-@property (nonatomic) UIView *currentSegmentedIndexView;
-
+@property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
 
 @end
 
@@ -62,8 +60,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self configureDrift];
     [self configureProfilPic];
     [self configureSegmentedControl];
-    
-    self.currentPage = 0;
 
 	self.scrollView.delegate = self;
 	self.scrollView.pagingEnabled = YES;
@@ -126,9 +122,9 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)configureSegmentedControl
 {
-    DFTSegmentedControl *segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
-    segmentedControl.delegate = self;
-    [self.segmentedContainerView addSubview:segmentedControl];
+    self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    self.segmentedControl.delegate = self;
+    [self.segmentedContainerView addSubview:self.segmentedControl];
 }
 
 
@@ -153,7 +149,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.headerTopConstraint.constant = -((offset) / 7);
     self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
     self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
-
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -166,6 +161,19 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	[[NSNotificationCenter defaultCenter]
 	 postNotificationName:@"DFTFeedsScaleExpand"
 	 object:self];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // Updating segmentedControl
+    static NSInteger previousPage = 0;
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    float fractionalPage = self.scrollView.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    if (previousPage != page) {
+        previousPage = page;
+        [self.segmentedControl showSegment:page];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
