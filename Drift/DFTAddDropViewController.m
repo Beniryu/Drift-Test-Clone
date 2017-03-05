@@ -88,7 +88,6 @@
 			[self.collectionView deselectItemAtIndexPath:indexDeselect animated:YES];
 			[self collectionView:self.collectionView didDeselectItemAtIndexPath:indexDeselect];
 		}
-
 		[self.collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
 		[self collectionView:self.collectionView didSelectItemAtIndexPath:indexPath];
 		self.collectionViewLayout.selectedIndexPath = indexPath;

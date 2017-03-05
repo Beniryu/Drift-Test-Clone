@@ -86,7 +86,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 {
 	NSLog(@"Selected : %@", item.title);
 
-	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
+	UIViewController /*DFTAddDropViewController*/ *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	[self presentViewController:addDropVC animated:NO completion:nil];
