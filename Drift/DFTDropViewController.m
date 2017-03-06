@@ -50,7 +50,6 @@
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-
 	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"Add to"
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
@@ -73,6 +72,8 @@
 
 - (void)contextSheet:(VLDContextSheet *)contextSheet didSelectItem:(VLDContextSheetItem *)item
 {
+	NSLog(@"Selected : %@", item.title);
+
 	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
