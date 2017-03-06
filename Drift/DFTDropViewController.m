@@ -51,7 +51,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-
 	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"Add to"
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
@@ -59,18 +58,8 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-	VLDContextSheetItem *item4 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-	VLDContextSheetItem *item5 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item6 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];//, item4, item5, item6]];
+	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
 	self.contextSheet.delegate = self;
 }
 

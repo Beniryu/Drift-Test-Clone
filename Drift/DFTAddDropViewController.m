@@ -7,11 +7,8 @@
 //
 
 #import "DFTAddDropViewController.h"
-#import "DFTFirstSectionLayout.h"
 
-#import "DFTFormRowTableViewDelegate.h"
-#import "DFTAddDropStepCell.h"
-
+#import "DFTDropFormManager.h"
 #import "UIColor+DFTStyles.h"
 
 #import <AMTagListView.h>
@@ -34,36 +31,48 @@
 #pragma mark Step 02
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+#pragma mark - Properties -
 
+@property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
 
 @end
 
 @implementation DFTAddDropViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+	if (self = [super initWithCoder:aDecoder])
+	{
+		self.manager = [DFTDropFormManager new];
+		self.currentSection = 0;
+	}
+	return (self);
+}
+
 #pragma mark
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-
-	self.currentSection = 0;
+	[super viewDidLoad];
 
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
 
 	[self.view addGestureRecognizer:pan];
-
 	[self configureScrollView];
 	[self configureTags];
+	[self configureTableView];
 }
 
 #pragma mark
 #pragma mark - Configure
+
 - (void)configureScrollView
 {
 	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
+	self.scrollView.scrollEnabled = NO;
 }
 
 - (void)configureTags
@@ -81,40 +90,78 @@
 	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tab_icon"]];
 }
 
+- (void)configureTableView
+{
+	self.tableView.scrollEnabled = NO;
+}
+
 #pragma mark
 #pragma mark - Helpers
 
-- (NSInteger)previousSection
-{
-	return (self.currentSection == 0 ? self.currentSection : self.currentSection - 1);
-}
-
-- (NSInteger)nextSection
-{
-	return (self.currentSection == 1 ? self.currentSection : self.currentSection + 1);
-}
 
 - (void)didPan:(UIPanGestureRecognizer *)sender
 {
-	if (sender.state == UIGestureRecognizerStateEnded)
+	DFTDropFormTransitionBlock block = nil;
+
+	block = ^(kDFTDropFormStepTransition transition)
+	{
+		[self executeTransition:transition];
+	};
+
+
+	if (sender.state == UIGestureRecognizerStateBegan)
 	{
 		CGPoint velocity = [sender velocityInView:self.view];
+		kDFTDropFormSwipeDirection direction;
 
-		if (velocity.y > 0)
-		{
-			if (self.currentSection == 0)
-				return ;
-			self.currentSection = [self previousSection];
-			// trigger animation for step 2 inactive
-		}
-		else
-		{
-			if (self.currentSection == 1)
-				return ;
-			self.currentSection = [self nextSection];
-			// trigger animation for step 1 inactive
-		}
+		direction = (velocity.y > 0 ? kDFTDropFormSwipeDirectionDown : kDFTDropFormSwipeDirectionUp);
+
+		self.currentSection = [self.manager routeSwipeDirection:direction
+													fromSection:self.currentSection
+													  withBlock:block];
 	}
+}
+
+- (void)executeTransition:(kDFTDropFormStepTransition)transition
+{
+	switch (transition)
+	{
+		case kDFTDropFormStepTransitionDetailsToSettings:
+			[self transitionFromDetailsToSettings];
+			break;
+		case kDFTDropFormStepTransitionSettingsToValidation:
+			[self transitionFromSettingsToValidation];
+			break;
+		case kDFTDropFormStepTransitionValidationToSettings:
+			[self transitionFromValidationToSettings];
+			break;
+		case kDFTDropFormStepTransitionSettingsToDetails:
+			[self transitionFromSettingsToDetails];
+			break;
+	}
+}
+
+#pragma mark
+#pragma mark - Transition Methods
+
+- (void)transitionFromDetailsToSettings
+{
+	NSLog(@"transitionFromDetailsToSettings");
+}
+
+- (void)transitionFromSettingsToValidation
+{
+	NSLog(@"transitionFromSettingsToValidation");
+}
+
+- (void)transitionFromValidationToSettings
+{
+	NSLog(@"transitionFromValidationToSettings");
+}
+
+- (void)transitionFromSettingsToDetails
+{
+	NSLog(@"transitionFromSettingsToDetails");
 }
 
 #pragma mark
