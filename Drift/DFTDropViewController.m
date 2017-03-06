@@ -27,7 +27,7 @@
 
 @end
 
-static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3xfoip";
+//static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3xfoip";
 
 @implementation DFTDropViewController
 
@@ -36,7 +36,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [super viewDidLoad];
 
 	self.veilImageView.userInteractionEnabled = NO;
-
 	[self configureJelly];
 }
 
@@ -59,18 +58,8 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-	VLDContextSheetItem *item4 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-	VLDContextSheetItem *item5 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item6 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];//, item4, item5, item6]];
+	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
 	self.contextSheet.delegate = self;
 }
 
@@ -84,8 +73,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)contextSheet:(VLDContextSheet *)contextSheet didSelectItem:(VLDContextSheetItem *)item
 {
-	NSLog(@"Selected : %@", item.title);
-
 	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
