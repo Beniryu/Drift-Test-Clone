@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+#import <Mapbox/Mapbox.h>
 #import <UIKit/UIKit.h>
 #import "DFTObject.h"
 
@@ -18,13 +18,13 @@ typedef NS_ENUM(NSUInteger, kDFTDropPrivacyLevel)
 	kDFTDropPrivacyLevelCustom
 };
 
-@interface DFTDrop : DFTObject
+@interface DFTDrop : DFTObject <MGLAnnotation>
 
 @property (nonatomic) NSNumber *dropId;
 
 @property (nonatomic) NSNumber *ownerId;
 
-@property (nonatomic) NSString *title;
+@property (nonatomic, copy) NSString *title;
 @property (nonatomic) NSDate *dropDate;
 @property (nonatomic) UIImage *backgroundPicture;
 @property (nonatomic) CLLocationDegrees latitude;
@@ -36,5 +36,7 @@ typedef NS_ENUM(NSUInteger, kDFTDropPrivacyLevel)
 @property (nonatomic) NSUInteger likes;
 @property (nonatomic) NSUInteger drifts;
 @property (nonatomic) NSUInteger shares;
+
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 
 @end

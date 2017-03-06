@@ -38,7 +38,7 @@
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
 	layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    
+
 	self.collectionView.backgroundColor = [UIColor clearColor];
 	self.collectionView.collectionViewLayout = layout;
 	self.collectionView.showsHorizontalScrollIndicator = NO;
@@ -77,13 +77,15 @@
 	 animated:YES];
 }
 
-- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation {
-	return nil;
+- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
+{
+	return (nil);
 }
 
 // Allow callout view to appear when an annotation is tapped.
-- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation {
-	return NO;
+- (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation
+{
+	return (NO);
 }
 
 - (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(id<MGLAnnotation>)annotation
