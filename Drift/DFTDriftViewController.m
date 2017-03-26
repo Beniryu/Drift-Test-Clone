@@ -9,6 +9,8 @@
 #import "DFTDriftViewController.h"
 #import "DFTDrop.h"
 #import "DFTMapManager.h"
+#import "DFTInnerFeedCell.h"
+
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -43,6 +45,8 @@
 	self.collectionView.collectionViewLayout = layout;
 	self.collectionView.showsHorizontalScrollIndicator = NO;
 	self.collectionView.pagingEnabled = YES;
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DFTInnerFeedCell" bundle:nil] forCellWithReuseIdentifier:@"DFTInnerFeedCell"];
 }
 
 - (void)configureMap
@@ -57,15 +61,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return (6);
+    return [[DFTMapManager sharedInstance] mapView].annotations.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Test" forIndexPath:indexPath];
-
-	cell.backgroundColor = [UIColor clearColor];
-	return (cell);
+    DFTInnerFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFTInnerFeedCell" forIndexPath:indexPath];
+    
+    MGLPointAnnotation *point = [[[[DFTMapManager sharedInstance]mapView]annotations] objectAtIndex:indexPath.row];
+    [cell configureWithItem:point];
+    [cell updateConstraintWithValue:10];
+    return cell;
 }
 
 

@@ -11,5 +11,7 @@
 @interface DFTInnerFeedCell : UICollectionViewCell
 
 - (void)configureWithItem:(id)item;
+- (void)updateConstraintWithValue:(NSInteger)value;
+
 
 @end

@@ -8,6 +8,8 @@
 
 #import "DFTInnerFeedCell.h"
 #import "UIColor+DFTStyles.h"
+#import "DFTMapManager.h"
+
 
 @interface DFTInnerFeedCell ()
 
@@ -21,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *hashTagLabel;
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingConstraint;
 
 
 @end
@@ -37,16 +40,24 @@
 
 - (void)configureWithItem:(id)item
 {
+    
+    MGLPointAnnotation *point = item;
 	self.imageView.image = [UIImage imageNamed:@"feed_cell_placeholder"];
     self.profileImageView.image =  [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
     self.nameLabel.text = @"Flavio";
     self.formattedLikesLabel.text = @"20 | 5 min";
-    self.mainFeedLabel.text = @"Frog Burger";
+    self.mainFeedLabel.text = point.title;
     self.hashTagLabel.text = @"#burgeraddict #junkfood";
     self.distanceLabel.text = @"200m";
     
     [self configureLocationImage];
     [self configureProfileImage];
+}
+
+- (void)updateConstraintWithValue:(NSInteger)value
+{
+    self.leadingConstraint.constant = value;
+    self.trailingConstraint.constant = value;
 }
 
 - (void)configureProfileImage
