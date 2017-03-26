@@ -13,12 +13,31 @@
 #pragma mark -
 #pragma mark Routes
 
-static const NSString *kDFTNetworkRouteDrop = @"beacon/";
+static NSString *kDFTNetworkRouteDrop = @"beacon/";
 
 @implementation DFTNetworkClient (DFTDrop)
 
 - (void)retrieveDropWithId:(NSNumber *)dropID withCompletion:(DFTNetworkCompletion)completion
 {
+    NSString *route = [NSString stringWithFormat:@"%@/%@", kDFTNetworkRouteDrop, dropID];
+    NSError *error = nil;
+    
+    if (error == nil)
+    {
+        [self GET:route
+       parameters:nil
+          progress:nil
+           success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject)
+         {
+             if (completion)
+                 completion(task, responseObject, nil);
+         }
+           failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+         {
+             if (completion)
+                 completion(task, nil, error);
+         }];
+    }
 
 }
 
