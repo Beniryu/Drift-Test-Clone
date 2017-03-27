@@ -31,6 +31,10 @@
 #pragma mark Step 02
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+#pragma mark - Heights -
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
+@property (nonatomic) NSInteger titleHeight;
+
 #pragma mark - Properties -
 
 @property (nonatomic) DFTDropFormManager *manager;
@@ -61,8 +65,16 @@
 
 	[self.view addGestureRecognizer:pan];
 	[self configureScrollView];
+	self.titleTextView.scrollEnabled = NO;
 	[self configureTags];
 	[self configureTableView];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+
+	self.titleHeight = self.titleTextView.frame.size.height;
 }
 
 #pragma mark
@@ -77,10 +89,14 @@
 
 - (void)configureTags
 {
-	self.tagsTextField.delegate = self;
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTagsTextField)];
 
+
+	self.tagsTextField.delegate = self;
 	self.tagsView.tagListDelegate = self;
 
+	self.tagsTextField.hidden = YES;
+	[self.tagsView addGestureRecognizer:tap];
 	[self.tagsView setTapHandler:^(AMTagView *tag) {
 		[self.tagsView removeTag:tag];
 	}];
@@ -122,6 +138,11 @@
 	}
 }
 
+- (void)showTagsTextField
+{
+	self.tagsTextField.hidden = NO;
+}
+
 - (void)executeTransition:(kDFTDropFormStepTransition)transition
 {
 	switch (transition)
@@ -146,7 +167,19 @@
 
 - (void)transitionFromDetailsToSettings
 {
-	NSLog(@"transitionFromDetailsToSettings");
+	[UIView animateWithDuration:0.5 animations:
+	 ^{
+		 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+
+		 t = CGAffineTransformTranslate(t, -(self.titleTextView.frame.size.width * 0.5), -(self.titleHeight * 0.5));
+		 self.titleTextView.transform = t;
+
+		 CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(self.titleHeight * 0.5));
+		 self.tagsView.transform = t2;
+		 self.descriptionTextView.transform = t2;
+
+		 [self.scrollView setContentOffset:(CGPoint){0, 80} animated:YES];
+	 }];
 }
 
 - (void)transitionFromSettingsToValidation
@@ -161,7 +194,14 @@
 
 - (void)transitionFromSettingsToDetails
 {
-	NSLog(@"transitionFromSettingsToDetails");
+	[UIView animateWithDuration:0.5 animations:
+	 ^{
+		 self.titleTextView.transform = CGAffineTransformIdentity;
+		 self.tagsView.transform = CGAffineTransformIdentity;
+		 self.descriptionTextView.transform = CGAffineTransformIdentity;
+
+		 [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
+	 }];
 }
 
 #pragma mark
