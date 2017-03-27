@@ -9,10 +9,13 @@
 #import "DFTDriftViewController.h"
 #import "DFTDrop.h"
 #import "DFTMapManager.h"
+#import "DFTInnerFeedCell.h"
+
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) NSArray<DFTDrop *> *dropsArray;
 
 @end
 
@@ -24,6 +27,7 @@
 
 	[self configureCollectionView];
 	[self configureMap];
+    self.dropsArray = (NSArray<DFTDrop*> *) [[[DFTMapManager sharedInstance]mapView]annotations];
 }
 
 - (void)configureCollectionView
@@ -43,6 +47,8 @@
 	self.collectionView.collectionViewLayout = layout;
 	self.collectionView.showsHorizontalScrollIndicator = NO;
 	self.collectionView.pagingEnabled = YES;
+    
+    [self.collectionView registerNib:[UINib nibWithNibName:@"DFTInnerFeedCell" bundle:nil] forCellWithReuseIdentifier:@"DFTInnerFeedCell"];
 }
 
 - (void)configureMap
@@ -57,15 +63,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return (6);
+    return [[DFTMapManager sharedInstance] mapView].annotations.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Test" forIndexPath:indexPath];
-
-	cell.backgroundColor = [UIColor clearColor];
-	return (cell);
+    DFTInnerFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"DFTInnerFeedCell" forIndexPath:indexPath];
+    
+    DFTDrop  *point = (DFTDrop *) [self.dropsArray objectAtIndex:indexPath.row];
+    [cell configureWithItem:point];
+    [cell updateConstraintWithValue:10];
+    return cell;
 }
 
 
@@ -88,9 +96,22 @@
 	return (NO);
 }
 
-- (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(id<MGLAnnotation>)annotation
+- (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(DFTDrop *)annotation
 {
 	NSLog(@"%@", [annotation title]);
+    
+    NSInteger annotationIndex = [self.dropsArray indexOfObject:annotation];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:annotationIndex inSection:0];
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:TRUE];
+}
+
+
+
+#pragma mark - UIScrollView Delegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]firstObject];
 }
 
 @end

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gW7-1H-VCS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gW7-1H-VCS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -317,11 +317,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lU9-Tt-n9L">
-                                <rect key="frame" x="28" y="438" width="320" height="180"/>
+                                <rect key="frame" x="0.5" y="438" width="375" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="HiH-3c-ouG"/>
-                                    <constraint firstAttribute="width" constant="320" id="bAd-m7-ybV"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="H2s-Cy-if5">
                                     <size key="itemSize" width="320" height="167"/>
@@ -329,40 +328,12 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Test" id="Ocs-Eh-oUa">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="167"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bA9-vZ-ly1">
-                                                    <rect key="frame" x="160" y="0.0" width="144" height="167"/>
-                                                    <color key="backgroundColor" red="0.0" green="1" blue="0.85882359740000003" alpha="1" colorSpace="deviceRGB"/>
-                                                </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cUv-TS-f9C">
-                                                    <rect key="frame" x="16" y="0.0" width="144" height="167"/>
-                                                    <color key="backgroundColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="bA9-vZ-ly1" firstAttribute="top" secondItem="Ocs-Eh-oUa" secondAttribute="top" id="18H-xw-YCT"/>
-                                            <constraint firstAttribute="trailing" secondItem="bA9-vZ-ly1" secondAttribute="trailing" constant="16" id="3Vp-Kl-EBD"/>
-                                            <constraint firstAttribute="bottom" secondItem="bA9-vZ-ly1" secondAttribute="bottom" id="DY6-aP-d0j"/>
-                                            <constraint firstItem="cUv-TS-f9C" firstAttribute="top" secondItem="Ocs-Eh-oUa" secondAttribute="top" id="E7m-Z2-dWJ"/>
-                                            <constraint firstItem="bA9-vZ-ly1" firstAttribute="width" secondItem="cUv-TS-f9C" secondAttribute="width" id="Jhj-sR-13x"/>
-                                            <constraint firstAttribute="bottom" secondItem="cUv-TS-f9C" secondAttribute="bottom" id="Oku-0A-bpe"/>
-                                            <constraint firstItem="cUv-TS-f9C" firstAttribute="leading" secondItem="Ocs-Eh-oUa" secondAttribute="leading" constant="16" id="mNJ-Wx-9Kq"/>
-                                            <constraint firstItem="bA9-vZ-ly1" firstAttribute="leading" secondItem="cUv-TS-f9C" secondAttribute="trailing" id="rSt-6n-yuS"/>
-                                        </constraints>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lU9-Tt-n9L" firstAttribute="width" secondItem="9ua-v0-dzu" secondAttribute="width" id="CV0-Ue-6by"/>
                             <constraint firstItem="fr9-GG-5ca" firstAttribute="top" secondItem="lU9-Tt-n9L" secondAttribute="bottom" id="R2h-iV-dff"/>
                             <constraint firstItem="lU9-Tt-n9L" firstAttribute="centerX" secondItem="9ua-v0-dzu" secondAttribute="centerX" id="cNH-0h-UGV"/>
                         </constraints>
@@ -658,19 +629,19 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaH-UT-e5s">
-                                        <rect key="frame" x="279" y="152.5" width="76" height="11.5"/>
+                                        <rect key="frame" x="285" y="152" width="70" height="12"/>
                                         <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Stu-y5-bGj" userLabel="LocationView">
-                                        <rect key="frame" x="26" y="181" width="64.5" height="17"/>
+                                        <rect key="frame" x="26" y="181" width="61" height="17"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="2VK-NQ-KXJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3" width="42.5" height="12"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -687,16 +658,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-dX-VEu" userLabel="DriftView">
-                                        <rect key="frame" x="97" y="71" width="56.5" height="32"/>
+                                        <rect key="frame" x="97" y="70" width="49.5" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QM0-OW-icJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="56.5" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49.5" height="21"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drift Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGv-Mn-w49">
-                                                <rect key="frame" x="0.0" y="20" width="56.5" height="12"/>
+                                                <rect key="frame" x="0.0" y="21" width="49.5" height="13"/>
+
                                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="11"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -859,19 +831,19 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frog Burger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXe-QE-FEX">
-                                                            <rect key="frame" x="16" y="69" width="111" height="20"/>
+                                                            <rect key="frame" x="16" y="69" width="95.5" height="21"/>
                                                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="18"/>
                                                             <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERQ-aJ-V2k" userLabel="LocationView">
-                                                            <rect key="frame" x="16" y="122" width="49" height="17"/>
+                                                            <rect key="frame" x="16" y="122" width="43.5" height="17"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="RY6-D0-M6u">
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B17-4G-fv3" userLabel="locationLabel">
-                                                                    <rect key="frame" x="18" y="3" width="31" height="12"/>
+                                                                    <rect key="frame" x="18" y="3" width="25.5" height="12"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -888,16 +860,16 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9nd-TD-r78" userLabel="ProfileView">
-                                                            <rect key="frame" x="60" y="28" width="72" height="28"/>
+                                                            <rect key="frame" x="60" y="28" width="64.5" height="28"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flavio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSZ-pb-czN">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="14"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="64.5" height="14"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham-Medium" pointSize="12"/>
                                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="26 | 2 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVr-RM-bh2">
-                                                                    <rect key="frame" x="12" y="14" width="60" height="14"/>
+                                                                    <rect key="frame" x="12" y="14" width="52.5" height="14"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham-Medium" pointSize="12"/>
                                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -921,7 +893,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#burgeraddict #junkfood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pen-tT-Yl0">
-                                                            <rect key="frame" x="16" y="89" width="126" height="11"/>
+                                                            <rect key="frame" x="16" y="90" width="110" height="12"/>
                                                             <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                             <color key="textColor" red="0.34039598700000001" green="0.35976666210000002" blue="0.41789251570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1071,22 +1043,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cxv-AW-PsL">
-                                                    <rect key="frame" x="63" y="11.5" width="91.5" height="36.5"/>
+                                                    <rect key="frame" x="63" y="12" width="79" height="37"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tatoo Family" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mc5-gJ-lmX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="91.5" height="15.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="79.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="14"/>
                                                             <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x1r-tp-YDy" userLabel="LocationView">
-                                                            <rect key="frame" x="1" y="18.5" width="42.5" height="17"/>
+                                                            <rect key="frame" x="1" y="19.5" width="41" height="17"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="Eeq-SE-cgP">
                                                                     <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuK-xk-iff" userLabel="locationLabel">
-                                                                    <rect key="frame" x="18" y="3" width="24.5" height="11"/>
+                                                                    <rect key="frame" x="18" y="2" width="22.5" height="12"/>
                                                                     <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                                     <color key="textColor" red="0.34039598700000001" green="0.35976666210000002" blue="0.41789251570000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1115,13 +1087,13 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="13.5" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="320" y="14" width="27" height="12"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhA-il-SvE">
-                                                    <rect key="frame" x="336" y="33" width="11" height="11"/>
+                                                    <rect key="frame" x="335.5" y="34" width="11.5" height="12"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                     <color key="textColor" red="0.94509803921568625" green="0.33333333333333331" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

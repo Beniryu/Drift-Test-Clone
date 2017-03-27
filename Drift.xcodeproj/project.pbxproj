@@ -23,6 +23,7 @@
 		092317F51E5CF0A70043838D /* GothamRnd-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */; };
 		092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E41E5CF0A70043838D /* GOTHMTHI.TTF */; };
 		092317F71E5CF0A70043838D /* GOTHMTIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 092317E51E5CF0A70043838D /* GOTHMTIT.TTF */; };
+		093736AD1E8800C9004C1226 /* DFTInnerFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093736AC1E8800C9004C1226 /* DFTInnerFeedCell.xib */; };
 		09954DDC1E6AE53100C3794D /* DFTSegmentedControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09954DDB1E6AE53100C3794D /* DFTSegmentedControl.xib */; };
 		09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */; };
 		09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */; };
@@ -108,6 +109,7 @@
 		092317E21E5CF0A70043838D /* GothamRnd-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GothamRnd-Medium.otf"; sourceTree = "<group>"; };
 		092317E41E5CF0A70043838D /* GOTHMTHI.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTHI.TTF; sourceTree = "<group>"; };
 		092317E51E5CF0A70043838D /* GOTHMTIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOTHMTIT.TTF; sourceTree = "<group>"; };
+		093736AC1E8800C9004C1226 /* DFTInnerFeedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTInnerFeedCell.xib; sourceTree = "<group>"; };
 		09954DDB1E6AE53100C3794D /* DFTSegmentedControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTSegmentedControl.xib; sourceTree = "<group>"; };
 		09A97CD61E64E11100381FB2 /* DFTCollectionFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTCollectionFeedCell.h; sourceTree = "<group>"; };
 		09A97CD71E64E11100381FB2 /* DFTCollectionFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTCollectionFeedCell.m; sourceTree = "<group>"; };
@@ -627,6 +629,7 @@
 				DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */,
 				DD4A076B1E3FCACD00E4CF95 /* DFTInnerFeedCell.h */,
 				DD4A076C1E3FCACD00E4CF95 /* DFTInnerFeedCell.m */,
+				093736AC1E8800C9004C1226 /* DFTInnerFeedCell.xib */,
 				DD3B9A0B1E258BDA0098208F /* DFTFeedHeaderView.h */,
 				DD3B9A0C1E258BDA0098208F /* DFTFeedHeaderView.m */,
 				09A97CD61E64E11100381FB2 /* DFTCollectionFeedCell.h */,
@@ -734,6 +737,7 @@
 				092317EE1E5CF0A70043838D /* GothamRnd-Bold.otf in Resources */,
 				DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */,
 				09954DDC1E6AE53100C3794D /* DFTSegmentedControl.xib in Resources */,
+				093736AD1E8800C9004C1226 /* DFTInnerFeedCell.xib in Resources */,
 				DDA59A5E1DD4E28A000B942B /* Images.xcassets in Resources */,
 				092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */,
 				092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */,
@@ -911,7 +915,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonathan Nguyen (3L7E8C39Y7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -955,7 +960,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jonathan Nguyen (3L7E8C39Y7)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
