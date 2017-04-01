@@ -7,11 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DFTFeedContainerViewController.h"
 #import "DFTFeedViewController.h"
 
 @interface DFTGlobalFeedViewController : DFTFeedViewController
-
-@property id<DFTFeedScreenProtocol> delegate;
 
 @end

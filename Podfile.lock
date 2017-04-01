@@ -20,6 +20,9 @@ PODS:
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
   - Mapbox-iOS-SDK (3.3.7)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -27,6 +30,7 @@ DEPENDENCIES:
   - IQKeyboardManager (~> 4.0.7)
   - Mantle (~> 2.1.0)
   - Mapbox-iOS-SDK (~> 3.3.7)
+  - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -34,7 +38,8 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1f5688160c870c5d4356eefc1403e2ad7cde8405
+PODFILE CHECKSUM: f115375d39b64a1a0ff039a57fa1ad3be13a7669
 
 COCOAPODS: 1.1.1

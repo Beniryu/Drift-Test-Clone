@@ -10,11 +10,11 @@
 
 #import "DFTFeedCollectionViewLayout.h"
 #import "DFTInnerFeedCell.h"
+#import "DFTDrop.h"
 
 @interface DFTInnerFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-//@property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
-//@property (nonatomic) BOOL isAnimating;
+@property (nonatomic) NSArray<DFTDrop *> *drops;
 
 @end
 
@@ -29,6 +29,13 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 {
     [super viewDidLoad];
 	[self configureCollectionView];
+	DFTFeedManager *manager = [DFTFeedManager new];
+
+	[manager buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	 {
+		 self.drops = responseObject;
+		 [self.collectionView reloadData];
+	 }];
 }
 
 #pragma mark
@@ -61,14 +68,15 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return (16);
+	return (self.drops.count);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	DFTInnerFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)innerFeedCellIdentifier forIndexPath:indexPath];
 
-	[cell configureWithItem:nil];
+	[cell configureWithItem:self.drops[indexPath.row]];
+
 //	if (indexPath.item == 0)
 //	{
 //		CAShapeLayer *maskLayer = [CAShapeLayer new];

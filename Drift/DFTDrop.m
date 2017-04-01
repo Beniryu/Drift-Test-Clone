@@ -40,8 +40,8 @@ const NSString *kDFTModelKeyDropShares = @"Share";
 			  NSStringFromSelector(@selector(ownerId)) : kDFTModelKeyDropOwnerId,
 			  NSStringFromSelector(@selector(title)) : kDFTModelKeyDropTitle,
 			  NSStringFromSelector(@selector(backgroundPicture)) : kDFTModelKeyDropPicture,
-			  NSStringFromSelector(@selector(mapVisibility)) : kDFTModelKeyDropMapVisibility,
-			  NSStringFromSelector(@selector(contentVisibility)) : kDFTModelKeyDropContentVisibility,
+//			  NSStringFromSelector(@selector(mapVisibility)) : kDFTModelKeyDropMapVisibility,
+//			  NSStringFromSelector(@selector(contentVisibility)) : kDFTModelKeyDropContentVisibility,
 			  NSStringFromSelector(@selector(likes)) : kDFTModelKeyDropLikes,
 			  NSStringFromSelector(@selector(drifts)) : kDFTModelKeyDropDrifts,
 			  NSStringFromSelector(@selector(shares)) : kDFTModelKeyDropShares,
@@ -53,6 +53,34 @@ const NSString *kDFTModelKeyDropShares = @"Share";
 	if ([key isEqualToString:NSStringFromSelector(@selector(dropDate))])
 		return ([self commonValueTransformerForDate]);
 	return (nil);
+}
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionaryValue error:(NSError *__autoreleasing *)error
+{
+	if (self = [super initWithDictionary:dictionaryValue error:error])
+	{
+		NSDictionary *array =
+		@{
+		  @"Une bouffe avec des potes, what else ?" : @"img-8",
+		  @"Meilleure absinthe de Paris !" : @"img-4",
+		  @"Un bon lit et un petit-dés hmm …" : @"img-3",
+		  @"J’adore ma nouvelle couleur !" : @"img-5",
+		  @"Retour en enfance" : @"img-6",
+		  @"Le serveur m’a dédicacé le café :’D" : @"img-7",
+		  @"Du savoir-faire à l’oeuvre" : @"img-1",
+		  @"Avec mon chérie :D" : @"img-2",
+		  @"Une pizza avec le sourire ! J’adore" : @"img-9",
+		  @"Le rôle des start-up dans la croissance" : @"img-11",
+		  @"No pain, no gain !" : @"img-14",
+		  @"Best concert ever" : @"img-13",
+		  @"Nike Run C4" : @"img-12",
+		  @"Le chocolat et moi, une folle histoire d’amour …" : @"img-10"
+		  };
+
+		self.profilePicture = [UIImage imageNamed:array[self.title]];
+		self.coordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude);
+	}
+	return (self);
 }
 
 @end

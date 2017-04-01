@@ -222,11 +222,14 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
+	DFTFeedViewController *viewController = segue.destinationViewController;
+
+	viewController.delegate = self;
+/*	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
 	{
 		DFTGlobalFeedViewController *controller = segue.destinationViewController;
 		controller.delegate = self;
-	}
+	}*/
 }
 
 @end

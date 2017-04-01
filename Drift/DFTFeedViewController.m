@@ -86,4 +86,12 @@
      }];
 }
 
+#pragma mark
+#pragma mark - DFTFeedScreenDelegate protocol
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	[self.delegate feedScreenDidScroll:scrollView.contentOffset.y];
+}
+
 @end

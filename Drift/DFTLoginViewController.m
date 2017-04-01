@@ -153,7 +153,8 @@
 		}
 		else
 		{
-//			[self changeRootV]
+			UIStoryboard *mainStoryBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+			[UIApplication sharedApplication].delegate.window.rootViewController =  [mainStoryBoard instantiateViewControllerWithIdentifier:@"DriftEntry"];
 			NSLog(@"Login OK");
 		}
 	}];

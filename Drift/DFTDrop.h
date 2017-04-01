@@ -21,22 +21,22 @@ typedef NS_ENUM(NSUInteger, kDFTDropPrivacyLevel)
 @interface DFTDrop : DFTObject <MGLAnnotation>
 
 @property (nonatomic) NSNumber *dropId;
-
 @property (nonatomic) NSNumber *ownerId;
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic) NSDate *dropDate;
-@property (nonatomic) UIImage *backgroundPicture;
+@property (nonatomic) NSString *backgroundPicture;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 
-@property (nonatomic) kDFTDropPrivacyLevel mapVisibility;
-@property (nonatomic) kDFTDropPrivacyLevel contentVisibility;
+//@property (nonatomic) kDFTDropPrivacyLevel mapVisibility;
+//@property (nonatomic) kDFTDropPrivacyLevel contentVisibility;
 
 @property (nonatomic) NSUInteger likes;
 @property (nonatomic) NSUInteger drifts;
 @property (nonatomic) NSUInteger shares;
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
+@property (nonatomic) UIImage *profilePicture;
 
 @end

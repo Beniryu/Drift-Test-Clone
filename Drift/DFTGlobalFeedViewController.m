@@ -7,12 +7,15 @@
 //
 
 #import "DFTGlobalFeedViewController.h"
-#import "DFTCollectionView.h"
 #import "DFTFeedCollectionViewLayout.h"
+
 #import "DFTFeedCell.h"
 
 @interface DFTGlobalFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTopConstraint;
+
+@property (nonatomic) NSArray<DFTDrop *> *drops;
 
 @end
 
@@ -34,7 +37,13 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 //	[CATransaction setDisableActions:YES];
 //	self.collectionView.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -self.collectionView.frame.size.height);
 //	[CATransaction commit];
+	DFTFeedManager *manager = [DFTFeedManager new];
 
+	[manager buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		self.drops = responseObject;
+		[self.collectionView reloadData];
+	}];
 	[self configureCollectionView];
 }
 
@@ -79,23 +88,15 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return (16);
+	return (self.drops.count);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	DFTFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)feedCellIdentifier forIndexPath:indexPath];
 
-	[cell configureWithDrop:nil];
+	[cell configureWithDrop:self.drops[indexPath.item]];
 	return (cell);
-}
-
-#pragma mark
-#pragma mark - DFTFeedScreenDelegate protocol
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-	[self.delegate feedScreenDidScroll:scrollView.contentOffset.y];
 }
 
 @end

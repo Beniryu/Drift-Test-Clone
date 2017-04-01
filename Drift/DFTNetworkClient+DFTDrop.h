@@ -16,5 +16,6 @@
 - (void)createDrop:(DFTDrop *)drop withCompletion:(DFTNetworkCompletion)completion;
 - (void)editDrop:(DFTDrop *)drop withCompletion:(DFTNetworkCompletion)completion;
 - (void)deleteDrop:(DFTDrop *)drop withCompletion:(DFTNetworkCompletion)completion;
+- (void)getGlobalFeedDropsForPosition:(CLLocationCoordinate2D)position withCompletion:(DFTNetworkCompletion)completion;
 
 @end

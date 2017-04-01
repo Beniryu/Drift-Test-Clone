@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "DFTCollectionView.h"
+#import "DFTFeedManager.h"
+#import "DFTFeedContainerViewController.h"
 
 @interface DFTFeedViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
 @property (nonatomic) BOOL isAnimating;
+@property id<DFTFeedScreenProtocol> delegate;
 
 @end

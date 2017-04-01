@@ -58,6 +58,7 @@
 		DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D761E369D5D00E3605A /* VLDContextSheet.m */; };
 		DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */; };
 		DD4D6D7D1E369D5D00E3605A /* VLDContextSheetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */; };
+		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
@@ -175,6 +176,7 @@
 		DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItem.m; sourceTree = "<group>"; };
 		DD4D6D791E369D5D00E3605A /* VLDContextSheetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItemView.h; sourceTree = "<group>"; };
 		DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItemView.m; sourceTree = "<group>"; };
+		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
 		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
 		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		DDA59A3A1DD3DACB000B942B = {
 			isa = PBXGroup;
 			children = (
+				DD7544C71E89F8A0002AEC38 /* BPI.gpx */,
 				DD4D6D741E369D5D00E3605A /* VLDContextSheet */,
 				DDA59A451DD3DACB000B942B /* Drift */,
 				DDA59A441DD3DACB000B942B /* Products */,
@@ -707,6 +710,7 @@
 					DDA59A421DD3DACB000B942B = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = RA9388UXZ8;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -766,6 +770,7 @@
 				DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */,
 				DDA59A6C1DD4E6F4000B942B /* Lato-Black.ttf in Resources */,
 				092317F41E5CF0A70043838D /* GothamRnd-MedIta.otf in Resources */,
+				DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -987,6 +992,7 @@
 			baseConfigurationReference = D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RA9388UXZ8;
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1001,6 +1007,7 @@
 			baseConfigurationReference = A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RA9388UXZ8;
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

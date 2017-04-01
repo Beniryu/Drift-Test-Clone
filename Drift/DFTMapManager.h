@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Mapbox/Mapbox.h>
 
+#import "DFTDrop.h"
+
 @interface DFTMapManager : NSObject <MGLMapViewDelegate>
 
 @property (nonatomic) MGLMapView *mapView;
@@ -17,5 +19,6 @@
 - (CLLocationCoordinate2D)userCoordinates;
 
 + (instancetype)sharedInstance;
+- (void)addDropsToMap:(NSArray<DFTDrop *> *)drops;
 
 @end

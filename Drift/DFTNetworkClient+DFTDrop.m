@@ -41,6 +41,30 @@ static NSString *kDFTNetworkRouteDrop = @"beacon/";
 
 }
 
+- (void)getGlobalFeedDropsForPosition:(CLLocationCoordinate2D)position withCompletion:(DFTNetworkCompletion)completion
+{
+	NSString *route = [NSString stringWithFormat:@"%@/getFromGPS/%f/%f", kDFTNetworkRouteDrop, (float)48.8727919, (float)2.3375631];
+	NSError *error = nil;
+
+	if (error == nil)
+	{
+		[self GET:route
+	   parameters:nil
+		 progress:nil
+		  success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject)
+		 {
+			 if (completion)
+				 completion(task, responseObject, nil);
+		 }
+		  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+		 {
+			 if (completion)
+				 completion(task, nil, error);
+		 }];
+	}
+
+}
+
 - (void)createDrop:(DFTDrop *)drop withCompletion:(DFTNetworkCompletion)completion
 {
 	NSString *route = [NSString stringWithFormat:@"%@/create", kDFTNetworkRouteDrop];

@@ -13,6 +13,6 @@
 
 @interface DFTFeedManager : NSObject
 
-
+- (void)buildFeedWithCompletion:(DFTManagerCompletion)completion;
 
 @end

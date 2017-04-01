@@ -44,39 +44,14 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 	self.mapView.delegate = self;
 	self.mapView.attributionButton.hidden = YES;
-
-	// Add marker `hello` to the map
-	MGLPointAnnotation *point1 = [[MGLPointAnnotation alloc] init];
-	point1.coordinate = CLLocationCoordinate2DMake(51.510082, -0.133850);
-	point1.title = @"point1";
-
-	MGLPointAnnotation *point2 = [[MGLPointAnnotation alloc] init];
-	point2.coordinate = CLLocationCoordinate2DMake(51.511089, -0.136188);
-	point2.title = @"point2";
-
-	MGLPointAnnotation *point3 = [[MGLPointAnnotation alloc] init];
-	point3.coordinate = CLLocationCoordinate2DMake(51.509882, -0.131559);
-	point3.title = @"point3";
-
-	MGLPointAnnotation *point4 = [[MGLPointAnnotation alloc] init];
-	point4.coordinate = CLLocationCoordinate2DMake(51.510590, -0.131287);
-	point4.title = @"point4";
-
-	MGLPointAnnotation *point5 = [[MGLPointAnnotation alloc] init];
-	point5.coordinate = CLLocationCoordinate2DMake(51.510947, -0.134521);
-	point5.title = @"point5";
-
-	MGLPointAnnotation *point6 = [[MGLPointAnnotation alloc] init];
-	point6.coordinate = CLLocationCoordinate2DMake(51.509524, -0.135212);
-	point6.title = @"point6";
-
-	[self.mapView addAnnotation:point1];
-	[self.mapView addAnnotation:point2];
-	[self.mapView addAnnotation:point3];
-	[self.mapView addAnnotation:point4];
-	[self.mapView addAnnotation:point5];
-	[self.mapView addAnnotation:point6];
 }
+
+- (void)addDropsToMap:(NSArray<DFTDrop *> *)drops
+{
+	for (DFTDrop *drop in drops)
+		[self.mapView addAnnotation:drop];
+}
+
 
 - (CLLocationCoordinate2D)userCoordinates
 {

@@ -10,6 +10,7 @@
 #import "UIColor+DFTStyles.h"
 #import "DFTMapManager.h"
 
+#import <UIImageView+WebCache.h>
 
 @interface DFTInnerFeedCell ()
 
@@ -36,22 +37,22 @@
     [super awakeFromNib];
 	self.layer.cornerRadius = 7;
 	self.clipsToBounds = YES;
+	[self configureLocationImage];
+	[self configureProfileImage];
 }
 
-- (void)configureWithItem:(id)item
+- (void)configureWithItem:(DFTDrop *)drop
 {
-    
-    MGLPointAnnotation *point = item;
-	self.imageView.image = [UIImage imageNamed:@"feed_cell_placeholder"];
-    self.profileImageView.image =  [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
-    self.nameLabel.text = @"Flavio";
+	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
+	self.imageView.clipsToBounds = YES;
+	[self.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/beacon/pic/%@", drop.dropId]]];
+
+	//    self.nameLabel.text = @"Flavio";
     self.formattedLikesLabel.text = @"20 | 5 min";
-    self.mainFeedLabel.text = point.title;
+    self.mainFeedLabel.text = drop.title;
     self.hashTagLabel.text = @"#burgeraddict #junkfood";
     self.distanceLabel.text = @"200m";
-    
-    [self configureLocationImage];
-    [self configureProfileImage];
+	self.profileImageView.image = drop.profilePicture;
 }
 
 - (void)updateConstraintWithValue:(NSInteger)value

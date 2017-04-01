@@ -8,6 +8,7 @@
 
 #import "DFTDriftViewController.h"
 #import "DFTDrop.h"
+#import "DFTFeedManager.h"
 #import "DFTMapManager.h"
 #import "DFTInnerFeedCell.h"
 
@@ -27,7 +28,13 @@
 
 	[self configureCollectionView];
 	[self configureMap];
-    self.dropsArray = (NSArray<DFTDrop*> *) [[[DFTMapManager sharedInstance]mapView]annotations];
+	//    self.dropsArray = (NSArray<DFTDrop*> *) [[[DFTMapManager sharedInstance]mapView]annotations];
+	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		self.dropsArray = responseObject;
+		[[DFTMapManager sharedInstance] addDropsToMap:self.dropsArray];
+		[self.collectionView reloadData];
+	}];
 }
 
 - (void)configureCollectionView
