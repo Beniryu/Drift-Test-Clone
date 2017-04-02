@@ -8,14 +8,13 @@
 
 #import "DFTGlobalFeedViewController.h"
 #import "DFTFeedCollectionViewLayout.h"
+#import "DFTMapManager.h"
 
 #import "DFTFeedCell.h"
 
 @interface DFTGlobalFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTopConstraint;
-
-@property (nonatomic) NSArray<DFTDrop *> *drops;
 
 @end
 
@@ -61,6 +60,11 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 //	}];
 }
 
+- (void)becameVisibleFeed
+{
+	
+}
+
 #pragma mark
 #pragma mark - Config
 
@@ -76,7 +80,6 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 	self.collectionView.collectionViewLayout = layout;
 	[self.collectionView registerNib:[UINib nibWithNibName:(NSString *)feedCellIdentifier bundle:nil] forCellWithReuseIdentifier:(NSString *)feedCellIdentifier];
 }
-
 
 #pragma mark
 #pragma mark - UICollectionView protocols

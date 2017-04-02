@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, FeedType)
 @protocol DFTFeedScreenProtocol <NSObject>
 
 - (void)feedScreenDidScroll:(CGFloat)offset;
+- (void)feedAnnotationsToMap:(id)annotations;
 
 @end
 

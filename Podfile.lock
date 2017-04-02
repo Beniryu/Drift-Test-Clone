@@ -14,12 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AMTagListView (1.4.0)
-  - IQKeyboardManager (4.0.7)
+  - AMTagListView (1.5.0)
+  - IQKeyboardManager (4.0.8)
   - Mantle (2.1.0):
     - Mantle/extobjc (= 2.1.0)
   - Mantle/extobjc (2.1.0)
-  - Mapbox-iOS-SDK (3.3.7)
+  - Mapbox-iOS-SDK (3.5.0)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -29,17 +29,17 @@ DEPENDENCIES:
   - AMTagListView
   - IQKeyboardManager (~> 4.0.7)
   - Mantle (~> 2.1.0)
-  - Mapbox-iOS-SDK (~> 3.3.7)
+  - Mapbox-iOS-SDK (~> 3.5)
   - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AMTagListView: d05b3f080d7128aa6e9fe5a286ac63703dc95c11
-  IQKeyboardManager: 69002bb4fea60596b710e57d426abc00e5063630
+  AMTagListView: 08ab67466c67152f6299bc29a13a907783b0046f
+  IQKeyboardManager: 1a8189fa153bf09044355ee0ad36826f6767e7f7
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
-  Mapbox-iOS-SDK: 142301fa63a6719cbd2eacc0f9e8bf36c65930d9
+  Mapbox-iOS-SDK: f0158f986ded5fd0b4034b1b8801aeeb5556a26a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: f115375d39b64a1a0ff039a57fa1ad3be13a7669
+PODFILE CHECKSUM: 09bf41d0b78da521a07fc453af2f81c8abcdada1
 
 COCOAPODS: 1.1.1

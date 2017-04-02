@@ -62,12 +62,13 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 {
 	if (delegate)
 		self.mapView.delegate = delegate;
+	else
+		self.mapView.delegate = self;
 	[self.mapView removeFromSuperview];
 	self.mapView.frame = view.frame;
 	[view insertSubview:self.mapView atIndex:0];
 }
 
-// Use the default marker. See also: our view annotation or custom marker examples.
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
 	[mapView
@@ -77,11 +78,15 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 }
 
-- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation {
-	return nil;
+- (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id<MGLAnnotation>)annotation {
+	MGLAnnotationView *view = [[MGLAnnotationView alloc] initWithFrame:(CGRect){0, 0, 12, 12}];
+
+	view.backgroundColor = [UIColor cyanColor];
+	view.layer.cornerRadius = 6.;
+	view.clipsToBounds = YES;
+	return (view);
 }
 
-// Allow callout view to appear when an annotation is tapped.
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation {
 	return NO;
 }

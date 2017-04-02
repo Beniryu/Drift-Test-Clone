@@ -716,13 +716,13 @@
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Gu-hG-gd7" userLabel="Inner">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="618"/>
                                                 <connections>
-                                                    <segue destination="JMd-cU-Foa" kind="embed" id="zgx-eL-LeK"/>
+                                                    <segue destination="JMd-cU-Foa" kind="embed" identifier="EmbedInnerFeedScreen" id="zgx-eL-LeK"/>
                                                 </connections>
                                             </containerView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c67-Nq-3f2" userLabel="Collection">
                                                 <rect key="frame" x="750" y="0.0" width="375" height="618"/>
                                                 <connections>
-                                                    <segue destination="Ya8-jh-gg3" kind="embed" id="8Jj-GD-6FR"/>
+                                                    <segue destination="Ya8-jh-gg3" kind="embed" identifier="EmbedCollectionFeedScreen" id="8Jj-GD-6FR"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
@@ -776,7 +776,6 @@
                         <outlet property="driftView" destination="GWQ-dX-VEu" id="Fgl-bq-QaJ"/>
                         <outlet property="dropsLabel" destination="KaH-UT-e5s" id="Ufo-nt-3yF"/>
                         <outlet property="dropsNumberLabel" destination="wwz-xj-e2U" id="rSd-Pj-b1p"/>
-                        <outlet property="globalFeedController" destination="ZHR-Xf-giH" id="GBi-fG-xen"/>
                         <outlet property="headerTopConstraint" destination="rZu-2L-Glh" id="ahM-FX-HbT"/>
                         <outlet property="headerView" destination="XTS-2F-pdR" id="G16-VS-47E"/>
                         <outlet property="mapTopConstraint" destination="98M-QJ-yXO" id="UBu-rF-gRz"/>
@@ -807,13 +806,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iaM-dH-1LE">
                                     <size key="itemSize" width="359" height="155"/>
-                                    <size key="headerReferenceSize" width="50" height="235"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DFTInnerFeedCell" id="L3V-6A-qf5" customClass="DFTInnerFeedCell">
-                                        <rect key="frame" x="8" y="235" width="359" height="155"/>
+                                        <rect key="frame" x="8" y="0.0" width="359" height="155"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="155"/>
@@ -942,34 +941,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DFTGlobalFeedHeaderView" id="N6K-BE-c4K" customClass="DFTGlobalFeedHeaderView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5U-Go-nb7">
-                                            <rect key="frame" x="300" y="164" width="55" height="51"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="55" id="Ya0-u7-btg"/>
-                                                <constraint firstAttribute="height" constant="51" id="bKW-ss-fp6"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                            <color key="textColor" red="0.96993535757064819" green="0.46817010641098022" blue="0.44692367315292358" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9W7-Oa-XJ1">
-                                            <rect key="frame" x="239" y="135" width="116" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="9W7-Oa-XJ1" secondAttribute="trailing" constant="20" id="9eS-kh-tgM"/>
-                                        <constraint firstAttribute="trailing" secondItem="u5U-Go-nb7" secondAttribute="trailing" constant="20" id="ARc-Dd-CDk"/>
-                                        <constraint firstItem="u5U-Go-nb7" firstAttribute="top" secondItem="9W7-Oa-XJ1" secondAttribute="bottom" constant="8" id="Z46-bZ-1b6"/>
-                                        <constraint firstAttribute="bottom" secondItem="u5U-Go-nb7" secondAttribute="bottom" constant="20" id="oIP-B7-64C"/>
-                                    </constraints>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <constraints>
@@ -985,7 +956,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKC-VH-MhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="445"/>
+            <point key="canvasLocation" x="1807" y="401"/>
         </scene>
         <!--Collection Feed View Controller-->
         <scene sceneID="ZgJ-Tf-v2f">
@@ -1005,13 +976,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TqC-WH-ogO">
                                     <size key="itemSize" width="359" height="151"/>
-                                    <size key="headerReferenceSize" width="50" height="235"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DFTCollectionFeedCell" id="38f-0f-8C4" customClass="DFTCollectionFeedCell">
-                                        <rect key="frame" x="8" y="235" width="359" height="151"/>
+                                        <rect key="frame" x="8" y="0.0" width="359" height="151"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="151"/>
@@ -1125,34 +1096,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DFTGlobalFeedHeaderView" id="pyS-bm-q43" customClass="DFTGlobalFeedHeaderView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-WO-CJW">
-                                            <rect key="frame" x="300" y="164" width="55" height="51"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="55" id="4xS-BX-gsj"/>
-                                                <constraint firstAttribute="height" constant="51" id="BpF-02-8QF"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                            <color key="textColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS TODAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggB-F9-MCh">
-                                            <rect key="frame" x="239" y="135" width="116" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="ggB-F9-MCh" secondAttribute="trailing" constant="20" id="TVk-Qy-mnx"/>
-                                        <constraint firstAttribute="bottom" secondItem="gqr-WO-CJW" secondAttribute="bottom" constant="20" id="rew-5f-e83"/>
-                                        <constraint firstItem="gqr-WO-CJW" firstAttribute="top" secondItem="ggB-F9-MCh" secondAttribute="bottom" constant="8" id="sPz-ce-gyc"/>
-                                        <constraint firstAttribute="trailing" secondItem="gqr-WO-CJW" secondAttribute="trailing" constant="20" id="vMd-vy-dhB"/>
-                                    </constraints>
-                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                     </view>

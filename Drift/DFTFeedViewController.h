@@ -13,8 +13,12 @@
 
 @interface DFTFeedViewController : UIViewController
 
+@property (nonatomic) NSArray<DFTDrop *> *drops;
+
 @property (weak, nonatomic) IBOutlet DFTCollectionView *collectionView;
 @property (nonatomic) BOOL isAnimating;
 @property id<DFTFeedScreenProtocol> delegate;
+
+- (void)becameVisibleFeed;
 
 @end

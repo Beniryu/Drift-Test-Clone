@@ -23,8 +23,15 @@
 
 - (MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id<MGLAnnotation>)annotation
 {
-	NSLog(@"sfuhgsoudjo");
-	return (nil);
+	if (mapView.userLocation == annotation)
+	{
+		MGLAnnotationImage *image = [MGLAnnotationImage annotationImageWithImage:[UIImage imageNamed:@"User_annotation"] reuseIdentifier:@"user"];
+
+		return (image);
+	}
+	MGLAnnotationImage *image = [MGLAnnotationImage annotationImageWithImage:[UIImage imageNamed:@"Annotation_image"] reuseIdentifier:@"drifting"];
+
+	return (image);
 }
 
 - (void)mapView:(MGLMapView *)mapView didUpdateUserLocation:(MGLUserLocation *)userLocation

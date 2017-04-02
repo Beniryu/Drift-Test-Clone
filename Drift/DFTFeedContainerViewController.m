@@ -25,7 +25,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet UIView *globalFeedController;
 
 // Header - Location
 @property (weak, nonatomic) IBOutlet UILabel *currentLocationLabel;
@@ -40,6 +39,10 @@
 @property (weak, nonatomic) IBOutlet UIView *driftView;
 @property (weak, nonatomic) IBOutlet UILabel *driftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *driftLevelLabel;
+
+@property (nonatomic) DFTFeedViewController *globalVC;
+@property (nonatomic) DFTFeedViewController *innerVC;
+@property (nonatomic) DFTFeedViewController *collectionVC;
 
 @property (nonatomic) DFTMapboxDelegate *mapboxDelegate;
 @property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
@@ -132,7 +135,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
 
-- (void)updateFeedType:(NSInteger) index
+- (void)updateFeedType:(NSInteger)index
 {
     // We need to memorize alpha set to global feed in case we need to show it again
     if (self.feedType == GlobalFeed) {
@@ -169,6 +172,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 {
     self.isManualScrolling = NO;
 
+	[self resetHeaders];
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"DFTFeedsScaleAnimation"
@@ -180,15 +184,31 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 }
 
-#pragma mark - UIScrollView Delegate
+#pragma mark - Feed Protocol
+
+- (void)feedAnnotationsToMap:(id)annotations
+{
+	[self.mapboxView addAnnotations:annotations];
+	self.mapboxView.showsUserLocation = NO;
+}
 
 - (void)feedScreenDidScroll:(CGFloat)offset
 {
 	self.mapTopConstraint.constant = -((offset) / 7);
 	self.headerTopConstraint.constant = -((offset) / 7);
-    self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
-    self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
+	self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
+	self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
 }
+
+- (void)resetHeaders
+{
+	self.mapTopConstraint.constant = 0;
+	self.headerTopConstraint.constant = 0;
+	self.profilePictureImageView.alpha = 1;
+	self.driftView.alpha = 1;
+}
+
+#pragma mark - UIScrollView Delegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
@@ -216,6 +236,41 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
             previousPage = page;
             [self.segmentedControl showSegment:page];
             [self updateFeedType:page];
+
+			DFTFeedViewController *viewController = nil;
+
+			if (page == 0)
+			{
+				viewController = self.globalVC;
+				[self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
+										   zoomLevel:1
+											animated:YES];
+//				self.mapboxView.showsUserLocation = NO;
+//				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
+				for (DFTDrop *annotation in self.mapboxView.annotations)
+					[self.mapboxView removeAnnotation:annotation];
+				[self.mapboxView addAnnotations:self.globalVC.drops];
+			}
+			else if (page == 1)
+			{
+				viewController = self.innerVC;
+				[UIView animateWithDuration:2
+									  delay:1
+									options: UIViewAnimationOptionCurveEaseIn
+								 animations:^{
+									 [self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
+																zoomLevel:3
+																 animated:YES];
+								 }
+					completion:nil];
+				self.mapboxView.showsUserLocation = YES;
+//				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
+				for (DFTDrop *annotation in self.mapboxView.annotations)
+					[self.mapboxView removeAnnotation:annotation];
+				[self.mapboxView addAnnotations:self.innerVC.drops];
+			}
+			else if (page == 2)
+				viewController = self.collectionVC;
         }
     }
 }
@@ -225,11 +280,13 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	DFTFeedViewController *viewController = segue.destinationViewController;
 
 	viewController.delegate = self;
-/*	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
-	{
-		DFTGlobalFeedViewController *controller = segue.destinationViewController;
-		controller.delegate = self;
-	}*/
+
+	if ([segue.identifier isEqualToString:@"EmbedGlobalFeedScreen"])
+		self.globalVC = viewController;
+	else if ([segue.identifier isEqualToString:@"EmbedInnerFeedScreen"])
+		self.innerVC = viewController;
+	else if ([segue.identifier isEqualToString:@"EmbedCollectionFeedScreen"])
+		self.collectionVC = viewController;
 }
 
 @end

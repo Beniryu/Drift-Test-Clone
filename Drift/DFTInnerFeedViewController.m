@@ -49,12 +49,12 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 	self.collectionView.bounces = YES;
 	self.collectionView.alwaysBounceVertical = YES;
 
-	self.collectionView.contentInset = UIEdgeInsetsMake(235., 0, 0, 0);
-
 	UICollectionViewFlowLayout *layout = [DFTFeedCollectionViewLayout new];
 
+	layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 235.f);
 	layout.itemSize = (CGSize){[[UIScreen mainScreen] bounds].size.width - 12., 156.};
 	layout.minimumLineSpacing = 4.;
+
 	self.collectionView.collectionViewLayout = layout;
 }
 

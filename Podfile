@@ -15,6 +15,6 @@ target 'Drift' do
   pod 'AMTagListView'
  
   # External SDK
-  pod 'Mapbox-iOS-SDK', '~> 3.3.7'
+  pod 'Mapbox-iOS-SDK', '~> 3.5'
 
 end

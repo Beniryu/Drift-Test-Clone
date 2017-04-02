@@ -1,4 +1,4 @@
-//
+;//
 //  DriftViewController.m
 //  Drift
 //
@@ -61,6 +61,12 @@
 - (void)configureMap
 {
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
+
+	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
+
+	imageView.frame = [DFTMapManager sharedInstance].mapView.frame;
+	imageView.contentMode = UIViewContentModeScaleAspectFit;
+	[[DFTMapManager sharedInstance].mapView addSubview:imageView];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -83,7 +89,6 @@
     return cell;
 }
 
-
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
 	[mapView
@@ -92,15 +97,34 @@
 	 animated:YES];
 }
 
-- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
+- (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
 {
+//	MGLAnnotationView *view = [[MGLAnnotationView alloc] initWithFrame:(CGRect){0, 0, 20, 20}];
+
+//	view.backgroundColor = [UIColor cyanColor];
+//	view.layer.cornerRadius = 6.;
+//	view.clipsToBounds = YES;
+
 	return (nil);
+}
+
+- (MGLAnnotationImage *)mapView:(MGLMapView *)mapView imageForAnnotation:(id<MGLAnnotation>)annotation
+{
+	if (mapView.userLocation == annotation)
+	{
+		MGLAnnotationImage *image = [MGLAnnotationImage annotationImageWithImage:[UIImage imageNamed:@"User_annotation"] reuseIdentifier:@"user"];
+
+		return (image);
+	}
+	MGLAnnotationImage *image = [MGLAnnotationImage annotationImageWithImage:[UIImage imageNamed:@"Annotation_image"] reuseIdentifier:@"drifting"];
+
+	return (image);
 }
 
 // Allow callout view to appear when an annotation is tapped.
 - (BOOL)mapView:(MGLMapView *)mapView annotationCanShowCallout:(id <MGLAnnotation>)annotation
 {
-	return (NO);
+	return (YES);
 }
 
 - (void)mapView:(MGLMapView *)mapView didSelectAnnotation:(DFTDrop *)annotation
@@ -118,7 +142,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]firstObject];
+//    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]firstObject];
 }
 
 @end
