@@ -39,6 +39,8 @@
 	[super viewDidLoad];
 
 	[self configureViews];
+    
+    [self authenticateUser];
 }
 
 - (void)configureViews

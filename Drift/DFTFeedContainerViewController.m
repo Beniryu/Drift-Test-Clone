@@ -171,14 +171,11 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 	[self resetHeaders];
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"DFTFeedsScaleAnimation"
-     object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleAnimation" object:self];
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self updateFeedType:index];
         [self.scrollView setContentOffset:point];
     } completion:nil];
-
 }
 
 #pragma mark - Feed Protocol
@@ -219,9 +216,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-	[[NSNotificationCenter defaultCenter]
-	 postNotificationName:@"DFTFeedsScaleExpand"
-	 object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleExpand" object:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -256,7 +251,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 			{
 				viewController = self.innerVC;
 				[UIView animateWithDuration:2
-									  delay:1
+                                      delay:1
 									options: UIViewAnimationOptionCurveEaseIn
 								 animations:^{
 									 [self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate

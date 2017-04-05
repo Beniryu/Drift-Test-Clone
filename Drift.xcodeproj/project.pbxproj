@@ -312,10 +312,10 @@
 		09DAA03F1E67827100E92A1F /* Children */ = {
 			isa = PBXGroup;
 			children = (
-				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
-				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
 				DDD6A0B71DE99A7200FF9741 /* DFTGlobalFeedViewController.h */,
 				DDD6A0B81DE99A7200FF9741 /* DFTGlobalFeedViewController.m */,
+				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
+				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
 				DD45C9A71E2821AE00ED3E20 /* DFTCollectionFeedViewController.h */,
 				DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */,
 			);
@@ -337,6 +337,24 @@
 				F802EDC41987F133802A1305 /* libPods-Drift.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDD3DB181E9583F000D5D05B /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */,
+				DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */,
+			);
+			name = Layer;
+			sourceTree = "<group>";
+		};
+		BDD3DB191E9583F800D5D05B /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */,
+				DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */,
+			);
+			name = Delegate;
 			sourceTree = "<group>";
 		};
 		DD2CE5671E5CE0D400204E64 /* Delegates */ = {
@@ -501,8 +519,8 @@
 		DDA59A771DD51A7F000B942B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DDDD04531E638CDB003DE070 /* Drift */,
 				DDA59A781DD51AAD000B942B /* Login */,
+				DDDD04531E638CDB003DE070 /* Drift */,
 				DDD6A0C41DEA012E00FF9741 /* Feed */,
 				DD4D6D7E1E369D7100E3605A /* Drop */,
 				DD4D6D711E315C4400E3605A /* DFTTabBarController.h */,
@@ -645,12 +663,10 @@
 			isa = PBXGroup;
 			children = (
 				09DAA03F1E67827100E92A1F /* Children */,
+				BDD3DB181E9583F000D5D05B /* Layer */,
+				BDD3DB191E9583F800D5D05B /* Delegate */,
 				DD45C9A11E2594B700ED3E20 /* DFTFeedContainerViewController.h */,
 				DD45C9A21E2594B700ED3E20 /* DFTFeedContainerViewController.m */,
-				DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */,
-				DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */,
-				DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */,
-				DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */,
 				09DAA03C1E67826C00E92A1F /* DFTFeedViewController.h */,
 				09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */,
 			);
@@ -704,7 +720,7 @@
 		DDA59A3B1DD3DACB000B942B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Thierry Ng";
 				TargetAttributes = {
 					DDA59A421DD3DACB000B942B = {
@@ -916,8 +932,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -961,8 +979,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

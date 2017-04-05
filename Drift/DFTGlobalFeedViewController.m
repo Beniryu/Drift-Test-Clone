@@ -20,7 +20,6 @@
 
 static const NSString *feedCellIdentifier = @"DFTFeedCell";
 
-
 @implementation DFTGlobalFeedViewController
 
 #pragma mark
@@ -48,6 +47,8 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"%@", NSStringFromCGRect(self.collectionView.frame));
+//    self.collectionView.contentOffset= CGPointMake(0, -100);
 	//	self.collectionTopConstraint.constant = -20;
 	//	[UIView animateWithDuration:.75f animations:
 	//	 ^{

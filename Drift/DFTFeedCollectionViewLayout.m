@@ -10,6 +10,8 @@
 
 @implementation DFTFeedCollectionViewLayout
 
+static int COLLECTION_INSET = 6;
+
 - (instancetype)init
 {
 	if (self = [super init])
@@ -28,10 +30,10 @@
 {
 	CGFloat width = [[UIScreen mainScreen] bounds].size.width / 2.;
 
-	self.itemSize = (CGSize){width - 6, 120};
+	self.itemSize = (CGSize){width - COLLECTION_INSET, 120};
 	self.minimumInteritemSpacing = 0.;
 	self.minimumLineSpacing = 0.;
-	self.sectionInset = UIEdgeInsetsMake(0, 6, 0, 6);
+	self.sectionInset = UIEdgeInsetsMake(0, COLLECTION_INSET, 0, COLLECTION_INSET);
 }
 
 @end
