@@ -229,6 +229,7 @@
 		DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDriftViewController.m; sourceTree = "<group>"; };
 		DDE840D71E6CAC1600B18B0C /* DFTDropFormManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormManager.h; sourceTree = "<group>"; };
 		DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormManager.m; sourceTree = "<group>"; };
+		EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFT-Prefix.pch"; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -464,6 +465,7 @@
 		DDA59A461DD3DACB000B942B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */,
 				DDA59A571DD3DACB000B942B /* Info.plist */,
 				DDA59A471DD3DACB000B942B /* main.m */,
 				DDA59A741DD50DF0000B942B /* Notes */,
@@ -725,7 +727,6 @@
 				TargetAttributes = {
 					DDA59A421DD3DACB000B942B = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RA9388UXZ8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1013,7 +1014,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RA9388UXZ8;
+				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Drift/DFT-Prefix.pch";
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1028,7 +1031,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RA9388UXZ8;
+				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Drift/DFT-Prefix.pch";
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

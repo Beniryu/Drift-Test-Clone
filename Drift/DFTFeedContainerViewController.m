@@ -16,6 +16,10 @@
 #import <Mapbox/Mapbox.h>
 
 @interface DFTFeedContainerViewController () <UIScrollViewDelegate, DFTSegmentedControlDelegate>
+{
+    @private
+    DFTFeedViewController *currentFeederViewController;
+}
 
 @property (weak, nonatomic) IBOutlet MGLMapView *mapboxView;
 @property (weak, nonatomic) IBOutlet DFTScrollView *scrollView;
@@ -73,6 +77,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	[self.scrollView setContentInset:UIEdgeInsetsZero];
     
+    currentFeederViewController = self.globalVC;
     self.feedType = GlobalFeed;
 }
 
@@ -195,6 +200,22 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     }
     self.mapTopConstraint.constant = -((offset) / 7);
     self.headerTopConstraint.constant = -((offset) / 7);
+    
+    if( self.mapTopConstraint.constant  <= -5 )
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            [currentFeederViewController expandCollectionView];
+            [currentFeederViewController.collectionView layoutIfNeeded];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            [currentFeederViewController shrinkCollectionView];
+            [currentFeederViewController.collectionView layoutIfNeeded];
+        }];
+    }
+    
 }
 
 - (void)resetHeaders
@@ -232,33 +253,33 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
             previousPage = page;
             [self.segmentedControl showSegment:page];
             [self updateFeedType:page];
+            
+            CLLocationCoordinate2D coordinate = self.mapboxView.userLocation.location.coordinate;
+            coordinate.latitude -= 40;
 
-			DFTFeedViewController *viewController = nil;
-
-			if (page == 0)
-			{
-				viewController = self.globalVC;
-				[self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
-										   zoomLevel:1
-											animated:YES];
-//				self.mapboxView.showsUserLocation = NO;
-//				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
-				for (DFTDrop *annotation in self.mapboxView.annotations)
-					[self.mapboxView removeAnnotation:annotation];
-				[self.mapboxView addAnnotations:self.globalVC.drops];
-			}
-			else if (page == 1)
-			{
-				viewController = self.innerVC;
-				[UIView animateWithDuration:2
+            if (page == 0)
+            {
+                currentFeederViewController = self.globalVC;
+                [self.mapboxView setCenterCoordinate:coordinate zoomLevel:1 animated:YES];
+                //				self.mapboxView.showsUserLocation = NO;
+                //				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
+                
+                for (DFTDrop *annotation in self.mapboxView.annotations)
+                    [self.mapboxView removeAnnotation:annotation];
+                [self.mapboxView addAnnotations:self.globalVC.drops];
+            }
+            else if (page == 1)
+            {
+                currentFeederViewController = self.innerVC;
+                [UIView animateWithDuration:2
                                       delay:1
-									options: UIViewAnimationOptionCurveEaseIn
-								 animations:^{
-									 [self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
-																zoomLevel:3
-																 animated:YES];
-								 }
-					completion:nil];
+                                    options: UIViewAnimationOptionCurveEaseIn
+                                 animations:^{
+                                     [self.mapboxView setCenterCoordinate:coordinate
+                                                                zoomLevel:0
+                                                                 animated:YES];
+                                 }
+                                 completion:nil];
 				self.mapboxView.showsUserLocation = YES;
 //				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
 				for (DFTDrop *annotation in self.mapboxView.annotations)
@@ -266,7 +287,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 				[self.mapboxView addAnnotations:self.innerVC.drops];
 			}
 			else if (page == 2)
-				viewController = self.collectionVC;
+				currentFeederViewController = self.collectionVC;
         }
     }
 }

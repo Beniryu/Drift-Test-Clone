@@ -19,6 +19,8 @@
 @end
 
 static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
+static const double sizeReduce = 12.;
+static const double cellHeight = 156.;
 
 @implementation DFTInnerFeedViewController
 
@@ -51,11 +53,23 @@ static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
 
 	UICollectionViewFlowLayout *layout = [DFTFeedCollectionViewLayout new];
 
-	layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 235.f);
-	layout.itemSize = (CGSize){[[UIScreen mainScreen] bounds].size.width - 12., 156.};
+	layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 255.f);
+	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, cellHeight};
 	layout.minimumLineSpacing = 4.;
 
 	self.collectionView.collectionViewLayout = layout;
+}
+
+- (void)expandCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width, layout.itemSize.height};
+}
+
+- (void)shrinkCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, layout.itemSize.height};
 }
 
 #pragma mark

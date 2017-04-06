@@ -20,5 +20,7 @@
 @property id<DFTFeedScreenProtocol> delegate;
 
 - (void)becameVisibleFeed;
+- (void)expandCollectionView;
+- (void)shrinkCollectionView;
 
 @end

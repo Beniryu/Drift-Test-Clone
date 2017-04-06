@@ -1,0 +1,30 @@
+//
+//  DFT-Prefix.pch
+//  Drift
+//
+//  Created by Clément Georgel on 06/04/2017.
+//  Copyright © 2017 Thierry Ng. All rights reserved.
+//
+
+#ifndef DFTPrefix_pch
+#define DFTPrefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+//=====================================//
+//-------------- Device ---------------//
+//=====================================//
+
+#define SCREEN_SIZE                 [[UIScreen mainScreen] bounds].size
+
+//==========================================//
+//-------------- Versionning ---------------//
+//==========================================//
+#pragma mark - Versionning
+
+#define APP_BUILD                   [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]
+#define APP_VERSION                 [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define OS_VERSION                  [[NSProcessInfo processInfo] operatingSystemVersionString]
+
+#endif /* DFTPrefix_pch */

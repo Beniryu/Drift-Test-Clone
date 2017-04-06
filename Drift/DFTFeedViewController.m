@@ -39,6 +39,12 @@
     return [UICollectionViewCell new];
 }
 
+#pragma mark - Mother Methods
+
+- (void)becameVisibleFeed{};
+- (void)expandCollectionView{};
+- (void)shrinkCollectionView{};
+
 #pragma mark - NSNotifications Methods
 
 - (void)animateFeedChange
