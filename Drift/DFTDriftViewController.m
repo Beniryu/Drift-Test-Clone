@@ -91,10 +91,7 @@
 
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
-	[mapView
-	 setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates]
-	 zoomLevel:15
-	 animated:YES];
+	[mapView setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates] zoomLevel:15 animated:YES];
 }
 
 - (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
@@ -133,10 +130,27 @@
     
     NSInteger annotationIndex = [self.dropsArray indexOfObject:annotation];
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:annotationIndex inSection:0];
-    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:TRUE];
+    
+    //Tentative de scroll slow mais manque la création des cells entre les cells de départ et de fin.
+    // see willdisplayCell pour créer ? 
+//    CGFloat pageWidth = self.collectionView.frame.size.width;
+//int currentPage = self.collectionView.contentOffset.x / pageWidth;
+//int nextPage = (int)indexPath.row;//currentPage + 1;
+
+//    NSIndexPath *fakeIndexPath = [NSIndexPath indexPathForRow:indexPath.row-1 inSection:indexPath.section];
+//    [self.collectionView scrollToItemAtIndexPath:fakeIndexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:NO];
+//[UIView animateWithDuration:MIN(1*(abs(nextPage-currentPage)), 4)
+//                      delay:0
+//                    options:UIViewAnimationOptionCurveEaseOut
+//                 animations:^{
+//                     [self.collectionView setContentOffset:CGPointMake(pageWidth * nextPage - 1, 0)];
+//                     [self.view layoutIfNeeded];
+//                 } completion:^(BOOL finished) {
+//                     [self.collectionView setContentOffset:CGPointMake(pageWidth * nextPage, 0)];
+//                 }];
+//    
+    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
 }
-
-
 
 #pragma mark - UIScrollView Delegate
 
