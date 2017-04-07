@@ -330,22 +330,82 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IB-KV-Z3e" userLabel="Segment View">
+                                <rect key="frame" x="260" y="28" width="95" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="7kV-1B-PSk"/>
+                                    <constraint firstAttribute="height" constant="37" id="dti-dR-X0D"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIh-kX-a6V" userLabel="LocationView">
+                                <rect key="frame" x="85" y="52.5" width="65" height="17"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="xkK-UK-XHd">
+                                        <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shP-Qm-lgy" userLabel="locationLabel">
+                                        <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="shP-Qm-lgy" firstAttribute="centerY" secondItem="xkK-UK-XHd" secondAttribute="centerY" id="Hxo-tb-TJs"/>
+                                    <constraint firstItem="xkK-UK-XHd" firstAttribute="leading" secondItem="AIh-kX-a6V" secondAttribute="leading" id="TLb-5U-xcl"/>
+                                    <constraint firstItem="shP-Qm-lgy" firstAttribute="leading" secondItem="xkK-UK-XHd" secondAttribute="trailing" constant="5" id="aXu-2Z-g0T"/>
+                                    <constraint firstAttribute="bottom" secondItem="xkK-UK-XHd" secondAttribute="bottom" id="bKU-Se-cC6"/>
+                                    <constraint firstAttribute="trailing" secondItem="shP-Qm-lgy" secondAttribute="trailing" id="dbT-qo-eAA"/>
+                                    <constraint firstItem="xkK-UK-XHd" firstAttribute="top" secondItem="AIh-kX-a6V" secondAttribute="top" id="oE5-Lc-2Tp"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5s-Rv-7LV">
+                                <rect key="frame" x="20" y="28" width="60" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="A9A-Z5-FkE"/>
+                                    <constraint firstAttribute="height" constant="50" id="kWg-0A-dJH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Gotham-Thin" family="Gotham-Thin" pointSize="48"/>
+                                <color key="textColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS FOUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqX-xM-d7e">
+                                <rect key="frame" x="85" y="33" width="167" height="11.5"/>
+                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KqX-xM-d7e" firstAttribute="leading" secondItem="r5s-Rv-7LV" secondAttribute="trailing" constant="5" id="CNo-RF-Yjv"/>
                             <constraint firstItem="lU9-Tt-n9L" firstAttribute="width" secondItem="9ua-v0-dzu" secondAttribute="width" id="CV0-Ue-6by"/>
+                            <constraint firstItem="r5s-Rv-7LV" firstAttribute="leading" secondItem="9ua-v0-dzu" secondAttribute="leading" constant="20" symbolic="YES" id="Mf3-PK-pFK"/>
+                            <constraint firstItem="AIh-kX-a6V" firstAttribute="top" secondItem="KqX-xM-d7e" secondAttribute="bottom" constant="8" symbolic="YES" id="PQr-ix-Bby"/>
+                            <constraint firstItem="KqX-xM-d7e" firstAttribute="top" secondItem="r5s-Rv-7LV" secondAttribute="top" constant="5" id="QxR-Eb-lzQ"/>
                             <constraint firstItem="fr9-GG-5ca" firstAttribute="top" secondItem="lU9-Tt-n9L" secondAttribute="bottom" id="R2h-iV-dff"/>
+                            <constraint firstItem="r5s-Rv-7LV" firstAttribute="top" secondItem="tUg-ZG-FfT" secondAttribute="bottom" constant="8" symbolic="YES" id="cFR-5V-dwJ"/>
                             <constraint firstItem="lU9-Tt-n9L" firstAttribute="centerX" secondItem="9ua-v0-dzu" secondAttribute="centerX" id="cNH-0h-UGV"/>
+                            <constraint firstItem="1IB-KV-Z3e" firstAttribute="top" secondItem="tUg-ZG-FfT" secondAttribute="bottom" constant="8" symbolic="YES" id="dPM-lE-IXa"/>
+                            <constraint firstItem="1IB-KV-Z3e" firstAttribute="leading" secondItem="KqX-xM-d7e" secondAttribute="trailing" constant="8" symbolic="YES" id="glP-CV-wRz"/>
+                            <constraint firstItem="AIh-kX-a6V" firstAttribute="leading" secondItem="KqX-xM-d7e" secondAttribute="leading" id="ipd-ho-glC"/>
+                            <constraint firstAttribute="trailing" secondItem="1IB-KV-Z3e" secondAttribute="trailing" constant="20" symbolic="YES" id="lZw-2S-scs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="drift_tab_icon" id="qUf-Pm-CdK"/>
                     <connections>
                         <outlet property="collectionView" destination="lU9-Tt-n9L" id="kJT-Xg-Bsx"/>
+                        <outlet property="lblDropFound" destination="KqX-xM-d7e" id="SBl-Mb-JoG"/>
+                        <outlet property="lblLocation" destination="shP-Qm-lgy" id="yam-if-vQX"/>
+                        <outlet property="lblNbDropFound" destination="r5s-Rv-7LV" id="H2O-El-f5v"/>
+                        <outlet property="segmentedContainerView" destination="1IB-KV-Z3e" id="4GT-QK-oMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="43J-Eh-fjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2697" y="1993"/>
+            <point key="canvasLocation" x="-2698.4000000000001" y="1992.953523238381"/>
         </scene>
         <!--Add Drop View Controller-->
         <scene sceneID="Aaz-Dm-ZNB">
@@ -641,7 +701,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1057,7 +1117,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="14.5" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="316.5" y="14" width="30.5" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

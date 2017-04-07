@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <Mapbox/Mapbox.h>
+#import "DFTSegmentedControl.h"
 
-@interface DFTDriftViewController : UIViewController <MGLMapViewDelegate>
+@interface DFTDriftViewController : UIViewController <MGLMapViewDelegate, DFTSegmentedControlDelegate>
+
+@property (weak, nonatomic) IBOutlet UILabel *lblNbDropFound;
+@property (weak, nonatomic) IBOutlet UILabel *lblDropFound;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+@property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 
 @end
