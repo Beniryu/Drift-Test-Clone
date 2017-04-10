@@ -164,9 +164,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
                      completion:nil];
 }
 
-
-
-
 #pragma mark - DFTSegmentedControl Delegate
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
@@ -194,18 +191,22 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)feedScreenDidScroll:(CGFloat)offset
 {
-	self.mapTopConstraint.constant = -((offset) / 7);
-	self.headerTopConstraint.constant = -((offset) / 7);
-	self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
-	self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
+    if (self.feedType == GlobalFeed)
+    {
+        self.profilePictureImageView.alpha = (1 - (offset / self.headerView.frame.size.height));
+        self.driftView.alpha = (1 - (offset / self.headerView.frame.size.height));
+    }
+    self.mapTopConstraint.constant = -((offset) / 7);
+    self.headerTopConstraint.constant = -((offset) / 7);
 }
 
 - (void)resetHeaders
 {
 	self.mapTopConstraint.constant = 0;
 	self.headerTopConstraint.constant = 0;
-	self.profilePictureImageView.alpha = 1;
-	self.driftView.alpha = 1;
+
+    self.profilePictureImageView.alpha = self.feedType == GlobalFeed ? 1 : 0;
+	self.driftView.alpha = self.feedType == GlobalFeed ? 1 : 0;
 }
 
 #pragma mark - UIScrollView Delegate
