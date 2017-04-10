@@ -11,7 +11,7 @@
 #import "DFTFeedManager.h"
 #import "DFTMapManager.h"
 #import "DFTInnerFeedCell.h"
-
+#import "ImageUtils.h"
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -237,6 +237,40 @@ int dynamicRow;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
 //    NSIndexPath *indexPath = [[self.collectionView indexPathsForVisibleItems]firstObject];
+}
+
+#pragma mark - Pan Gesture actions
+
+- (IBAction)actExpandCell:(UISwipeGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded )
+    {
+        [ImageUtils roundedBorderImageView:_imgProfil];
+        [UIView animateWithDuration:2.0 animations:^{
+            _imgAnimated.frame = CGRectMake(20, 80, SCREEN_SIZE.width - 20*2, 250);
+            _imgAnimated.layer.cornerRadius = 6.;
+            _imgAnimated.clipsToBounds = YES;
+            _imgAnimated.alpha = 1;
+            
+//            DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathsForSelectedItems][0]];
+            //_imgAnimated.image = cell.imageView.image;
+        }];
+            [UIView animateWithDuration:1.0 animations:^{
+                _vDetails.alpha = 1;
+            } completion:^(BOOL finished){
+                [UIView animateWithDuration:1.
+                                      delay:0.
+                                    options:UIViewAnimationOptionCurveEaseIn
+                                 animations:^{
+                                     _lblLikes.alpha = 1;
+                                     _lblNbLikes.alpha = 1;
+                                     _lblShares.alpha = 1;
+                                     _lblNbShares.alpha = 1;
+                                     _lblDrifters.alpha = 1;
+                                     _lblNbDrifters.alpha = 1;
+                                 } completion:nil];
+            }];
+    }
 }
 
 @end

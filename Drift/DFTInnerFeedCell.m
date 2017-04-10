@@ -14,8 +14,6 @@
 
 @interface DFTInnerFeedCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
 // Right part
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -31,6 +29,8 @@
 @end
 
 @implementation DFTInnerFeedCell
+
+@synthesize imageView;
 
 - (void)awakeFromNib
 {

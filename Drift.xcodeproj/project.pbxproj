@@ -92,6 +92,7 @@
 		DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */; };
 		DDE840D91E6CAC1600B18B0C /* DFTDropFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */; };
 		EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC274261E9BA5ED006D20F4 /* Localizable.strings */; };
+		EBEEEB221E9BD39900F0147A /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEEEB211E9BD39900F0147A /* ImageUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,6 +234,8 @@
 		EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFT-Prefix.pch"; sourceTree = "<group>"; };
 		EBC274251E9BA5ED006D20F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EBC274271E9BA5F6006D20F4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBEEEB201E9BD39900F0147A /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageUtils.h; path = utils/ImageUtils.h; sourceTree = "<group>"; };
+		EBEEEB211E9BD39900F0147A /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageUtils.m; path = utils/ImageUtils.m; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -576,6 +579,8 @@
 				DDA59A801DD5202E000B942B /* UIColor+DFTStyles.m */,
 				DD3B99B51E214FD40098208F /* UIFont+Drift.h */,
 				DD3B99B61E214FD40098208F /* UIFont+Drift.m */,
+				EBEEEB201E9BD39900F0147A /* ImageUtils.h */,
+				EBEEEB211E9BD39900F0147A /* ImageUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -895,6 +900,7 @@
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
 				DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */,
+				EBEEEB221E9BD39900F0147A /* ImageUtils.m in Sources */,
 				DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */,
 				DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */,
 				DDB50F471DDE4E5A00542EAA /* DFTNetworkClient.m in Sources */,

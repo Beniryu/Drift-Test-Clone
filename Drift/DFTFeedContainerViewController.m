@@ -13,6 +13,7 @@
 #import "UIColor+DFTStyles.h"
 #import "DFTScrollView.h"
 #import "DFTSegmentedControl.h"
+#import "ImageUtils.h"
 #import <Mapbox/Mapbox.h>
 
 @interface DFTFeedContainerViewController () <UIScrollViewDelegate, DFTSegmentedControlDelegate>
@@ -121,16 +122,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 - (void)configureProfilPic
 {
     // TODO: - Duplicate code taken from DFTFeedCell -> UIImageView category ?
-    CAShapeLayer *border = [CAShapeLayer new];
-    
-    border.frame = self.profilePictureImageView.bounds;
-    border.lineWidth = 4.;
-    border.path = [UIBezierPath bezierPathWithOvalInRect:border.bounds].CGPath;
-    border.strokeColor = [UIColor whiteColor].CGColor;
-    border.fillColor = [UIColor clearColor].CGColor;
-    [self.profilePictureImageView.layer addSublayer:border];
-    self.profilePictureImageView.clipsToBounds = YES;
-    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.;
+    [ImageUtils roundedBorderImageView:self.profilePictureImageView];
 }
 
 - (void)configureSegmentedControl

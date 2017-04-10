@@ -17,4 +17,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblLocation;
 @property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 
+//Expand Details
+@property (weak, nonatomic) IBOutlet UIImageView *imgAnimated;
+@property (weak, nonatomic) IBOutlet UIView *vDetails;
+@property (weak, nonatomic) IBOutlet UILabel *lblShares;
+@property (weak, nonatomic) IBOutlet UILabel *lblNbShares;
+@property (weak, nonatomic) IBOutlet UILabel *lblLikes;
+@property (weak, nonatomic) IBOutlet UILabel *lblNbLikes;
+@property (weak, nonatomic) IBOutlet UILabel *lblDrifters;
+@property (weak, nonatomic) IBOutlet UILabel *lblNbDrifters;
+@property (weak, nonatomic) IBOutlet UIImageView *imgProfil;
+
+- (IBAction)actExpandCell:(id)sender;
+
 @end
