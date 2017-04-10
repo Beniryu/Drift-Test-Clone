@@ -91,6 +91,7 @@
 		DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */; };
 		DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */; };
 		DDE840D91E6CAC1600B18B0C /* DFTDropFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */; };
+		EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC274261E9BA5ED006D20F4 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +231,8 @@
 		DDE840D71E6CAC1600B18B0C /* DFTDropFormManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormManager.h; sourceTree = "<group>"; };
 		DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormManager.m; sourceTree = "<group>"; };
 		EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFT-Prefix.pch"; sourceTree = "<group>"; };
+		EBC274251E9BA5ED006D20F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBC274271E9BA5F6006D20F4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -469,6 +472,7 @@
 				DDA59A571DD3DACB000B942B /* Info.plist */,
 				DDA59A471DD3DACB000B942B /* main.m */,
 				DDA59A741DD50DF0000B942B /* Notes */,
+				EBC274261E9BA5ED006D20F4 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -738,6 +742,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = DDA59A3A1DD3DACB000B942B;
 			productRefGroup = DDA59A441DD3DACB000B942B /* Products */;
@@ -764,6 +769,7 @@
 				092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */,
 				09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */,
 				09DAA0431E678DEC00E92A1F /* GOTHMBIT.TTF in Resources */,
+				EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */,
 				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
 				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
@@ -917,6 +923,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		EBC274261E9BA5ED006D20F4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBC274251E9BA5ED006D20F4 /* en */,
+				EBC274271E9BA5F6006D20F4 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -924,6 +939,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -971,6 +987,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

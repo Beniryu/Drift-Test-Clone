@@ -339,13 +339,13 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIh-kX-a6V" userLabel="LocationView">
-                                <rect key="frame" x="85" y="52.5" width="65" height="17"/>
+                                <rect key="frame" x="85" y="53" width="65" height="17"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="xkK-UK-XHd">
                                         <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shP-Qm-lgy" userLabel="locationLabel">
-                                        <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                        <rect key="frame" x="18" y="2.5" width="46.5" height="12"/>
                                         <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -372,7 +372,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROPS FOUND" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqX-xM-d7e">
-                                <rect key="frame" x="85" y="33" width="167" height="11.5"/>
+                                <rect key="frame" x="85" y="33" width="167" height="12"/>
                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -701,7 +701,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3" width="46.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1117,7 +1117,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="14" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="316.5" y="13.5" width="30.5" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

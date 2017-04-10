@@ -17,6 +17,7 @@
 {
 @private
 DFTDrop *activeDrop;
+MGLMapView *mapViewShared;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -48,12 +49,16 @@ int dynamicRow;
 		[self.collectionView reloadData];
         if( self.dropsArray.count > 0 )
             activeDrop = [self.dropsArray objectAtIndex:0];
+        lblNbDropFound.text = [NSString stringWithFormat:@"%d", (int)self.dropsArray.count];
+        lblDropFound.text = NSLocalizedString(@"dropsFound", nil);
+        lblLocation.text = @"LONDON";
 	}];
 }
 
 - (void)configureSegmentedControl
 {
     self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    [self.segmentedControl configForDrift];
     self.segmentedControl.delegate = self;
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
@@ -85,9 +90,10 @@ int dynamicRow;
 
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
 
-	imageView.frame = [DFTMapManager sharedInstance].mapView.frame;
+    mapViewShared = [DFTMapManager sharedInstance].mapView;
+	imageView.frame = mapViewShared.frame;
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
-	[[DFTMapManager sharedInstance].mapView addSubview:imageView];
+	[mapViewShared addSubview:imageView];
 }
 
 #pragma mark - DFTSegmentedControl Delegate
@@ -112,7 +118,7 @@ int dynamicRow;
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[DFTMapManager sharedInstance] mapView].annotations.count;
+    return mapViewShared.annotations.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath

@@ -108,14 +108,14 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)configureDrops
 {
-    self.dropsLabel.text = @"DROPS TODAY";
-    self.dropsNumberLabel.text = @"76";
+    self.dropsLabel.text = NSLocalizedString(@"dropsToday", nil);
+    self.dropsNumberLabel.text = [NSString stringWithFormat:@"%d", 76];
 }
 
 - (void)configureDrift
 {
-    self.driftLabel.text = @"Name";
-    self.driftLevelLabel.text = @"Drift Level 40";
+    self.driftLabel.text = @"John Do";
+    self.driftLevelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"driftLevel", nil), 40];
 }
 
 - (void)configureProfilPic
@@ -136,6 +136,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 - (void)configureSegmentedControl
 {
     self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    [self.segmentedControl configForFeed];
     self.segmentedControl.delegate = self;
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
