@@ -8,30 +8,44 @@
 
 #import "DFTProfileViewController.h"
 
-@interface DFTProfileViewController ()
+#import "DFTSegmentedControl.h"
+
+@interface DFTProfileViewController () <DFTSegmentedControlDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *coverView;
+
+@property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *profilePictureBottomMargin;
+@property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
 
 @end
 
 @implementation DFTProfileViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+	self.scrollView.contentSize = (CGSize){self.view.bounds.size.width, self.view.bounds.size.height * 2};
+	[self configureSegmentedControl];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)configureSegmentedControl
+{
+	self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+	self.segmentedControl.delegate = self;
+	[self.segmentedContainerView addSubview:self.segmentedControl];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - DFTSegmentedControl Delegate
+- (void)segmentedControlValueChanged:(NSInteger)index
+{
+	// Replace by custon self-made views
+	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Titre" message:@"message message message message message message message" preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Fermer" style:UIAlertActionStyleDefault handler:nil];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+	[alert addAction:okAction];
+	[self presentViewController:alert animated:YES completion:nil];
 }
-*/
 
 @end

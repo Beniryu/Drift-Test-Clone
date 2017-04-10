@@ -59,6 +59,7 @@
 		DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */; };
 		DD4D6D7D1E369D5D00E3605A /* VLDContextSheetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */; };
 		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
+		DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
@@ -177,6 +178,8 @@
 		DD4D6D791E369D5D00E3605A /* VLDContextSheetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItemView.h; sourceTree = "<group>"; };
 		DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItemView.m; sourceTree = "<group>"; };
 		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
+		DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileViewController.h; sourceTree = "<group>"; };
+		DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileViewController.m; sourceTree = "<group>"; };
 		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
 		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
@@ -409,6 +412,15 @@
 			name = Drop;
 			sourceTree = "<group>";
 		};
+		DD7544C91E9583ED002AEC38 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */,
+				DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		DDA59A3A1DD3DACB000B942B = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +513,7 @@
 		DDA59A771DD51A7F000B942B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD7544C91E9583ED002AEC38 /* Profile */,
 				DDDD04531E638CDB003DE070 /* Drift */,
 				DDA59A781DD51AAD000B942B /* Login */,
 				DDD6A0C41DEA012E00FF9741 /* Feed */,
@@ -856,6 +869,7 @@
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
 				DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
+				DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */,
 				09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */,
 				DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */,
 				DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */,
