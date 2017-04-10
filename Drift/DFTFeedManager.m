@@ -39,7 +39,7 @@
 
 			 for (DFTDrop *drop in drops)
 			 {
-				 [urls addObject:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/beacon/pic/%@", drop.dropId]];
+				 [urls addObject:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/drop/pic/%@", drop.dropId]];
 			 }
 			 [[SDWebImagePrefetcher sharedImagePrefetcher] prefetchURLs:urls];
 			 if (completion)

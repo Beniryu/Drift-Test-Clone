@@ -85,7 +85,7 @@
 	self.titleLabel.text = drop.title;
 
 	self.backgroundPictureImageView.contentMode = UIViewContentModeScaleAspectFill;
-	[self.backgroundPictureImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/beacon/pic/%@", drop.dropId]]];
+	[self.backgroundPictureImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/drop/pic/%@", drop.dropId]]];
 
 	self.profilePictureImageView.image = drop.profilePicture;
 }
