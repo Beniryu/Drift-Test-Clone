@@ -45,7 +45,7 @@
 {
 	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.imageView.clipsToBounds = YES;
-	[self.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/beacon/pic/%@", drop.dropId]]];
+	[self.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/drop/pic/%@", drop.dropId]]];
 
 	//    self.nameLabel.text = @"Flavio";
     self.formattedLikesLabel.text = @"20 | 5 min";

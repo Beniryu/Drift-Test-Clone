@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Routes
 
-static NSString *kDFTNetworkRouteDrop = @"beacon/";
+static NSString *kDFTNetworkRouteDrop = @"drop/";
 
 @implementation DFTNetworkClient (DFTDrop)
 

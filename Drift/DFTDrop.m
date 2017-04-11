@@ -12,13 +12,13 @@
 #pragma mark
 #pragma mark - JSON Keys
 
-const NSString *kDFTModelKeyDropId = @"IdBeacon";
+const NSString *kDFTModelKeyDropId = @"IdDrop";
 const NSString *kDFTModelKeyDropLatitude = @"Latitude";
 const NSString *kDFTModelKeyDropLongitude = @"Longitude";
 const NSString *kDFTModelKeyDropDate = @"DateTime";
-const NSString *kDFTModelKeyDropOwnerId = @"OwnerId";
+const NSString *kDFTModelKeyDropOwnerId = @"IdUser";
 const NSString *kDFTModelKeyDropTitle = @"Title";
-const NSString *kDFTModelKeyDropPicture = @"BackgroundPicture";
+const NSString *kDFTModelKeyDropPicture = @"Picture";
 const NSString *kDFTModelKeyDropMapVisibility = @"MapVisibility";
 const NSString *kDFTModelKeyDropContentVisibility = @"ContentVisibility";
 const NSString *kDFTModelKeyDropLikes = @"Likes";
