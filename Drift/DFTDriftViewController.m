@@ -15,6 +15,8 @@
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
+    NSDateFormatter *dateDayFormatter;
+    NSDateFormatter *dateMonthFormatter;
 @private
 DFTDrop *activeDrop;
 MGLMapView *mapViewShared;
@@ -37,6 +39,12 @@ int dynamicRow;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    dateDayFormatter = [[NSDateFormatter alloc] init];
+    [dateDayFormatter setDateFormat:@"dd"];
+    
+    dateMonthFormatter = [[NSDateFormatter alloc] init];
+    [dateMonthFormatter setDateFormat:@"MMM"];
     
     alphaToAnimate = @[_imgClose,
                        _lblShares,
@@ -120,6 +128,22 @@ int dynamicRow;
 	[mapViewShared addSubview:imageView];
 }
 
+- (void)configureDetails
+{
+    if( activeDrop )
+    {
+        _lblNbLikes.text = [NSString stringWithFormat:@"%d", (int)activeDrop.likes];
+        _lblNbDrifters.text = [NSString stringWithFormat:@"%d", (int)activeDrop.drifts];
+        _lblNbShares.text = [NSString stringWithFormat:@"%d", (int)activeDrop.shares];
+        
+        _lblNameEvent.text = activeDrop.title;
+        _lblDay.text = @"24";//[dateDayFormatter stringFromDate:activeDrop.dropDate];
+        _lblMonth.text = @"APR";//[dateMonthFormatter stringFromDate:activeDrop.dropDate];
+        
+        _imgProfil.image = activeDrop.profilePicture;
+    }
+}
+
 #pragma mark - DFTSegmentedControl Delegate
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
@@ -172,6 +196,7 @@ int dynamicRow;
     DFTInnerFeedCell *myCell =  (DFTInnerFeedCell *)cell;
     [myCell configureWithItem:drop];
     [myCell updateConstraintWithValue:10];
+    activeDrop = drop;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{}
@@ -265,32 +290,19 @@ int dynamicRow;
 
 #pragma mark - Pan Gesture actions
 
-- (IBAction)actCloseCell:(id)sender
-{
-    [UIView animateWithDuration:2. animations:^{
-        _imgAnimated.frame = CGRectMake(0, SCREEN_SIZE.height, 50, 50);
-        _imgAnimated.alpha = 0;
-    }];
-    [UIView animateWithDuration:1.
-                          delay:.5
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         _vDetails.alpha = 0;
-                     } completion:^(BOOL finished){
-                         [UIView animateWithDuration:1.
-                                               delay:0.
-                                             options:UIViewAnimationOptionCurveEaseIn
-                                          animations:^{
-                                              for( UIControl *element in alphaToAnimate)
-                                                  element.alpha = 0;
-                                          } completion:nil];
-                     }];
-}
-
 - (IBAction)actExpandCell:(UISwipeGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded )
     {
+        [self configureDetails];
+        
+        CGFloat pageWidth = self.collectionView.frame.size.width;
+        int currentPage = self.collectionView.contentOffset.x / pageWidth;
+        DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:currentPage inSection:0]];
+        
+        _imgAnimated.frame = [cell convertRect:cell.imageView.frame toView:_vDetails];
+        [self.view layoutIfNeeded];
+        
         [ImageUtils roundedBorderImageView:_imgProfil];
         [ImageUtils roundedBorderImageView:_imgDrifter1];
         [ImageUtils roundedBorderImageView:_imgDrifter2];
@@ -300,10 +312,6 @@ int dynamicRow;
             _imgAnimated.layer.cornerRadius = 6.;
             _imgAnimated.clipsToBounds = YES;
             _imgAnimated.alpha = 1;
-            
-            CGFloat pageWidth = self.collectionView.frame.size.width;
-            int currentPage = self.collectionView.contentOffset.x / pageWidth;
-            DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:currentPage inSection:0]];
             _imgAnimated.image = cell.imageView.image;
         }];
         [UIView animateWithDuration:1.
@@ -321,6 +329,32 @@ int dynamicRow;
                                  } completion:nil];
             }];
     }
+}
+
+- (IBAction)actCloseCell:(id)sender
+{
+    CGFloat pageWidth = self.collectionView.frame.size.width;
+    int currentPage = self.collectionView.contentOffset.x / pageWidth;
+    DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:currentPage inSection:0]];
+    
+    [UIView animateWithDuration:2. animations:^{
+        _imgAnimated.frame = [cell convertRect:cell.imageView.frame toView:_vDetails];
+        _imgAnimated.alpha = 0;
+    }];
+    [UIView animateWithDuration:1.
+                          delay:.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vDetails.alpha = 0;
+                     } completion:^(BOOL finished){
+                         [UIView animateWithDuration:1.
+                                               delay:0.
+                                             options:UIViewAnimationOptionCurveEaseIn
+                                          animations:^{
+                                              for( UIControl *element in alphaToAnimate)
+                                                  element.alpha = 0;
+                                          } completion:nil];
+                     }];
 }
 
 - (IBAction)actExpandMenu:(id)sender
