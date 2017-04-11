@@ -18,6 +18,7 @@
 @private
 DFTDrop *activeDrop;
 MGLMapView *mapViewShared;
+    NSArray *alphaToAnimate;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -36,7 +37,30 @@ int dynamicRow;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    alphaToAnimate = @[_imgClose,
+                       _lblShares,
+                       _lblNbShares,
+                       _lblLikes,
+                       _lblNbLikes,
+                       _lblDrifters,
+                       _lblNbDrifters,
+                       _imgProfil,
+                       _lblName,
+                       _vLocation,
+                       _lblDistance,
+                       _btnPlus,
+                       _lblNameEvent,
+                       _lblDay,
+                       _lblMonth,
+                       _btnLike,
+                       _lblTags,
+                       _lblDescription,
+                       _imgDrifter1,
+                       _imgDrifter2,
+                       _imgDrifter3,
+                       _vMenuRight];
+    
     dynamicRow = -1;
 	[self configureCollectionView];
 	[self configureMap];
@@ -241,36 +265,99 @@ int dynamicRow;
 
 #pragma mark - Pan Gesture actions
 
+- (IBAction)actCloseCell:(id)sender
+{
+    [UIView animateWithDuration:2. animations:^{
+        _imgAnimated.frame = CGRectMake(0, SCREEN_SIZE.height, 50, 50);
+        _imgAnimated.alpha = 0;
+    }];
+    [UIView animateWithDuration:1.
+                          delay:.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vDetails.alpha = 0;
+                     } completion:^(BOOL finished){
+                         [UIView animateWithDuration:1.
+                                               delay:0.
+                                             options:UIViewAnimationOptionCurveEaseIn
+                                          animations:^{
+                                              for( UIControl *element in alphaToAnimate)
+                                                  element.alpha = 0;
+                                          } completion:nil];
+                     }];
+}
+
 - (IBAction)actExpandCell:(UISwipeGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded )
     {
         [ImageUtils roundedBorderImageView:_imgProfil];
-        [UIView animateWithDuration:2.0 animations:^{
-            _imgAnimated.frame = CGRectMake(20, 80, SCREEN_SIZE.width - 20*2, 250);
+        [ImageUtils roundedBorderImageView:_imgDrifter1];
+        [ImageUtils roundedBorderImageView:_imgDrifter2];
+        [ImageUtils roundedBorderImageView:_imgDrifter3];
+        [UIView animateWithDuration:2. animations:^{
+            _imgAnimated.frame = _imgPlaceholder.frame;
             _imgAnimated.layer.cornerRadius = 6.;
             _imgAnimated.clipsToBounds = YES;
             _imgAnimated.alpha = 1;
             
-//            DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[self.collectionView indexPathsForSelectedItems][0]];
-            //_imgAnimated.image = cell.imageView.image;
+            CGFloat pageWidth = self.collectionView.frame.size.width;
+            int currentPage = self.collectionView.contentOffset.x / pageWidth;
+            DFTInnerFeedCell *cell = (DFTInnerFeedCell*)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:currentPage inSection:0]];
+            _imgAnimated.image = cell.imageView.image;
         }];
-            [UIView animateWithDuration:1.0 animations:^{
+        [UIView animateWithDuration:1.
+                              delay:.5
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
                 _vDetails.alpha = 1;
             } completion:^(BOOL finished){
                 [UIView animateWithDuration:1.
                                       delay:0.
                                     options:UIViewAnimationOptionCurveEaseIn
                                  animations:^{
-                                     _lblLikes.alpha = 1;
-                                     _lblNbLikes.alpha = 1;
-                                     _lblShares.alpha = 1;
-                                     _lblNbShares.alpha = 1;
-                                     _lblDrifters.alpha = 1;
-                                     _lblNbDrifters.alpha = 1;
+                                     for( UIControl *element in alphaToAnimate)
+                                         element.alpha = 1;
                                  } completion:nil];
             }];
     }
+}
+
+- (IBAction)actExpandMenu:(id)sender
+{
+    [UIView animateWithDuration:1.
+                          delay:0.
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vMenuRight.frame = _vMenuPlaceholder.frame;
+                     } completion:^(BOOL finished){
+                     }];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vMarkIt.alpha = 1;
+                     } completion:nil];
+    
+}
+
+- (IBAction)actMarkIt:(id)sender
+{
+    [UIView animateWithDuration:1.
+                          delay:0.
+                        options:UIViewAnimationOptionCurveEaseOut
+                     animations:^{
+                         _vMarkIt.alpha = 0;
+                     } completion:^(BOOL finished){
+                     }];
+    
+    [UIView animateWithDuration:0.5
+                          delay:0.5
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         _vMenuRight.frame = _vMenuOrigin.frame;
+                     } completion:nil];
 }
 
 @end
