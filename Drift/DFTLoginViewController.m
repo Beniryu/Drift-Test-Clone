@@ -55,7 +55,8 @@
 	self.alternativeLoginLabel.textColor = [UIColor dft_slateBlueColor];
 
 	[self configureAlternativeButtons];
-	[self configureFormButtons];
+    [self configureFormButtons];
+    [self authenticateUser];
 }
 
 - (void)configureFormButtons
