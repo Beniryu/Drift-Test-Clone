@@ -29,7 +29,7 @@
 
 @implementation DFTProfileViewController
 
-@synthesize imgCover, imgProfile, imgMapCheck, imgMapCollection, lblName, lblRank, lblDrops, lblTitle, lblDrifts, lblFriends, lblNbDrops, lblNbDrifts, lblPosition, lblCountries, lblFollowers, lblFollowing, lblLastCheck, lblNbFriends, lblCollection, lblDescription, lblNbCountries, lblNbFollowers, lblNbFollowing, lblNbCollection, lblLastCheckTime, lblHeaderLikedDrops;
+@synthesize imgCover, imgProfile, imgMapCheck, imgMapCollection, lblName, lblRank, lblDrops, lblTitle, lblDrifts, lblFriends, lblNbDrops, lblNbDrifts, lblPosition, lblCountries, lblFollowers, lblFollowing, lblLastCheck, lblNbFriends, lblCollection, lblDescription, lblNbCountries, lblNbFollowers, lblNbFollowing, lblNbCollection, lblLastCheckTime, lblHeaderLikedDrops, btnSettings;
 
 - (void)viewDidLoad
 {
@@ -71,6 +71,9 @@
 {
 	self.headerTopConstraint.constant = -((scrollView.contentOffset.y) / 7);
 	self.headerView.alpha = (1 - (scrollView.contentOffset.y / self.headerView.frame.size.height));
+    
+    NSLog(@"%f", self.headerView.alpha);
+    [btnSettings setUserInteractionEnabled:(self.headerView.alpha >= 0.95)];
 }
 
 #pragma mark - DFTSegmentedControl Delegate
@@ -92,4 +95,5 @@
                       cancelButtonTitle:NSLocalizedString(@"OK", nil)
                       otherButtonTitles:nil] show];
 }
+
 @end

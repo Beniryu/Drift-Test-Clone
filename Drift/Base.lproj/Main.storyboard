@@ -98,9 +98,6 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BaN-fR-TsQ">
                                         <rect key="frame" x="337" y="259" width="30" height="30"/>
                                         <state key="normal" title="..."/>
-                                        <connections>
-                                            <action selector="actSettings:" destination="mC3-Yt-6AS" eventType="touchUpInside" id="MTx-Y6-Rdf"/>
-                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hot Droper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNM-pU-ZOK">
                                         <rect key="frame" x="152" y="263" width="72" height="17"/>
@@ -166,6 +163,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vns-Gi-bLW" userLabel="Content">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1151"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Skl-7p-adv">
+                                                <rect key="frame" x="337" y="262" width="30" height="30"/>
+                                                <connections>
+                                                    <action selector="actSettings:" destination="mC3-Yt-6AS" eventType="touchUpInside" id="fIy-SN-sAN"/>
+                                                </connections>
+                                            </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUB-ov-8gc" userLabel="one">
                                                 <rect key="frame" x="0.0" y="300" width="375" height="90"/>
                                                 <subviews>
@@ -451,6 +454,8 @@
                                             <constraint firstItem="y8f-Zq-yYJ" firstAttribute="leading" secondItem="tSu-UB-oJx" secondAttribute="leading" id="IMc-Pv-tKH"/>
                                             <constraint firstItem="y8f-Zq-yYJ" firstAttribute="top" secondItem="tSu-UB-oJx" secondAttribute="bottom" id="NfE-FY-LUK"/>
                                             <constraint firstItem="tSu-UB-oJx" firstAttribute="top" secondItem="8BA-J0-wmL" secondAttribute="bottom" id="Ode-YD-Anj"/>
+                                            <constraint firstAttribute="trailing" secondItem="Skl-7p-adv" secondAttribute="trailing" constant="8" id="QVQ-qh-tt3"/>
+                                            <constraint firstItem="jUB-ov-8gc" firstAttribute="top" secondItem="Skl-7p-adv" secondAttribute="bottom" constant="8" id="TiJ-49-izd"/>
                                             <constraint firstAttribute="trailing" secondItem="jUB-ov-8gc" secondAttribute="trailing" id="Upe-H5-e4g"/>
                                             <constraint firstItem="y8f-Zq-yYJ" firstAttribute="trailing" secondItem="tSu-UB-oJx" secondAttribute="trailing" id="i0C-Qd-txb"/>
                                             <constraint firstItem="5gK-AT-pGp" firstAttribute="trailing" secondItem="y8f-Zq-yYJ" secondAttribute="trailing" id="jNN-2k-8mW"/>
@@ -502,6 +507,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="btnSettings" destination="Skl-7p-adv" id="n4w-fV-6GT"/>
                         <outlet property="headerTopConstraint" destination="lef-wf-gpw" id="WB1-ny-7Ny"/>
                         <outlet property="headerView" destination="xNb-Rz-ppz" id="fAp-JJ-tiT"/>
                         <outlet property="imgCover" destination="uJB-3j-6qW" id="gye-aj-7l7"/>
