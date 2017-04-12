@@ -7,18 +7,18 @@
 //
 
 #import "DFTProfileViewController.h"
+#import "DFTFeedManager.h"
 
 #import "DFTSegmentedControl.h"
 
 @interface DFTProfileViewController () <DFTSegmentedControlDelegate, UIScrollViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *coverView;
+@property (strong, nonatomic) NSArray<DFTDrop *> *dropsArray;
 
 @property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headerTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *profilePictureBottomMargin;
@@ -29,9 +29,16 @@
 
 @implementation DFTProfileViewController
 
+@synthesize imgCover, imgProfile, imgMapCheck, imgMapCollection, lblName, lblRank, lblDrops, lblTitle, lblDrifts, lblFriends, lblNbDrops, lblNbDrifts, lblPosition, lblCountries, lblFollowers, lblFollowing, lblLastCheck, lblNbFriends, lblCollection, lblDescription, lblNbCountries, lblNbFollowers, lblNbFollowing, lblNbCollection, lblLastCheckTime, lblHeaderLikedDrops;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		self.dropsArray = responseObject;
+	}];
 
 	[self configureScrollView];
 	[self configureSegmentedControl];
@@ -40,7 +47,7 @@
 
 - (void)configureHeader
 {
-	self.profilePictureView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
+	imgProfile.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
 }
 
 - (void)configureScrollView
@@ -77,4 +84,12 @@
 	[self presentViewController:alert animated:YES completion:nil];
 }
 
+- (IBAction)actSettings:(id)sender
+{
+    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SuperTitle", nil)
+                                message:NSLocalizedString(@"SuperMsg", nil)
+                               delegate:self
+                      cancelButtonTitle:NSLocalizedString(@"OK", nil)
+                      otherButtonTitles:nil] show];
+}
 @end
