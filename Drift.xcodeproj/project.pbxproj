@@ -92,6 +92,9 @@
 		DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD6A0C21DE9F57900FF9741 /* DFTFeedCell.xib */; };
 		DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */; };
 		DDE840D91E6CAC1600B18B0C /* DFTDropFormManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */; };
+		DDFB79D51E9EAFF90022000B /* DFTProfileMostLikedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79D41E9EAFF90022000B /* DFTProfileMostLikedView.m */; };
+		DDFB79D71E9EB0050022000B /* DFTProfileMostLikedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB79D61E9EB0050022000B /* DFTProfileMostLikedView.xib */; };
+		DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -232,6 +235,11 @@
 		DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDriftViewController.m; sourceTree = "<group>"; };
 		DDE840D71E6CAC1600B18B0C /* DFTDropFormManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormManager.h; sourceTree = "<group>"; };
 		DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormManager.m; sourceTree = "<group>"; };
+		DDFB79D31E9EAFF90022000B /* DFTProfileMostLikedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileMostLikedView.h; sourceTree = "<group>"; };
+		DDFB79D41E9EAFF90022000B /* DFTProfileMostLikedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileMostLikedView.m; sourceTree = "<group>"; };
+		DDFB79D61E9EB0050022000B /* DFTProfileMostLikedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTProfileMostLikedView.xib; sourceTree = "<group>"; };
+		DDFB79D91E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileStatCellCollectionViewCell.h; sourceTree = "<group>"; };
+		DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileStatCellCollectionViewCell.m; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -506,6 +514,9 @@
 				DDA59A7E1DD51F89000B942B /* Utils */,
 				DDA59A791DD51ABA000B942B /* Custom views */,
 				DDA59A7D1DD51F80000B942B /* Storyboards */,
+				DDFB79D31E9EAFF90022000B /* DFTProfileMostLikedView.h */,
+				DDFB79D61E9EB0050022000B /* DFTProfileMostLikedView.xib */,
+				DDFB79D41E9EAFF90022000B /* DFTProfileMostLikedView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -631,6 +642,7 @@
 		DDD6A0BD1DE9F4A000FF9741 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				DDFB79D81E9ECD620022000B /* Profile */,
 				DD34C8651E620B8A003853D6 /* Drop */,
 				DDD6A0BE1DE9F4AC00FF9741 /* Feed */,
 			);
@@ -677,6 +689,15 @@
 				DDDD04551E638CF0003DE070 /* DFTDriftViewController.m */,
 			);
 			name = Drift;
+			sourceTree = "<group>";
+		};
+		DDFB79D81E9ECD620022000B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DDFB79D91E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.h */,
+				DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		E39777A022B105FAD49548B9 /* Pods */ = {
@@ -763,6 +784,7 @@
 				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
 				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
+				DDFB79D71E9EB0050022000B /* DFTProfileMostLikedView.xib in Resources */,
 				092317F11E5CF0A70043838D /* GothamRnd-BookIta.otf in Resources */,
 				092317F01E5CF0A70043838D /* GothamRnd-Book.otf in Resources */,
 				092317E91E5CF0A70043838D /* GOTHMZIT.TTF in Resources */,
@@ -849,6 +871,7 @@
 				DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */,
 				DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */,
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,
+				DDFB79D51E9EAFF90022000B /* DFTProfileMostLikedView.m in Sources */,
 				DD4A076E1E3FCACD00E4CF95 /* DFTInnerFeedCell.m in Sources */,
 				09A97CD81E64E11200381FB2 /* DFTCollectionFeedCell.m in Sources */,
 				DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */,
@@ -856,6 +879,7 @@
 				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
 				09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */,
 				DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */,
+				DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */,
 				DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */,
 				DD4D6D701E315A0700E3605A /* DFTJellyTrigger.m in Sources */,
 				DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */,
