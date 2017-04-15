@@ -70,6 +70,11 @@
     [self.locationImageView setTintColor:[UIColor whiteColor]];
 }
 
+- (void)hideProfilePic
+{
+	self.profilePictureImageView.hidden = YES;
+}
+
 #pragma mark
 #pragma mark - Dynamic
 

@@ -39,14 +39,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblDescription;
 
 // Row 3
-@property (weak, nonatomic) IBOutlet UILabel *lblNbCollection;
-@property (weak, nonatomic) IBOutlet UILabel *lblCollection;
-@property (weak, nonatomic) IBOutlet UIImageView *imgMapCollection;
+@property (weak, nonatomic) IBOutlet UIScrollView *driftDropOverviewScrollView;
+
 
 // Row 4
 
 // Row 5
 @property (weak, nonatomic) IBOutlet UILabel *lblHeaderLikedDrops;
+@property (weak, nonatomic) IBOutlet UICollectionView *mostLikedCollectionView;
+
 
 // Row 6
 @property (weak, nonatomic) IBOutlet UILabel *lblLastCheck;

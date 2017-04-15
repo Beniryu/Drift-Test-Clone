@@ -7,6 +7,7 @@
 //
 
 #import "DFTProfileMostLikedView.h"
+#import "DFTFeedCell.h"
 
 @interface DFTProfileMostLikedView () <UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -39,9 +40,10 @@
 
 - (void)configureCollectionView
 {
+	Class cellNibClass = [DFTFeedCell class];
 	self.collectionView.delegate = self;
 	self.collectionView.dataSource = self;
-	[self.collectionView registerNib:[] forCellWithReuseIdentifier:@"Cell"];
+	[self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass(cellNibClass) bundle:nil] forCellWithReuseIdentifier:@"Cell"];
 }
 
 #pragma mark
