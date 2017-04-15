@@ -39,6 +39,12 @@
 	[self configureJelly];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self contextSheet:nil didSelectItem:nil];
+}
+
 - (void)configureJelly
 {
 	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
@@ -72,7 +78,7 @@
 
 - (void)contextSheet:(VLDContextSheet *)contextSheet didSelectItem:(VLDContextSheetItem *)item
 {
-	NSLog(@"Selected : %@", item.title);
+//	NSLog(@"Selected : %@", item.title);
 
 	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 

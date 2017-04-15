@@ -14,6 +14,10 @@
 #import <AMTagListView.h>
 
 @interface DFTAddDropViewController () <UIScrollViewDelegate, UITextFieldDelegate, AMTagListDelegate>
+{
+@private
+    int nbTags;
+}
 
 #pragma mark - Outlets -
 #pragma mark Global
@@ -21,12 +25,16 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 #pragma mark Step 01
-@property (weak, nonatomic) IBOutlet UILabel *stepLabel;
-@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lblStep;
+@property (weak, nonatomic) IBOutlet UILabel *lblStepNumber;
+@property (weak, nonatomic) IBOutlet UIView *vLocation;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
-@property (weak, nonatomic) IBOutlet UITextField *tagsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *tfTags;
 @property (weak, nonatomic) IBOutlet AMTagListView *tagsView;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIButton *btnTags;
+@property (weak, nonatomic) IBOutlet UITextField *tfDescription;
+@property (weak, nonatomic) IBOutlet UIButton *btnDescription;
 
 #pragma mark Step 02
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -43,6 +51,9 @@
 @end
 
 @implementation DFTAddDropViewController
+
+static const int MAX_TAG_AUTHORIZED         = 3;
+static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -91,14 +102,13 @@
 {
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTagsTextField)];
 
-
-	self.tagsTextField.delegate = self;
+	self.tfTags.delegate = self;
 	self.tagsView.tagListDelegate = self;
 
-	self.tagsTextField.hidden = YES;
+	self.tfTags.hidden = NO;
 	[self.tagsView addGestureRecognizer:tap];
 	[self.tagsView setTapHandler:^(AMTagView *tag) {
-		[self.tagsView removeTag:tag];
+		[self removeTag:tag];
 	}];
 	[[AMTagView appearance] setTagLength:0];
 	[[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
@@ -140,7 +150,7 @@
 
 - (void)showTagsTextField
 {
-	self.tagsTextField.hidden = NO;
+	self.tfTags.hidden = NO;
 }
 
 - (void)executeTransition:(kDFTDropFormStepTransition)transition
@@ -176,7 +186,7 @@
 
 		 CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(self.titleHeight * 0.5));
 		 self.tagsView.transform = t2;
-		 self.descriptionTextView.transform = t2;
+		 self.tfDescription.transform = t2;
 
 		 [self.scrollView setContentOffset:(CGPoint){0, 80} animated:YES];
 	 }];
@@ -198,7 +208,7 @@
 	 ^{
 		 self.titleTextView.transform = CGAffineTransformIdentity;
 		 self.tagsView.transform = CGAffineTransformIdentity;
-		 self.descriptionTextView.transform = CGAffineTransformIdentity;
+		 self.tfDescription.transform = CGAffineTransformIdentity;
 
 		 [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
 	 }];
@@ -209,16 +219,59 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	if ([string isEqualToString:@" "])
-	{
-		if (textField.text.length > 0)
-		{
-			[self.tagsView addTag:textField.text];
-			textField.text = @"";
-		}
-		return (NO);
-	}
-	return (YES);
+//	if ([string isEqualToString:@" "])
+//	{
+//		if (textField.text.length > 0)
+//		{
+//			[self.tagsView addTag:textField.text];
+//			textField.text = @"";
+//		}
+//        
+//		return NO;
+//	}
+    if( textField.text.length + string.length > MAX_CARACTERS_AUTHORIZED )
+        return NO;
+	return YES;
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self addTag:textField.text];
+    return YES;
+}
+
+#pragma mark - Gestion Tags
+
+-(void) addTag:(NSString *) tag
+{
+    NSString *tagStrim = [tag stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if( nbTags < MAX_TAG_AUTHORIZED && tag.length > 0)
+    {
+        [self.tagsView addTag:tagStrim];
+        self.tfTags.text = @"";
+        self.btnTags.hidden = YES;
+        nbTags++;
+    }
+}
+
+-(void) removeTag:(AMTagView *) tag
+{
+    [self.tagsView removeTag:tag];
+    nbTags--;
+    if( nbTags == 0 )
+        self.btnTags.hidden = NO;
+}
+
+#pragma mark - Actions
+
+- (IBAction)actTags:(id)sender
+{
+    [self.tfTags setText:@""];
+    [self.tfTags becomeFirstResponder];
+}
+
+- (IBAction)actDescription:(id)sender
+{
+    
+}
 @end
