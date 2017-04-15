@@ -251,7 +251,6 @@
                                                     <constraint firstItem="Ld1-XH-0vR" firstAttribute="top" secondItem="jUB-ov-8gc" secondAttribute="top" id="96O-oy-rFd"/>
                                                     <constraint firstItem="V3T-vc-06D" firstAttribute="height" secondItem="fsf-UP-Lyg" secondAttribute="height" id="97D-N8-6EW"/>
                                                     <constraint firstItem="Ld1-XH-0vR" firstAttribute="width" secondItem="fsf-UP-Lyg" secondAttribute="width" id="C3V-9q-UFS"/>
-                                                    <constraint firstAttribute="trailing" secondItem="V3T-vc-06D" secondAttribute="trailing" id="DMN-FZ-EZS"/>
                                                     <constraint firstItem="Ld1-XH-0vR" firstAttribute="leading" secondItem="fsf-UP-Lyg" secondAttribute="trailing" id="F3Y-2R-nDA"/>
                                                     <constraint firstItem="V3T-vc-06D" firstAttribute="top" secondItem="jUB-ov-8gc" secondAttribute="top" id="GGm-GI-zgD"/>
                                                     <constraint firstItem="fsf-UP-Lyg" firstAttribute="leading" secondItem="jUB-ov-8gc" secondAttribute="leading" id="HCV-Wg-77R"/>
@@ -1030,13 +1029,13 @@
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-bO-dSC" userLabel="LocationView">
-                                                        <rect key="frame" x="12" y="98.5" width="84" height="17"/>
+                                                        <rect key="frame" x="12" y="98.5" width="83.5" height="17"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="QrW-py-LJW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bastille, Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X5t-68-VlU" userLabel="locationLabel">
-                                                                <rect key="frame" x="18" y="3.5" width="66" height="11"/>
+                                                                <rect key="frame" x="18" y="3.5" width="65.5" height="11"/>
                                                                 <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="10"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -1073,7 +1072,7 @@
                                                             <action selector="actTags:" destination="rKL-Yp-R6e" eventType="touchUpInside" id="aS2-94-yOC"/>
                                                         </connections>
                                                     </button>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNK-dt-jyE">
+                                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pNK-dt-jyE">
                                                         <rect key="frame" x="12" y="350" width="343" height="30"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1089,13 +1088,15 @@
                                                         </connections>
                                                     </button>
                                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fg3-pB-ARj">
-                                                        <rect key="frame" x="20" y="189.5" width="335" height="21"/>
+                                                        <rect key="frame" x="20" y="283" width="335" height="21"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="YMg-qD-Iwb" secondAttribute="trailing" constant="20" symbolic="YES" id="17i-MS-nRB"/>
                                                     <constraint firstItem="XMd-UA-zNV" firstAttribute="leading" secondItem="WnG-vK-tf6" secondAttribute="leading" constant="12" id="1tM-Mr-5XN"/>
@@ -1111,6 +1112,7 @@
                                                     <constraint firstItem="Fg3-pB-ARj" firstAttribute="centerX" secondItem="WnG-vK-tf6" secondAttribute="centerX" id="NI3-Fg-aFx"/>
                                                     <constraint firstItem="XMd-UA-zNV" firstAttribute="top" secondItem="WnG-vK-tf6" secondAttribute="top" constant="8" id="OTV-pI-UyO"/>
                                                     <constraint firstItem="r2E-Rk-uel" firstAttribute="top" secondItem="1Id-jK-4At" secondAttribute="bottom" constant="8" symbolic="YES" id="P4h-kw-gBa"/>
+                                                    <constraint firstItem="scw-cY-6Wr" firstAttribute="top" secondItem="Fg3-pB-ARj" secondAttribute="bottom" constant="8" symbolic="YES" id="Ro1-0T-5sh"/>
                                                     <constraint firstItem="YMg-qD-Iwb" firstAttribute="leading" secondItem="1Id-jK-4At" secondAttribute="leading" id="Xov-td-urg"/>
                                                     <constraint firstItem="edh-lF-RXn" firstAttribute="top" secondItem="scw-cY-6Wr" secondAttribute="bottom" constant="8" symbolic="YES" id="cPA-UB-qtZ"/>
                                                     <constraint firstItem="pNK-dt-jyE" firstAttribute="leading" secondItem="edh-lF-RXn" secondAttribute="leading" id="coo-Dp-YGS"/>
@@ -1125,8 +1127,10 @@
                                                     <constraint firstItem="r2E-Rk-uel" firstAttribute="leading" secondItem="1Id-jK-4At" secondAttribute="leading" id="n1O-Mp-eo1"/>
                                                     <constraint firstItem="SE0-bO-dSC" firstAttribute="leading" secondItem="DI9-Zr-bI6" secondAttribute="leading" id="sue-De-Rbw"/>
                                                     <constraint firstItem="edh-lF-RXn" firstAttribute="leading" secondItem="scw-cY-6Wr" secondAttribute="leading" id="uIc-Hk-VBJ"/>
-                                                    <constraint firstItem="Fg3-pB-ARj" firstAttribute="centerY" secondItem="WnG-vK-tf6" secondAttribute="centerY" id="yko-Nu-lHy"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="aZv-a1-HFf" appends="YES" id="xus-3b-KVA"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1172,6 +1176,7 @@
                         <outlet property="btnTags" destination="scw-cY-6Wr" id="jwQ-b4-DgX"/>
                         <outlet property="firstStepHeight" destination="JD1-YI-tsq" id="ipQ-Qs-RhN"/>
                         <outlet property="lblLocation" destination="X5t-68-VlU" id="fHR-dJ-s87"/>
+                        <outlet property="lblSeparator" destination="r2E-Rk-uel" id="CPP-eD-bk4"/>
                         <outlet property="lblStep" destination="XMd-UA-zNV" id="AKq-do-iXn"/>
                         <outlet property="lblStepNumber" destination="DI9-Zr-bI6" id="ATS-Wu-qXC"/>
                         <outlet property="scrollView" destination="Gi2-Wy-E4q" id="gtA-s5-Y0v"/>
@@ -1184,6 +1189,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tk2-bR-IKy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aZv-a1-HFf">
+                    <connections>
+                        <action selector="actTapOut:" destination="rKL-Yp-R6e" id="TIf-bj-ZiJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1596" y="1983.5082458770617"/>
         </scene>
@@ -1308,7 +1318,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3" width="46.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1724,7 +1734,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="13.5" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="316.5" y="14" width="30.5" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
