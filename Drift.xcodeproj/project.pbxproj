@@ -95,6 +95,9 @@
 		DDFB79D51E9EAFF90022000B /* DFTProfileMostLikedView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79D41E9EAFF90022000B /* DFTProfileMostLikedView.m */; };
 		DDFB79D71E9EB0050022000B /* DFTProfileMostLikedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDFB79D61E9EB0050022000B /* DFTProfileMostLikedView.xib */; };
 		DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */; };
+		DDFB79DE1EA281460022000B /* DFTRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79DD1EA281460022000B /* DFTRadialGradientLayer.m */; };
+		DDFB79E11EA28B8B0022000B /* square.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFB79E01EA28B8B0022000B /* square.json */; };
+		DDFB79E41EA3B1CA0022000B /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -240,6 +243,11 @@
 		DDFB79D61E9EB0050022000B /* DFTProfileMostLikedView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTProfileMostLikedView.xib; sourceTree = "<group>"; };
 		DDFB79D91E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileStatCellCollectionViewCell.h; sourceTree = "<group>"; };
 		DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileStatCellCollectionViewCell.m; sourceTree = "<group>"; };
+		DDFB79DC1EA281460022000B /* DFTRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTRadialGradientLayer.h; sourceTree = "<group>"; };
+		DDFB79DD1EA281460022000B /* DFTRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTRadialGradientLayer.m; sourceTree = "<group>"; };
+		DDFB79E01EA28B8B0022000B /* square.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square.json; sourceTree = "<group>"; };
+		DDFB79E21EA3B1CA0022000B /* DFTDropSignalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropSignalViewController.h; sourceTree = "<group>"; };
+		DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropSignalViewController.m; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -416,6 +424,8 @@
 				DD4D6D681E3150D600E3605A /* DFTDropViewController.m */,
 				DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */,
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
+				DDFB79E21EA3B1CA0022000B /* DFTDropSignalViewController.h */,
+				DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */,
 			);
 			name = Drop;
 			sourceTree = "<group>";
@@ -476,6 +486,7 @@
 		DDA59A5F1DD4E6D6000B942B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DDFB79DF1EA28B7C0022000B /* Animation JSONs */,
 				DDA59A5D1DD4E28A000B942B /* Images.xcassets */,
 				DDA59A601DD4E6E6000B942B /* Fonts */,
 			);
@@ -556,6 +567,8 @@
 				09DAA0451E68D3FD00E92A1F /* DFTSegmentedControl.h */,
 				09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */,
 				09954DDB1E6AE53100C3794D /* DFTSegmentedControl.xib */,
+				DDFB79DC1EA281460022000B /* DFTRadialGradientLayer.h */,
+				DDFB79DD1EA281460022000B /* DFTRadialGradientLayer.m */,
 			);
 			name = "Custom views";
 			sourceTree = "<group>";
@@ -700,6 +713,14 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		DDFB79DF1EA28B7C0022000B /* Animation JSONs */ = {
+			isa = PBXGroup;
+			children = (
+				DDFB79E01EA28B8B0022000B /* square.json */,
+			);
+			name = "Animation JSONs";
+			sourceTree = "<group>";
+		};
 		E39777A022B105FAD49548B9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +824,7 @@
 				DDA59A731DD4E6F4000B942B /* Lato-LightItalic.ttf in Resources */,
 				DDA59A701DD4E6F4000B942B /* Lato-Hairline.ttf in Resources */,
 				DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */,
+				DDFB79E11EA28B8B0022000B /* square.json in Resources */,
 				DDA59A6C1DD4E6F4000B942B /* Lato-Black.ttf in Resources */,
 				092317F41E5CF0A70043838D /* GothamRnd-MedIta.otf in Resources */,
 				DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */,
@@ -839,7 +861,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		FA9FB805DA71B1CDA45B2D86 /* [CP] Copy Pods Resources */ = {
@@ -910,11 +932,13 @@
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
 				DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */,
+				DDFB79E41EA3B1CA0022000B /* DFTDropSignalViewController.m in Sources */,
 				DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */,
 				DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */,
 				DDB50F471DDE4E5A00542EAA /* DFTNetworkClient.m in Sources */,
 				DD45C9A31E2594B700ED3E20 /* DFTFeedContainerViewController.m in Sources */,
 				DD4D6D731E315C4400E3605A /* DFTTabBarController.m in Sources */,
+				DDFB79DE1EA281460022000B /* DFTRadialGradientLayer.m in Sources */,
 				DDA59A481DD3DACB000B942B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

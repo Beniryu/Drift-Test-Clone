@@ -12,12 +12,14 @@
 
 #import "DFTAddDropViewController.h"
 
+#import "DFTRadialGradientLayer.h"
 #import "DFTJellyTrigger.h"
 #import "VLDContextSheet.h"
 #import "VLDContextSheetItem.h"
 
 #import "DFTMapboxDelegate.h"
 #import <Mapbox/Mapbox.h>
+#import <lottie-ios/Lottie/Lottie.h>
 
 @interface DFTDropViewController () <VLDContextSheetDelegate>
 
@@ -26,6 +28,7 @@
 
 @property (nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic) DFTMapboxDelegate *mapDelegate;
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
 
 #pragma mark
 #pragma mark - Capture
@@ -47,8 +50,22 @@
 	[self configureJelly];
 	[self configureCapture];
 
+	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
+
+	gradientLayer.frame = self.view.bounds;
+	[self.view.layer addSublayer:gradientLayer];
+
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
 	[self.view addGestureRecognizer:tap];
+	[self.view bringSubviewToFront:self.tempLabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//	LOTAnimationView *animation = [LOTAnimationView animationNamed:@"square"];
+//	[self.view addSubview:animation];
+//	[animation playWithCompletion:nil];
 }
 
 #pragma mark
