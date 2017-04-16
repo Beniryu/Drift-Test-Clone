@@ -34,19 +34,8 @@
 
 	[self configureProfilePic];
 	[self configureLocationLabel];
-	CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-	gradientLayer.frame = self.backgroundPictureImageView.layer.bounds;
 
-	gradientLayer.colors = [NSArray arrayWithObjects:
-							(id)[UIColor colorWithWhite:0.0f alpha:0.3f].CGColor,
-							(id)[UIColor colorWithWhite:0.0f alpha:0.6f].CGColor,
-							nil];
-
-	gradientLayer.locations = [NSArray arrayWithObjects:
-							   [NSNumber numberWithFloat:0.0f],
-							   [NSNumber numberWithFloat:0.5f],
-							   nil];
-	[self.backgroundPictureImageView.layer addSublayer:gradientLayer];
+	[self displayGradient];
 }
 
 - (void)configureProfilePic
@@ -68,6 +57,23 @@
     self.locationLabel.text = @"distance";
     self.locationImageView.image = [self.locationImageView.image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     [self.locationImageView setTintColor:[UIColor whiteColor]];
+}
+
+- (void)displayGradient
+{
+	CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+	gradientLayer.frame = self.backgroundPictureImageView.layer.bounds;
+
+	gradientLayer.colors = [NSArray arrayWithObjects:
+							(id)[UIColor colorWithWhite:0.0f alpha:0.3f].CGColor,
+							(id)[UIColor colorWithWhite:0.0f alpha:0.6f].CGColor,
+							nil];
+
+	gradientLayer.locations = [NSArray arrayWithObjects:
+							   [NSNumber numberWithFloat:0.0f],
+							   [NSNumber numberWithFloat:0.5f],
+							   nil];
+	[self.backgroundPictureImageView.layer addSublayer:gradientLayer];
 }
 
 - (void)hideProfilePic

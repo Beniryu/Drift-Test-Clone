@@ -1,0 +1,40 @@
+//
+//  RadialGradientLayer.m
+//  Drift
+//
+//  Created by Thierry Ng on 15/04/2017.
+//  Copyright © 2017 Thierry Ng. All rights reserved.
+//
+
+#import "DFTRadialGradientLayer.h"
+
+@implementation DFTRadialGradientLayer
+
+- (instancetype)initWithCenterPoint:(CGPoint)centerPoint
+{
+	if (self = [super init])
+	{
+		self.gradientCenterPoint = centerPoint;
+		[self setNeedsDisplay];
+	}
+	return (self);
+}
+
+- (void)drawInContext:(CGContextRef)ctx
+{
+	size_t gradLocationsNb = 2;
+	CGFloat gradLocations[2] = {0.0f, 1.0f};
+	CGFloat gradColors[8] = {0.0f,0.0f,0.0f,0.0f,0.08f,0.09f,0.11f,0.7f};
+	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+	CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNb);
+
+	CGColorSpaceRelease(colorSpace);
+
+	CGPoint gradCenter = CGPointMake(self.gradientCenterPoint.x, self.gradientCenterPoint.y);
+	float gradRadius = MIN(self.bounds.size.width, self.bounds.size.height);
+
+	CGContextDrawRadialGradient(ctx, gradient, gradCenter, 0, gradCenter, gradRadius, kCGGradientDrawsAfterEndLocation);
+	CGGradientRelease(gradient);
+}
+
+@end
