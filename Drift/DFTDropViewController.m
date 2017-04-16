@@ -48,17 +48,17 @@
 	self.veilImageView.userInteractionEnabled = NO;
 	self.veilImageView.hidden = YES;
 	[self configureJelly];
-	[self configureCapture];
-
-	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
-	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
-
-	gradientLayer.frame = self.view.bounds;
-	[self.view.layer addSublayer:gradientLayer];
-
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
-	[self.view addGestureRecognizer:tap];
-	[self.view bringSubviewToFront:self.tempLabel];
+//	[self configureCapture];
+//
+//	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+//	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
+//
+//	gradientLayer.frame = self.view.bounds;
+//	[self.view.layer addSublayer:gradientLayer];
+//
+//	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
+//	[self.view addGestureRecognizer:tap];
+//	[self.view bringSubviewToFront:self.tempLabel];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,7 +127,7 @@
 	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
 																									action: @selector(engageJelly:)];
 	gestureRecognizer.minimumPressDuration = 0.01;
-//	[self.view addGestureRecognizer: gestureRecognizer];
+	[self.view addGestureRecognizer: gestureRecognizer];
 
 	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: @"Gift"
 																	  image: [UIImage imageNamed: @"picto_location"]
