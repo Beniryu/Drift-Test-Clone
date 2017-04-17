@@ -13,9 +13,14 @@
 #import "UIColor+DFTStyles.h"
 #import "DFTScrollView.h"
 #import "DFTSegmentedControl.h"
+#import "ImageUtils.h"
 #import <Mapbox/Mapbox.h>
 
 @interface DFTFeedContainerViewController () <UIScrollViewDelegate, DFTSegmentedControlDelegate>
+{
+    @private
+    DFTFeedViewController *currentFeederViewController;
+}
 
 @property (weak, nonatomic) IBOutlet MGLMapView *mapboxView;
 @property (weak, nonatomic) IBOutlet DFTScrollView *scrollView;
@@ -73,6 +78,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	[self.scrollView setContentInset:UIEdgeInsetsZero];
     
+    currentFeederViewController = self.globalVC;
     self.feedType = GlobalFeed;
 }
 
@@ -103,34 +109,25 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)configureDrops
 {
-    self.dropsLabel.text = @"DROPS TODAY";
-    self.dropsNumberLabel.text = @"76";
+    self.dropsLabel.text = NSLocalizedString(@"dropsToday", nil);
+    self.dropsNumberLabel.text = [NSString stringWithFormat:@"%d", 76];
 }
 
 - (void)configureDrift
 {
-    self.driftLabel.text = @"Name";
-    self.driftLevelLabel.text = @"Drift Level 40";
+    self.driftLabel.text = @"John Do";
+    self.driftLevelLabel.text = [NSString stringWithFormat:NSLocalizedString(@"driftLevel", nil), 40];
 }
 
 - (void)configureProfilPic
 {
-    // TODO: - Duplicate code taken from DFTFeedCell -> UIImageView category ?
-    CAShapeLayer *border = [CAShapeLayer new];
-    
-    border.frame = self.profilePictureImageView.bounds;
-    border.lineWidth = 4.;
-    border.path = [UIBezierPath bezierPathWithOvalInRect:border.bounds].CGPath;
-    border.strokeColor = [UIColor whiteColor].CGColor;
-    border.fillColor = [UIColor clearColor].CGColor;
-    [self.profilePictureImageView.layer addSublayer:border];
-    self.profilePictureImageView.clipsToBounds = YES;
-    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2.;
+    [ImageUtils roundedBorderImageView:self.profilePictureImageView];
 }
 
 - (void)configureSegmentedControl
 {
     self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    [self.segmentedControl configForFeed];
     self.segmentedControl.delegate = self;
     [self.segmentedContainerView addSubview:self.segmentedControl];
 }
@@ -171,14 +168,11 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 	[self resetHeaders];
     CGPoint point = (CGPoint){self.scrollView.frame.size.width * index, 0};
-    [[NSNotificationCenter defaultCenter]
-     postNotificationName:@"DFTFeedsScaleAnimation"
-     object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleAnimation" object:self];
     [UIView animateWithDuration:0.6 delay:0 usingSpringWithDamping:0.95 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self updateFeedType:index];
         [self.scrollView setContentOffset:point];
     } completion:nil];
-
 }
 
 #pragma mark - Feed Protocol
@@ -198,6 +192,22 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     }
     self.mapTopConstraint.constant = -((offset) / 7);
     self.headerTopConstraint.constant = -((offset) / 7);
+    
+    if( self.mapTopConstraint.constant  <= -5 )
+    {
+        [UIView animateWithDuration:0.3f animations:^{
+            [currentFeederViewController expandCollectionView];
+            [currentFeederViewController.collectionView layoutIfNeeded];
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.5f animations:^{
+            [currentFeederViewController shrinkCollectionView];
+            [currentFeederViewController.collectionView layoutIfNeeded];
+        }];
+    }
+    
 }
 
 - (void)resetHeaders
@@ -219,9 +229,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-	[[NSNotificationCenter defaultCenter]
-	 postNotificationName:@"DFTFeedsScaleExpand"
-	 object:self];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleExpand" object:self];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -237,33 +245,33 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
             previousPage = page;
             [self.segmentedControl showSegment:page];
             [self updateFeedType:page];
+            
+            CLLocationCoordinate2D coordinate = self.mapboxView.userLocation.location.coordinate;
+            coordinate.latitude -= 40;
 
-			DFTFeedViewController *viewController = nil;
-
-			if (page == 0)
-			{
-				viewController = self.globalVC;
-				[self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
-										   zoomLevel:1
-											animated:YES];
-//				self.mapboxView.showsUserLocation = NO;
-//				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
-				for (DFTDrop *annotation in self.mapboxView.annotations)
-					[self.mapboxView removeAnnotation:annotation];
-				[self.mapboxView addAnnotations:self.globalVC.drops];
-			}
-			else if (page == 1)
-			{
-				viewController = self.innerVC;
-				[UIView animateWithDuration:2
-									  delay:1
-									options: UIViewAnimationOptionCurveEaseIn
-								 animations:^{
-									 [self.mapboxView setCenterCoordinate:self.mapboxView.userLocation.location.coordinate
-																zoomLevel:3
-																 animated:YES];
-								 }
-					completion:nil];
+            if (page == 0)
+            {
+                currentFeederViewController = self.globalVC;
+                [self.mapboxView setCenterCoordinate:coordinate zoomLevel:1 animated:YES];
+                //				self.mapboxView.showsUserLocation = NO;
+                //				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
+                
+                for (DFTDrop *annotation in self.mapboxView.annotations)
+                    [self.mapboxView removeAnnotation:annotation];
+                [self.mapboxView addAnnotations:self.globalVC.drops];
+            }
+            else if (page == 1)
+            {
+                currentFeederViewController = self.innerVC;
+                [UIView animateWithDuration:2
+                                      delay:1
+                                    options: UIViewAnimationOptionCurveEaseIn
+                                 animations:^{
+                                     [self.mapboxView setCenterCoordinate:coordinate
+                                                                zoomLevel:0
+                                                                 animated:YES];
+                                 }
+                                 completion:nil];
 				self.mapboxView.showsUserLocation = YES;
 //				[self.mapboxView.delegate mapView:self.mapboxView didUpdateUserLocation:self.mapboxView.userLocation];
 				for (DFTDrop *annotation in self.mapboxView.annotations)
@@ -271,7 +279,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 				[self.mapboxView addAnnotations:self.innerVC.drops];
 			}
 			else if (page == 2)
-				viewController = self.collectionVC;
+				currentFeederViewController = self.collectionVC;
         }
     }
 }

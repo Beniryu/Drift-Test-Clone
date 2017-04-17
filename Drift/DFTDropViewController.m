@@ -129,15 +129,16 @@
 	gestureRecognizer.minimumPressDuration = 0.01;
 	[self.view addGestureRecognizer: gestureRecognizer];
 
-	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: @"Gift"
+    //TODO: localization
+	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"Add to"
+	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
+	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
