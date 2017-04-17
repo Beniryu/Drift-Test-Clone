@@ -138,4 +138,9 @@ static const double sizeReduce = 6.;
 	return (cell);
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showDrop" sender:nil];
+}
+
 @end
