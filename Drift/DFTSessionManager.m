@@ -58,7 +58,7 @@ const NSString *kDFTAuthenticationSignatureKey = @"dk3rE9ZRPO34azE1";
 	const char *s = [source cStringUsingEncoding:NSASCIIStringEncoding];
 	NSData *keyData = [NSData dataWithBytes:s length:strlen(s)];
 	uint8_t digest[CC_SHA512_DIGEST_LENGTH] = {0};
-	CC_SHA512(keyData.bytes, keyData.length, digest);
+	CC_SHA512(keyData.bytes, (unsigned int)keyData.length, digest);
 
 	NSData *out = [NSData dataWithBytes:digest length:CC_SHA512_DIGEST_LENGTH];
 	return [out description];

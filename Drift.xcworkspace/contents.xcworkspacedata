@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:DFTProfileStatCellCollectionViewCell.xib">
-   </FileRef>
-   <FileRef
       location = "group:Drift.xcodeproj">
    </FileRef>
    <FileRef

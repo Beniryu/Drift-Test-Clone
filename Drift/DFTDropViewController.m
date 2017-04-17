@@ -48,17 +48,17 @@
 	self.veilImageView.userInteractionEnabled = NO;
 	self.veilImageView.hidden = YES;
 	[self configureJelly];
-	[self configureCapture];
-
-	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
-	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
-
-	gradientLayer.frame = self.view.bounds;
-	[self.view.layer addSublayer:gradientLayer];
-
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
-	[self.view addGestureRecognizer:tap];
-	[self.view bringSubviewToFront:self.tempLabel];
+//	[self configureCapture];
+//
+//	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+//	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
+//
+//	gradientLayer.frame = self.view.bounds;
+//	[self.view.layer addSublayer:gradientLayer];
+//
+//	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
+//	[self.view addGestureRecognizer:tap];
+//	[self.view bringSubviewToFront:self.tempLabel];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,17 +127,18 @@
 	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
 																									action: @selector(engageJelly:)];
 	gestureRecognizer.minimumPressDuration = 0.01;
-//	[self.view addGestureRecognizer: gestureRecognizer];
+	[self.view addGestureRecognizer: gestureRecognizer];
 
-	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: @"Gift"
+    //TODO: localization
+	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: @"Add to"
+	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
-	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: @"Share"
+	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
 																	  image: [UIImage imageNamed: @"picto_location"]
 														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
 
@@ -155,7 +156,7 @@
 
 - (void)contextSheet:(VLDContextSheet *)contextSheet didSelectItem:(VLDContextSheetItem *)item
 {
-	NSLog(@"Selected : %@", item.title);
+//	NSLog(@"Selected : %@", item.title);
 
 	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 

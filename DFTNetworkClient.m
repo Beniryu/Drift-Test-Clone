@@ -14,26 +14,26 @@
 #pragma mark
 #pragma mark - Base URL
 
-static const NSString *kDFTNetworkTestEnvironementURL = @"https://drift.braycedenayce.com/drift_api";
-static const NSString *kDFTNetworkProdEnvironementURL = @"https://drift.braycedenayce.com/drift_api";
+static NSString * const kDFTNetworkTestEnvironementURL = @"https://drift.braycedenayce.com/drift_api";
+static NSString * const kDFTNetworkProdEnvironementURL = @"https://drift.braycedenayce.com/drift_api";
 
 #pragma mark
 #pragma mark - Headers
 
-static const NSString *kDFTNetworkHeaderSessionTokenKey = @"authorization";
+static NSString * const kDFTNetworkHeaderSessionTokenKey = @"authorization";
 
 #pragma mark
 #pragma mark - Route
 
-static const NSString *kDFTNetworkRouteAuth = @"authenticate/";
+static NSString * const kDFTNetworkRouteAuth = @"authenticate/";
 
 #pragma mark
 #pragma mark - Request parameters
 
-static const NSString *kDFTNetworkParamKeyIdentifier = @"Identifier";
-static const NSString *kDFTNetworkParamKeyPassword = @"Password";
-static const NSString *kDFTNetworkParamKeyTimestamp = @"DateTime";
-static const NSString *kDFTNetworkParamKeySecret = @"Signature";
+static NSString * const kDFTNetworkParamKeyIdentifier = @"Identifier";
+static NSString * const kDFTNetworkParamKeyPassword = @"Password";
+static NSString * const kDFTNetworkParamKeyTimestamp = @"DateTime";
+static NSString * const kDFTNetworkParamKeySecret = @"Signature";
 
 #pragma mark
 #pragma mark - Interface

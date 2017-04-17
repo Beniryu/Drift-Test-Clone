@@ -19,7 +19,7 @@
 {
 	[super viewDidLoad];
 
-	self.selectedIndex = 3;
+	self.selectedIndex = 2;
 	self.tabBar.tintColor = [UIColor dft_salmonColor];
 	self.tabBar.unselectedItemTintColor = [UIColor dft_grayColor];
 	self.tabBar.barTintColor = [UIColor dft_darkGrayColor];

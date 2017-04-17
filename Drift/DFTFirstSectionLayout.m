@@ -32,7 +32,7 @@
 
 - (void)setup
 {
-	self.screenWidth = [[UIScreen mainScreen] bounds].size.width;
+	self.screenWidth = SCREEN_SIZE.width;
 //	self.minimumInteritemSpacing = 0.;
 	self.minimumLineSpacing = 80.;
 }

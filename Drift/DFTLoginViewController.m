@@ -39,19 +39,24 @@
 	[super viewDidLoad];
 
 	[self configureViews];
+    
+    [self authenticateUser];
 }
 
 - (void)configureViews
 {
 	self.emailTextField.text = @"ng.thierry.d@gmail.com";
 	self.passwordTextField.text = @"driftapi";
+    
+    self.emailTextField.placeholder = NSLocalizedString(@"placeholderMail", nil);
+    self.passwordTextField.placeholder = NSLocalizedString(@"placeholderPassword", nil);
 
 	self.emailTextField.delegate = self;
 	self.passwordTextField.delegate = self;
 	self.emailTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 	self.passwordTextField.secureTextEntry = YES;
 
-	self.alternativeLoginLabel.text = @"OR CONNECT WITH";
+	self.alternativeLoginLabel.text = NSLocalizedString(@"optionConnection", nil);
 	self.alternativeLoginLabel.textColor = [UIColor dft_slateBlueColor];
 
 	[self configureAlternativeButtons];
@@ -61,8 +66,8 @@
 
 - (void)configureFormButtons
 {
-	[self.signUpButton setTitle:@"Sign Up" forState:UIControlStateNormal];
-	[self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+	[self.signUpButton setTitle:NSLocalizedString(@"singUp", nil) forState:UIControlStateNormal];
+	[self.loginButton setTitle:NSLocalizedString(@"login", nil) forState:UIControlStateNormal];
 	self.signUpButton.style = kDFTRoundedButtonStyleRed;
 	self.loginButton.style = kDFTRoundedButtonStyleAqua;
 }

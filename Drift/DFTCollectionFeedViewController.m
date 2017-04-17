@@ -15,6 +15,8 @@
 @end
 
 static const NSString *collectionFeedCellIdentifier = @"DFTCollectionFeedCell";
+static const double sizeReduce = 18.;
+static const double cellHeight = 156.;
 
 @implementation DFTCollectionFeedViewController
 
@@ -24,7 +26,6 @@ static const NSString *collectionFeedCellIdentifier = @"DFTCollectionFeedCell";
 
 	[self configureCollectionView];
 }
-
 
 - (void)configureCollectionView
 {
@@ -36,10 +37,22 @@ static const NSString *collectionFeedCellIdentifier = @"DFTCollectionFeedCell";
 
 	UICollectionViewFlowLayout *layout = [DFTFeedCollectionViewLayout new];
 
-	layout.itemSize = (CGSize){[[UIScreen mainScreen] bounds].size.width - 18., 156.};
+	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, cellHeight};
 	layout.minimumLineSpacing = 3.;
 	layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 235.);
 	self.collectionView.collectionViewLayout = layout;
+}
+
+- (void)expandCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width, layout.itemSize.height};
+}
+
+- (void)shrinkCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, layout.itemSize.height};
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView

@@ -9,6 +9,7 @@
 #import "DFTProfileViewController.h"
 #import "DFTFeedManager.h"
 #import "DFTFeedCell.h"
+#import "ImageUtils.h"
 
 #import "DFTSegmentedControl.h"
 
@@ -51,6 +52,7 @@
 - (void)configureHeader
 {
 	imgProfile.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
+    [ImageUtils roundedBorderImageView:imgProfile];
 }
 
 - (void)configureScrollView
@@ -95,11 +97,11 @@
 
 - (IBAction)actSettings:(id)sender
 {
-    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SuperTitle", nil)
-                                message:NSLocalizedString(@"SuperMsg", nil)
-                               delegate:self
-                      cancelButtonTitle:NSLocalizedString(@"OK", nil)
-                      otherButtonTitles:nil] show];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"SuperTitle", nil) message:NSLocalizedString(@"SuperMsg", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"ok", nil) style:UIAlertActionStyleDefault handler:nil];
+    
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark
@@ -112,6 +114,7 @@
 		self.headerTopConstraint.constant = -((scrollView.contentOffset.y) / 7);
 		self.headerView.alpha = (1 - (scrollView.contentOffset.y / self.headerView.frame.size.height));
 
+        //TODO remove
 		NSLog(@"%f", self.headerView.alpha);
 		[btnSettings setUserInteractionEnabled:(self.headerView.alpha >= 0.95)];
 	}
@@ -122,9 +125,9 @@
 
 - (void)segmentedControlValueChanged:(NSInteger)index
 {
-	// Replace by custon self-made views
+	// Replace by custom self-made views
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Titre" message:@"message message message message message message message" preferredStyle:UIAlertControllerStyleAlert];
-	UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Fermer" style:UIAlertActionStyleDefault handler:nil];
+	UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"close", nil) style:UIAlertActionStyleDefault handler:nil];
 
 	[alert addAction:okAction];
 	[self presentViewController:alert animated:YES completion:nil];

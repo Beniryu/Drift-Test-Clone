@@ -19,7 +19,7 @@
 @end
 
 static const NSString *feedCellIdentifier = @"DFTFeedCell";
-
+static const double sizeReduce = 6.;
 
 @implementation DFTGlobalFeedViewController
 
@@ -67,6 +67,9 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 
 - (void)viewDidAppear:(BOOL)animated
 {
+	[super viewDidAppear:animated];
+    
+//    self.collectionView.contentOffset= CGPointMake(0, -100);
 	//	self.collectionTopConstraint.constant = -20;
 	//	[UIView animateWithDuration:.75f animations:
 	//	 ^{
@@ -98,6 +101,20 @@ static const NSString *feedCellIdentifier = @"DFTFeedCell";
 	layout.headerReferenceSize = CGSizeMake(self.collectionView.frame.size.width, 235.f);
 	self.collectionView.collectionViewLayout = layout;
 	[self.collectionView registerNib:[UINib nibWithNibName:(NSString *)feedCellIdentifier bundle:nil] forCellWithReuseIdentifier:(NSString *)feedCellIdentifier];
+}
+
+- (void)expandCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width/2, layout.itemSize.height};
+    layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+}
+
+- (void)shrinkCollectionView
+{
+	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+	layout.itemSize = (CGSize){SCREEN_SIZE.width/2 - sizeReduce, layout.itemSize.height};
+    layout.sectionInset = UIEdgeInsetsMake(0, sizeReduce, 0, sizeReduce);
 }
 
 #pragma mark

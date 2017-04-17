@@ -10,8 +10,9 @@
 
 @interface DFTInnerFeedCell : UICollectionViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
 - (void)configureWithItem:(id)item;
 - (void)updateConstraintWithValue:(NSInteger)value;
-
 
 @end

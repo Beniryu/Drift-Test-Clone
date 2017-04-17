@@ -31,6 +31,7 @@
 		09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 09DAA0421E678DEC00E92A1F /* GOTHMBOL.TTF */; };
 		09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
+		BD9C94401EA4B42B000CDF6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9C943F1EA4B42B000CDF6B /* Images.xcassets */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD2CE56A1E5CE15100204E64 /* DFTFirstSectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */; };
 		DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */; };
@@ -68,7 +69,6 @@
 		DDA59A4E1DD3DACB000B942B /* DFTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA59A4D1DD3DACB000B942B /* DFTLoginViewController.m */; };
 		DDA59A511DD3DACB000B942B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A4F1DD3DACB000B942B /* Main.storyboard */; };
 		DDA59A561DD3DACB000B942B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A541DD3DACB000B942B /* LaunchScreen.storyboard */; };
-		DDA59A5E1DD4E28A000B942B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A5D1DD4E28A000B942B /* Images.xcassets */; };
 		DDA59A6C1DD4E6F4000B942B /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A631DD4E6F4000B942B /* Lato-Black.ttf */; };
 		DDA59A6D1DD4E6F4000B942B /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A641DD4E6F4000B942B /* Lato-BlackItalic.ttf */; };
 		DDA59A6E1DD4E6F4000B942B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDA59A651DD4E6F4000B942B /* Lato-Bold.ttf */; };
@@ -97,7 +97,8 @@
 		DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79DA1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m */; };
 		DDFB79DE1EA281460022000B /* DFTRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79DD1EA281460022000B /* DFTRadialGradientLayer.m */; };
 		DDFB79E11EA28B8B0022000B /* square.json in Resources */ = {isa = PBXBuildFile; fileRef = DDFB79E01EA28B8B0022000B /* square.json */; };
-		DDFB79E41EA3B1CA0022000B /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */; };
+		EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC274261E9BA5ED006D20F4 /* Localizable.strings */; };
+		EBEEEB221E9BD39900F0147A /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEEEB211E9BD39900F0147A /* ImageUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		09DAA0451E68D3FD00E92A1F /* DFTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTSegmentedControl.h; sourceTree = "<group>"; };
 		09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTSegmentedControl.m; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
+		BD9C943F1EA4B42B000CDF6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
 		DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropViewController.m; sourceTree = "<group>"; };
@@ -201,7 +203,6 @@
 		DDA59A501DD3DACB000B942B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDA59A551DD3DACB000B942B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDA59A571DD3DACB000B942B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DDA59A5D1DD4E28A000B942B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ../Images.xcassets; sourceTree = "<group>"; };
 		DDA59A631DD4E6F4000B942B /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
 		DDA59A641DD4E6F4000B942B /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		DDA59A651DD4E6F4000B942B /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
@@ -246,8 +247,11 @@
 		DDFB79DC1EA281460022000B /* DFTRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTRadialGradientLayer.h; sourceTree = "<group>"; };
 		DDFB79DD1EA281460022000B /* DFTRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTRadialGradientLayer.m; sourceTree = "<group>"; };
 		DDFB79E01EA28B8B0022000B /* square.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square.json; sourceTree = "<group>"; };
-		DDFB79E21EA3B1CA0022000B /* DFTDropSignalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropSignalViewController.h; sourceTree = "<group>"; };
-		DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropSignalViewController.m; sourceTree = "<group>"; };
+		EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DFT-Prefix.pch"; sourceTree = "<group>"; };
+		EBC274251E9BA5ED006D20F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBC274271E9BA5F6006D20F4 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EBEEEB201E9BD39900F0147A /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageUtils.h; path = utils/ImageUtils.h; sourceTree = "<group>"; };
+		EBEEEB211E9BD39900F0147A /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageUtils.m; path = utils/ImageUtils.m; sourceTree = "<group>"; };
 		F802EDC41987F133802A1305 /* libPods-Drift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Drift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -331,10 +335,10 @@
 		09DAA03F1E67827100E92A1F /* Children */ = {
 			isa = PBXGroup;
 			children = (
-				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
-				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
 				DDD6A0B71DE99A7200FF9741 /* DFTGlobalFeedViewController.h */,
 				DDD6A0B81DE99A7200FF9741 /* DFTGlobalFeedViewController.m */,
+				DD45C9A41E28219C00ED3E20 /* DFTInnerFeedViewController.h */,
+				DD45C9A51E28219C00ED3E20 /* DFTInnerFeedViewController.m */,
 				DD45C9A71E2821AE00ED3E20 /* DFTCollectionFeedViewController.h */,
 				DD45C9A81E2821AE00ED3E20 /* DFTCollectionFeedViewController.m */,
 			);
@@ -356,6 +360,24 @@
 				F802EDC41987F133802A1305 /* libPods-Drift.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDD3DB181E9583F000D5D05B /* Layer */ = {
+			isa = PBXGroup;
+			children = (
+				DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */,
+				DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */,
+			);
+			name = Layer;
+			sourceTree = "<group>";
+		};
+		BDD3DB191E9583F800D5D05B /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */,
+				DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */,
+			);
+			name = Delegate;
 			sourceTree = "<group>";
 		};
 		DD2CE5671E5CE0D400204E64 /* Delegates */ = {
@@ -424,8 +446,6 @@
 				DD4D6D681E3150D600E3605A /* DFTDropViewController.m */,
 				DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */,
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
-				DDFB79E21EA3B1CA0022000B /* DFTDropSignalViewController.h */,
-				DDFB79E31EA3B1CA0022000B /* DFTDropSignalViewController.m */,
 			);
 			name = Drop;
 			sourceTree = "<group>";
@@ -476,9 +496,11 @@
 		DDA59A461DD3DACB000B942B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB8DFD641E966AFF00BAB187 /* DFT-Prefix.pch */,
 				DDA59A571DD3DACB000B942B /* Info.plist */,
 				DDA59A471DD3DACB000B942B /* main.m */,
 				DDA59A741DD50DF0000B942B /* Notes */,
+				EBC274261E9BA5ED006D20F4 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -487,7 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				DDFB79DF1EA28B7C0022000B /* Animation JSONs */,
-				DDA59A5D1DD4E28A000B942B /* Images.xcassets */,
+				BD9C943F1EA4B42B000CDF6B /* Images.xcassets */,
 				DDA59A601DD4E6E6000B942B /* Fonts */,
 			);
 			name = Resources;
@@ -536,9 +558,9 @@
 			isa = PBXGroup;
 			children = (
 				DD7544C91E9583ED002AEC38 /* Profile */,
-				DDDD04531E638CDB003DE070 /* Drift */,
 				DDA59A781DD51AAD000B942B /* Login */,
 				DDD6A0C41DEA012E00FF9741 /* Feed */,
+				DDDD04531E638CDB003DE070 /* Drift */,
 				DD4D6D7E1E369D7100E3605A /* Drop */,
 				DD4D6D711E315C4400E3605A /* DFTTabBarController.h */,
 				DD4D6D721E315C4400E3605A /* DFTTabBarController.m */,
@@ -589,6 +611,8 @@
 				DDA59A801DD5202E000B942B /* UIColor+DFTStyles.m */,
 				DD3B99B51E214FD40098208F /* UIFont+Drift.h */,
 				DD3B99B61E214FD40098208F /* UIFont+Drift.m */,
+				EBEEEB201E9BD39900F0147A /* ImageUtils.h */,
+				EBEEEB211E9BD39900F0147A /* ImageUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -683,12 +707,10 @@
 			isa = PBXGroup;
 			children = (
 				09DAA03F1E67827100E92A1F /* Children */,
+				BDD3DB181E9583F000D5D05B /* Layer */,
+				BDD3DB191E9583F800D5D05B /* Delegate */,
 				DD45C9A11E2594B700ED3E20 /* DFTFeedContainerViewController.h */,
 				DD45C9A21E2594B700ED3E20 /* DFTFeedContainerViewController.m */,
-				DDD6A0BA1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.h */,
-				DDD6A0BB1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m */,
-				DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */,
-				DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */,
 				09DAA03C1E67826C00E92A1F /* DFTFeedViewController.h */,
 				09DAA03D1E67826C00E92A1F /* DFTFeedViewController.m */,
 			);
@@ -759,12 +781,11 @@
 		DDA59A3B1DD3DACB000B942B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Thierry Ng";
 				TargetAttributes = {
 					DDA59A421DD3DACB000B942B = {
 						CreatedOnToolsVersion = 7.2.1;
-						DevelopmentTeam = RA9388UXZ8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -776,6 +797,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = DDA59A3A1DD3DACB000B942B;
 			productRefGroup = DDA59A441DD3DACB000B942B /* Products */;
@@ -797,11 +819,12 @@
 				DDD6A0C31DE9F57900FF9741 /* DFTFeedCell.xib in Resources */,
 				09954DDC1E6AE53100C3794D /* DFTSegmentedControl.xib in Resources */,
 				093736AD1E8800C9004C1226 /* DFTInnerFeedCell.xib in Resources */,
-				DDA59A5E1DD4E28A000B942B /* Images.xcassets in Resources */,
 				092317F61E5CF0A70043838D /* GOTHMTHI.TTF in Resources */,
 				092317EF1E5CF0A70043838D /* GothamRnd-BoldIta.otf in Resources */,
+				BD9C94401EA4B42B000CDF6B /* Images.xcassets in Resources */,
 				09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */,
 				09DAA0431E678DEC00E92A1F /* GOTHMBIT.TTF in Resources */,
+				EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */,
 				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
 				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
@@ -932,7 +955,7 @@
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
 				DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */,
-				DDFB79E41EA3B1CA0022000B /* DFTDropSignalViewController.m in Sources */,
+				EBEEEB221E9BD39900F0147A /* ImageUtils.m in Sources */,
 				DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */,
 				DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */,
 				DDB50F471DDE4E5A00542EAA /* DFTNetworkClient.m in Sources */,
@@ -962,6 +985,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		EBC274261E9BA5ED006D20F4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBC274251E9BA5ED006D20F4 /* en */,
+				EBC274271E9BA5F6006D20F4 /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -969,6 +1001,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -978,8 +1011,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1014,6 +1049,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1023,8 +1059,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1055,7 +1093,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RA9388UXZ8;
+				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Drift/DFT-Prefix.pch";
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1070,7 +1110,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = RA9388UXZ8;
+				DEVELOPMENT_TEAM = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Drift/DFT-Prefix.pch";
 				INFOPLIST_FILE = Drift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

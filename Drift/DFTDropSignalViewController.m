@@ -8,7 +8,7 @@
 
 #import "DFTDropSignalViewController.h"
 
-@interface DFTDropSignalViewController ()
+@interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -18,7 +18,22 @@
 {
     [super viewDidLoad];
 
-	
+}
+
+#pragma mark
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return (0);
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+
+	return (cell);
 }
 
 @end

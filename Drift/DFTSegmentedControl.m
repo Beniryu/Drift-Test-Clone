@@ -19,7 +19,7 @@
 @end
 
 @implementation DFTSegmentedControl
-@synthesize delegate;
+@synthesize delegate, imgLeft, imgRight, imgMiddle;
 
 -(void)awakeFromNib {
     [super awakeFromNib];
@@ -89,12 +89,28 @@
     self.currentPage = self.segmentedControl.selectedSegmentIndex;
 }
 
+//==============================================//
+//-------------- Visible Methods ---------------//
+//==============================================//
+
+- (void)configForFeed
+{
+    [imgLeft setImage:[UIImage imageNamed:@"picto1"]];
+    [imgMiddle setImage:[UIImage imageNamed:@"picto2"]];
+    [imgRight setImage:[UIImage imageNamed:@"picto3"]];
+}
+
+- (void)configForDrift
+{
+    [imgLeft setImage:[UIImage imageNamed:@"mail_login_icon"]];
+    [imgMiddle setImage:[UIImage imageNamed:@"lock_icon"]];
+    [imgRight setImage:[UIImage imageNamed:@"like_xs"]];
+}
+
 - (void)showSegment:(NSInteger) index
 {
     self.segmentedControl.selectedSegmentIndex = index ;
     [self animateToIndex:self.segmentedControl.selectedSegmentIndex];
-
 }
-
 
 @end

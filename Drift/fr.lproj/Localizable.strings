@@ -1,0 +1,39 @@
+/* 
+  Localizable.strings
+  Drift
+
+  Created by Clément Georgel on 10/04/2017.
+  Copyright © 2017 Thierry Ng. All rights reserved.
+*/
+
+//===============================//
+//===== LoginViewController =====//
+//===============================//
+placeholderMail = "Adresse mail";
+placeholderPassword = "Mot de passe";
+singUp = "S'enregistrer";
+login = "Connexion";
+optionConnection = "OU SE CONNECTER AVEC";
+
+//==============================//
+//===== FeedViewController =====//
+//==============================//
+driftLevel = "Drift Niveau %d";
+dropsToday = "DROPS AUJOURD'HUI";
+
+//===============================//
+//===== DriftViewController =====//
+//===============================//
+
+dropsFound = "DROPS TROUVÉS";
+
+//==============================//
+//===== DropViewController =====//
+//==============================//
+
+//===================//
+//===== Commons =====//
+//===================//
+ok = "OK";
+close = "Fermer";
+share = "Partager";

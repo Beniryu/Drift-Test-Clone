@@ -15,8 +15,12 @@
 
 @interface DFTSegmentedControl : UIView
 @property (nonatomic, weak) id <DFTSegmentedControlDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLeft;
+@property (weak, nonatomic) IBOutlet UIImageView *imgMiddle;
+@property (weak, nonatomic) IBOutlet UIImageView *imgRight;
 
 - (void)showSegment:(NSInteger) index;
-
+- (void)configForDrift;
+- (void)configForFeed;
 
 @end
