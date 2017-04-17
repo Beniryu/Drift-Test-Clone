@@ -33,9 +33,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblStepNumber;
 @property (weak, nonatomic) IBOutlet UIView *vLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLocation;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
 @property (weak, nonatomic) IBOutlet UILabel *lblSeparator;
 @property (weak, nonatomic) IBOutlet UITextField *tfTags;
+@property (weak, nonatomic) IBOutlet UIButton *btnTagPresent;
 @property (weak, nonatomic) IBOutlet AMTagListView *tagsView;
 @property (weak, nonatomic) IBOutlet UIButton *btnTags;
 @property (weak, nonatomic) IBOutlet UITextField *tfDescription;
@@ -88,6 +90,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 	self.titleTextView.scrollEnabled = NO;
 	[self configureTags];
 	[self configureTableView];
+    [self configureStepOne];
     [self registerForKeyboardNotifications];
 }
 
@@ -108,10 +111,18 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 	self.scrollView.scrollEnabled = NO;
 }
 
+- (void)configureStepOne
+{
+    [self.imgLocation setTintColor:[UIColor dft_lightRedColor]];
+    [self.btnTags.imageView setTintColor:[UIColor grayColor]];
+    [self.btnDescription.imageView setTintColor:[UIColor grayColor]];
+    [self.btnTagPresent.imageView setTintColor:[UIColor grayColor]];
+}
+
 - (void)configureTags
 {
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTagsTextField)];
-
+    
 	self.tfTags.delegate = self;
 	self.tagsView.tagListDelegate = self;
     self.titleTextView.delegate = self;

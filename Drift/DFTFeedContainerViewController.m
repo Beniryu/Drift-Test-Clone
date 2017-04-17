@@ -121,7 +121,6 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)configureProfilPic
 {
-    // TODO: - Duplicate code taken from DFTFeedCell -> UIImageView category ?
     [ImageUtils roundedBorderImageView:self.profilePictureImageView];
 }
 

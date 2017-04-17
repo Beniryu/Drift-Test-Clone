@@ -8,6 +8,7 @@
 
 #import "DFTCollectionFeedCell.h"
 #import "UIColor+DFTStyles.h"
+#import "ImageUtils.h"
 
 @interface DFTCollectionFeedCell ()
 
@@ -39,16 +40,7 @@
 
 - (void)configureProfilePic
 {
-    CAShapeLayer *border = [CAShapeLayer new];
-    
-    border.frame = self.profileImageView.bounds;
-    border.lineWidth = 4.;
-    border.path = [UIBezierPath bezierPathWithOvalInRect:border.bounds].CGPath;
-    border.strokeColor = [UIColor lightGrayColor].CGColor;
-    border.fillColor = [UIColor clearColor].CGColor;
-    [self.profileImageView.layer addSublayer:border];
-    self.profileImageView.clipsToBounds = YES;
-    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.width / 2.;
+    [ImageUtils roundedBorderImageView:self.profileImageView];
 }
 
 - (void)configureLocationLabel

@@ -31,3 +31,9 @@ dropsFound = "DROPS TROUVÉS";
 //===== DropViewController =====//
 //==============================//
 
+//===================//
+//===== Commons =====//
+//===================//
+ok = "OK";
+close = "Fermer";
+share = "Partager";
