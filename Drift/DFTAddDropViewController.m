@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSeparator;
 @property (weak, nonatomic) IBOutlet UITextField *tfTags;
 @property (weak, nonatomic) IBOutlet UIButton *btnTagPresent;
+@property (weak, nonatomic) IBOutlet UIButton *btnTagArrow;
 @property (weak, nonatomic) IBOutlet AMTagListView *tagsView;
 @property (weak, nonatomic) IBOutlet UIButton *btnTags;
 @property (weak, nonatomic) IBOutlet UITextField *tfDescription;
@@ -79,7 +80,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 {
 	[super viewDidLoad];
 
-    uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView, self.lblSeparator, self.tagsView, self.btnTags, self.tfDescription, self.btnDescription];
+    uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView, self.lblSeparator, self.tagsView, self.tfDescription, self.btnDescription];
     
     stepOneDisable = @[self.btnTags, self.btnDescription, self.tfTags, self.tfDescription, self.titleTextView];
     
@@ -117,6 +118,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     [self.btnTags.imageView setTintColor:[UIColor grayColor]];
     [self.btnDescription.imageView setTintColor:[UIColor grayColor]];
     [self.btnTagPresent.imageView setTintColor:[UIColor grayColor]];
+    [self.btnTagArrow.imageView setTintColor:[UIColor whiteColor]];
 }
 
 - (void)configureTags
@@ -264,6 +266,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 	}
     if( textField.text.length + string.length > MAX_CARACTERS_AUTHORIZED )
         return NO;
+    
 	return YES;
 }
 
@@ -304,6 +307,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
         
         self.tfTags.text = @"";
         self.btnTags.hidden = YES;
+        self.btnTagArrow.hidden = NO;
     }
 }
 
@@ -311,7 +315,10 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 {
     [self.tagsView removeTag:tag];
     if( self.tagsView.tags.count == 0 )
+    {
         self.btnTags.hidden = NO;
+        self.btnTagArrow.hidden = YES;
+    }
 }
 
 #pragma mark - Actions
@@ -321,6 +328,8 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     activeField = self.btnTags;
     
     [UIView animateWithDuration:1.0f animations:^{
+        [self.btnTags.imageView setTintColor:[UIColor whiteColor]];
+        self.btnTagPresent.alpha = 1;
         for( UIControl *element in uiElementFirstBlock )
         {
             if( ![element isEqual:self.tagsView] )

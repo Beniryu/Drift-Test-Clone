@@ -67,6 +67,11 @@
 //	[self.view addSubview:animation];
 //	[animation playWithCompletion:nil];
 }
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self contextSheet:nil didSelectItem:nil];
+}
 
 #pragma mark
 #pragma mark - AVCapture
@@ -96,7 +101,6 @@
 	[self.view.layer addSublayer:previewLayer];
 
 	[self.captureSession startRunning];
-
 }
 
 - (void)saveToRoll
