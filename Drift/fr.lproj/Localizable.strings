@@ -31,6 +31,14 @@ dropsFound = "DROPS TROUVÉS";
 //===== DropViewController =====//
 //==============================//
 
+optionSignalPlaceholder = "no one included";
+optionTriggerZonePlaceholder = "500m by default";
+optionDisplayPlaceholder = "hide me by default";
+optionTimePlaceholder = "24h by default";
+optionLockContentPlaceholder = "secured by default";
+optEdit = "> edit -";
+optDisable = "disable";
+
 //===================//
 //===== Commons =====//
 //===================//

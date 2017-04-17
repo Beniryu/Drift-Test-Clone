@@ -32,6 +32,7 @@
 		09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
 		BD9C94401EA4B42B000CDF6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9C943F1EA4B42B000CDF6B /* Images.xcassets */; };
+		BDECA5A01EA52438008C5335 /* DFTOptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD2CE56A1E5CE15100204E64 /* DFTFirstSectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */; };
 		DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */; };
@@ -130,6 +131,8 @@
 		09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTSegmentedControl.m; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
 		BD9C943F1EA4B42B000CDF6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
+		BDECA59E1EA52438008C5335 /* DFTOptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTOptionTableViewCell.h; sourceTree = "<group>"; };
+		BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTOptionTableViewCell.m; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
 		DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropViewController.m; sourceTree = "<group>"; };
@@ -398,6 +401,8 @@
 				DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */,
 				DD34C8621E61EC1B003853D6 /* DFTAddDropSettingsTableView.h */,
 				DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */,
+				BDECA59E1EA52438008C5335 /* DFTOptionTableViewCell.h */,
+				BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */,
 			);
 			name = TableViews;
 			sourceTree = "<group>";
@@ -937,6 +942,7 @@
 				DD45C9A61E28219C00ED3E20 /* DFTInnerFeedViewController.m in Sources */,
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
 				DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */,
+				BDECA5A01EA52438008C5335 /* DFTOptionTableViewCell.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
 				DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */,
 				09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */,

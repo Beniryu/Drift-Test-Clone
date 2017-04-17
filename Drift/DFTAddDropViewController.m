@@ -8,12 +8,13 @@
 
 #import "DFTAddDropViewController.h"
 
+#import "DFTOptionTableViewCell.h"
 #import "DFTDropFormManager.h"
 #import "UIColor+DFTStyles.h"
 
 #import <AMTagListView.h>
 
-@interface DFTAddDropViewController () <UIScrollViewDelegate, UITextFieldDelegate, AMTagListDelegate, UITextViewDelegate>
+@interface DFTAddDropViewController () <UIScrollViewDelegate, UITextFieldDelegate, UITextViewDelegate, AMTagListDelegate, UITableViewDelegate, UITableViewDataSource>
 {
 @private
     UIView *activeField;
@@ -60,8 +61,9 @@
 
 @implementation DFTAddDropViewController
 
-static const int MAX_TAG_AUTHORIZED         = 3;
+static const int MAX_TAG_AUTHORIZED         = 15;
 static const int MAX_CARACTERS_AUTHORIZED   = 8;
+static const int OFFSET_STEP_ONE            = 240;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -137,12 +139,66 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 	[[AMTagView appearance] setTagLength:0];
 	[[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
 	[[AMTagView appearance] setInnerTagColor:[UIColor dft_salmonColor]];
-//	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tab_icon"]];
+	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tag_close"]];
 }
 
 - (void)configureTableView
 {
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 	self.tableView.scrollEnabled = NO;
+}
+
+#pragma mark - TableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"optionCell";
+    DFTOptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    if( cell == nil )
+        cell = [[DFTOptionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    
+    cell.backgroundColor = [UIColor clearColor];
+    
+    switch (indexPath.row)
+    {
+        case 0:
+            cell.imgOption.image =  [UIImage imageNamed:@"opt_signal"];
+            cell.lblChoice.text = NSLocalizedString(@"optionSignalPlaceholder", nil);
+            break;
+        case 1:
+            cell.imgOption.image =  [UIImage imageNamed:@"opt_triggerzone"];
+            cell.lblChoice.text = NSLocalizedString(@"optionTriggerZonePlaceholder", nil);
+            break;
+        case 2:
+            cell.imgOption.image =  [UIImage imageNamed:@"opt_display"];
+            cell.lblChoice.text = NSLocalizedString(@"optionDisplayPlaceholder", nil);
+            break;
+            
+        case 3:
+            cell.imgOption.image =  [UIImage imageNamed:@"opt_time"];
+            cell.lblChoice.text = NSLocalizedString(@"optionTimePlaceholder", nil);
+            break;
+            
+        case 4:
+            cell.imgOption.image =  [UIImage imageNamed:@"opt_lockcontent"];
+            cell.lblChoice.text = NSLocalizedString(@"optionLockContentPlaceholder", nil);
+            break;
+        default:
+            break;
+    }
+    
+    [cell actDisable:cell.swEnable];
+    
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    return cell;
 }
 
 #pragma mark
@@ -217,7 +273,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
          self.btnTags.transform = t2;
          self.btnDescription.transform = t2;
 
-		 [self.scrollView setContentOffset:(CGPoint){0, 80} animated:YES];
+		 [self.scrollView setContentOffset:(CGPoint){0, OFFSET_STEP_ONE} animated:YES];
 	 }];
     
     for( UIView *element in stepOneDisable )
@@ -323,6 +379,11 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 #pragma mark - Actions
 
+- (IBAction)actClose:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)actTags:(id)sender
 {
     [UIView animateWithDuration:1.0f animations:^{
@@ -400,6 +461,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     [UIView animateWithDuration:1.0f animations:^{
         self.tfTags.hidden = YES;
         self.btnTagPresent.alpha = 0;
+        self.btnTagArrow.hidden = YES;
         for( UIView *element in uiElementFirstBlock )
             [element setAlpha:1];
     }];
