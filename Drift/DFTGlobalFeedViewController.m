@@ -46,6 +46,25 @@ static const double sizeReduce = 6.;
 	[self configureCollectionView];
 }
 
+/*- (void)viewDidLayoutSubviews
+{
+	CAShapeLayer *layer = [CAShapeLayer layer];
+	UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:self.collectionView.bounds
+													 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight
+														   cornerRadii:CGSizeMake(3.0, 3.0)];
+	layer.frame = self.collectionView.bounds;
+	layer.path = path.CGPath;
+	self.collectionView.layer.mask = layer;
+}*/
+
+//- layoutsubviews
+//override public func layoutSubviews() {
+//	super.layoutSubviews()
+//	roundCorners(corners: [.bottomLeft, .bottomRight], radius: UIFlashLabel.cornerRadius)
+//}
+
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -65,7 +84,7 @@ static const double sizeReduce = 6.;
 
 - (void)becameVisibleFeed
 {
-	
+
 }
 
 #pragma mark

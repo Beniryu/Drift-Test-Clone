@@ -6,16 +6,20 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
+@import AVFoundation;
+
 #import "DFTDropViewController.h"
 
 #import "DFTAddDropViewController.h"
 
+#import "DFTRadialGradientLayer.h"
 #import "DFTJellyTrigger.h"
 #import "VLDContextSheet.h"
 #import "VLDContextSheetItem.h"
 
 #import "DFTMapboxDelegate.h"
 #import <Mapbox/Mapbox.h>
+#import <lottie-ios/Lottie/Lottie.h>
 
 @interface DFTDropViewController () <VLDContextSheetDelegate>
 
@@ -24,6 +28,12 @@
 
 @property (nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic) DFTMapboxDelegate *mapDelegate;
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+
+#pragma mark
+#pragma mark - Capture
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
 
 @end
 
@@ -36,8 +46,81 @@
     [super viewDidLoad];
 
 	self.veilImageView.userInteractionEnabled = NO;
+	self.veilImageView.hidden = YES;
 	[self configureJelly];
+//	[self configureCapture];
+//
+//	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+//	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
+//
+//	gradientLayer.frame = self.view.bounds;
+//	[self.view.layer addSublayer:gradientLayer];
+//
+//	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
+//	[self.view addGestureRecognizer:tap];
+//	[self.view bringSubviewToFront:self.tempLabel];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+//	LOTAnimationView *animation = [LOTAnimationView animationNamed:@"square"];
+//	[self.view addSubview:animation];
+//	[animation playWithCompletion:nil];
+}
+
+#pragma mark
+#pragma mark - AVCapture
+- (void)configureCapture
+{
+	// Setting Session
+	self.captureSession = [AVCaptureSession new];
+	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+
+	// Setting Device + Input
+	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+
+	if (input != nil && [self.captureSession canAddInput:input])
+		[self.captureSession addInput:input];
+
+	// Setting Output
+	self.imageOutput = [AVCaptureStillImageOutput new];
+	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
+	if ([self.captureSession canAddOutput:self.imageOutput])
+		[self.captureSession addOutput:self.imageOutput];
+	// Preview
+	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+
+	previewLayer.frame = self.view.bounds;
+	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer addSublayer:previewLayer];
+
+	[self.captureSession startRunning];
+
+}
+
+- (void)saveToRoll
+{
+	AVCaptureConnection *connection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
+
+	if (connection != nil)
+	{
+		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
+													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
+		 {
+			 if (error == nil)
+			 {
+				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+
+				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
+				 [self.captureSession stopRunning];
+			 }
+		 }];
+	}
+}
+
+#pragma mark
+#pragma mark - VLDContextSheet
 
 - (void)configureJelly
 {
@@ -72,7 +155,7 @@
 
 - (void)contextSheet:(VLDContextSheet *)contextSheet didSelectItem:(VLDContextSheetItem *)item
 {
-	NSLog(@"Selected : %@", item.title);
+//	NSLog(@"Selected : %@", item.title);
 
 	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 

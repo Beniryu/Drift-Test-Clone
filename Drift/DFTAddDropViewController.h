@@ -10,4 +10,7 @@
 
 @interface DFTAddDropViewController : UIViewController
 
+- (IBAction)actTags:(id)sender;
+- (IBAction)actDescription:(id)sender;
+
 @end

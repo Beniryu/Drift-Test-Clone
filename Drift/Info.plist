@@ -33,6 +33,10 @@
 	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need dis cuz reasons.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need dis cuz reasons.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need dis cuz reasons.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>GOTHMBIT.TTF</string>
