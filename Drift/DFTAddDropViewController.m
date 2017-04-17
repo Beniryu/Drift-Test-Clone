@@ -16,7 +16,7 @@
 @interface DFTAddDropViewController () <UIScrollViewDelegate, UITextFieldDelegate, AMTagListDelegate, UITextViewDelegate>
 {
 @private
-    UIControl *activeField;
+    UIView *activeField;
     CGPoint savedContentOffset;
     NSArray *uiElementFirstBlock;
     BOOL keyboardActivated;
@@ -137,7 +137,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 	[[AMTagView appearance] setTagLength:0];
 	[[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
 	[[AMTagView appearance] setInnerTagColor:[UIColor dft_salmonColor]];
-	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tab_icon"]];
+//	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tab_icon"]];
 }
 
 - (void)configureTableView
@@ -325,8 +325,6 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (IBAction)actTags:(id)sender
 {
-    activeField = self.btnTags;
-    
     [UIView animateWithDuration:1.0f animations:^{
         [self.btnTags.imageView setTintColor:[UIColor whiteColor]];
         self.btnTagPresent.alpha = 1;
@@ -342,6 +340,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     
     [self.tfTags setText:@""];
     [self.tfTags becomeFirstResponder];
+    activeField = self.tagsView;
 }
 
 - (IBAction)actDescription:(id)sender
@@ -381,7 +380,8 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     CGRect convertedRect = [activeField.superview convertRect:activeField.frame toView:self.scrollView];
-    convertedRect.origin.y += 8;
+    if( [self.tfTags isFirstResponder] )
+        convertedRect.origin.y += activeField.frame.size.height;
     if (!CGRectContainsPoint(aRect, convertedRect.origin) ) {
         savedContentOffset = self.scrollView.contentOffset;
         [self.scrollView scrollRectToVisible:convertedRect animated:YES];
@@ -399,7 +399,8 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     
     [UIView animateWithDuration:1.0f animations:^{
         self.tfTags.hidden = YES;
-        for( UIControl *element in uiElementFirstBlock )
+        self.btnTagPresent.alpha = 0;
+        for( UIView *element in uiElementFirstBlock )
             [element setAlpha:1];
     }];
 }
@@ -431,8 +432,12 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (IBAction)actTapOut:(id)sender
 {
-    [activeField resignFirstResponder];
-    activeField = nil;
+    [self.btnTags.imageView setTintColor:[UIColor grayColor]];
+    if( [self.tfTags isFirstResponder] )
+    {
+        [self.tfTags resignFirstResponder];
+        activeField = nil;
+    }
 }
 
 @end
