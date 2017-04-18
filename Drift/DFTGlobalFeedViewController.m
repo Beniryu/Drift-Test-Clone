@@ -8,12 +8,16 @@
 
 #import "DFTGlobalFeedViewController.h"
 #import "DFTFeedCollectionViewLayout.h"
+#import "DFTOpenedDropViewController.h"
 #import "DFTMapManager.h"
 
 #import "DFTFeedCell.h"
 
 @interface DFTGlobalFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
-
+{
+    @private
+    NSIndexPath *selectedIndexPath;
+}
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *collectionTopConstraint;
 
 @end
@@ -140,7 +144,16 @@ static const double sizeReduce = 6.;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectedIndexPath = indexPath;
     [self performSegueWithIdentifier:@"showDrop" sender:nil];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    DFTOpenedDropViewController *viewController = segue.destinationViewController;
+
+	if ([segue.identifier isEqualToString:@"showDrop"])
+        viewController.drop = self.drops[selectedIndexPath.item];
 }
 
 @end
