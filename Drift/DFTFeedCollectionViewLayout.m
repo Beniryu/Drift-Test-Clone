@@ -10,7 +10,7 @@
 
 @implementation DFTFeedCollectionViewLayout
 
-static int COLLECTION_DEFAULT_INSET = 6;
+static int COLLECTION_DEFAULT_INSET = 0;
 
 - (instancetype)init
 {

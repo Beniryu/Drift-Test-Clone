@@ -20,7 +20,7 @@
 @property id<DFTFeedScreenProtocol> delegate;
 
 - (void)becameVisibleFeed;
-- (void)expandCollectionView;
-- (void)shrinkCollectionView;
+- (void)shrinkFeed:(NSNotification *) notif;
+- (void)expandFeed:(NSNotification *) notif;
 
 @end

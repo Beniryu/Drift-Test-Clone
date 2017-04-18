@@ -19,8 +19,8 @@
     [super viewDidLoad];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(animateFeedChange) name:@"DFTFeedsScaleAnimation" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shrinkFeed) name:@"DFTFeedsScaleShrink" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(expandFeed) name:@"DFTFeedsScaleExpand" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shrinkFeed:) name:@"DFTFeedsScaleShrink" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(expandFeed:) name:@"DFTFeedsScaleExpand" object:nil];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -42,8 +42,6 @@
 #pragma mark - Mother Methods
 
 - (void)becameVisibleFeed{};
-- (void)expandCollectionView{};
-- (void)shrinkCollectionView{};
 
 #pragma mark - NSNotifications Methods
 
@@ -73,7 +71,7 @@
     }
 }
 
-- (void)shrinkFeed
+- (void)shrinkFeed:(NSNotification *) notif
 {
     [UIView animateWithDuration:0.2 animations:
      ^{
@@ -84,7 +82,7 @@
      }];
 }
 
-- (void)expandFeed
+- (void)expandFeed:(NSNotification *) notif
 {
     [UIView animateWithDuration:0.2 animations:
      ^{

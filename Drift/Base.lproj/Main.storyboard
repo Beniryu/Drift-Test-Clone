@@ -2185,6 +2185,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="41H-rw-XlZ" id="Haj-MB-uIJ"/>
+                        <segue destination="gjE-SG-rHq" kind="show" identifier="showDrop" id="Lpq-Ts-VfG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKC-VH-MhV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2547,7 +2548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fb-uy-Ky5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4959.1999999999998" y="3585.6071964017992"/>
+            <point key="canvasLocation" x="-4605" y="3716"/>
         </scene>
         <!--Collection Feed View Controller-->
         <scene sceneID="ZgJ-Tf-v2f">
@@ -2741,4 +2742,7 @@
         <image name="profile_tab_icon" width="34" height="34"/>
         <image name="settings_tab_icon" width="28" height="23"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Lpq-Ts-VfG"/>
+    </inferredMetricsTieBreakers>
 </document>
