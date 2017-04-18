@@ -20,5 +20,6 @@
 
 + (instancetype)sharedInstance;
 - (void)addDropsToMap:(NSArray<DFTDrop *> *)drops;
+- (void)removeAllDropsToMap;
 
 @end

@@ -74,17 +74,12 @@ int dynamicRow;
 	[self configureMap];
     [self configureSegmentedControl];
 	//    self.dropsArray = (NSArray<DFTDrop*> *) [[[DFTMapManager sharedInstance]mapView]annotations];
-	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
-	{
-		self.dropsArray = responseObject;
-		[[DFTMapManager sharedInstance] addDropsToMap:self.dropsArray];
-		[self.collectionView reloadData];
-        if( self.dropsArray.count > 0 )
-            activeDrop = [self.dropsArray objectAtIndex:0];
-        lblNbDropFound.text = [NSString stringWithFormat:@"%d", (int)self.dropsArray.count];
-        lblDropFound.text = NSLocalizedString(@"dropsFound", nil);
-        lblLocation.text = @"LONDON";
-	}];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self configureMap];
 }
 
 - (void)configureSegmentedControl
@@ -118,6 +113,18 @@ int dynamicRow;
 
 - (void)configureMap
 {
+	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		self.dropsArray = responseObject;
+		[[DFTMapManager sharedInstance] addDropsToMap:self.dropsArray];
+		[self.collectionView reloadData];
+        if( self.dropsArray.count > 0 )
+            activeDrop = [self.dropsArray objectAtIndex:0];
+        lblNbDropFound.text = [NSString stringWithFormat:@"%d", (int)self.dropsArray.count];
+        lblDropFound.text = NSLocalizedString(@"dropsFound", nil);
+        lblLocation.text = @"LONDON";
+	}];
+    
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
 
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];

@@ -49,9 +49,17 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 - (void)addDropsToMap:(NSArray<DFTDrop *> *)drops
 {
 	for (DFTDrop *drop in drops)
-		[self.mapView addAnnotation:drop];
+    {
+        if( ![[self.mapView annotations] containsObject:drop] )
+            [self.mapView addAnnotation:drop];
+    }
 }
 
+- (void)removeAllDropsToMap
+{
+	if ( [self.mapView annotations] )
+        [self.mapView removeAnnotations:[self.mapView annotations]];
+}
 
 - (CLLocationCoordinate2D)userCoordinates
 {
@@ -71,11 +79,7 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
 
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
-	[mapView
-	 setCenterCoordinate:[self userCoordinates]
-	 zoomLevel:15
-	 animated:NO];
-
+	[mapView setCenterCoordinate:[self userCoordinates] zoomLevel:15 animated:NO];
 }
 
 - (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id<MGLAnnotation>)annotation {

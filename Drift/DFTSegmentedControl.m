@@ -102,9 +102,16 @@
 
 - (void)configForDrift
 {
-    [imgLeft setImage:[UIImage imageNamed:@"mail_login_icon"]];
-    [imgMiddle setImage:[UIImage imageNamed:@"lock_icon"]];
-    [imgRight setImage:[UIImage imageNamed:@"like_xs"]];
+    [imgLeft setImage:[UIImage imageNamed:@"picto2"]];
+    [imgMiddle setImage:[UIImage imageNamed:@"picto3"]];
+    [imgRight setImage:[UIImage imageNamed:@"picto1"]];
+}
+
+- (void)configForDrop
+{
+    [imgLeft setImage:[UIImage imageNamed:@"picto3"]];
+    [imgMiddle setImage:[UIImage imageNamed:@"picto2"]];
+    [imgRight setImage:[UIImage imageNamed:@"picto1"]];
 }
 
 - (void)showSegment:(NSInteger) index

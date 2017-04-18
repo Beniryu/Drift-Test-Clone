@@ -11,7 +11,9 @@
 #import "DFTDropViewController.h"
 
 #import "DFTAddDropViewController.h"
+#import "ImageUtils.h"
 
+#import "DFTSegmentedControl.h"
 #import "DFTRadialGradientLayer.h"
 #import "DFTJellyTrigger.h"
 #import "VLDContextSheet.h"
@@ -19,16 +21,24 @@
 
 #import "DFTMapboxDelegate.h"
 #import <Mapbox/Mapbox.h>
+#import "DFTMapManager.h"
+
 #import <lottie-ios/Lottie/Lottie.h>
 
-@interface DFTDropViewController () <VLDContextSheetDelegate>
-
+@interface DFTDropViewController () <VLDContextSheetDelegate, DFTSegmentedControlDelegate>
+{
+@private
+MGLMapView *mapViewShared;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *veilImageView;
 @property (weak, nonatomic) IBOutlet DFTJellyTrigger *jellyTrigger;
 
 @property (nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic) DFTMapboxDelegate *mapDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+
+@property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 
 #pragma mark
 #pragma mark - Capture
@@ -48,6 +58,8 @@
 	self.veilImageView.userInteractionEnabled = NO;
 	self.veilImageView.hidden = YES;
 	[self configureJelly];
+    [self configureSegmentedControl];
+    
 //	[self configureCapture];
 //
 //	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
@@ -66,12 +78,44 @@
 //	LOTAnimationView *animation = [LOTAnimationView animationNamed:@"square"];
 //	[self.view addSubview:animation];
 //	[animation playWithCompletion:nil];
+
+    [self configureMap];
 }
-//-(void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    [self contextSheet:nil didSelectItem:nil];
-//}
+
+#pragma mark - Configuration
+
+- (void)configureSegmentedControl
+{
+    self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    [self.segmentedControl configForDrop];
+    self.segmentedControl.delegate = self;
+    [self.segmentedContainerView addSubview:self.segmentedControl];
+}
+
+- (void)configureMap
+{
+    [[DFTMapManager sharedInstance] removeAllDropsToMap];
+	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
+
+	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
+
+    mapViewShared = [DFTMapManager sharedInstance].mapView;
+	imageView.frame = mapViewShared.frame;
+	imageView.contentMode = UIViewContentModeScaleAspectFit;
+	[mapViewShared addSubview:imageView];
+}
+
+#pragma mark - DFTSegmentedControl Delegate
+- (void)segmentedControlValueChanged:(NSInteger)index
+{
+    //TODO: faire le changement
+}
+
+#pragma mark - Map delegate
+- (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
+{
+	[mapView setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates] zoomLevel:15 animated:YES];
+}
 
 #pragma mark
 #pragma mark - AVCapture
@@ -131,7 +175,7 @@
 	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
 																									action: @selector(engageJelly:)];
 	gestureRecognizer.minimumPressDuration = 0.01;
-	[self.view addGestureRecognizer: gestureRecognizer];
+	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
 
     //TODO: localization
 	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
@@ -148,6 +192,8 @@
 
 	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
 	self.contextSheet.delegate = self;
+    
+    [ImageUtils roundedBorderImageView:self.jellyTrigger];
 }
 
 - (void)engageJelly:(UIGestureRecognizer *)gestureRecognizer
