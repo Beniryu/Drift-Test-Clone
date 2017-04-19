@@ -10,6 +10,9 @@
 
 @interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @end
 
 @implementation DFTDropSignalViewController
@@ -18,6 +21,18 @@
 {
 	[super viewDidLoad];
 
+	[self configureScrollView];
+}
+
+#pragma mark
+#pragma mark - UITableView
+
+- (void)configureScrollView
+{
+	self.scrollView.delegate = self;
+	self.scrollView.bounces = NO;
+	self.scrollView.showsVerticalScrollIndicator = NO;
+	self.scrollView.showsHorizontalScrollIndicator = NO;
 }
 
 #pragma mark
