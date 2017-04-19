@@ -239,8 +239,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 {
     DFTDropFormTransitionBlock block = nil;
     
-    block = ^(kDFTDropFormStepTransition transition)
-    {
+    block = ^(kDFTDropFormStepTransition transition){
         [self executeTransition:transition];
     };
     
@@ -251,9 +250,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
         
         direction = (velocity.y > 0 ? kDFTDropFormSwipeDirectionDown : kDFTDropFormSwipeDirectionUp);
         
-        self.currentSection = [self.manager routeSwipeDirection:direction
-                                                    fromSection:self.currentSection
-                                                      withBlock:block];
+        self.currentSection = [self.manager routeSwipeDirection:direction fromSection:self.currentSection withBlock:block];
     }
 }
 
@@ -433,6 +430,33 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     activeField = nil;
 }
 
+#pragma mark - UITextView
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    textView.scrollEnabled = YES;
+    [UIView animateWithDuration:1.0f animations:^{
+        for( id element in uiElementFirstBlock )
+        {
+            if( [element isEqual:self.vLocation] )
+            {
+                [element setAlpha:0.5];
+                continue;
+            }
+            if( ![element isEqual:textView] )
+                [element setAlpha:0];
+        }
+    } completion:^(BOOL finished)
+     {
+         [self.view layoutIfNeeded];
+     }];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    textView.scrollEnabled = NO;
+    textView.text = [textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 #pragma mark - Gestion Tags
 
 -(void) addTag:(NSString *) tag
@@ -477,7 +501,6 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 
 - (IBAction)actTags:(id)sender
 {
-    self.constHeightTagsView.constant = TAG_VIEW_HEIGHT_EDIT;
     [UIView animateWithDuration:1.0f animations:^{
         [self.btnTags.imageView setTintColor:[UIColor whiteColor]];
         self.btnTagPresent.alpha = 1;
@@ -486,14 +509,12 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
             if( ![element isEqual:self.tagsView] )
                 [element setAlpha:0];
         }
-    } completion:^(BOOL finished)
-     {
+    } completion:^(BOOL finished){
          self.tfTags.hidden = NO;
+         self.constHeightTagsView.constant = TAG_VIEW_HEIGHT_EDIT;
+         [self.tfTags setText:@""];
+         [self.tfTags becomeFirstResponder];
      }];
-    
-    [self.tfTags setText:@""];
-    [self.tfTags becomeFirstResponder];
-    activeField = self.tagsView;
 }
 
 - (IBAction)actDescription:(id)sender
@@ -566,8 +587,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     CGRect aRect = self.view.frame;
     aRect.size.height -= kbSize.height;
     CGRect convertedRect = [activeField.superview convertRect:activeField.frame toView:self.scrollView];
-    if( [self.tfTags isFirstResponder] )
-        convertedRect.origin.y += activeField.frame.size.height;
+//    if( [self.tfTags isFirstResponder] )
+//        convertedRect.origin.y += activeField.frame.size.height;
     if (!CGRectContainsPoint(aRect, convertedRect.origin) ) {
         savedContentOffset = self.scrollView.contentOffset;
         [self.scrollView scrollRectToVisible:convertedRect animated:YES];
@@ -595,32 +616,5 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
         
         self.btnDescription.alpha = !( self.tfDescription.text.length > 0 );
     }];
-}
-
-#pragma mark - UITextView
--(void)textViewDidBeginEditing:(UITextView *)textView
-{
-    textView.scrollEnabled = YES;
-    [UIView animateWithDuration:1.0f animations:^{
-        for( id element in uiElementFirstBlock )
-        {
-            if( [element isEqual:self.vLocation] )
-            {
-                [element setAlpha:0.5];
-                continue;
-            }
-            if( ![element isEqual:textView] )
-                [element setAlpha:0];
-        }
-    } completion:^(BOOL finished)
-     {
-         [self.view layoutIfNeeded];
-     }];
-}
-
--(void)textViewDidEndEditing:(UITextView *)textView
-{
-    textView.scrollEnabled = NO;
-    textView.text = [textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 @end

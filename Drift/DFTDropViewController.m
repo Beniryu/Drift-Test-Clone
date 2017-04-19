@@ -83,12 +83,6 @@ MGLMapView *mapViewShared;
     [self configureMap];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [self contextSheet:nil didSelectItem:nil];
-}
-
 #pragma mark - Configuration
 
 - (void)configureSegmentedControl
@@ -179,27 +173,30 @@ MGLMapView *mapViewShared;
 
 - (void)configureJelly
 {
-	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
-																									action: @selector(engageJelly:)];
-	gestureRecognizer.minimumPressDuration = 0.01;
-	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
-
-    //TODO: localization
-	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
-	self.contextSheet.delegate = self;
+//	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
+//																									action: @selector(engageJelly:)];
+//	gestureRecognizer.minimumPressDuration = 0.01;
+//	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
+//
+//    //TODO: localization
+//	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
+//	self.contextSheet.delegate = self;
     
+    
+	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(creationDrop:)];
+	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
     [ImageUtils roundedBorderImageView:self.jellyTrigger];
 }
 
@@ -219,6 +216,11 @@ MGLMapView *mapViewShared;
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	[self presentViewController:addDropVC animated:NO completion:nil];
+}
+
+-(void) creationDrop:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self contextSheet:nil didSelectItem:nil];
 }
 
 @end

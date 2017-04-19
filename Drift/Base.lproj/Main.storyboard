@@ -1607,7 +1607,7 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-qD-Iwb" customClass="AMTagListView">
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMg-qD-Iwb" customClass="AMTagListView">
                                                         <rect key="frame" x="12" y="324.5" width="305" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="aC6-Ar-tSA"/>
@@ -1661,7 +1661,6 @@
                                                     </button>
                                                     <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fg3-pB-ARj">
                                                         <rect key="frame" x="12" y="297.5" width="305" height="19"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham-Medium" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
