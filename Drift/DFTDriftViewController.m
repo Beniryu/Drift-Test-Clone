@@ -12,6 +12,7 @@
 #import "DFTMapManager.h"
 #import "DFTInnerFeedCell.h"
 #import "ImageUtils.h"
+#import "MathUtils.h"
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -33,6 +34,8 @@ MGLMapView *mapViewShared;
 @implementation DFTDriftViewController
 
 @synthesize lblLocation, lblDropFound, lblNbDropFound, segmentedControl;
+
+static const double MAX_DISTANCE_KM_AUTHORIZED  = 1;
 
 int dynamicRow;
 
@@ -286,6 +289,16 @@ int dynamicRow;
         //    Old Version
         //    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     }
+}
+
+- (BOOL)mapView:(MGLMapView *)mapView shouldChangeFromCamera:(MGLMapCamera *)oldCamera toCamera:(MGLMapCamera *)newCamera
+{
+    if( [MathUtils distanceHaversine:[[DFTMapManager sharedInstance] userCoordinates] b:newCamera.centerCoordinate] > MAX_DISTANCE_KM_AUTHORIZED )
+    {
+        [self mapViewDidFinishLoadingMap:mapView];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - UIScrollView Delegate
