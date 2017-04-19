@@ -1405,14 +1405,14 @@
                         <viewControllerLayoutGuide type="bottom" id="xhI-Jv-QuB"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="eaa-ef-ZLa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gi2-Wy-E4q">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                                 <subviews>
                                     <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JbV-kT-RYv" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1030"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2df-Vn-4Bc">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
@@ -1431,7 +1431,7 @@
                                                             <constraint firstAttribute="width" secondItem="6FU-UN-jwe" secondAttribute="height" multiplier="1:1" id="Cx2-Qq-OYh"/>
                                                             <constraint firstAttribute="width" constant="30" id="zCC-Ha-R6g"/>
                                                         </constraints>
-                                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <state key="normal" image="drop_edit_close"/>
                                                         <connections>
                                                             <action selector="actClose:" destination="rKL-Yp-R6e" eventType="touchUpInside" id="3DW-lE-odC"/>
@@ -1448,23 +1448,23 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUf-Ud-pen" userLabel="Step 2">
-                                                <rect key="frame" x="0.0" y="550" width="375" height="320"/>
+                                                <rect key="frame" x="0.0" y="550" width="375" height="340"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aek-1B-cIk" userLabel="Step Label">
-                                                        <rect key="frame" x="8" y="8" width="30.5" height="14.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <rect key="frame" x="8" y="8" width="44.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SeW-9D-1QA">
-                                                        <rect key="frame" x="0.0" y="98" width="375" height="222"/>
+                                                        <rect key="frame" x="0.0" y="120" width="375" height="220"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="optionCell" id="0op-s7-dQO" customClass="DFTOptionTableViewCell">
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0op-s7-dQO" id="Jid-lW-7B2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opt_signal" translatesAutoresizingMaskIntoConstraints="NO" id="925-T5-dEA">
@@ -1475,13 +1475,13 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; edit -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1C-uK-V3l">
-                                                                            <rect key="frame" x="58" y="13" width="48.5" height="17.5"/>
+                                                                            <rect key="frame" x="58" y="14" width="53.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no one included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EG-KQ-W3P">
-                                                                            <rect key="frame" x="111.5" y="13" width="108" height="17.5"/>
+                                                                            <rect key="frame" x="116.5" y="14" width="118.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -1516,8 +1516,8 @@
                                                         </prototypes>
                                                     </tableView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4y-rY-gcm" userLabel="Location Label">
-                                                        <rect key="frame" x="8" y="30" width="59" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                        <rect key="frame" x="8" y="34.5" width="94.5" height="77.5"/>
+                                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="70"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1531,15 +1531,40 @@
                                                     <constraint firstItem="y4y-rY-gcm" firstAttribute="top" secondItem="aek-1B-cIk" secondAttribute="bottom" constant="8" symbolic="YES" id="gDj-gP-mJa"/>
                                                     <constraint firstItem="y4y-rY-gcm" firstAttribute="leading" secondItem="aek-1B-cIk" secondAttribute="leading" id="nsr-Ge-wp0"/>
                                                     <constraint firstItem="SeW-9D-1QA" firstAttribute="leading" secondItem="bUf-Ud-pen" secondAttribute="leading" id="pq9-dX-Pbh"/>
-                                                    <constraint firstAttribute="height" constant="320" id="xvu-wq-xJy"/>
+                                                    <constraint firstAttribute="height" constant="340" id="xvu-wq-xJy"/>
                                                     <constraint firstItem="SeW-9D-1QA" firstAttribute="top" secondItem="y4y-rY-gcm" secondAttribute="bottom" constant="8" symbolic="YES" id="zBz-Ut-g2z"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-u5-Krg" userLabel="Validation">
-                                                <rect key="frame" x="0.0" y="870" width="375" height="160"/>
+                                                <rect key="frame" x="0.0" y="890" width="375" height="160"/>
+                                                <subviews>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V90-L5-JIc">
+                                                        <rect key="frame" x="162" y="20" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="V90-L5-JIc" secondAttribute="height" multiplier="1:1" id="EGq-sW-muz"/>
+                                                            <constraint firstAttribute="width" constant="50" id="ym5-NR-RCa"/>
+                                                        </constraints>
+                                                        <state key="normal" image="img-11">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="actDrop:" destination="rKL-Yp-R6e" eventType="touchUpInside" id="7hT-J1-uZ6"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnx-PY-hul">
+                                                        <rect key="frame" x="161.5" y="78" width="51.5" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="17"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
                                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
+                                                    <constraint firstItem="V90-L5-JIc" firstAttribute="top" secondItem="jjG-u5-Krg" secondAttribute="top" constant="20" symbolic="YES" id="DWj-Zr-5fZ"/>
+                                                    <constraint firstItem="Gnx-PY-hul" firstAttribute="top" secondItem="V90-L5-JIc" secondAttribute="bottom" constant="8" symbolic="YES" id="IRz-Ph-mtc"/>
+                                                    <constraint firstItem="Gnx-PY-hul" firstAttribute="centerX" secondItem="jjG-u5-Krg" secondAttribute="centerX" id="NxG-ui-fJv"/>
                                                     <constraint firstAttribute="height" constant="160" id="boB-X8-pDf"/>
+                                                    <constraint firstItem="V90-L5-JIc" firstAttribute="centerX" secondItem="jjG-u5-Krg" secondAttribute="centerX" id="ltW-fD-Xyy"/>
                                                 </constraints>
                                             </view>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WnG-vK-tf6" userLabel="Step 1">
@@ -1733,14 +1758,16 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="900"/>
+                    <size key="freeformSize" width="375" height="1100"/>
                     <connections>
                         <outlet property="btnDescription" destination="edh-lF-RXn" id="bqO-ZL-SCQ"/>
+                        <outlet property="btnDrop" destination="V90-L5-JIc" id="KZL-L9-Tng"/>
                         <outlet property="btnTagArrow" destination="wvR-Uz-r1D" id="SkX-lN-s11"/>
                         <outlet property="btnTagPresent" destination="RjI-PP-ura" id="cTP-kG-1Cq"/>
                         <outlet property="btnTags" destination="scw-cY-6Wr" id="jwQ-b4-DgX"/>
                         <outlet property="firstStepHeight" destination="JD1-YI-tsq" id="ipQ-Qs-RhN"/>
                         <outlet property="imgLocation" destination="QrW-py-LJW" id="NDL-tH-gDF"/>
+                        <outlet property="lblDrop" destination="Gnx-PY-hul" id="i2M-QU-vPA"/>
                         <outlet property="lblLocation" destination="X5t-68-VlU" id="fHR-dJ-s87"/>
                         <outlet property="lblSeparator" destination="r2E-Rk-uel" id="CPP-eD-bk4"/>
                         <outlet property="lblStep" destination="XMd-UA-zNV" id="AKq-do-iXn"/>
@@ -1761,7 +1788,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1412" y="2787.7061469265368"/>
+            <point key="canvasLocation" x="-1412" y="2882"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="M5j-Bk-GMQ">
@@ -1885,7 +1912,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -2660,7 +2687,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="13.5" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="316.5" y="14" width="30.5" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -2743,6 +2770,7 @@
         <image name="feed_cell_profile_pic_placeholder" width="38" height="38"/>
         <image name="feed_tab_icon" width="27" height="24"/>
         <image name="img-1" width="300" height="300"/>
+        <image name="img-11" width="300" height="300"/>
         <image name="img-2" width="300" height="300"/>
         <image name="img-3" width="300" height="300"/>
         <image name="img-4" width="300" height="300"/>

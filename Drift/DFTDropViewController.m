@@ -75,11 +75,18 @@ MGLMapView *mapViewShared;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
 //	LOTAnimationView *animation = [LOTAnimationView animationNamed:@"square"];
 //	[self.view addSubview:animation];
 //	[animation playWithCompletion:nil];
 
     [self configureMap];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self contextSheet:nil didSelectItem:nil];
 }
 
 #pragma mark - Configuration

@@ -22,6 +22,7 @@
     NSArray *uiElementFirstBlock;
     BOOL keyboardActivated;
     NSArray *stepOneDisable;
+    NSArray *stepOneRemove;
 }
 
 #pragma mark - Outlets -
@@ -48,6 +49,10 @@
 #pragma mark Step 02
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+#pragma mark Step Validation
+@property (weak, nonatomic) IBOutlet UIButton *btnDrop;
+@property (weak, nonatomic) IBOutlet UILabel *lblDrop;
+
 #pragma mark - Heights -
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
 @property (nonatomic) NSInteger titleHeight;
@@ -63,7 +68,6 @@
 
 static const int MAX_TAG_AUTHORIZED         = 15;
 static const int MAX_CARACTERS_AUTHORIZED   = 8;
-static const int OFFSET_STEP_ONE            = 240;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
@@ -85,6 +89,7 @@ static const int OFFSET_STEP_ONE            = 240;
     uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView, self.lblSeparator, self.tagsView, self.tfDescription, self.btnDescription];
     
     stepOneDisable = @[self.btnTags, self.btnDescription, self.tfTags, self.tfDescription, self.titleTextView];
+    stepOneRemove = @[self.lblStep, self.lblStepNumber];
     
 	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
 
@@ -94,6 +99,7 @@ static const int OFFSET_STEP_ONE            = 240;
 	[self configureTags];
 	[self configureTableView];
     [self configureStepOne];
+    [self configureStepValidation];
     [self registerForKeyboardNotifications];
 }
 
@@ -121,6 +127,11 @@ static const int OFFSET_STEP_ONE            = 240;
     [self.btnDescription.imageView setTintColor:[UIColor grayColor]];
     [self.btnTagPresent.imageView setTintColor:[UIColor grayColor]];
     [self.btnTagArrow.imageView setTintColor:[UIColor whiteColor]];
+}
+
+- (void)configureStepValidation
+{
+    [self.lblDrop setText:NSLocalizedString(@"drop", nil)];
 }
 
 - (void)configureTags
@@ -204,7 +215,6 @@ static const int OFFSET_STEP_ONE            = 240;
 #pragma mark
 #pragma mark - Helpers
 
-
 - (void)didPan:(UIPanGestureRecognizer *)sender
 {
 	DFTDropFormTransitionBlock block = nil;
@@ -213,7 +223,6 @@ static const int OFFSET_STEP_ONE            = 240;
 	{
 		[self executeTransition:transition];
 	};
-
 
 	if (sender.state == UIGestureRecognizerStateBegan)
 	{
@@ -272,22 +281,17 @@ static const int OFFSET_STEP_ONE            = 240;
          self.lblSeparator.transform = t2;
          self.btnTags.transform = t2;
          self.btnDescription.transform = t2;
+         
+         for( UIView *element in stepOneRemove )
+            element.alpha = 0;
 
-		 [self.scrollView setContentOffset:(CGPoint){0, OFFSET_STEP_ONE} animated:YES];
+        CGRect convertedRect = [self.tableView.superview convertRect:self.tableView.frame toView:self.scrollView];
+        convertedRect.origin.y += 20;
+        [self.scrollView scrollRectToVisible:convertedRect animated:YES];
 	 }];
     
     for( UIView *element in stepOneDisable )
         element.userInteractionEnabled = NO;
-}
-
-- (void)transitionFromSettingsToValidation
-{
-	NSLog(@"transitionFromSettingsToValidation");
-}
-
-- (void)transitionFromValidationToSettings
-{
-	NSLog(@"transitionFromValidationToSettings");
 }
 
 - (void)transitionFromSettingsToDetails
@@ -301,11 +305,33 @@ static const int OFFSET_STEP_ONE            = 240;
          self.btnTags.transform = CGAffineTransformIdentity;
          self.btnDescription.transform = CGAffineTransformIdentity;
 
+         for( UIView *element in stepOneRemove )
+            element.alpha = 1;
+
 		 [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
 	 }];
     
     for( UIView *element in stepOneDisable )
         element.userInteractionEnabled = YES;
+}
+
+- (void)transitionFromSettingsToValidation
+{
+    [UIView animateWithDuration:0.5 animations:
+	 ^{
+        CGRect convertedRect = [self.lblDrop.superview convertRect:self.lblDrop.frame toView:self.scrollView];
+        convertedRect.origin.y += 40;
+        [self.scrollView scrollRectToVisible:convertedRect animated:YES];
+        savedContentOffset = self.scrollView.contentOffset;
+	 }];
+}
+
+- (void)transitionFromValidationToSettings
+{
+    [UIView animateWithDuration:0.5 animations:
+	 ^{
+		 [self.scrollView setContentOffset:savedContentOffset animated:YES];
+	 }];
 }
 
 #pragma mark
@@ -407,6 +433,12 @@ static const int OFFSET_STEP_ONE            = 240;
 - (IBAction)actDescription:(id)sender
 {
     activeField = self.btnTags;
+    //TODO: faire
+}
+
+- (IBAction)actDrop:(id)sender
+{
+    //TODO: drop sur le serveur
 }
 
 #pragma mark - Gestion Keyboard
