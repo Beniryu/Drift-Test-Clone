@@ -12,11 +12,15 @@
 
 +(UIImageView *) roundedBorderImageView:(UIImageView *) imgView
 {
-    // TODO: - Duplicate code taken from DFTFeedCell -> UIImageView category ?
+    return [ImageUtils roundedBorderImageView:imgView lineWidth:4.];
+}
+
++(UIImageView *) roundedBorderImageView:(UIImageView *) imgView lineWidth:(double) lineWidth
+{
     CAShapeLayer *border = [CAShapeLayer new];
     
     border.frame = imgView.bounds;
-    border.lineWidth = 4.;
+    border.lineWidth = lineWidth;
     border.path = [UIBezierPath bezierPathWithOvalInRect:border.bounds].CGPath;
     border.strokeColor = [UIColor whiteColor].CGColor;
     border.fillColor = [UIColor clearColor].CGColor;
@@ -25,6 +29,5 @@
     imgView.layer.cornerRadius = imgView.frame.size.width / 2.;
     return imgView;
 }
-
 
 @end

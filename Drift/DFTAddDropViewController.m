@@ -11,6 +11,7 @@
 #import "DFTOptionTableViewCell.h"
 #import "DFTDropFormManager.h"
 #import "UIColor+DFTStyles.h"
+#import "ImageUtils.h"
 
 #import <AMTagListView.h>
 
@@ -18,11 +19,12 @@
 {
 @private
     UIView *activeField;
+    CGRect savedTableRect;
     CGPoint savedContentOffset;
     NSArray *uiElementFirstBlock;
     BOOL keyboardActivated;
-    NSArray *stepOneDisable;
-    NSArray *stepOneRemove;
+    NSArray *stepOneDisable, *stepOneRemove, *stepOneAlphaFifty;
+    NSArray *stepValidationAlpha, *stepValidateRemove;
 }
 
 #pragma mark - Outlets -
@@ -42,12 +44,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnTagPresent;
 @property (weak, nonatomic) IBOutlet UIButton *btnTagArrow;
 @property (weak, nonatomic) IBOutlet AMTagListView *tagsView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constHeightTagsView;
 @property (weak, nonatomic) IBOutlet UIButton *btnTags;
 @property (weak, nonatomic) IBOutlet UITextField *tfDescription;
 @property (weak, nonatomic) IBOutlet UIButton *btnDescription;
 
 #pragma mark Step 02
+@property (weak, nonatomic) IBOutlet UILabel *lblStep2;
+@property (weak, nonatomic) IBOutlet UILabel *lblStepNumber2;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constHeightStepOptions;
 
 #pragma mark Step Validation
 @property (weak, nonatomic) IBOutlet UIButton *btnDrop;
@@ -68,36 +74,48 @@
 
 static const int MAX_TAG_AUTHORIZED         = 15;
 static const int MAX_CARACTERS_AUTHORIZED   = 8;
+static const int TAG_VIEW_HEIGHT_EDIT       = 45;
+static const int TAG_VIEW_HEIGHT_VISIBLE    = 30;
+static const int OPTIONS_VIEW_HEIGHT        = 340;
+static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
-	if (self = [super initWithCoder:aDecoder])
-	{
-		self.manager = [DFTDropFormManager new];
-		self.currentSection = 0;
-	}
-	return (self);
+    if (self = [super initWithCoder:aDecoder])
+    {
+        self.manager = [DFTDropFormManager new];
+        self.currentSection = 0;
+    }
+    return (self);
 }
+
+//- (BOOL)prefersStatusBarHidden {
+//    return YES;
+//}
 
 #pragma mark
 #pragma mark - Lifecycle
 
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-
+    [super viewDidLoad];
+    
     uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView, self.lblSeparator, self.tagsView, self.tfDescription, self.btnDescription];
     
     stepOneDisable = @[self.btnTags, self.btnDescription, self.tfTags, self.tfDescription, self.titleTextView];
     stepOneRemove = @[self.lblStep, self.lblStepNumber];
+    stepOneAlphaFifty = @[self.vLocation, self.lblSeparator, self.titleTextView];
     
-	UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
-
-	[self.view addGestureRecognizer:pan];
-	[self configureScrollView];
-	self.titleTextView.scrollEnabled = NO;
-	[self configureTags];
-	[self configureTableView];
+    stepValidationAlpha = @[self.vLocation, self.lblSeparator, self.titleTextView, self.btnTags, self.btnDescription];
+    stepValidateRemove = @[self.lblStep2, self.lblStepNumber2];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didPan:)];
+    
+    [self.view addGestureRecognizer:pan];
+    [self configureScrollView];
+    self.titleTextView.scrollEnabled = NO;
+    [self configureTags];
+    [self configureTableView];
     [self configureStepOne];
     [self configureStepValidation];
     [self registerForKeyboardNotifications];
@@ -105,9 +123,9 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-	[super viewDidAppear:animated];
-
-	self.titleHeight = self.titleTextView.frame.size.height;
+    [super viewDidAppear:animated];
+    
+    self.titleHeight = self.titleTextView.frame.size.height;
 }
 
 #pragma mark
@@ -115,9 +133,9 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)configureScrollView
 {
-	self.scrollView.delegate = self;
-	self.scrollView.showsVerticalScrollIndicator = NO;
-	self.scrollView.scrollEnabled = NO;
+    self.scrollView.delegate = self;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.scrollEnabled = NO;
 }
 
 - (void)configureStepOne
@@ -132,32 +150,34 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 - (void)configureStepValidation
 {
     [self.lblDrop setText:NSLocalizedString(@"drop", nil)];
+    [self.btnDrop setTintColor:[UIColor whiteColor]];
+    [ImageUtils roundedBorderImageView:self.btnDrop lineWidth:1.];
 }
 
 - (void)configureTags
 {
-	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTagsTextField)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showTagsTextField)];
     
-	self.tfTags.delegate = self;
-	self.tagsView.tagListDelegate = self;
+    self.tfTags.delegate = self;
+    self.tagsView.tagListDelegate = self;
     self.titleTextView.delegate = self;
     
     self.tfTags.hidden = YES;
-	[self.tagsView addGestureRecognizer:tap];
-	[self.tagsView setTapHandler:^(AMTagView *tag) {
-		[self removeTag:tag];
-	}];
-	[[AMTagView appearance] setTagLength:0];
-	[[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
-	[[AMTagView appearance] setInnerTagColor:[UIColor dft_salmonColor]];
-	[[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tag_close"]];
+    [self.tagsView addGestureRecognizer:tap];
+    [self.tagsView setTapHandler:^(AMTagView *tag) {
+        [self removeTag:tag];
+    }];
+    [[AMTagView appearance] setTagLength:0];
+    [[AMTagView appearance] setTagColor:[UIColor dft_salmonColor]];
+    [[AMTagView appearance] setInnerTagColor:[UIColor dft_salmonColor]];
+    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"drop_tag_close"]];
 }
 
 - (void)configureTableView
 {
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-	self.tableView.scrollEnabled = NO;
+    self.tableView.scrollEnabled = NO;
 }
 
 #pragma mark - TableView
@@ -217,50 +237,50 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)didPan:(UIPanGestureRecognizer *)sender
 {
-	DFTDropFormTransitionBlock block = nil;
-
-	block = ^(kDFTDropFormStepTransition transition)
-	{
-		[self executeTransition:transition];
-	};
-
-	if (sender.state == UIGestureRecognizerStateBegan)
-	{
-		CGPoint velocity = [sender velocityInView:self.view];
-		kDFTDropFormSwipeDirection direction;
-
-		direction = (velocity.y > 0 ? kDFTDropFormSwipeDirectionDown : kDFTDropFormSwipeDirectionUp);
-
-		self.currentSection = [self.manager routeSwipeDirection:direction
-													fromSection:self.currentSection
-													  withBlock:block];
-	}
+    DFTDropFormTransitionBlock block = nil;
+    
+    block = ^(kDFTDropFormStepTransition transition)
+    {
+        [self executeTransition:transition];
+    };
+    
+    if (sender.state == UIGestureRecognizerStateBegan)
+    {
+        CGPoint velocity = [sender velocityInView:self.view];
+        kDFTDropFormSwipeDirection direction;
+        
+        direction = (velocity.y > 0 ? kDFTDropFormSwipeDirectionDown : kDFTDropFormSwipeDirectionUp);
+        
+        self.currentSection = [self.manager routeSwipeDirection:direction
+                                                    fromSection:self.currentSection
+                                                      withBlock:block];
+    }
 }
 
 - (void)showTagsTextField
 {
-//	self.tfTags.hidden = NO;
+    //	self.tfTags.hidden = NO;
 }
 
 - (void)executeTransition:(kDFTDropFormStepTransition)transition
 {
     if( keyboardActivated )
         return;
-	switch (transition)
-	{
-		case kDFTDropFormStepTransitionDetailsToSettings:
-			[self transitionFromDetailsToSettings];
-			break;
-		case kDFTDropFormStepTransitionSettingsToValidation:
-			[self transitionFromSettingsToValidation];
-			break;
-		case kDFTDropFormStepTransitionValidationToSettings:
-			[self transitionFromValidationToSettings];
-			break;
-		case kDFTDropFormStepTransitionSettingsToDetails:
-			[self transitionFromSettingsToDetails];
-			break;
-	}
+    switch (transition)
+    {
+        case kDFTDropFormStepTransitionDetailsToSettings:
+            [self transitionFromDetailsToSettings];
+            break;
+        case kDFTDropFormStepTransitionSettingsToValidation:
+            [self transitionFromSettingsToValidation];
+            break;
+        case kDFTDropFormStepTransitionValidationToSettings:
+            [self transitionFromValidationToSettings];
+            break;
+        case kDFTDropFormStepTransitionSettingsToDetails:
+            [self transitionFromSettingsToDetails];
+            break;
+    }
 }
 
 #pragma mark
@@ -268,27 +288,27 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)transitionFromDetailsToSettings
 {
-	[UIView animateWithDuration:0.5 animations:
-	 ^{
-		 CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
-
-		 t = CGAffineTransformTranslate(t, -(self.titleTextView.frame.size.width * 0.5), -(self.titleHeight * 0.5));
-		 self.titleTextView.transform = t;
-
-		 CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(self.titleHeight * 0.5));
-         self.tagsView.transform = t2;
-         self.tfDescription.transform = t2;
-         self.lblSeparator.transform = t2;
-         self.btnTags.transform = t2;
-         self.btnDescription.transform = t2;
+    [UIView animateWithDuration:0.5 animations:
+     ^{
+         CGAffineTransform t = CGAffineTransformScale(CGAffineTransformIdentity, 0.5, 0.5);
+         
+         t = CGAffineTransformTranslate(t, -(self.titleTextView.frame.size.width * 0.5), (self.titleHeight * 0.5));
+         self.titleTextView.transform = t;
+         CGAffineTransform t2 = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, (self.titleHeight * 0.5));
+         self.vLocation.transform = t2;
          
          for( UIView *element in stepOneRemove )
-            element.alpha = 0;
-
-        CGRect convertedRect = [self.tableView.superview convertRect:self.tableView.frame toView:self.scrollView];
-        convertedRect.origin.y += 20;
-        [self.scrollView scrollRectToVisible:convertedRect animated:YES];
-	 }];
+             element.alpha = 0;
+         
+         for( UIView *element in stepOneAlphaFifty )
+             element.alpha = 0.5;
+         
+         [self.btnDescription setImage:[UIImage imageNamed:@"drop_description_b"] forState:UIControlStateNormal];
+         
+         CGRect convertedRect = [self.tableView.superview convertRect:self.tableView.frame toView:self.scrollView];
+         convertedRect.origin.y += 40;
+         [self.scrollView scrollRectToVisible:convertedRect animated:YES];
+     }];
     
     for( UIView *element in stepOneDisable )
         element.userInteractionEnabled = NO;
@@ -296,20 +316,21 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)transitionFromSettingsToDetails
 {
-	[UIView animateWithDuration:0.5 animations:
-	 ^{
-		 self.titleTextView.transform = CGAffineTransformIdentity;
-         self.tagsView.transform = CGAffineTransformIdentity;
-         self.tfDescription.transform = CGAffineTransformIdentity;
-         self.lblSeparator.transform = CGAffineTransformIdentity;
-         self.btnTags.transform = CGAffineTransformIdentity;
-         self.btnDescription.transform = CGAffineTransformIdentity;
-
+    [UIView animateWithDuration:0.5 animations:
+     ^{
+         self.titleTextView.transform = CGAffineTransformIdentity;
+         self.vLocation.transform = CGAffineTransformIdentity;
+         
          for( UIView *element in stepOneRemove )
-            element.alpha = 1;
-
-		 [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
-	 }];
+             element.alpha = 1;
+         
+         for( UIView *element in stepOneAlphaFifty )
+             element.alpha = 1;
+         
+         [self.btnDescription setImage:[UIImage imageNamed:@"drop_description"] forState:UIControlStateNormal];
+         
+         [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
+     }];
     
     for( UIView *element in stepOneDisable )
         element.userInteractionEnabled = YES;
@@ -317,21 +338,65 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (void)transitionFromSettingsToValidation
 {
+    savedTableRect = self.tableView.frame;
+    
     [UIView animateWithDuration:0.5 animations:
-	 ^{
-        CGRect convertedRect = [self.lblDrop.superview convertRect:self.lblDrop.frame toView:self.scrollView];
-        convertedRect.origin.y += 40;
-        [self.scrollView scrollRectToVisible:convertedRect animated:YES];
-        savedContentOffset = self.scrollView.contentOffset;
-	 }];
+     ^{
+         self.constHeightStepOptions.constant = OPTIONS_VIEW_HEIGHT_REDUCE;
+         [self.view layoutIfNeeded];
+     }];
+    [UIView animateWithDuration:0.5 animations:
+     ^{
+         for( UIView *element in stepValidateRemove )
+             element.alpha = 0;
+         
+         CGAffineTransform t = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(self.tableView.frame.size.height * 0.5));
+         self.tableView.transform = t;
+         
+         for( UIView *element in stepValidationAlpha )
+             element.alpha = 1;
+         
+         [self.btnTags.imageView setTintColor:[UIColor whiteColor]];
+         [self.btnDescription.imageView setTintColor:[UIColor whiteColor]];
+         
+         CGRect tableRect = self.tableView.frame;
+         tableRect.origin.y = 0;
+         tableRect.size.height = OPTIONS_VIEW_HEIGHT_REDUCE;
+         self.tableView.frame = tableRect;
+         
+         //        CGRect convertedRect = [self.lblDrop.superview convertRect:self.lblDrop.frame toView:self.scrollView];
+         //        convertedRect.origin.y += 20;
+         //        [self.scrollView scrollRectToVisible:convertedRect animated:YES];
+         //        savedContentOffset = self.scrollView.contentOffset;
+     }];
 }
 
 - (void)transitionFromValidationToSettings
 {
+    
     [UIView animateWithDuration:0.5 animations:
-	 ^{
-		 [self.scrollView setContentOffset:savedContentOffset animated:YES];
-	 }];
+     ^{
+         self.constHeightStepOptions.constant = OPTIONS_VIEW_HEIGHT;
+         [self.view layoutIfNeeded];
+     }];
+    [UIView animateWithDuration:0.5 animations:
+     ^{
+         for( UIView *element in stepValidateRemove )
+             element.alpha = 1;
+         
+         self.tableView.transform = CGAffineTransformIdentity;
+         CGRect tableRect = self.tableView.frame;
+         tableRect.size.height = savedTableRect.size.height;
+         self.tableView.frame = tableRect;
+         
+         for( UIView *element in stepValidationAlpha )
+             element.alpha = 0.5;
+         
+         [self.btnTags.imageView setTintColor:[UIColor grayColor]];
+         [self.btnDescription.imageView setTintColor:[UIColor grayColor]];
+         
+         //		 [self.scrollView setContentOffset:savedContentOffset animated:YES];
+     }];
 }
 
 #pragma mark
@@ -339,17 +404,17 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-	if ([string isEqualToString:@" "])
-	{
-		if (textField.text.length > 0)
-			[self addTag:textField.text];
+    if ([string isEqualToString:@" "])
+    {
+        if (textField.text.length > 0)
+            [self addTag:textField.text];
         
-		return NO;
-	}
+        return NO;
+    }
     if( textField.text.length + string.length > MAX_CARACTERS_AUTHORIZED )
         return NO;
     
-	return YES;
+    return YES;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -412,6 +477,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (IBAction)actTags:(id)sender
 {
+    self.constHeightTagsView.constant = TAG_VIEW_HEIGHT_EDIT;
     [UIView animateWithDuration:1.0f animations:^{
         [self.btnTags.imageView setTintColor:[UIColor whiteColor]];
         self.btnTagPresent.alpha = 1;
@@ -432,8 +498,20 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 - (IBAction)actDescription:(id)sender
 {
-    activeField = self.btnTags;
-    //TODO: faire
+    [UIView animateWithDuration:1.0f animations:^{
+        self.btnTagPresent.alpha = 0;
+        self.btnTags.alpha = 0;
+        for( UIControl *element in uiElementFirstBlock )
+        {
+            if( ![element isEqual:self.tfDescription] )
+                [element setAlpha:0];
+        }
+    } completion:^(BOOL finished)
+     {
+         self.tfDescription.hidden = NO;
+     }];
+    
+    [self.tfDescription becomeFirstResponder];
 }
 
 - (IBAction)actDrop:(id)sender
@@ -441,11 +519,26 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     //TODO: drop sur le serveur
 }
 
+- (IBAction)actTapOut:(id)sender
+{
+    if( [self.tfTags isFirstResponder] )
+    {
+        self.constHeightTagsView.constant = TAG_VIEW_HEIGHT_VISIBLE;
+        [self.btnTags.imageView setTintColor:[UIColor grayColor]];
+        [self.tfTags resignFirstResponder];
+        activeField = nil;
+    }
+    else if( [self.tfDescription isFirstResponder] )
+    {
+        [self.tfDescription resignFirstResponder];
+        activeField = nil;
+    }
+}
+
 #pragma mark - Gestion Keyboard
 
 // Call this method somewhere in your view controller setup code.
 - (void)registerForKeyboardNotifications
-
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
@@ -467,7 +560,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
- 
+    
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your app might not need or want this behavior.
     CGRect aRect = self.view.frame;
@@ -496,12 +589,18 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
         self.btnTagArrow.hidden = YES;
         for( UIView *element in uiElementFirstBlock )
             [element setAlpha:1];
+        
+        if( [self.tfDescription isFirstResponder] )
+            self.btnTags.alpha = 1;
+        
+        self.btnDescription.alpha = !( self.tfDescription.text.length > 0 );
     }];
 }
 
 #pragma mark - UITextView
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
+    textView.scrollEnabled = YES;
     [UIView animateWithDuration:1.0f animations:^{
         for( id element in uiElementFirstBlock )
         {
@@ -521,17 +620,7 @@ static const int MAX_CARACTERS_AUTHORIZED   = 8;
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
+    textView.scrollEnabled = NO;
     textView.text = [textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
-
-- (IBAction)actTapOut:(id)sender
-{
-    [self.btnTags.imageView setTintColor:[UIColor grayColor]];
-    if( [self.tfTags isFirstResponder] )
-    {
-        [self.tfTags resignFirstResponder];
-        activeField = nil;
-    }
-}
-
 @end
