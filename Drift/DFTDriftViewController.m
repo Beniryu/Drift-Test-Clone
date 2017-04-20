@@ -217,7 +217,7 @@ int dynamicRow;
 
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
-	[mapView setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates] zoomLevel:15 animated:YES];
+    [[DFTMapManager sharedInstance] setCenterCoordinateWithZoom:15];
 }
 
 - (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
@@ -256,7 +256,7 @@ int dynamicRow;
     {
         activeDrop = annotation;
         
-//        [[DFTMapManager sharedInstance].mapView setCenterCoordinate:annotation.coordinate animated:YES];
+//        [[DFTMapManager sharedInstance] setCenterCoordinate:annotation.coordinate];
         NSInteger annotationIndex = [self.dropsArray indexOfObject:annotation];
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:annotationIndex inSection:0];
         

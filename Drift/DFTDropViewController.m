@@ -126,7 +126,7 @@ MGLMapView *mapViewShared;
 #pragma mark - Map delegate
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
-	[mapView setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates] zoomLevel:15 animated:YES];
+    [[DFTMapManager sharedInstance] setCenterCoordinateWithZoom:15];
 }
 
 #pragma mark

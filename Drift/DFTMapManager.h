@@ -18,6 +18,11 @@
 - (void)addMapToView:(UIView *)view withDelegate:(id)delegate;
 - (CLLocationCoordinate2D)userCoordinates;
 
+- (void) setCenterCoordinate;
+- (void) setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate;
+- (void) setCenterCoordinateWithZoom:(int)zoomLevel;
+- (void) setCenterCoordinate:(CLLocationCoordinate2D)centerCoordinate zoomLevel:(int) zoomLevel;
+
 + (instancetype)sharedInstance;
 - (void)addDropsToMap:(NSArray<DFTDrop *> *)drops;
 - (void)removeAllDropsToMap;
