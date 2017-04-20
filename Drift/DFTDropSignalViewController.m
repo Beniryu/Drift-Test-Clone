@@ -41,8 +41,14 @@
 {
 	self.scrollView.delegate = self;
 	self.scrollView.bounces = NO;
+	self.scrollView.pagingEnabled = YES;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.showsHorizontalScrollIndicator = NO;
+}
+
+- (void)configureSegmentedControl
+{
+
 }
 
 - (void)configureRecentScreen
@@ -67,6 +73,41 @@
 {
 	self.allTableView.delegate = self;
 	self.allTableView.dataSource = self;
+}
+
+#pragma mark
+#pragma mark - Screen Flow
+
+- (IBAction)didChangeSegment:(id)sender
+{
+	CGRect rect;
+
+	if (self.segmentedControl.selectedSegmentIndex == 0)
+		rect = self.recentCollectionView.superview.frame;
+	else if (self.segmentedControl.selectedSegmentIndex == 1)
+		rect = self.groupCollectionView.superview.frame;
+	else if (self.segmentedControl.selectedSegmentIndex == 2)
+		rect = self.nearbyCollectionView.superview.frame;
+	else
+		rect = self.allTableView.superview.frame;
+	[self.scrollView scrollRectToVisible:rect animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	if (scrollView == self.scrollView)
+	{
+		CGFloat offsetX = self.scrollView.contentOffset.x;
+
+		if (offsetX == 0)
+			self.segmentedControl.selectedSegmentIndex = 0;
+		else if (offsetX == self.scrollView.frame.size.width)
+			self.segmentedControl.selectedSegmentIndex = 1;
+		else if (offsetX == self.scrollView.frame.size.width * 2)
+			self.segmentedControl.selectedSegmentIndex = 2;
+		else if (offsetX == self.scrollView.frame.size.width * 3)
+			self.segmentedControl.selectedSegmentIndex = 3;
+	}
 }
 
 #pragma mark
