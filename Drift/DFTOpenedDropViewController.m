@@ -11,12 +11,17 @@
 #import "ImageUtils.h"
 
 @interface DFTOpenedDropViewController ()
-
+{
+    @private
+    NSArray *optionPanelToAnimate;
+}
 @end
 
 @implementation DFTOpenedDropViewController
 
 @synthesize drop;
+
+static const double OPTION_PANEL_TIMER          = 0.3;
 
 - (void)viewDidLoad
 {
@@ -35,6 +40,7 @@
 {
     if( drop )
     {
+        optionPanelToAnimate = @[_vMarkIt, _vShareIt, _vJoinIt, _vBack];
         [_imgPlaceholder sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://drift.braycedenayce.com/drift_api/drop/pic/%@", drop.dropId]]];
         _imgPlaceholder.contentMode = UIViewContentModeScaleAspectFill;
         _imgPlaceholder.frame = _imgPlaceholder.frame;
@@ -70,32 +76,37 @@
 
 - (IBAction)actExpandMenu:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
+    [UIView animateWithDuration:0.8
+                          delay:0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          _vMenuRight.frame = _vMenuPlaceholder.frame;
                      } completion:^(BOOL finished){
                      }];
     
-    [UIView animateWithDuration:0.5
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         _vMarkIt.alpha = 1;
-                     } completion:nil];
-    
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        int index = ((int)optionPanelToAnimate.count)-1-i;
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[index]).alpha = 1;
+                         } completion:nil];
+    }
 }
 
 - (IBAction)actMarkIt:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         _vMarkIt.alpha = 0;
-                     } completion:^(BOOL finished){
-                     }];
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[i]).alpha = 0;
+                         } completion:nil];
+    }
     
     [UIView animateWithDuration:0.5
                           delay:0.5
@@ -104,5 +115,4 @@
                          _vMenuRight.frame = _vMenuOrigin.frame;
                      } completion:nil];
 }
-
 @end
