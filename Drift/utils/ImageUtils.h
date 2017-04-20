@@ -12,5 +12,6 @@
 @interface ImageUtils : NSObject
 
 +(UIImageView *) roundedBorderImageView:(UIImageView *) imgView;
++(UIImageView *) roundedBorderImageView:(UIImageView *) imgView lineWidth:(double) lineWidth;
 
 @end

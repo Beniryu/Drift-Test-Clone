@@ -8,18 +8,23 @@
 
 #import "DFTInnerFeedViewController.h"
 
+#import "DFTOpenedDropViewController.h"
 #import "DFTFeedCollectionViewLayout.h"
 #import "DFTInnerFeedCell.h"
 #import "DFTDrop.h"
 
 @interface DFTInnerFeedViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+{
+    @private
+    NSIndexPath *selectedIndexPath;
+}
 
-@property (nonatomic) NSArray<DFTDrop *> *drops;
+//@property (nonatomic) NSArray<DFTDrop *> *drops;
 
 @end
 
 static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
-static const double sizeReduce = 12.;
+static const double sizeReduce = 0.;//12.;
 static const double cellHeight = 156.;
 
 @implementation DFTInnerFeedViewController
@@ -60,18 +65,6 @@ static const double cellHeight = 156.;
 	self.collectionView.collectionViewLayout = layout;
 }
 
-- (void)expandCollectionView
-{
-	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-	layout.itemSize = (CGSize){SCREEN_SIZE.width, layout.itemSize.height};
-}
-
-- (void)shrinkCollectionView
-{
-	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, layout.itemSize.height};
-}
-
 #pragma mark
 #pragma mark - UICollectionView
 
@@ -101,5 +94,20 @@ static const double cellHeight = 156.;
 //	}
 	return (cell);
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier:@"showDrop" sender:nil];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    DFTOpenedDropViewController *viewController = segue.destinationViewController;
+
+	if ([segue.identifier isEqualToString:@"showDrop"])
+        viewController.drop = self.drops[selectedIndexPath.item];
+}
+
 
 @end

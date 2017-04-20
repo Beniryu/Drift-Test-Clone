@@ -12,6 +12,7 @@
 #import "DFTMapManager.h"
 #import "DFTInnerFeedCell.h"
 #import "ImageUtils.h"
+#import "MathUtils.h"
 
 @interface DFTDriftViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -21,6 +22,7 @@
 DFTDrop *activeDrop;
 MGLMapView *mapViewShared;
     NSArray *alphaToAnimate;
+    NSArray *optionPanelToAnimate;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -33,6 +35,9 @@ MGLMapView *mapViewShared;
 @implementation DFTDriftViewController
 
 @synthesize lblLocation, lblDropFound, lblNbDropFound, segmentedControl;
+
+static const double OPTION_PANEL_TIMER          = 0.3;
+static const double MAX_DISTANCE_KM_AUTHORIZED  = 1;
 
 int dynamicRow;
 
@@ -69,22 +74,19 @@ int dynamicRow;
                        _imgDrifter3,
                        _vMenuRight];
     
+    optionPanelToAnimate = @[_vMarkIt, _vShareIt, _vJoinIt, _vBack];
+    
     dynamicRow = -1;
 	[self configureCollectionView];
 	[self configureMap];
     [self configureSegmentedControl];
 	//    self.dropsArray = (NSArray<DFTDrop*> *) [[[DFTMapManager sharedInstance]mapView]annotations];
-	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
-	{
-		self.dropsArray = responseObject;
-		[[DFTMapManager sharedInstance] addDropsToMap:self.dropsArray];
-		[self.collectionView reloadData];
-        if( self.dropsArray.count > 0 )
-            activeDrop = [self.dropsArray objectAtIndex:0];
-        lblNbDropFound.text = [NSString stringWithFormat:@"%d", (int)self.dropsArray.count];
-        lblDropFound.text = NSLocalizedString(@"dropsFound", nil);
-        lblLocation.text = @"LONDON";
-	}];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self configureMap];
 }
 
 - (void)configureSegmentedControl
@@ -118,6 +120,18 @@ int dynamicRow;
 
 - (void)configureMap
 {
+	[[DFTFeedManager new] buildFeedWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		self.dropsArray = responseObject;
+		[[DFTMapManager sharedInstance] addDropsToMap:self.dropsArray];
+		[self.collectionView reloadData];
+        if( self.dropsArray.count > 0 )
+            activeDrop = [self.dropsArray objectAtIndex:0];
+        lblNbDropFound.text = [NSString stringWithFormat:@"%d", (int)self.dropsArray.count];
+        lblDropFound.text = NSLocalizedString(@"dropsFound", nil);
+        lblLocation.text = @"LONDON";
+	}];
+    
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
 
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
@@ -203,7 +217,7 @@ int dynamicRow;
 
 - (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
 {
-	[mapView setCenterCoordinate:[[DFTMapManager sharedInstance] userCoordinates] zoomLevel:15 animated:YES];
+    [[DFTMapManager sharedInstance] setCenterCoordinateWithZoom:15];
 }
 
 - (MGLAnnotationView *)mapView:(MGLMapView *)mapView viewForAnnotation:(id <MGLAnnotation>)annotation
@@ -242,7 +256,7 @@ int dynamicRow;
     {
         activeDrop = annotation;
         
-//        [[DFTMapManager sharedInstance].mapView setCenterCoordinate:annotation.coordinate animated:YES];
+//        [[DFTMapManager sharedInstance] setCenterCoordinate:annotation.coordinate];
         NSInteger annotationIndex = [self.dropsArray indexOfObject:annotation];
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:annotationIndex inSection:0];
         
@@ -279,6 +293,16 @@ int dynamicRow;
         //    Old Version
         //    [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionLeft animated:YES];
     }
+}
+
+- (BOOL)mapView:(MGLMapView *)mapView shouldChangeFromCamera:(MGLMapCamera *)oldCamera toCamera:(MGLMapCamera *)newCamera
+{
+    if( [MathUtils distanceHaversine:[[DFTMapManager sharedInstance] userCoordinates] b:newCamera.centerCoordinate] > MAX_DISTANCE_KM_AUTHORIZED )
+    {
+        [self mapViewDidFinishLoadingMap:mapView];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - UIScrollView Delegate
@@ -359,32 +383,37 @@ int dynamicRow;
 
 - (IBAction)actExpandMenu:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
+    [UIView animateWithDuration:0.8
+                          delay:0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          _vMenuRight.frame = _vMenuPlaceholder.frame;
                      } completion:^(BOOL finished){
                      }];
     
-    [UIView animateWithDuration:0.5
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         _vMarkIt.alpha = 1;
-                     } completion:nil];
-    
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        int index = ((int)optionPanelToAnimate.count)-1-i;
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[index]).alpha = 1;
+                         } completion:nil];
+    }
 }
 
 - (IBAction)actMarkIt:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         _vMarkIt.alpha = 0;
-                     } completion:^(BOOL finished){
-                     }];
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[i]).alpha = 0;
+                         } completion:nil];
+    }
     
     [UIView animateWithDuration:0.5
                           delay:0.5

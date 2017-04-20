@@ -193,21 +193,18 @@ static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3
     self.mapTopConstraint.constant = -((offset) / 7);
     self.headerTopConstraint.constant = -((offset) / 7);
     
-    if( self.mapTopConstraint.constant  <= -5 )
+    if( self.mapTopConstraint.constant <= -5 )
     {
         [UIView animateWithDuration:0.3f animations:^{
-            [currentFeederViewController expandCollectionView];
-            [currentFeederViewController.collectionView layoutIfNeeded];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleExpand" object:@(self.mapTopConstraint.constant)];
         }];
     }
     else
     {
         [UIView animateWithDuration:0.5f animations:^{
-            [currentFeederViewController shrinkCollectionView];
-            [currentFeederViewController.collectionView layoutIfNeeded];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DFTFeedsScaleShrink" object:@(self.mapTopConstraint.constant)];
         }];
     }
-    
 }
 
 - (void)resetHeaders

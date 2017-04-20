@@ -31,7 +31,7 @@
 
 @implementation DFTProfileViewController
 
-@synthesize imgCover, imgProfile, imgMapCheck, lblName, lblRank, lblDrops, lblTitle, lblDrifts, lblFriends, lblNbDrops, lblNbDrifts, lblPosition, lblCountries, lblFollowers, lblFollowing, lblLastCheck, lblNbFriends,  lblDescription, lblNbCountries, lblNbFollowers, lblNbFollowing, lblLastCheckTime, lblHeaderLikedDrops, btnSettings, driftDropOverviewScrollView;
+@synthesize imgCover, imgProfile, imgMapCheck, lblName, lblRank, lblDrops, lblTitle, lblDrifts, lblFriends, lblNbDrops, lblNbDrifts, lblPosition, lblCountries, lblFollowers, lblFollowing, lblLastCheck, lblNbFriends,  lblDescription, lblNbCountries, lblNbFollowers, lblNbFollowing, lblLastCheckTime, lblHeaderLikedDrops, btnSettings, driftDropOverviewScrollView, vLocation;
 
 - (void)viewDidLoad
 {
@@ -114,9 +114,26 @@
 		self.headerTopConstraint.constant = -((scrollView.contentOffset.y) / 7);
 		self.headerView.alpha = (1 - (scrollView.contentOffset.y / self.headerView.frame.size.height));
 
-        //TODO remove
-		NSLog(@"%f", self.headerView.alpha);
-		[btnSettings setUserInteractionEnabled:(self.headerView.alpha >= 0.95)];
+        if(self.headerView.alpha >= 0.95)
+        {
+            if( btnSettings.alpha == 0)
+            {
+                [UIView animateWithDuration:0.3 animations:^{
+                    btnSettings.alpha = 1;
+                    vLocation.alpha = 1;
+                }];
+            }
+        }
+        else
+        {
+            if(btnSettings.alpha == 1)
+            {
+                [UIView animateWithDuration:0.3 animations:^{
+                    btnSettings.alpha = 0;
+                    vLocation.alpha = 0;
+                }];
+            }
+        }
 	}
 }
 

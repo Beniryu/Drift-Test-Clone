@@ -11,7 +11,10 @@
 #import "DFTDropViewController.h"
 
 #import "DFTAddDropViewController.h"
+#import "ImageUtils.h"
+#import "UIColor+DFTStyles.h"
 
+#import "DFTSegmentedControl.h"
 #import "DFTRadialGradientLayer.h"
 #import "DFTJellyTrigger.h"
 #import "VLDContextSheet.h"
@@ -19,16 +22,24 @@
 
 #import "DFTMapboxDelegate.h"
 #import <Mapbox/Mapbox.h>
+#import "DFTMapManager.h"
+
 #import <lottie-ios/Lottie/Lottie.h>
 
-@interface DFTDropViewController () <VLDContextSheetDelegate>
-
+@interface DFTDropViewController () <VLDContextSheetDelegate, DFTSegmentedControlDelegate>
+{
+@private
+MGLMapView *mapViewShared;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *veilImageView;
 @property (weak, nonatomic) IBOutlet DFTJellyTrigger *jellyTrigger;
 
 @property (nonatomic) VLDContextSheet *contextSheet;
 @property (nonatomic) DFTMapboxDelegate *mapDelegate;
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+
+@property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 
 #pragma mark
 #pragma mark - Capture
@@ -41,6 +52,8 @@
 
 @implementation DFTDropViewController
 
+@synthesize imgLocation, btnBulle, lblLocation, lblCurrentPosition;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -48,6 +61,9 @@
 	self.veilImageView.userInteractionEnabled = NO;
 	self.veilImageView.hidden = YES;
 	[self configureJelly];
+    [self configureSegmentedControl];
+    [self configureLocation];
+    
 //	[self configureCapture];
 //
 //	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
@@ -63,9 +79,54 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
 //	LOTAnimationView *animation = [LOTAnimationView animationNamed:@"square"];
 //	[self.view addSubview:animation];
 //	[animation playWithCompletion:nil];
+
+    [self configureMap];
+}
+
+#pragma mark - Configuration
+
+-(void) configureLocation
+{
+    [imgLocation setTintColor:[UIColor dft_salmonColor]];
+//    lblCurrentPosition.text = NSLocalizedString(@"currentPosition", nil);
+//    lblLocation.text = @"Bastille, Paris";
+}
+
+- (void)configureSegmentedControl
+{
+    self.segmentedControl = [[[NSBundle mainBundle] loadNibNamed:@"DFTSegmentedControl" owner:self options:nil] lastObject];
+    [self.segmentedControl configForDrop];
+    self.segmentedControl.delegate = self;
+    [self.segmentedContainerView addSubview:self.segmentedControl];
+}
+
+- (void)configureMap
+{
+    [[DFTMapManager sharedInstance] removeAllDropsToMap];
+	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
+
+	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
+
+    mapViewShared = [DFTMapManager sharedInstance].mapView;
+	imageView.frame = mapViewShared.frame;
+	imageView.contentMode = UIViewContentModeScaleAspectFit;
+	[mapViewShared addSubview:imageView];
+}
+
+#pragma mark - DFTSegmentedControl Delegate
+- (void)segmentedControlValueChanged:(NSInteger)index
+{
+    //TODO: faire le changement
+}
+
+#pragma mark - Map delegate
+- (void)mapViewDidFinishLoadingMap:(MGLMapView *)mapView
+{
+    [[DFTMapManager sharedInstance] setCenterCoordinateWithZoom:15];
 }
 
 #pragma mark
@@ -96,7 +157,6 @@
 	[self.view.layer addSublayer:previewLayer];
 
 	[self.captureSession startRunning];
-
 }
 
 - (void)saveToRoll
@@ -124,26 +184,31 @@
 
 - (void)configureJelly
 {
-	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
-																									action: @selector(engageJelly:)];
-	gestureRecognizer.minimumPressDuration = 0.01;
-	[self.view addGestureRecognizer: gestureRecognizer];
-
-    //TODO: localization
-	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
-																	  image: [UIImage imageNamed: @"picto_location"]
-														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
-
-	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
-	self.contextSheet.delegate = self;
+//	UILongPressGestureRecognizer *gestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget: self
+//																									action: @selector(engageJelly:)];
+//	gestureRecognizer.minimumPressDuration = 0.01;
+//	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
+//
+//    //TODO: localization
+//	VLDContextSheetItem *item1 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Gift", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	VLDContextSheetItem *item2 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"Add to", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	VLDContextSheetItem *item3 = [[VLDContextSheetItem alloc] initWithTitle: NSLocalizedString(@"share", nil)
+//																	  image: [UIImage imageNamed: @"picto_location"]
+//														   highlightedImage: [UIImage imageNamed: @"picto_location"]];
+//
+//	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
+//	self.contextSheet.delegate = self;
+    
+    
+	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(creationDrop:)];
+	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
+    [ImageUtils roundedBorderImageView:self.jellyTrigger lineWidth:0.];
 }
 
 - (void)engageJelly:(UIGestureRecognizer *)gestureRecognizer
@@ -162,6 +227,11 @@
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	[self presentViewController:addDropVC animated:NO completion:nil];
+}
+
+-(void) creationDrop:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self contextSheet:nil didSelectItem:nil];
 }
 
 @end

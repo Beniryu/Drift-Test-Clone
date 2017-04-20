@@ -15,7 +15,7 @@
 @end
 
 static const NSString *collectionFeedCellIdentifier = @"DFTCollectionFeedCell";
-static const double sizeReduce = 18.;
+static const double sizeReduce = 0.;//18.;
 static const double cellHeight = 156.;
 
 @implementation DFTCollectionFeedViewController
@@ -43,18 +43,6 @@ static const double cellHeight = 156.;
 	self.collectionView.collectionViewLayout = layout;
 }
 
-- (void)expandCollectionView
-{
-	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-	layout.itemSize = (CGSize){SCREEN_SIZE.width, layout.itemSize.height};
-}
-
-- (void)shrinkCollectionView
-{
-	UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-	layout.itemSize = (CGSize){SCREEN_SIZE.width - sizeReduce, layout.itemSize.height};
-}
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
 	return (1);
@@ -68,7 +56,6 @@ static const double cellHeight = 156.;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	DFTCollectionFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)collectionFeedCellIdentifier forIndexPath:indexPath];
-//	UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)collectionFeedCellIdentifier forIndexPath:indexPath];
 //	[cell configureWithItem:nil];
 	return (cell);
 }

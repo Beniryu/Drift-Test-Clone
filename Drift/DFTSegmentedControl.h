@@ -20,7 +20,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgRight;
 
 - (void)showSegment:(NSInteger) index;
+
 - (void)configForDrift;
 - (void)configForFeed;
+- (void)configForDrop;
 
 @end

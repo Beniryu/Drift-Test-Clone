@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblRank;
 @property (weak, nonatomic) IBOutlet UILabel *lblPosition;
 @property (weak, nonatomic) IBOutlet UIButton *btnSettings;
+@property (weak, nonatomic) IBOutlet UIView *vLocation;
 
 - (IBAction)actSettings:(id)sender;
 

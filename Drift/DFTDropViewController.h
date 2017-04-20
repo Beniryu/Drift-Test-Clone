@@ -10,4 +10,9 @@
 
 @interface DFTDropViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *btnBulle;
+@property (weak, nonatomic) IBOutlet UIImageView *imgLocation;
+@property (weak, nonatomic) IBOutlet UILabel *lblCurrentPosition;
+@property (weak, nonatomic) IBOutlet UILabel *lblLocation;
+
 @end

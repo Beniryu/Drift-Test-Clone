@@ -31,7 +31,10 @@
 		09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 09DAA0421E678DEC00E92A1F /* GOTHMBOL.TTF */; };
 		09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */; };
 		32A4D11679D1C0E53A9F419D /* libPods-Drift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F802EDC41987F133802A1305 /* libPods-Drift.a */; };
+		BD4C62951EA569BD0089B7A3 /* DFTOpenedDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */; };
+		BD5D2DA71EA81142007F782D /* MathUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BD5D2DA61EA81142007F782D /* MathUtils.m */; };
 		BD9C94401EA4B42B000CDF6B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD9C943F1EA4B42B000CDF6B /* Images.xcassets */; };
+		BDECA5A01EA52438008C5335 /* DFTOptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */; };
 		DD2CE5661E57960A00204E64 /* DFTAddDropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */; };
 		DD2CE56A1E5CE15100204E64 /* DFTFirstSectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = DD2CE5691E5CE15100204E64 /* DFTFirstSectionLayout.m */; };
 		DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C85C1E61E955003853D6 /* DFTFormRowTableViewDelegate.m */; };
@@ -129,7 +132,13 @@
 		09DAA0451E68D3FD00E92A1F /* DFTSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTSegmentedControl.h; sourceTree = "<group>"; };
 		09DAA0461E68D3FD00E92A1F /* DFTSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTSegmentedControl.m; sourceTree = "<group>"; };
 		A463E86E3572A14BB7C00F0B /* Pods-Drift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.release.xcconfig"; sourceTree = "<group>"; };
+		BD4C62931EA569BD0089B7A3 /* DFTOpenedDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTOpenedDropViewController.h; sourceTree = "<group>"; };
+		BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTOpenedDropViewController.m; sourceTree = "<group>"; };
+		BD5D2DA51EA81142007F782D /* MathUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathUtils.h; sourceTree = "<group>"; };
+		BD5D2DA61EA81142007F782D /* MathUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MathUtils.m; sourceTree = "<group>"; };
 		BD9C943F1EA4B42B000CDF6B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = SOURCE_ROOT; };
+		BDECA59E1EA52438008C5335 /* DFTOptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTOptionTableViewCell.h; sourceTree = "<group>"; };
+		BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTOptionTableViewCell.m; sourceTree = "<group>"; };
 		D8B6FEE01483E9DFBF0A2D45 /* Pods-Drift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Drift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Drift/Pods-Drift.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropViewController.h; sourceTree = "<group>"; };
 		DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropViewController.m; sourceTree = "<group>"; };
@@ -398,6 +407,8 @@
 				DD34C8601E61EB57003853D6 /* DFTAddDropContentTableView.m */,
 				DD34C8621E61EC1B003853D6 /* DFTAddDropSettingsTableView.h */,
 				DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */,
+				BDECA59E1EA52438008C5335 /* DFTOptionTableViewCell.h */,
+				BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */,
 			);
 			name = TableViews;
 			sourceTree = "<group>";
@@ -446,6 +457,8 @@
 				DD4D6D681E3150D600E3605A /* DFTDropViewController.m */,
 				DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */,
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
+				BD4C62931EA569BD0089B7A3 /* DFTOpenedDropViewController.h */,
+				BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */,
 			);
 			name = Drop;
 			sourceTree = "<group>";
@@ -613,6 +626,8 @@
 				DD3B99B61E214FD40098208F /* UIFont+Drift.m */,
 				EBEEEB201E9BD39900F0147A /* ImageUtils.h */,
 				EBEEEB211E9BD39900F0147A /* ImageUtils.m */,
+				BD5D2DA51EA81142007F782D /* MathUtils.h */,
+				BD5D2DA61EA81142007F782D /* MathUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -922,6 +937,7 @@
 				DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */,
 				DD3D90471DF8A7EA00B8A6CF /* DFTUserManager.m in Sources */,
 				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
+				BD4C62951EA569BD0089B7A3 /* DFTOpenedDropViewController.m in Sources */,
 				09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */,
 				DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */,
 				DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */,
@@ -931,12 +947,14 @@
 				DD4A07751E42790800E4CF95 /* DFTCollectionView.m in Sources */,
 				DD45C9A91E2821AE00ED3E20 /* DFTCollectionFeedViewController.m in Sources */,
 				DD4D6D691E3150D600E3605A /* DFTDropViewController.m in Sources */,
+				BD5D2DA71EA81142007F782D /* MathUtils.m in Sources */,
 				DD3B99B71E214FD40098208F /* UIFont+Drift.m in Sources */,
 				DD4A07721E3FD39B00E4CF95 /* DFTScrollView.m in Sources */,
 				DDD6A0C11DE9F4D400FF9741 /* DFTFeedCell.m in Sources */,
 				DD45C9A61E28219C00ED3E20 /* DFTInnerFeedViewController.m in Sources */,
 				DDA59A4B1DD3DACB000B942B /* DFTAppDelegate.m in Sources */,
 				DDD6A0B91DE99A7200FF9741 /* DFTGlobalFeedViewController.m in Sources */,
+				BDECA5A01EA52438008C5335 /* DFTOptionTableViewCell.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
 				DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */,
 				09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */,
