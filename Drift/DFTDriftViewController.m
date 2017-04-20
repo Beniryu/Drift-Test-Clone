@@ -22,6 +22,7 @@
 DFTDrop *activeDrop;
 MGLMapView *mapViewShared;
     NSArray *alphaToAnimate;
+    NSArray *optionPanelToAnimate;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -35,6 +36,7 @@ MGLMapView *mapViewShared;
 
 @synthesize lblLocation, lblDropFound, lblNbDropFound, segmentedControl;
 
+static const double OPTION_PANEL_TIMER          = 0.3;
 static const double MAX_DISTANCE_KM_AUTHORIZED  = 1;
 
 int dynamicRow;
@@ -71,6 +73,8 @@ int dynamicRow;
                        _imgDrifter2,
                        _imgDrifter3,
                        _vMenuRight];
+    
+    optionPanelToAnimate = @[_vMarkIt, _vShareIt, _vJoinIt, _vBack];
     
     dynamicRow = -1;
 	[self configureCollectionView];
@@ -379,32 +383,37 @@ int dynamicRow;
 
 - (IBAction)actExpandMenu:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
+    [UIView animateWithDuration:0.8
+                          delay:0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          _vMenuRight.frame = _vMenuPlaceholder.frame;
                      } completion:^(BOOL finished){
                      }];
     
-    [UIView animateWithDuration:0.5
-                          delay:0.5
-                        options:UIViewAnimationOptionCurveEaseIn
-                     animations:^{
-                         _vMarkIt.alpha = 1;
-                     } completion:nil];
-    
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        int index = ((int)optionPanelToAnimate.count)-1-i;
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseIn
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[index]).alpha = 1;
+                         } completion:nil];
+    }
 }
 
 - (IBAction)actMarkIt:(id)sender
 {
-    [UIView animateWithDuration:1.
-                          delay:0.
-                        options:UIViewAnimationOptionCurveEaseOut
-                     animations:^{
-                         _vMarkIt.alpha = 0;
-                     } completion:^(BOOL finished){
-                     }];
+    for(int i = 0; i < optionPanelToAnimate.count; i++ )
+    {
+        [UIView animateWithDuration:OPTION_PANEL_TIMER
+                              delay:(OPTION_PANEL_TIMER * i)
+                            options:UIViewAnimationOptionCurveEaseOut
+                         animations:^{
+                             ((UIView *)optionPanelToAnimate[i]).alpha = 0;
+                         } completion:nil];
+    }
     
     [UIView animateWithDuration:0.5
                           delay:0.5
