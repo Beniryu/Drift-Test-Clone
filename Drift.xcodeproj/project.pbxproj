@@ -62,6 +62,7 @@
 		DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D761E369D5D00E3605A /* VLDContextSheet.m */; };
 		DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */; };
 		DD4D6D7D1E369D5D00E3605A /* VLDContextSheetItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */; };
+		DD54E3BC1EA53BA9007EE21A /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */; };
 		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
 		DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
@@ -194,6 +195,8 @@
 		DD4D6D781E369D5D00E3605A /* VLDContextSheetItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItem.m; sourceTree = "<group>"; };
 		DD4D6D791E369D5D00E3605A /* VLDContextSheetItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLDContextSheetItemView.h; sourceTree = "<group>"; };
 		DD4D6D7A1E369D5D00E3605A /* VLDContextSheetItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VLDContextSheetItemView.m; sourceTree = "<group>"; };
+		DD54E3BA1EA53BA9007EE21A /* DFTDropSignalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropSignalViewController.h; sourceTree = "<group>"; };
+		DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropSignalViewController.m; sourceTree = "<group>"; };
 		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
 		DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileViewController.h; sourceTree = "<group>"; };
 		DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileViewController.m; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
 				BD4C62931EA569BD0089B7A3 /* DFTOpenedDropViewController.h */,
 				BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */,
+				DD54E3BA1EA53BA9007EE21A /* DFTDropSignalViewController.h */,
+				DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */,
 			);
 			name = Drop;
 			sourceTree = "<group>";
@@ -973,6 +978,7 @@
 				DDB50F4D1DDE569700542EAA /* PcURLRequestFormatter.m in Sources */,
 				DDD6A0BC1DE9AF5F00FF9741 /* DFTFeedCollectionViewLayout.m in Sources */,
 				DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */,
+				DD54E3BC1EA53BA9007EE21A /* DFTDropSignalViewController.m in Sources */,
 				EBEEEB221E9BD39900F0147A /* ImageUtils.m in Sources */,
 				DDB50F501DDE5F4D00542EAA /* DFTSessionManager.m in Sources */,
 				DDD6A0B41DE7972F00FF9741 /* DFTDrop.m in Sources */,
