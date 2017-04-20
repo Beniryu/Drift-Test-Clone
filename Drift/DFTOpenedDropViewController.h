@@ -43,6 +43,9 @@
 @property (weak, nonatomic) IBOutlet UIView *vMenuOrigin;
 @property (weak, nonatomic) IBOutlet UIView *vMenuRight;
 @property (weak, nonatomic) IBOutlet UIView *vMarkIt;
+@property (weak, nonatomic) IBOutlet UIView *vShareIt;
+@property (weak, nonatomic) IBOutlet UIView *vJoinIt;
+@property (weak, nonatomic) IBOutlet UIView *vBack;
 
 - (IBAction)actCloseDrop:(id)sender;
 - (IBAction)actExpandMenu:(id)sender;

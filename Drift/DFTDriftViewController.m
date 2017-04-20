@@ -37,7 +37,7 @@ MGLMapView *mapViewShared;
 @synthesize lblLocation, lblDropFound, lblNbDropFound, segmentedControl;
 
 static const double OPTION_PANEL_TIMER          = 0.3;
-static const double MAX_DISTANCE_KM_AUTHORIZED  = 1;
+static const double MAX_DISTANCE_KM_AUTHORIZED  = 0.7;
 
 int dynamicRow;
 
@@ -133,6 +133,7 @@ int dynamicRow;
 	}];
     
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
+    [[DFTMapManager sharedInstance].mapView setRotateEnabled:NO];
 
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
 
@@ -299,7 +300,8 @@ int dynamicRow;
 {
     if( [MathUtils distanceHaversine:[[DFTMapManager sharedInstance] userCoordinates] b:newCamera.centerCoordinate] > MAX_DISTANCE_KM_AUTHORIZED )
     {
-        [self mapViewDidFinishLoadingMap:mapView];
+//        [[DFTMapManager sharedInstance].mapView resetNorth]; // Si rotation allow
+        [[DFTMapManager sharedInstance] setCenterCoordinateWithZoom:14];
         return NO;
     }
     return YES;

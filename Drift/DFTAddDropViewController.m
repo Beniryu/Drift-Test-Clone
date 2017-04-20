@@ -34,6 +34,8 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnCamera;
+
 #pragma mark Step 01
 @property (weak, nonatomic) IBOutlet UILabel *lblStep;
 @property (weak, nonatomic) IBOutlet UILabel *lblStepNumber;

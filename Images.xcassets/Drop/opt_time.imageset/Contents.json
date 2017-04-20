@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "opt_time_icon.png",
+      "filename" : "opt_time.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "opt_time_icon@2x.png",
+      "filename" : "opt_time@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "opt_time_icon@3x.png",
+      "filename" : "opt_time@3x.png",
       "scale" : "3x"
     }
   ],
