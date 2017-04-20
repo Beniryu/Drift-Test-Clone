@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swEnable;
 
 - (IBAction)actDisable:(UISwitch *)sender;
+- (void)changeModeView:(BOOL) minimize;
 
 @end

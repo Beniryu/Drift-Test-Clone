@@ -24,6 +24,24 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)changeModeView:(BOOL) minimize
+{
+    if( minimize )
+    {
+        lblEdit.textColor = [UIColor whiteColor];
+        lblChoice.hidden = YES;
+        lblEdit.text = [lblChoice.text stringByReplacingOccurrencesOfString:NSLocalizedString(@"defaultPlaceholder", nil) withString:@""];
+        swEnable.hidden = YES;
+    }
+    else
+    {
+        lblEdit.textColor = [UIColor lightGrayColor];
+        lblChoice.hidden = NO;
+        lblEdit.text = NSLocalizedString(@"optEdit", nil);
+        swEnable.hidden = NO;
+    }
+}
+
 - (IBAction)actDisable:(UISwitch *)sender
 {
     if( sender.isOn )
@@ -43,4 +61,5 @@
     
     [self layoutIfNeeded];
 }
+
 @end

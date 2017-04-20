@@ -25,6 +25,8 @@
     BOOL keyboardActivated;
     NSArray *stepOneDisable, *stepOneRemove, *stepOneAlphaFifty;
     NSArray *stepValidationAlpha, *stepValidateRemove;
+    
+    kDFTDropFormStepTransition currentStep;
 }
 
 #pragma mark - Outlets -
@@ -227,6 +229,11 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     
     [cell actDisable:cell.swEnable];
     
+    if( currentStep && currentStep == kDFTDropFormStepTransitionSettingsToValidation )
+        [cell changeModeView:YES];
+    else
+        [cell changeModeView:NO];
+    
     [cell setNeedsLayout];
     [cell layoutIfNeeded];
     return cell;
@@ -263,6 +270,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 {
     if( keyboardActivated )
         return;
+    currentStep = transition;
     switch (transition)
     {
         case kDFTDropFormStepTransitionDetailsToSettings:
@@ -300,7 +308,13 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
          for( UIView *element in stepOneAlphaFifty )
              element.alpha = 0.5;
          
+         self.btnTags.alpha = 1;
+         self.btnTags.hidden = NO;
+         self.tagsView.alpha = 0;
+         self.btnDescription.alpha = 1;
+         self.btnDescription.hidden = NO;
          [self.btnDescription setImage:[UIImage imageNamed:@"drop_description_b"] forState:UIControlStateNormal];
+         self.tfDescription.alpha = 0;
          
          CGRect convertedRect = [self.tableView.superview convertRect:self.tableView.frame toView:self.scrollView];
          convertedRect.origin.y += 40;
@@ -324,7 +338,13 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
          for( UIView *element in stepOneAlphaFifty )
              element.alpha = 1;
          
+         self.btnTags.alpha = 0;
+         self.btnTags.hidden = YES;
+         self.tagsView.alpha = 1;
+         self.btnDescription.alpha = 0;
+         self.btnDescription.hidden = YES;
          [self.btnDescription setImage:[UIImage imageNamed:@"drop_description"] forState:UIControlStateNormal];
+         self.tfDescription.alpha = 1;
          
          [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
      }];
@@ -340,6 +360,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     [UIView animateWithDuration:0.5 animations:
      ^{
          self.constHeightStepOptions.constant = OPTIONS_VIEW_HEIGHT_REDUCE;
+         [self.tableView reloadData];
+         self.tableView.separatorColor = [UIColor clearColor];
          [self.view layoutIfNeeded];
      }];
     [UIView animateWithDuration:0.5 animations:
@@ -370,10 +392,11 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 
 - (void)transitionFromValidationToSettings
 {
-    
     [UIView animateWithDuration:0.5 animations:
      ^{
          self.constHeightStepOptions.constant = OPTIONS_VIEW_HEIGHT;
+         [self.tableView reloadData];
+         self.tableView.separatorColor = [UIColor whiteColor];
          [self.view layoutIfNeeded];
      }];
     [UIView animateWithDuration:0.5 animations:
@@ -519,6 +542,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 
 - (IBAction)actDescription:(id)sender
 {
+    [self.tfDescription becomeFirstResponder];
     [UIView animateWithDuration:1.0f animations:^{
         self.btnTagPresent.alpha = 0;
         self.btnTags.alpha = 0;
@@ -532,7 +556,6 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
          self.tfDescription.hidden = NO;
      }];
     
-    [self.tfDescription becomeFirstResponder];
 }
 
 - (IBAction)actDrop:(id)sender
