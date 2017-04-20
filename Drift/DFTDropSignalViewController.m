@@ -73,6 +73,9 @@
 {
 	self.allTableView.delegate = self;
 	self.allTableView.dataSource = self;
+
+	self.allTableView.allowsMultipleSelection = YES;
+	self.allTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 #pragma mark
@@ -143,6 +146,11 @@
 #pragma mark
 #pragma mark - UITableView
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return (55.);
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 	return (1);
@@ -153,6 +161,17 @@
 {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
+	UIView *view = [UIView new];
+
+	view.frame = CGRectMake(0., 0., 30., 30.);
+	view.backgroundColor = [UIColor redColor];
+	view.layer.cornerRadius = 15.;
+	view.clipsToBounds = YES;
+	cell.accessoryView = view;
+	cell.imageView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
+	cell.textLabel.textColor = [UIColor whiteColor];
+	cell.textLabel.text = @"Name of contact";
+	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	return (cell);
 }
 
