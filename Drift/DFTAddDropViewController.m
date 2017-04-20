@@ -309,10 +309,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
              element.alpha = 0.5;
          
          self.btnTags.alpha = 1;
-         self.btnTags.hidden = NO;
          self.tagsView.alpha = 0;
          self.btnDescription.alpha = 1;
-         self.btnDescription.hidden = NO;
          [self.btnDescription setImage:[UIImage imageNamed:@"drop_description_b"] forState:UIControlStateNormal];
          self.tfDescription.alpha = 0;
          
@@ -338,13 +336,18 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
          for( UIView *element in stepOneAlphaFifty )
              element.alpha = 1;
          
-         self.btnTags.alpha = 0;
-         self.btnTags.hidden = YES;
-         self.tagsView.alpha = 1;
-         self.btnDescription.alpha = 0;
-         self.btnDescription.hidden = YES;
+         if( self.tagsView.tags.count > 0 )
+             self.btnTags.alpha = 0;
+         else
+             self.btnTags.alpha = 1;
+        self.tagsView.alpha = 1;
+        
+         if( self.tfDescription.text.length > 0 )
+             self.btnDescription.alpha = 0;
+         else
+             self.btnDescription.alpha = 1;
+        self.tfDescription.alpha = 1;
          [self.btnDescription setImage:[UIImage imageNamed:@"drop_description"] forState:UIControlStateNormal];
-         self.tfDescription.alpha = 1;
          
          [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
      }];
@@ -500,8 +503,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
             [self.tagsView addTag:tagTrim];
         
         self.tfTags.text = @"";
-        self.btnTags.hidden = YES;
-        self.btnTagArrow.hidden = NO;
+        self.btnTags.alpha = 0;
+        self.btnTagArrow.alpha = 1;
     }
 }
 
@@ -510,8 +513,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     [self.tagsView removeTag:tag];
     if( self.tagsView.tags.count == 0 )
     {
-        self.btnTags.hidden = NO;
-        self.btnTagArrow.hidden = YES;
+        self.btnTags.alpha = 1;
+        self.btnTagArrow.alpha = 0;
     }
 }
 
@@ -633,10 +636,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
         self.btnTagArrow.hidden = YES;
         for( UIView *element in uiElementFirstBlock )
             [element setAlpha:1];
-        
-        if( [self.tfDescription isFirstResponder] )
-            self.btnTags.alpha = 1;
-        
+    
+        self.btnTags.alpha = !( self.tagsView.tags.count > 0 );
         self.btnDescription.alpha = !( self.tfDescription.text.length > 0 );
     }];
 }

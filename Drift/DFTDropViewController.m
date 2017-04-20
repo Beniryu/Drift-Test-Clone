@@ -12,6 +12,7 @@
 
 #import "DFTAddDropViewController.h"
 #import "ImageUtils.h"
+#import "UIColor+DFTStyles.h"
 
 #import "DFTSegmentedControl.h"
 #import "DFTRadialGradientLayer.h"
@@ -51,6 +52,8 @@ MGLMapView *mapViewShared;
 
 @implementation DFTDropViewController
 
+@synthesize imgLocation, btnBulle, lblLocation, lblCurrentPosition;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -59,6 +62,7 @@ MGLMapView *mapViewShared;
 	self.veilImageView.hidden = YES;
 	[self configureJelly];
     [self configureSegmentedControl];
+    [self configureLocation];
     
 //	[self configureCapture];
 //
@@ -84,6 +88,13 @@ MGLMapView *mapViewShared;
 }
 
 #pragma mark - Configuration
+
+-(void) configureLocation
+{
+    [imgLocation setTintColor:[UIColor dft_salmonColor]];
+//    lblCurrentPosition.text = NSLocalizedString(@"currentPosition", nil);
+//    lblLocation.text = @"Bastille, Paris";
+}
 
 - (void)configureSegmentedControl
 {
@@ -197,7 +208,7 @@ MGLMapView *mapViewShared;
     
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(creationDrop:)];
 	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
-    [ImageUtils roundedBorderImageView:self.jellyTrigger];
+    [ImageUtils roundedBorderImageView:self.jellyTrigger lineWidth:0.];
 }
 
 - (void)engageJelly:(UIGestureRecognizer *)gestureRecognizer

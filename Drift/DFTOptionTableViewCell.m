@@ -28,14 +28,12 @@
 {
     if( minimize )
     {
-        lblEdit.textColor = [UIColor whiteColor];
         lblChoice.hidden = YES;
         lblEdit.text = [lblChoice.text stringByReplacingOccurrencesOfString:NSLocalizedString(@"defaultPlaceholder", nil) withString:@""];
         swEnable.hidden = YES;
     }
     else
     {
-        lblEdit.textColor = [UIColor lightGrayColor];
         lblChoice.hidden = NO;
         lblEdit.text = NSLocalizedString(@"optEdit", nil);
         swEnable.hidden = NO;
@@ -53,7 +51,7 @@
     }
     else
     {
-        imgOption.tintColor =  [UIColor lightGrayColor];
+        imgOption.tintColor = [UIColor lightGrayColor];
         lblEdit.text = NSLocalizedString(@"optDisable", nil);
         lblEdit.textColor = [UIColor lightGrayColor];
         lblChoice.hidden = YES;
