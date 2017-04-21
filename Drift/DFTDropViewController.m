@@ -6,8 +6,6 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
-@import AVFoundation;
-
 #import "DFTDropViewController.h"
 
 #import "DFTAddDropViewController.h"
@@ -41,11 +39,6 @@ MGLMapView *mapViewShared;
 @property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
 
-#pragma mark
-#pragma mark - Capture
-@property (nonatomic) AVCaptureSession *captureSession;
-@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
-
 @end
 
 //static const NSString *mapStyleURL = @"mapbox://styles/d10s/cisx8as7l002g2xr0ei3xfoip";
@@ -63,8 +56,7 @@ MGLMapView *mapViewShared;
 	[self configureJelly];
     [self configureSegmentedControl];
     [self configureLocation];
-    
-//	[self configureCapture];
+
 //
 //	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
 //	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
@@ -130,56 +122,6 @@ MGLMapView *mapViewShared;
 }
 
 #pragma mark
-#pragma mark - AVCapture
-- (void)configureCapture
-{
-	// Setting Session
-	self.captureSession = [AVCaptureSession new];
-	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
-
-	// Setting Device + Input
-	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-
-	if (input != nil && [self.captureSession canAddInput:input])
-		[self.captureSession addInput:input];
-
-	// Setting Output
-	self.imageOutput = [AVCaptureStillImageOutput new];
-	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
-	if ([self.captureSession canAddOutput:self.imageOutput])
-		[self.captureSession addOutput:self.imageOutput];
-	// Preview
-	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-
-	previewLayer.frame = self.view.bounds;
-	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer addSublayer:previewLayer];
-
-	[self.captureSession startRunning];
-}
-
-- (void)saveToRoll
-{
-	AVCaptureConnection *connection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
-
-	if (connection != nil)
-	{
-		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
-													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
-		 {
-			 if (error == nil)
-			 {
-				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-
-				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
-				 [self.captureSession stopRunning];
-			 }
-		 }];
-	}
-}
-
-#pragma mark
 #pragma mark - VLDContextSheet
 
 - (void)configureJelly
@@ -223,9 +165,12 @@ MGLMapView *mapViewShared;
 {
 //	NSLog(@"Selected : %@", item.title);
 
-	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
+//	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
+
+	UINavigationController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationControllerWithAddDrop"];
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	addDropVC.navigationBarHidden = YES;
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 

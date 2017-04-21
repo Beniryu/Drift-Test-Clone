@@ -6,10 +6,14 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
+@import AVFoundation;
+
 #import "DFTAddDropViewController.h"
 
 #import "DFTOptionTableViewCell.h"
 #import "DFTDropFormManager.h"
+#import "DFTDropSignalViewController.h"
+
 #import "UIColor+DFTStyles.h"
 #import "ImageUtils.h"
 
@@ -72,6 +76,11 @@
 @property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
 
+#pragma mark
+#pragma mark - Capture
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
+
 @end
 
 @implementation DFTAddDropViewController
@@ -123,6 +132,10 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     [self configureStepOne];
     [self configureStepValidation];
     [self registerForKeyboardNotifications];
+
+	UIPanGestureRecognizer *swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(launchCamera:)];
+
+	[self.btnCamera addGestureRecognizer:swipe];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -241,8 +254,29 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row == 0)
+	{
+		DFTDropSignalViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTDropSignalViewController class])];
+
+		[self.navigationController pushViewController:controller animated:YES];
+	}
+}
+
 #pragma mark
 #pragma mark - Helpers
+
+- (void)launchCamera:(UIPanGestureRecognizer *)sender
+{
+	CGPoint point = [sender locationInView:self.view];
+
+//	NSLog(@"Point : %f", point.y);
+	if (point.y >= 200.0)
+	{
+		[self configureCapture];
+	}
+}
 
 - (void)didPan:(UIPanGestureRecognizer *)sender
 {
@@ -350,7 +384,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
              self.btnDescription.alpha = 1;
         self.tfDescription.alpha = 1;
          [self.btnDescription setImage:[UIImage imageNamed:@"drop_description"] forState:UIControlStateNormal];
-         
+
          [self.scrollView setContentOffset:(CGPoint){0, 0} animated:YES];
      }];
     
@@ -643,4 +677,55 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
         self.btnDescription.alpha = !( self.tfDescription.text.length > 0 );
     }];
 }
+
+#pragma mark
+#pragma mark - AVCapture
+- (void)configureCapture
+{
+	// Setting Session
+	self.captureSession = [AVCaptureSession new];
+	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+
+	// Setting Device + Input
+	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+
+	if (input != nil && [self.captureSession canAddInput:input])
+		[self.captureSession addInput:input];
+
+	// Setting Output
+	self.imageOutput = [AVCaptureStillImageOutput new];
+	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
+	if ([self.captureSession canAddOutput:self.imageOutput])
+		[self.captureSession addOutput:self.imageOutput];
+	// Preview
+	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+
+	previewLayer.frame = self.view.bounds;
+	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer insertSublayer:previewLayer below:self.scrollView.layer];
+
+	[self.captureSession startRunning];
+}
+
+- (void)saveToRoll
+{
+	AVCaptureConnection *connection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
+
+	if (connection != nil)
+	{
+		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
+													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
+		 {
+			 if (error == nil)
+			 {
+				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+
+				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
+				 [self.captureSession stopRunning];
+			 }
+		 }];
+	}
+}
+
 @end
