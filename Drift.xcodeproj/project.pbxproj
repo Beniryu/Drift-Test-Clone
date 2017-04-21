@@ -65,6 +65,7 @@
 		DD54E3BC1EA53BA9007EE21A /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */; };
 		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
 		DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */; };
+		DD87B2E51EA9A816003132D6 /* DFTNotificationCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD87B2E41EA9A816003132D6 /* DFTNotificationCenterViewController.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
@@ -200,6 +201,8 @@
 		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
 		DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileViewController.h; sourceTree = "<group>"; };
 		DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileViewController.m; sourceTree = "<group>"; };
+		DD87B2E31EA9A816003132D6 /* DFTNotificationCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTNotificationCenterViewController.h; sourceTree = "<group>"; };
+		DD87B2E41EA9A816003132D6 /* DFTNotificationCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTNotificationCenterViewController.m; sourceTree = "<group>"; };
 		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
 		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
@@ -477,6 +480,15 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		DD87B2E21EA9A803003132D6 /* NotifCenter */ = {
+			isa = PBXGroup;
+			children = (
+				DD87B2E31EA9A816003132D6 /* DFTNotificationCenterViewController.h */,
+				DD87B2E41EA9A816003132D6 /* DFTNotificationCenterViewController.m */,
+			);
+			name = NotifCenter;
+			sourceTree = "<group>";
+		};
 		DDA59A3A1DD3DACB000B942B = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +587,7 @@
 		DDA59A771DD51A7F000B942B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD87B2E21EA9A803003132D6 /* NotifCenter */,
 				DD7544C91E9583ED002AEC38 /* Profile */,
 				DDA59A781DD51AAD000B942B /* Login */,
 				DDD6A0C41DEA012E00FF9741 /* Feed */,
@@ -968,6 +981,7 @@
 				DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */,
 				DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */,
 				DDB50F4A1DDE542E00542EAA /* NSURL+DFTUtils.m in Sources */,
+				DD87B2E51EA9A816003132D6 /* DFTNotificationCenterViewController.m in Sources */,
 				DDB50F531DDE60F300542EAA /* DFTManagerConstants.m in Sources */,
 				DDE840D91E6CAC1600B18B0C /* DFTDropFormManager.m in Sources */,
 				DD34C8641E61EC1B003853D6 /* DFTAddDropSettingsTableView.m in Sources */,

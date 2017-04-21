@@ -40,7 +40,7 @@
 
 	[self configureViews];
     
-    [self authenticateUser];
+//    [self authenticateUser];
 }
 
 - (void)configureViews

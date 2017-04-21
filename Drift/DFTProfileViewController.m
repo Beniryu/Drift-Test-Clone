@@ -49,6 +49,18 @@
 	[self configureOverview];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MYPROFILE"]];
+
+	[self.scrollView setContentSize:(CGSize){self.scrollView.frame.size.width, 1377}];
+	imageView.frame = CGRectMake(0, 0, self.scrollView.contentSize.width, self.scrollView.contentSize.height);
+	imageView.contentMode = UIViewContentModeScaleAspectFit;
+	[self.scrollView addSubview:imageView];
+}
+
 - (void)configureHeader
 {
 	imgProfile.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];

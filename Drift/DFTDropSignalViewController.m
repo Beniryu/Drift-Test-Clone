@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 
 #pragma mark screens
 @property (weak, nonatomic) IBOutlet UICollectionView *recentCollectionView;
@@ -32,6 +33,7 @@
 	[self configureGroupScreen];
 	[self configureNearbyScreen];
 	[self configureAllScreen];
+	self.searchTextField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"search_icon"]];
 }
 
 #pragma mark
@@ -118,7 +120,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-	return (1);
+	return (0);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -153,7 +155,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return (1);
+	return (0);
 }
 
 

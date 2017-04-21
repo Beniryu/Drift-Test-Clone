@@ -53,9 +53,9 @@
 @property (weak, nonatomic) IBOutlet UIView *vJoinIt;
 @property (weak, nonatomic) IBOutlet UIView *vBack;
 
-- (IBAction)actCloseCell:(id)sender;
-- (IBAction)actExpandCell:(id)sender;
-- (IBAction)actExpandMenu:(id)sender;
-- (IBAction)actMarkIt:(id)sender;
+//- (IBAction)actCloseCell:(id)sender;
+//- (IBAction)actExpandCell:(id)sender;
+//- (IBAction)actExpandMenu:(id)sender;
+//- (IBAction)actMarkIt:(id)sender;
 
 @end
