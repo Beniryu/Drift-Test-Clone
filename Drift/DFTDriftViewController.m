@@ -135,12 +135,12 @@ int dynamicRow;
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
     [[DFTMapManager sharedInstance].mapView setRotateEnabled:NO];
 
-	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
+//	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
 
     mapViewShared = [DFTMapManager sharedInstance].mapView;
-	imageView.frame = mapViewShared.frame;
-	imageView.contentMode = UIViewContentModeScaleAspectFit;
-	[mapViewShared addSubview:imageView];
+//	imageView.frame = mapViewShared.frame;
+//	imageView.contentMode = UIViewContentModeScaleAspectFit;
+//	[mapViewShared addSubview:imageView];
 }
 
 - (void)configureDetails

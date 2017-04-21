@@ -52,7 +52,6 @@ MGLMapView *mapViewShared;
     [super viewDidLoad];
 
 	self.veilImageView.userInteractionEnabled = NO;
-	self.veilImageView.hidden = YES;
 	[self configureJelly];
     [self configureSegmentedControl];
     [self configureLocation];
@@ -66,7 +65,7 @@ MGLMapView *mapViewShared;
 //
 //	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
 //	[self.view addGestureRecognizer:tap];
-//	[self.view bringSubviewToFront:self.tempLabel];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -77,6 +76,7 @@ MGLMapView *mapViewShared;
 //	[animation playWithCompletion:nil];
 
     [self configureMap];
+	[self.view bringSubviewToFront:self.veilImageView];
 }
 
 #pragma mark - Configuration
@@ -101,12 +101,12 @@ MGLMapView *mapViewShared;
     [[DFTMapManager sharedInstance] removeAllDropsToMap];
 	[[DFTMapManager sharedInstance] addMapToView:self.view withDelegate:self];
 
-	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
+//	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map_mask"]];
 
     mapViewShared = [DFTMapManager sharedInstance].mapView;
-	imageView.frame = mapViewShared.frame;
-	imageView.contentMode = UIViewContentModeScaleAspectFit;
-	[mapViewShared addSubview:imageView];
+//	imageView.frame = mapViewShared.frame;
+//	imageView.contentMode = UIViewContentModeScaleAspectFit;
+//	[mapViewShared addSubview:imageView];
 }
 
 #pragma mark - DFTSegmentedControl Delegate
