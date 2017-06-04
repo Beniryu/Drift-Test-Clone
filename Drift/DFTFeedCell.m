@@ -81,6 +81,18 @@
 	self.profilePictureImageView.hidden = YES;
 }
 
+- (void)roundCorner:(UIRectCorner)corners withSize:(CGSize)radii
+{
+	UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds
+												   byRoundingCorners:corners
+														 cornerRadii:radii];
+	CAShapeLayer *maskLayer = [CAShapeLayer new];
+
+	maskLayer.frame = self.bounds;
+	maskLayer.path = maskPath.CGPath;
+	self.layer.mask = maskLayer;
+}
+
 #pragma mark
 #pragma mark - Dynamic
 

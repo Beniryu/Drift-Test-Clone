@@ -14,5 +14,6 @@
 
 - (void)configureWithDrop:(DFTDrop *)drop;
 - (void)hideProfilePic;
+- (void)roundCorner:(UIRectCorner)corners withSize:(CGSize)size;
 
 @end

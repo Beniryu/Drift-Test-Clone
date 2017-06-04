@@ -23,7 +23,6 @@
 @end
 
 static const NSString *feedCellIdentifier = @"DFTFeedCell";
-static const double sizeReduce = 6.;
 
 @implementation DFTGlobalFeedViewController
 
@@ -125,6 +124,12 @@ static const double sizeReduce = 6.;
 	DFTFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)feedCellIdentifier forIndexPath:indexPath];
 
 	[cell configureWithDrop:self.drops[indexPath.item]];
+
+	if (indexPath.item == 0)
+		[cell roundCorner:UIRectCornerTopLeft withSize:(CGSize){8., 8.}];
+	else if (indexPath.item == 1)
+		[cell roundCorner:UIRectCornerTopRight withSize:(CGSize){8., 8.}];
+
 	return (cell);
 }
 
@@ -134,12 +139,25 @@ static const double sizeReduce = 6.;
     [self performSegueWithIdentifier:@"showDrop" sender:nil];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     DFTOpenedDropViewController *viewController = segue.destinationViewController;
 
 	if ([segue.identifier isEqualToString:@"showDrop"])
         viewController.drop = self.drops[selectedIndexPath.item];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	[super scrollViewDidScroll:scrollView];
+
+	DFTFeedCell *cellLeft = (DFTFeedCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+	DFTFeedCell *cellRight = (DFTFeedCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]];
+
+	CGFloat radii = MIN(8. - (scrollView.contentOffset.y / 6), 8.);
+
+	[cellLeft roundCorner:UIRectCornerTopLeft withSize:(CGSize){radii, radii}];
+	[cellRight roundCorner:UIRectCornerTopRight withSize:(CGSize){radii, radii}];
 }
 
 @end

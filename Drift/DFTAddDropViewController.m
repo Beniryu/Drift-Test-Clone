@@ -113,7 +113,8 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 {
     [super viewDidLoad];
     
-    uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView, self.lblSeparator, self.tagsView, self.tfDescription, self.btnDescription];
+    uiElementFirstBlock = @[self.lblStep, self.lblStepNumber, self.vLocation, self.titleTextView,
+							self.lblSeparator, self.tagsView, self.tfDescription, self.btnDescription];
     
     stepOneDisable = @[self.btnTags, self.btnDescription, self.tfTags, self.tfDescription, self.titleTextView];
     stepOneRemove = @[self.lblStep, self.lblStepNumber];

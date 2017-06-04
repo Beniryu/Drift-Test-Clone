@@ -65,6 +65,8 @@
 		DD54E3BC1EA53BA9007EE21A /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */; };
 		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
 		DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */; };
+		DD844CF11EE1F38E0068B9CE /* DFTDropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */; };
+		DD844CF51EE1FBB30068B9CE /* DFTDropFormFirstStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
@@ -200,6 +202,10 @@
 		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
 		DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileViewController.h; sourceTree = "<group>"; };
 		DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileViewController.m; sourceTree = "<group>"; };
+		DD844CEF1EE1F38E0068B9CE /* DFTDropFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormViewController.h; sourceTree = "<group>"; };
+		DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormViewController.m; sourceTree = "<group>"; };
+		DD844CF31EE1FBB30068B9CE /* DFTDropFormFirstStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormFirstStepView.h; sourceTree = "<group>"; };
+		DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormFirstStepView.m; sourceTree = "<group>"; };
 		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
 		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
@@ -460,6 +466,8 @@
 				DD4D6D681E3150D600E3605A /* DFTDropViewController.m */,
 				DD2CE5641E57960A00204E64 /* DFTAddDropViewController.h */,
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
+				DD844CEF1EE1F38E0068B9CE /* DFTDropFormViewController.h */,
+				DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */,
 				BD4C62931EA569BD0089B7A3 /* DFTOpenedDropViewController.h */,
 				BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */,
 				DD54E3BA1EA53BA9007EE21A /* DFTDropSignalViewController.h */,
@@ -475,6 +483,15 @@
 				DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		DD844CF21EE1FB7B0068B9CE /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				DD844CF31EE1FBB30068B9CE /* DFTDropFormFirstStepView.h */,
+				DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */,
+			);
+			name = Containers;
 			sourceTree = "<group>";
 		};
 		DDA59A3A1DD3DACB000B942B = {
@@ -560,6 +577,7 @@
 		DDA59A761DD51A6E000B942B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DD844CF21EE1FB7B0068B9CE /* Containers */,
 				DD4D6D6A1E3159DF00E3605A /* Controls */,
 				DDD6A0BD1DE9F4A000FF9741 /* Cells */,
 				DDA59A7E1DD51F89000B942B /* Utils */,
@@ -944,6 +962,7 @@
 				DD3D90471DF8A7EA00B8A6CF /* DFTUserManager.m in Sources */,
 				DDA59A7C1DD51D6A000B942B /* DFTRoundedButton.m in Sources */,
 				BD4C62951EA569BD0089B7A3 /* DFTOpenedDropViewController.m in Sources */,
+				DD844CF11EE1F38E0068B9CE /* DFTDropFormViewController.m in Sources */,
 				09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */,
 				DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */,
 				DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */,
@@ -964,6 +983,7 @@
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
 				DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */,
 				09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */,
+				DD844CF51EE1FBB30068B9CE /* DFTDropFormFirstStepView.m in Sources */,
 				DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */,
 				DD34C8611E61EB57003853D6 /* DFTAddDropContentTableView.m in Sources */,
 				DD34C85D1E61E955003853D6 /* DFTFormRowTableViewDelegate.m in Sources */,

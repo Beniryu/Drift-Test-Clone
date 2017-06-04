@@ -22,5 +22,6 @@
 - (void)becameVisibleFeed;
 - (void)shrinkFeed:(NSNotification *) notif;
 - (void)expandFeed:(NSNotification *) notif;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
 @end

@@ -24,7 +24,7 @@
 @end
 
 static const NSString *innerFeedCellIdentifier = @"DFTInnerFeedCell";
-static const double sizeReduce = 0.;//12.;
+static const double sizeReduce = 12.;
 static const double cellHeight = 156.;
 
 @implementation DFTInnerFeedViewController
@@ -83,15 +83,6 @@ static const double cellHeight = 156.;
 	DFTInnerFeedCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:(NSString *)innerFeedCellIdentifier forIndexPath:indexPath];
 
 	[cell configureWithItem:self.drops[indexPath.row]];
-
-//	if (indexPath.item == 0)
-//	{
-//		CAShapeLayer *maskLayer = [CAShapeLayer new];
-//
-//		maskLayer.path = [UIBezierPath bezierPathWithRoundedRect:cell.bounds byRoundingCorners:(UIRectCornerTopLeft) cornerRadii:(CGSize){40.0, 40.0}].CGPath;
-//		maskLayer.frame = cell.bounds;
-//		cell.layer.mask = maskLayer;
-//	}
 	return (cell);
 }
 
