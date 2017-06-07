@@ -16,12 +16,44 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.transform = CGAffineTransformMakeScale(0.75, 0.75);
+	imgOption.tintColor = [UIColor dft_lightRedColor];
+	//    self.transform = CGAffineTransformMakeScale(0.75, 0.75);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+- (void)configureWithIndexPath:(NSIndexPath *)indexPath
+{
+	switch (indexPath.row)
+	{
+		case 0:
+			self.imgOption.image =  [UIImage imageNamed:@"opt_signal"];
+			self.lblChoice.text = NSLocalizedString(@"optionSignalPlaceholder", nil);
+			break;
+		case 1:
+			self.imgOption.image =  [UIImage imageNamed:@"opt_triggerzone"];
+			self.lblChoice.text = NSLocalizedString(@"optionTriggerZonePlaceholder", nil);
+			break;
+		case 2:
+			self.imgOption.image =  [UIImage imageNamed:@"opt_display"];
+			self.lblChoice.text = NSLocalizedString(@"optionDisplayPlaceholder", nil);
+			break;
+
+		case 3:
+			self.imgOption.image =  [UIImage imageNamed:@"opt_time"];
+			self.lblChoice.text = NSLocalizedString(@"optionTimePlaceholder", nil);
+			break;
+
+		case 4:
+			self.imgOption.image =  [UIImage imageNamed:@"opt_lockcontent"];
+			self.lblChoice.text = NSLocalizedString(@"optionLockContentPlaceholder", nil);
+			break;
+		default:
+			break;
+	}
 }
 
 - (void)changeModeView:(BOOL) minimize

@@ -11,12 +11,15 @@
 
 #import "DFTDropFormFirstStepView.h"
 
-@interface DFTDropFormViewController () <UIGestureRecognizerDelegate>
+#import "DFTOptionTableViewCell.h"
+
+@interface DFTDropFormViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *completionView;
 
 @property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
+@property (weak, nonatomic) IBOutlet UITableView *stepTwoTableView;
 
 @property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
@@ -50,6 +53,7 @@
 	[self.view addGestureRecognizer:swipeUp];
 	[self.view addGestureRecognizer:swipeDown];
 	[self configureScrollView];
+	[self configureTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -69,6 +73,15 @@
 //	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.scrollEnabled = NO;
+}
+
+- (void)configureTableView
+{
+	self.stepTwoTableView.delegate = self;
+	self.stepTwoTableView.dataSource = self;
+	self.stepTwoTableView.scrollEnabled = NO;
+	self.stepTwoTableView.rowHeight = UITableViewAutomaticDimension;
+	self.stepTwoTableView.estimatedRowHeight = 44.;
 }
 
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender
@@ -141,6 +154,21 @@
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 150};
 	}];
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return (5);
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	DFTOptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"optionCell" forIndexPath:indexPath];
+
+	[cell configureWithIndexPath:indexPath];
+	return (cell);
 }
 
 @end

@@ -17,5 +17,6 @@
 
 - (IBAction)actDisable:(UISwitch *)sender;
 - (void)changeModeView:(BOOL) minimize;
+- (void)configureWithIndexPath:(NSIndexPath *)indexPath;
 
 @end

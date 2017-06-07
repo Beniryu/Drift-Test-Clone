@@ -67,12 +67,6 @@
 						options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionAllowUserInteraction
 					 animations:
 	 ^{
-		 // Description
-//		 self.descriptionTextView.transform = CGAffineTransformMakeTranslation(0, -(rect.size.height * 0.5));
-
-		 // Tags
-//		 self.tagView.transform = CGAffineTransformMakeTranslation(0, -(rect.size.height * 0.5));
-
 		 // Title
 		 CGAffineTransform t = CGAffineTransformMakeScale(0.5, 0.5);
 		 self.titleTextView.transform = CGAffineTransformTranslate(t, -(rect.size.width * 0.5), rect.size.height * 0.5);
