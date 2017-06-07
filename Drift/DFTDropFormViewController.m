@@ -60,10 +60,8 @@
 {
 	[super viewWillAppear:animated];
 
-	CGRect frame = self.completionView.frame;
-
-	[UIView animateWithDuration:0.7 animations:^{
-		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(667. * 0.6));
+	[UIView animateWithDuration:1 animations:^{
+		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.6));
 	}];
 	[self.firstStepContainer appear];
 }
@@ -134,7 +132,10 @@
 {
 	[self.firstStepContainer animateForward];
 	[UIView animateWithDuration:1 animations:^{
-		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y + 150};
+		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y + 350};
+
+		CGAffineTransform t = self.completionView.transform;
+		self.completionView.transform = CGAffineTransformTranslate(t, 0, self.completionView.frame.size.height * 0.4);
 	}];
 }
 
@@ -152,7 +153,10 @@
 {
 	[self.firstStepContainer animateReverse];
 	[UIView animateWithDuration:1 animations:^{
-		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 150};
+		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 350};
+
+		CGAffineTransform t = self.completionView.transform;
+		self.completionView.transform = CGAffineTransformTranslate(t, 0, -(self.completionView.frame.size.height * 0.4));
 	}];
 }
 
