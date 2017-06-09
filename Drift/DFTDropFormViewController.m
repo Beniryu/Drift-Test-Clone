@@ -12,6 +12,8 @@
 #import "DFTDropFormFirstStepView.h"
 
 #import "DFTOptionTableViewCell.h"
+#import "DFTDropSignalViewController.h"
+
 
 @interface DFTDropFormViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -41,6 +43,8 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+
+	self.navigationController.navigationBarHidden = YES;
 
 	UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
 	UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
@@ -141,12 +145,21 @@
 
 - (void)transitionFromSettingsToValidation
 {
+	[UIView animateWithDuration:1 animations:^{
+		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y + 200};
 
+		CGAffineTransform t = self.completionView.transform;
+		self.completionView.transform = CGAffineTransformIdentity;
+	}];
 }
 
 - (void)transitionFromValidationToSettings
 {
+	[UIView animateWithDuration:1 animations:^{
+		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 200};
 
+		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.2));
+	}];
 }
 
 - (void)transitionFromSettingsToDetails
@@ -175,4 +188,13 @@
 	return (cell);
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (indexPath.row == 0)
+	{
+		DFTDropSignalViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTDropSignalViewController class])];
+
+		[self.navigationController pushViewController:controller animated:YES];
+	}
+}
 @end
