@@ -132,44 +132,73 @@
 	}
 }
 
-- (void)transitionFromDetailsToSettings
+- (void)transitionFromDetailsToSettings // 01 -> 02
 {
 	[self.firstStepContainer animateForward];
+
+	// Scrolling + completion bar
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y + 350};
 
 		CGAffineTransform t = self.completionView.transform;
 		self.completionView.transform = CGAffineTransformTranslate(t, 0, self.completionView.frame.size.height * 0.4);
 	}];
+
+	// Step 02 table view
+	[UIView animateWithDuration:0.6 delay:0.4 options:UIViewAnimationOptionTransitionNone animations:^{
+		self.stepTwoTableView.transform = CGAffineTransformMakeTranslation(0, -40);
+	} completion:nil];
 }
 
-- (void)transitionFromSettingsToValidation
+- (void)transitionFromSettingsToValidation // 02 -> 03
 {
+	// Scrolling + completion bar
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y + 200};
-
-		CGAffineTransform t = self.completionView.transform;
 		self.completionView.transform = CGAffineTransformIdentity;
 	}];
-}
 
-- (void)transitionFromValidationToSettings
-{
-	[UIView animateWithDuration:1 animations:^{
-		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 200};
-
-		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.2));
+	// Tableview shenaningans
+	[UIView animateWithDuration:0.3 animations:^{
+		self.stepTwoTableView.alpha = 0;
+	} completion:^(BOOL finished) {
+		[self.stepTwoTableView reloadData];
+		[UIView animateWithDuration:0.4 animations:^{
+			self.stepTwoTableView.alpha = 1;
+		}];
 	}];
 }
 
-- (void)transitionFromSettingsToDetails
+- (void)transitionFromValidationToSettings // 03 -> 02
+{
+	// Scrolling + completion bar
+	[UIView animateWithDuration:1 animations:^{
+		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 200};
+		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.2));
+	}];
+
+	// Tableview shenaningans
+	[UIView animateWithDuration:0.3 animations:^{
+		self.stepTwoTableView.alpha = 0;
+	} completion:^(BOOL finished) {
+		[self.stepTwoTableView reloadData];
+		[UIView animateWithDuration:0.4 animations:^{
+			self.stepTwoTableView.alpha = 1;
+		}];
+	}];
+}
+
+- (void)transitionFromSettingsToDetails // 02 -> 01
 {
 	[self.firstStepContainer animateReverse];
+
+	// Scrolling + completion bar
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 350};
 
 		CGAffineTransform t = self.completionView.transform;
 		self.completionView.transform = CGAffineTransformTranslate(t, 0, -(self.completionView.frame.size.height * 0.4));
+		self.stepTwoTableView.transform = CGAffineTransformIdentity;
 	}];
 }
 
@@ -197,4 +226,5 @@
 		[self.navigationController pushViewController:controller animated:YES];
 	}
 }
+
 @end
