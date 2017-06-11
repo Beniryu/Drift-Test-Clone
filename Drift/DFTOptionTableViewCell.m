@@ -15,14 +15,14 @@
 
 - (void)awakeFromNib
 {
-    [super awakeFromNib];
+	[super awakeFromNib];
 	imgOption.tintColor = [UIColor dft_lightRedColor];
 	//    self.transform = CGAffineTransformMakeScale(0.75, 0.75);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
-    [super setSelected:selected animated:animated];
+	[super setSelected:selected animated:animated];
 }
 
 - (void)configureWithIndexPath:(NSIndexPath *)indexPath
@@ -58,38 +58,40 @@
 
 - (void)changeModeView:(BOOL) minimize
 {
-    if( minimize )
-    {
-        lblChoice.hidden = YES;
-        lblEdit.text = [lblChoice.text stringByReplacingOccurrencesOfString:NSLocalizedString(@"defaultPlaceholder", nil) withString:@""];
-        swEnable.hidden = YES;
-    }
-    else
-    {
-        lblChoice.hidden = NO;
-        lblEdit.text = NSLocalizedString(@"optEdit", nil);
-        swEnable.hidden = NO;
-    }
+	if( minimize )
+	{
+		lblChoice.hidden = YES;
+		lblEdit.text = [lblChoice.text stringByReplacingOccurrencesOfString:NSLocalizedString(@"defaultPlaceholder", nil) withString:@""];
+		swEnable.hidden = YES;
+	}
+	else
+	{
+		lblChoice.hidden = NO;
+		lblEdit.text = NSLocalizedString(@"optEdit", nil);
+		swEnable.hidden = NO;
+	}
 }
 
 - (IBAction)actDisable:(UISwitch *)sender
 {
-    if( sender.isOn )
-    {
-        imgOption.tintColor = [UIColor dft_lightRedColor];
-        lblEdit.text = NSLocalizedString(@"optEdit", nil);
-        lblEdit.textColor = [UIColor whiteColor];
-        lblChoice.hidden = NO;
-    }
-    else
-    {
-        imgOption.tintColor = [UIColor lightGrayColor];
-        lblEdit.text = NSLocalizedString(@"optDisable", nil);
-        lblEdit.textColor = [UIColor lightGrayColor];
-        lblChoice.hidden = YES;
-    }
-    
-    [self layoutIfNeeded];
+	[UIView animateWithDuration:0.4 animations:^{
+		if (sender.isOn)
+		{
+			imgOption.tintColor = [UIColor dft_lightRedColor];
+			lblEdit.text = NSLocalizedString(@"optEdit", nil);
+			lblEdit.textColor = [UIColor whiteColor];
+			lblChoice.hidden = NO;
+		}
+		else
+		{
+			imgOption.tintColor = [UIColor lightGrayColor];
+			lblEdit.text = NSLocalizedString(@"optDisable", nil);
+			lblEdit.textColor = [UIColor lightGrayColor];
+			lblChoice.hidden = YES;
+		}
+
+		[self layoutIfNeeded];
+	}];
 }
 
 @end

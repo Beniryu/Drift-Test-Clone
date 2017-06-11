@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
 #pragma mark screens
 @property (weak, nonatomic) IBOutlet UICollectionView *recentCollectionView;
@@ -78,6 +79,9 @@
 	self.allTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (IBAction)dismissScreen:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
+}
 #pragma mark
 #pragma mark - Screen Flow
 

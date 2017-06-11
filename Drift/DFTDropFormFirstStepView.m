@@ -8,7 +8,7 @@
 
 #import "DFTDropFormFirstStepView.h"
 
-@interface DFTDropFormFirstStepView ()
+@interface DFTDropFormFirstStepView () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *stepView;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
@@ -25,6 +25,9 @@
 
 	self.titleTextView.scrollEnabled = NO;
 	self.descriptionTextView.scrollEnabled = NO;
+
+	self.titleTextView.delegate = self;
+	self.descriptionTextView.delegate = self;
 
 	self.stepView.transform = CGAffineTransformMakeTranslation(0, 200);
 	self.stepView.alpha = 0.;
@@ -84,6 +87,58 @@
 			 self.titleTextView.transform = CGAffineTransformIdentity;
 		 self.stepView.transform = CGAffineTransformIdentity;
 	 }];
+}
+
+- (void)animateTitleEditForward
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		self.stepView.alpha = 0;
+		self.tagView.alpha = 0;
+		self.descriptionTextView.alpha = 0;
+	}];
+}
+
+- (void)animateTitleEditReverse
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		self.stepView.alpha = 1;
+		self.tagView.alpha = 1;
+		self.descriptionTextView.alpha = 1;
+	}];
+}
+
+- (void)animateDescriptionEditForward
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		self.stepView.alpha = 0;
+		self.titleTextView.alpha = 0;
+		self.tagView.alpha = 0;
+	}];
+}
+
+- (void)animateDescriptionEditReverse
+{
+	[UIView animateWithDuration:0.5 animations:^{
+		self.stepView.alpha = 1;
+		self.titleTextView.alpha = 1;
+		self.tagView.alpha = 1;
+	}];
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+	if (textView == self.titleTextView)
+		[self animateTitleEditForward];
+	else if (textView == self.descriptionTextView)
+		[self animateDescriptionEditForward];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+	if (textView == self.titleTextView)
+		[self animateTitleEditReverse];
+	else if (textView == self.descriptionTextView)
+		[self animateDescriptionEditReverse];
 }
 
 @end

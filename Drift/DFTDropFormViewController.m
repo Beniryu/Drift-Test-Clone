@@ -21,23 +21,37 @@
 @property (weak, nonatomic) IBOutlet UIView *completionView;
 
 @property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
 @property (weak, nonatomic) IBOutlet UITableView *stepTwoTableView;
 
 @property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
+@property (nonatomic) BOOL firstAppearance;
 
 @end
 
 @implementation DFTDropFormViewController
 
+- (instancetype)init
+{
+	if (self = [super init])
+		[self commonInit];
+	return (self);
+}
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 	if (self = [super initWithCoder:aDecoder])
-	{
-		self.manager = [DFTDropFormManager new];
-		self.currentSection = 0;
-	}
+		[self commonInit];
 	return (self);
+}
+
+- (void)commonInit
+{
+	self.manager = [DFTDropFormManager new];
+	self.currentSection = 0;
+	self.firstAppearance = YES;
+	self.firstStepContainer.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidLoad
@@ -54,6 +68,7 @@
 	swipeUp.delegate = self;
 	swipeDown.delegate = self;
 
+	self.firstStepHeight.constant = self.view.frame.size.height - 83;
 	[self.view addGestureRecognizer:swipeUp];
 	[self.view addGestureRecognizer:swipeDown];
 	[self configureScrollView];
@@ -64,10 +79,14 @@
 {
 	[super viewWillAppear:animated];
 
-	[UIView animateWithDuration:1 animations:^{
-		self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.6));
-	}];
-	[self.firstStepContainer appear];
+	if (self.firstAppearance)
+	{
+		[UIView animateWithDuration:1 animations:^{
+			self.completionView.transform = CGAffineTransformMakeTranslation(0, -(self.completionView.frame.size.height * 0.6));
+		}];
+		[self.firstStepContainer appear];
+		self.firstAppearance = NO;
+	}
 }
 
 - (void)configureScrollView
@@ -114,7 +133,9 @@
 
 - (void)executeTransition:(kDFTDropFormStepTransition)transition
 {
-	//	self.currentStep = transition;
+	// self.currentStep = transition;
+
+	NSLog(@"%ld", (long)transition);
 	switch (transition)
 	{
 		case kDFTDropFormStepTransitionDetailsToSettings:
@@ -194,7 +215,7 @@
 
 	// Scrolling + completion bar
 	[UIView animateWithDuration:1 animations:^{
-		self.scrollView.contentOffset = (CGPoint){0, self.scrollView.contentOffset.y - 350};
+		self.scrollView.contentOffset = (CGPoint){0, 0};
 
 		CGAffineTransform t = self.completionView.transform;
 		self.completionView.transform = CGAffineTransformTranslate(t, 0, -(self.completionView.frame.size.height * 0.4));
