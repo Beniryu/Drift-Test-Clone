@@ -865,7 +865,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GRC-db-YDJ" id="LK9-u3-4uR">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1929,7 +1929,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0op-s7-dQO" id="Jid-lW-7B2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opt_signal" translatesAutoresizingMaskIntoConstraints="NO" id="925-T5-dEA">
@@ -3417,7 +3417,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="371" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="21t-zd-PRA" id="fPn-az-OtS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="371" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="371" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opt_signal" translatesAutoresizingMaskIntoConstraints="NO" id="niS-Zr-BV8">
@@ -3652,7 +3652,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UHj-Ii-cpL" firstAttribute="top" secondItem="wwl-ZY-9t7" secondAttribute="top" id="4Fd-ax-d2A"/>
                             <constraint firstItem="5YU-He-LcD" firstAttribute="top" secondItem="0Kj-8E-ifX" secondAttribute="bottom" constant="-20" id="DyR-lg-of7"/>

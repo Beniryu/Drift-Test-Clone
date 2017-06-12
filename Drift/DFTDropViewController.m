@@ -57,12 +57,6 @@ MGLMapView *mapViewShared;
     [self configureLocation];
 
 //
-//	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
-//	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
-//
-//	gradientLayer.frame = self.view.bounds;
-//	[self.view.layer addSublayer:gradientLayer];
-//
 //	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
 //	[self.view addGestureRecognizer:tap];
 
@@ -171,6 +165,13 @@ MGLMapView *mapViewShared;
 
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	addDropVC.navigationBarHidden = YES;
+
+	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
+
+	gradientLayer.frame = self.view.bounds;
+	[self.view.layer addSublayer:gradientLayer];
+
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 
