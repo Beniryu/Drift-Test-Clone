@@ -865,7 +865,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GRC-db-YDJ" id="LK9-u3-4uR">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </tableViewCellContentView>
                                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1929,7 +1929,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0op-s7-dQO" id="Jid-lW-7B2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opt_signal" translatesAutoresizingMaskIntoConstraints="NO" id="925-T5-dEA">
@@ -1940,13 +1940,13 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; edit -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g1C-uK-V3l">
-                                                                            <rect key="frame" x="58" y="14" width="53.5" height="16"/>
+                                                                            <rect key="frame" x="58" y="13.5" width="53.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no one included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2EG-KQ-W3P">
-                                                                            <rect key="frame" x="116.5" y="14" width="118.5" height="16"/>
+                                                                            <rect key="frame" x="116.5" y="13.5" width="118.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -3351,7 +3351,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="war-W0-jHg" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OsN-kB-5qf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="OsN-kB-5qf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -3417,7 +3417,7 @@
                                                                 <rect key="frame" x="0.0" y="28" width="371" height="44"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="21t-zd-PRA" id="fPn-az-OtS">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="371" height="43.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="371" height="44"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opt_signal" translatesAutoresizingMaskIntoConstraints="NO" id="niS-Zr-BV8">
@@ -3428,19 +3428,19 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; edit -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4C-hW-pTN">
-                                                                            <rect key="frame" x="58" y="13" width="53.5" height="16"/>
+                                                                            <rect key="frame" x="58" y="13.5" width="53.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no one included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="css-bN-AjH">
-                                                                            <rect key="frame" x="116.5" y="13" width="118.5" height="16"/>
+                                                                            <rect key="frame" x="116.5" y="13.5" width="118.5" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ex1-Yy-Esn">
-                                                                            <rect key="frame" x="302" y="5" width="51" height="31"/>
+                                                                            <rect key="frame" x="302" y="6" width="51" height="31"/>
                                                                             <color key="onTintColor" red="0.98039215690000003" green="0.36470588240000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <connections>
                                                                                 <action selector="actDisable:" destination="21t-zd-PRA" eventType="valueChanged" id="xyb-i7-Kib"/>
@@ -3517,20 +3517,45 @@
                                                         <rect key="frame" x="20" y="272" width="100" height="100"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHo-TC-7S9">
-                                                                <rect key="frame" x="0.0" y="0.0" width="37.5" height="18"/>
-                                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="16"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="46.5" height="22.5"/>
+                                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="20"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUK-H7-cQS">
-                                                                <rect key="frame" x="0.0" y="18" width="57.5" height="55.5"/>
-                                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="50"/>
+                                                                <rect key="frame" x="0.0" y="22.5" width="69" height="66.5"/>
+                                                                <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="60"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUw-5X-qic" userLabel="LocationView">
+                                                                <rect key="frame" x="0.0" y="83" width="90.5" height="17"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picto_location" translatesAutoresizingMaskIntoConstraints="NO" id="i98-kM-8AT">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bastille - Paris" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSs-DG-uad" userLabel="locationLabel">
+                                                                        <rect key="frame" x="18" y="3" width="72.5" height="11.5"/>
+                                                                        <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="JSs-DG-uad" firstAttribute="leading" secondItem="i98-kM-8AT" secondAttribute="trailing" constant="5" id="54v-Ja-QpF"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="JSs-DG-uad" secondAttribute="trailing" id="KfQ-47-ZgJ"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="i98-kM-8AT" secondAttribute="bottom" id="Sgc-06-Y9b"/>
+                                                                    <constraint firstItem="JSs-DG-uad" firstAttribute="centerY" secondItem="i98-kM-8AT" secondAttribute="centerY" id="Yz1-kj-er0"/>
+                                                                    <constraint firstItem="i98-kM-8AT" firstAttribute="top" secondItem="eUw-5X-qic" secondAttribute="top" id="eDo-lo-bl2"/>
+                                                                    <constraint firstItem="i98-kM-8AT" firstAttribute="leading" secondItem="eUw-5X-qic" secondAttribute="leading" id="lwS-vD-Rzt"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="aUK-H7-cQS" firstAttribute="top" secondItem="zHo-TC-7S9" secondAttribute="bottom" id="Odc-lK-MLu"/>
+                                                            <constraint firstAttribute="bottom" secondItem="eUw-5X-qic" secondAttribute="bottom" id="XlM-Lp-XFh"/>
+                                                            <constraint firstItem="eUw-5X-qic" firstAttribute="leading" secondItem="sbL-OF-qbP" secondAttribute="leading" id="iC3-Er-xQq"/>
                                                             <constraint firstAttribute="width" constant="100" id="nPL-Y1-C3p"/>
                                                             <constraint firstItem="zHo-TC-7S9" firstAttribute="leading" secondItem="sbL-OF-qbP" secondAttribute="leading" id="rNG-Us-HFn"/>
                                                             <constraint firstItem="aUK-H7-cQS" firstAttribute="leading" secondItem="sbL-OF-qbP" secondAttribute="leading" id="teU-c9-duw"/>
@@ -3629,7 +3654,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NavigationControllerWithAddDrop" automaticallyAdjustsScrollViewInsets="NO" id="EhI-lO-T7A" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O9g-4K-ahi">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O9g-4K-ahi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
