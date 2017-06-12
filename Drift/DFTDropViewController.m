@@ -172,6 +172,7 @@ MGLMapView *mapViewShared;
 	gradientLayer.frame = self.view.bounds;
 	[self.view.layer addSublayer:gradientLayer];
 
+	[self.jellyTrigger setHidden:YES];
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 
