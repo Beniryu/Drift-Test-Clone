@@ -22,11 +22,11 @@
 		{
 			case 0:
 				transition = kDFTDropFormStepTransitionDetailsToSettings;
-				section += 1;
+				section = 1;
 				break;
 			case 1:
 				transition = kDFTDropFormStepTransitionSettingsToValidation;
-				section += 1;
+				section = 2;
 				break;
 			default:
 				break;
@@ -38,11 +38,11 @@
 		{
 			case 1:
 				transition = kDFTDropFormStepTransitionSettingsToDetails;
-				section -= 1;
+				section = 0;
 				break;
 			case 2:
 				transition = kDFTDropFormStepTransitionValidationToSettings;
-				section -= 1;
+				section = 1;
 				break;
 			default:
 				break;
