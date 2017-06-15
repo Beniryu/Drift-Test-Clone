@@ -273,7 +273,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
 	CGPoint point = [sender locationInView:self.view];
 
 //	NSLog(@"Point : %f", point.y);
-	if (point.y >= 200.0)
+	if (point.y >= 170.0)
 	{
 		[self configureCapture];
 	}

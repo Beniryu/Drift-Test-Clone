@@ -6,6 +6,8 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
+@import AVFoundation;
+
 #import "DFTDropFormManager.h"
 #import "DFTDropFormViewController.h"
 
@@ -19,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *completionView;
+@property (weak, nonatomic) IBOutlet UIImageView *cameraHandle;
 
 @property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
@@ -27,6 +30,11 @@
 @property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
 @property (nonatomic) BOOL firstAppearance;
+
+#pragma mark
+#pragma mark - Capture
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
 
 @end
 
@@ -60,6 +68,11 @@
 
 	self.navigationController.navigationBarHidden = YES;
 
+	UIPanGestureRecognizer *swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(launchCamera:)];
+
+	[self.cameraHandle addGestureRecognizer:swipe];
+	swipe.delegate = self;
+
 	UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeUp:)];
 	UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeDown:)];
 
@@ -79,6 +92,7 @@
 {
 	[super viewWillAppear:animated];
 
+	[self configureCapture];
 	if (self.firstAppearance)
 	{
 		[UIView animateWithDuration:1 animations:^{
@@ -103,6 +117,11 @@
 	self.stepTwoTableView.scrollEnabled = NO;
 	self.stepTwoTableView.rowHeight = UITableViewAutomaticDimension;
 	self.stepTwoTableView.estimatedRowHeight = 44.;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+	return (YES);
 }
 
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender
@@ -166,9 +185,9 @@
 	}];
 
 	// Step 02 table view
-	[UIView animateWithDuration:0.6 delay:0.4 options:UIViewAnimationOptionTransitionNone animations:^{
-		self.stepTwoTableView.transform = CGAffineTransformMakeTranslation(0, -40);
-	} completion:nil];
+//	[UIView animateWithDuration:0.6 delay:0.4 options:UIViewAnimationOptionTransitionNone animations:^{
+//		self.stepTwoTableView.transform = CGAffineTransformMakeTranslation(0, -40);
+//	} completion:nil];
 }
 
 - (void)transitionFromSettingsToValidation // 02 -> 03
@@ -247,5 +266,45 @@
 		[self.navigationController pushViewController:controller animated:YES];
 	}
 }
+
+- (void)launchCamera:(UIPanGestureRecognizer *)sender
+{
+	CGPoint point = [sender locationInView:self.view];
+
+	//	NSLog(@"Point : %f", point.y);
+	if (point.y >= 170.0)
+	{
+		[self configureCapture];
+	}
+}
+
+- (void)configureCapture
+{
+	// Setting Session
+	self.captureSession = [AVCaptureSession new];
+	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
+
+	// Setting Device + Input
+	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
+
+	if (input != nil && [self.captureSession canAddInput:input])
+		[self.captureSession addInput:input];
+
+	// Setting Output
+	self.imageOutput = [AVCaptureStillImageOutput new];
+	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
+	if ([self.captureSession canAddOutput:self.imageOutput])
+		[self.captureSession addOutput:self.imageOutput];
+	// Preview
+	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+
+	previewLayer.frame = self.view.bounds;
+	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer insertSublayer:previewLayer below:self.scrollView.layer];
+
+	[self.captureSession startRunning];
+}
+
 
 @end
