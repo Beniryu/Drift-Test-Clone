@@ -8,6 +8,12 @@
 
 #import "DFTRadialGradientLayer.h"
 
+@interface DFTRadialGradientLayer ()
+
+@property NSArray<NSNumber *> *colors;
+
+@end
+
 @implementation DFTRadialGradientLayer
 
 - (instancetype)initWithCenterPoint:(CGPoint)centerPoint
@@ -15,6 +21,18 @@
 	if (self = [super init])
 	{
 		self.gradientCenterPoint = centerPoint;
+		[self setNeedsDisplay];
+		self.colors = @[@0, @0, @0, @0, @0.08, @0.09, @0.11, @0.7];
+	}
+	return (self);
+}
+
+- (instancetype)initWithCenterPoint:(CGPoint)centerPoint andColors:(NSArray<NSNumber *> *)colors
+{
+	if (self = [super init])
+	{
+		self.gradientCenterPoint = centerPoint;
+		self.colors = colors;
 		[self setNeedsDisplay];
 	}
 	return (self);
@@ -24,7 +42,17 @@
 {
 	size_t gradLocationsNb = 2;
 	CGFloat gradLocations[2] = {0.0f, 1.0f};
-	CGFloat gradColors[8] = {0.0f,0.0f,0.0f,0.0f,0.08f,0.09f,0.11f,0.7f};
+	CGFloat gradColors[8] =
+	{
+		self.colors[0].floatValue,
+		self.colors[1].floatValue,
+		self.colors[2].floatValue,
+		self.colors[3].floatValue,
+		self.colors[4].floatValue,
+		self.colors[5].floatValue,
+		self.colors[6].floatValue,
+		self.colors[7].floatValue
+	};
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	CGGradientRef gradient = CGGradientCreateWithColorComponents(colorSpace, gradColors, gradLocations, gradLocationsNb);
 

@@ -38,6 +38,7 @@ MGLMapView *mapViewShared;
 
 @property (strong, nonatomic) DFTSegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *segmentedContainerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -47,7 +48,7 @@ MGLMapView *mapViewShared;
 
 @synthesize imgLocation, btnBulle, lblLocation, lblCurrentPosition;
 
-- (void)viewDidLoad
+- (void)viewDidLoad 
 {
     [super viewDidLoad];
 
@@ -163,20 +164,23 @@ MGLMapView *mapViewShared;
 
 	UINavigationController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationControllerWithAddDrop"];
 
+	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
+	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point andColors:@[@0, @0, @0, @0, @0.3, @0.3, @1, @0.9]];
+
+	gradientLayer.frame = self.view.bounds;
+	[addDropVC.view.layer insertSublayer:gradientLayer atIndex:0];
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
 	addDropVC.navigationBarHidden = YES;
 
-	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
-	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point];
-
-	gradientLayer.frame = self.view.bounds;
-	[self.view.layer addSublayer:gradientLayer];
+	self.tabBarController.tabBar.hidden = YES;
+	self.bottomConstraint.constant = -50.;
 
 	[self.jellyTrigger setHidden:YES];
+
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 
--(void) creationDrop:(UIGestureRecognizer *)gestureRecognizer
+-(void)creationDrop:(UIGestureRecognizer *)gestureRecognizer
 {
     [self contextSheet:nil didSelectItem:nil];
 }

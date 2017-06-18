@@ -13,5 +13,6 @@
 @property (nonatomic) CGPoint gradientCenterPoint;
 
 - (instancetype)initWithCenterPoint:(CGPoint)centerPoint;
+- (instancetype)initWithCenterPoint:(CGPoint)centerPoint andColors:(NSArray<NSNumber *> *)colors;
 
 @end

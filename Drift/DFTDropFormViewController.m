@@ -92,7 +92,6 @@
 {
 	[super viewWillAppear:animated];
 
-	[self configureCapture];
 	if (self.firstAppearance)
 	{
 		[UIView animateWithDuration:1 animations:^{
