@@ -86,7 +86,20 @@
 		 if (CGAffineTransformIsIdentity(self.titleTextView.transform) == NO)
 			 self.titleTextView.transform = CGAffineTransformIdentity;
 		 self.stepView.transform = CGAffineTransformIdentity;
+
 	 }];
+}
+
+- (void)arrangeForCamera
+{
+	CGAffineTransform t = CGAffineTransformMakeTranslation(0, 30);
+
+	[UIView animateWithDuration:0.4 animations:^{
+		self.stepView.alpha = 0;
+		self.titleTextView.transform = t;
+		self.tagView.transform = t;
+		self.descriptionTextView.transform = t;
+	}];
 }
 
 - (void)animateTitleEditForward

@@ -142,7 +142,6 @@ MGLMapView *mapViewShared;
 //	self.contextSheet = [[VLDContextSheet alloc] initWithItems: @[item1, item2, item3]];
 //	self.contextSheet.delegate = self;
     
-    
 	UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget: self action:@selector(creationDrop:)];
 	[self.jellyTrigger addGestureRecognizer: gestureRecognizer];
     [ImageUtils roundedBorderImageView:self.jellyTrigger lineWidth:0.];
@@ -153,6 +152,10 @@ MGLMapView *mapViewShared;
 	if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
 	{
 		[self.contextSheet startWithGestureRecognizer:gestureRecognizer inView:self.view withAnchor:self.jellyTrigger.center];
+	}
+	else if (gestureRecognizer.state == UIGestureRecognizerStateChanged)
+	{
+		NSLog(@"UIGestureRecognizerState Changed");
 	}
 }
 
@@ -176,7 +179,6 @@ MGLMapView *mapViewShared;
 	self.bottomConstraint.constant = -50.;
 
 	[self.jellyTrigger setHidden:YES];
-
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 

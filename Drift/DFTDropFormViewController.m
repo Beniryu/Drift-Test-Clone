@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIView *completionView;
 @property (weak, nonatomic) IBOutlet UIImageView *cameraHandle;
+@property (weak, nonatomic) IBOutlet UIView *cameraButton;
 
 @property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
@@ -86,6 +87,10 @@
 	[self.view addGestureRecognizer:swipeDown];
 	[self configureScrollView];
 	[self configureTableView];
+
+	self.cameraButton.hidden = YES;
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePicture)];
+	[self.cameraButton addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -104,7 +109,7 @@
 
 - (void)configureScrollView
 {
-//	self.scrollView.delegate = self;
+	//	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.scrollEnabled = NO;
 }
@@ -131,6 +136,7 @@
 		[self executeTransition:transition];
 	};
 
+	self.cameraButton.hidden = YES;
 	self.currentSection = [self.manager routeSwipeDirection:kDFTDropFormSwipeDirectionUp
 												fromSection:self.currentSection
 												  withBlock:block];
@@ -144,6 +150,7 @@
 		[self executeTransition:transition];
 	};
 
+	self.cameraButton.hidden = YES;
 	self.currentSection = [self.manager routeSwipeDirection:kDFTDropFormSwipeDirectionDown
 												fromSection:self.currentSection
 												  withBlock:block];
@@ -273,8 +280,10 @@
 	//	NSLog(@"Point : %f", point.y);
 	if (point.y >= 170.0)
 	{
-		[self configureCapture];
+		[self.firstStepContainer arrangeForCamera];
+//		[self configureCapture];
 	}
+	self.cameraButton.hidden = NO;
 }
 
 - (void)configureCapture
@@ -295,6 +304,7 @@
 	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
 	if ([self.captureSession canAddOutput:self.imageOutput])
 		[self.captureSession addOutput:self.imageOutput];
+
 	// Preview
 	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
 
@@ -305,5 +315,24 @@
 	[self.captureSession startRunning];
 }
 
+- (void)takePicture
+{
+	AVCaptureConnection *connection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
+
+	if (connection != nil)
+	{
+		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
+													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
+		 {
+			 if (error == nil)
+			 {
+				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+
+				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
+				 [self.captureSession stopRunning];
+			 }
+		 }];
+	}
+}
 
 @end

@@ -10,6 +10,4 @@
 
 @interface DFTLoginViewController : UIViewController
 
-
-
 @end

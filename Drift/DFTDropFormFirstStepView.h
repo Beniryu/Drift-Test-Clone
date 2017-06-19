@@ -13,5 +13,6 @@
 - (void)appear;
 - (void)animateForward;
 - (void)animateReverse;
+- (void)arrangeForCamera;
 
 @end
