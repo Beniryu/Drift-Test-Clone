@@ -92,13 +92,8 @@
 
 - (void)arrangeForCamera
 {
-	CGAffineTransform t = CGAffineTransformMakeTranslation(0, 30);
-
 	[UIView animateWithDuration:0.4 animations:^{
 		self.stepView.alpha = 0;
-		self.titleTextView.transform = t;
-		self.tagView.transform = t;
-		self.descriptionTextView.transform = t;
 	}];
 }
 

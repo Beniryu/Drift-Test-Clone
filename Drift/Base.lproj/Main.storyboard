@@ -2017,7 +2017,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DROP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnx-PY-hul">
-                                                        <rect key="frame" x="162.5" y="78" width="51.5" height="19"/>
+                                                        <rect key="frame" x="162" y="78" width="51.5" height="19"/>
                                                         <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <nil key="highlightedColor"/>
@@ -2398,7 +2398,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="13" height="17"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LONDON" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZF-QE-aHe" userLabel="locationLabel">
-                                                <rect key="frame" x="18" y="3" width="46.5" height="11.5"/>
+                                                <rect key="frame" x="18" y="3.5" width="46.5" height="11.5"/>
                                                 <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -3297,7 +3297,7 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Jp-2Vd">
-                                                    <rect key="frame" x="316.5" y="14" width="30.5" height="11.5"/>
+                                                    <rect key="frame" x="316.5" y="13.5" width="30.5" height="11.5"/>
                                                     <fontDescription key="fontDescription" name="Gotham-Bold" family="Gotham-Bold" pointSize="10"/>
                                                     <color key="textColor" red="0.34039598703384399" green="0.35976666212081909" blue="0.41789251565933228" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -3429,13 +3429,13 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt; edit -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4C-hW-pTN">
-                                                                            <rect key="frame" x="58" y="13" width="53.5" height="16"/>
+                                                                            <rect key="frame" x="58" y="13" width="54" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="no one included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="css-bN-AjH">
-                                                                            <rect key="frame" x="116.5" y="13" width="118.5" height="16"/>
+                                                                            <rect key="frame" x="117" y="13" width="119" height="16"/>
                                                                             <fontDescription key="fontDescription" name="Gotham-Light" family="Gotham-Light" pointSize="15"/>
                                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
@@ -3504,15 +3504,24 @@
                                                             <constraint firstItem="Hmi-AR-t5f" firstAttribute="leading" secondItem="Squ-FI-noN" secondAttribute="leading" constant="8" id="j5Y-9Y-5nY"/>
                                                         </constraints>
                                                     </view>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GBp-7u-cY8">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFv-g6-TZZ" userLabel="Description" customClass="UITextView">
                                                         <rect key="frame" x="20" y="548" width="331" height="44"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_description" translatesAutoresizingMaskIntoConstraints="NO" id="Yzn-DW-b0g">
+                                                                <rect key="frame" x="0.0" y="3" width="38" height="38"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="38" id="0vZ-gu-3S2"/>
+                                                                    <constraint firstAttribute="height" constant="38" id="OfH-yp-yby"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="44" id="Ico-sT-PgX"/>
+                                                            <constraint firstItem="Yzn-DW-b0g" firstAttribute="centerY" secondItem="iFv-g6-TZZ" secondAttribute="centerY" id="flm-7t-U9o"/>
+                                                            <constraint firstAttribute="height" constant="44" id="jN9-Ih-9iY"/>
+                                                            <constraint firstItem="Yzn-DW-b0g" firstAttribute="leading" secondItem="iFv-g6-TZZ" secondAttribute="leading" id="rri-2Y-xwY"/>
                                                         </constraints>
-                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham-Book" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    </textView>
+                                                    </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XGe-5L-F7z">
                                                         <rect key="frame" x="20" y="384" width="331" height="80"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3574,13 +3583,6 @@
                                                             <constraint firstAttribute="height" constant="100" id="xpG-d5-ZsH"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_description" translatesAutoresizingMaskIntoConstraints="NO" id="Yzn-DW-b0g">
-                                                        <rect key="frame" x="28" y="551" width="38" height="38"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="38" id="0vZ-gu-3S2"/>
-                                                            <constraint firstAttribute="height" constant="38" id="OfH-yp-yby"/>
-                                                        </constraints>
-                                                    </imageView>
                                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_launch" translatesAutoresizingMaskIntoConstraints="NO" id="KjP-NO-Pp6">
                                                         <rect key="frame" x="168" y="92" width="35" height="77"/>
                                                         <constraints>
@@ -3601,24 +3603,22 @@
                                                     <constraint firstItem="XGe-5L-F7z" firstAttribute="top" secondItem="sbL-OF-qbP" secondAttribute="bottom" constant="12" id="7cQ-Ts-Dve"/>
                                                     <constraint firstAttribute="trailing" secondItem="XGe-5L-F7z" secondAttribute="trailing" constant="20" id="C6n-3z-tEa"/>
                                                     <constraint firstItem="XGe-5L-F7z" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="20" id="DR5-Uu-rGz"/>
-                                                    <constraint firstItem="Yzn-DW-b0g" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="28" id="EXY-Ap-glf"/>
-                                                    <constraint firstItem="GBp-7u-cY8" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="20" id="Ge5-jY-9oB"/>
                                                     <constraint firstItem="Squ-FI-noN" firstAttribute="top" secondItem="XGe-5L-F7z" secondAttribute="bottom" constant="12" id="Gux-2f-e0q"/>
                                                     <constraint firstItem="TtW-MR-TiF" firstAttribute="centerX" secondItem="dNw-Dh-fDf" secondAttribute="centerX" constant="-2.5" id="Jcx-9s-tgF"/>
                                                     <constraint firstAttribute="height" constant="604" id="LD9-Jv-Nz5"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GBp-7u-cY8" secondAttribute="trailing" constant="20" id="QeA-oG-Ld3"/>
                                                     <constraint firstItem="Squ-FI-noN" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="20" id="R9j-FQ-J1x"/>
                                                     <constraint firstItem="TtW-MR-TiF" firstAttribute="centerY" secondItem="dNw-Dh-fDf" secondAttribute="centerY" constant="122" id="RYp-PH-8xH"/>
                                                     <constraint firstItem="KjP-NO-Pp6" firstAttribute="centerX" secondItem="dNw-Dh-fDf" secondAttribute="centerX" id="Z2w-6N-1nq"/>
                                                     <constraint firstItem="KjP-NO-Pp6" firstAttribute="top" secondItem="dNw-Dh-fDf" secondAttribute="top" constant="92" id="cdj-2R-Oyr"/>
                                                     <constraint firstAttribute="trailing" secondItem="Squ-FI-noN" secondAttribute="trailing" constant="20" id="hLU-5B-jUT"/>
                                                     <constraint firstItem="sbL-OF-qbP" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="20" id="iRD-cw-jlj"/>
-                                                    <constraint firstAttribute="bottom" secondItem="GBp-7u-cY8" secondAttribute="bottom" constant="12" id="ioJ-AM-xfz"/>
-                                                    <constraint firstItem="Yzn-DW-b0g" firstAttribute="centerY" secondItem="GBp-7u-cY8" secondAttribute="centerY" id="kBg-YR-BwE"/>
-                                                    <constraint firstItem="GBp-7u-cY8" firstAttribute="top" secondItem="Squ-FI-noN" secondAttribute="bottom" constant="12" id="nAj-FW-G5D"/>
+                                                    <constraint firstAttribute="trailing" secondItem="iFv-g6-TZZ" secondAttribute="trailing" constant="20" id="icy-9v-HiG"/>
+                                                    <constraint firstItem="iFv-g6-TZZ" firstAttribute="leading" secondItem="dNw-Dh-fDf" secondAttribute="leading" constant="20" id="vP5-bI-9Oa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="iFv-g6-TZZ" secondAttribute="bottom" constant="12" id="wSB-jl-iA8"/>
+                                                    <constraint firstItem="iFv-g6-TZZ" firstAttribute="top" secondItem="Squ-FI-noN" secondAttribute="bottom" constant="12" id="yMb-Yu-889"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="descriptionTextView" destination="GBp-7u-cY8" id="g4x-ga-DuA"/>
+                                                    <outlet property="descriptionTextView" destination="iFv-g6-TZZ" id="V22-uQ-sz4"/>
                                                     <outlet property="stepView" destination="sbL-OF-qbP" id="3kR-xe-nBk"/>
                                                     <outlet property="tagView" destination="Squ-FI-noN" id="bAi-FL-JFf"/>
                                                     <outlet property="titleTextView" destination="XGe-5L-F7z" id="d9R-DD-g7p"/>

@@ -137,6 +137,7 @@
 	};
 
 	self.cameraButton.hidden = YES;
+	self.cameraHandle.alpha = 1;
 	self.currentSection = [self.manager routeSwipeDirection:kDFTDropFormSwipeDirectionUp
 												fromSection:self.currentSection
 												  withBlock:block];
@@ -280,6 +281,10 @@
 	//	NSLog(@"Point : %f", point.y);
 	if (point.y >= 170.0)
 	{
+		[UIView animateWithDuration:0.5 animations:^{
+			self.cameraHandle.alpha = 0;
+			self.scrollView.contentOffset = (CGPoint){0, -90.};
+		}];
 		[self.firstStepContainer arrangeForCamera];
 //		[self configureCapture];
 	}
