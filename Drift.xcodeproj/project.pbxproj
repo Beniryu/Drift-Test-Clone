@@ -65,6 +65,7 @@
 		DD54E3BC1EA53BA9007EE21A /* DFTDropSignalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD54E3BB1EA53BA9007EE21A /* DFTDropSignalViewController.m */; };
 		DD7544C81E89F8A0002AEC38 /* BPI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD7544C71E89F8A0002AEC38 /* BPI.gpx */; };
 		DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */; };
+		DD7EF32A1EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7EF3291EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.m */; };
 		DD844CF11EE1F38E0068B9CE /* DFTDropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */; };
 		DD844CF51EE1FBB30068B9CE /* DFTDropFormFirstStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
@@ -202,6 +203,8 @@
 		DD7544C71E89F8A0002AEC38 /* BPI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BPI.gpx; sourceTree = "<group>"; };
 		DD7544CA1E958415002AEC38 /* DFTProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTProfileViewController.h; sourceTree = "<group>"; };
 		DD7544CB1E958415002AEC38 /* DFTProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTProfileViewController.m; sourceTree = "<group>"; };
+		DD7EF3281EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DFTDropFormViewController+DFTDropFormCamera.h"; sourceTree = "<group>"; };
+		DD7EF3291EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DFTDropFormViewController+DFTDropFormCamera.m"; sourceTree = "<group>"; };
 		DD844CEF1EE1F38E0068B9CE /* DFTDropFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormViewController.h; sourceTree = "<group>"; };
 		DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormViewController.m; sourceTree = "<group>"; };
 		DD844CF31EE1FBB30068B9CE /* DFTDropFormFirstStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropFormFirstStepView.h; sourceTree = "<group>"; };
@@ -468,6 +471,8 @@
 				DD2CE5651E57960A00204E64 /* DFTAddDropViewController.m */,
 				DD844CEF1EE1F38E0068B9CE /* DFTDropFormViewController.h */,
 				DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */,
+				DD7EF3281EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.h */,
+				DD7EF3291EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.m */,
 				BD4C62931EA569BD0089B7A3 /* DFTOpenedDropViewController.h */,
 				BD4C62941EA569BD0089B7A3 /* DFTOpenedDropViewController.m */,
 				DD54E3BA1EA53BA9007EE21A /* DFTDropSignalViewController.h */,
@@ -952,6 +957,7 @@
 				DDA59A4E1DD3DACB000B942B /* DFTLoginViewController.m in Sources */,
 				DD34C8691E620D60003853D6 /* DFTAddDropStepCell.m in Sources */,
 				DD3D90411DF3268200B8A6CF /* DFTUser.m in Sources */,
+				DD7EF32A1EF9BE240079A816 /* DFTDropFormViewController+DFTDropFormCamera.m in Sources */,
 				DD4D6D7B1E369D5D00E3605A /* VLDContextSheet.m in Sources */,
 				DDDD04561E638CF0003DE070 /* DFTDriftViewController.m in Sources */,
 				DD4D6D7C1E369D5D00E3605A /* VLDContextSheetItem.m in Sources */,

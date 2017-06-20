@@ -412,7 +412,7 @@ static const int OPTIONS_VIEW_HEIGHT_REDUCE = 260;
          CGAffineTransform t = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -(self.tableView.frame.size.height * 0.5));
          self.tableView.transform = t;
          
-         for( UIView *element in stepValidationAlpha )
+         for ( UIView *element in stepValidationAlpha )
              element.alpha = 1;
          
          [self.btnTags.imageView setTintColor:[UIColor whiteColor]];

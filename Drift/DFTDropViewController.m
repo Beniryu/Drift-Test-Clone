@@ -57,10 +57,6 @@ MGLMapView *mapViewShared;
     [self configureSegmentedControl];
     [self configureLocation];
 
-//
-//	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveToRoll)];
-//	[self.view addGestureRecognizer:tap];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated

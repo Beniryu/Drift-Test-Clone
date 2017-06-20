@@ -6,25 +6,21 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
-@import AVFoundation;
-
 #import "DFTDropFormManager.h"
 #import "DFTDropFormViewController.h"
-
-#import "DFTDropFormFirstStepView.h"
 
 #import "DFTOptionTableViewCell.h"
 #import "DFTDropSignalViewController.h"
 
+#import "DFTDropFormViewController+DFTDropFormCamera.h"
 
 @interface DFTDropFormViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (weak, nonatomic) IBOutlet UIView *completionView;
 @property (weak, nonatomic) IBOutlet UIImageView *cameraHandle;
 @property (weak, nonatomic) IBOutlet UIView *cameraButton;
 
-@property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
 @property (weak, nonatomic) IBOutlet UITableView *stepTwoTableView;
 
@@ -32,31 +28,23 @@
 @property (nonatomic) NSInteger currentSection;
 @property (nonatomic) BOOL firstAppearance;
 
-#pragma mark
-#pragma mark - Capture
-@property (nonatomic) AVCaptureSession *captureSession;
-@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
-
 @end
 
 @implementation DFTDropFormViewController
 
-- (instancetype)init
-{
+- (instancetype)init {
 	if (self = [super init])
 		[self commonInit];
 	return (self);
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
 	if (self = [super initWithCoder:aDecoder])
 		[self commonInit];
 	return (self);
 }
 
-- (void)commonInit
-{
+- (void)commonInit {
 	self.manager = [DFTDropFormManager new];
 	self.currentSection = 0;
 	self.firstAppearance = YES;
@@ -87,6 +75,7 @@
 	[self.view addGestureRecognizer:swipeDown];
 	[self configureScrollView];
 	[self configureTableView];
+	[self configureCameraActions];
 
 	self.cameraButton.hidden = YES;
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePicture)];
@@ -107,15 +96,13 @@
 	}
 }
 
-- (void)configureScrollView
-{
+- (void)configureScrollView {
 	//	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
 	self.scrollView.scrollEnabled = NO;
 }
 
-- (void)configureTableView
-{
+- (void)configureTableView {
 	self.stepTwoTableView.delegate = self;
 	self.stepTwoTableView.dataSource = self;
 	self.stepTwoTableView.scrollEnabled = NO;
@@ -123,9 +110,26 @@
 	self.stepTwoTableView.estimatedRowHeight = 44.;
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
 	return (YES);
+}
+
+- (void)launchCamera:(UIPanGestureRecognizer *)sender
+{
+	CGPoint point = [sender locationInView:self.view];
+
+	//	NSLog(@"Point : %f", point.y);
+	if (point.y >= 170.0)
+	{
+		[UIView animateWithDuration:0.5 animations:^{
+			self.cameraHandle.alpha = 0;
+			self.scrollView.contentOffset = (CGPoint){0, -90.};
+		} completion:^(BOOL finished) {
+			self.cameraButton.hidden = NO;
+		}];
+		[self.firstStepContainer arrangeForCamera];
+		[self configureCapture];
+	}
 }
 
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender
@@ -271,72 +275,6 @@
 		DFTDropSignalViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTDropSignalViewController class])];
 
 		[self.navigationController pushViewController:controller animated:YES];
-	}
-}
-
-- (void)launchCamera:(UIPanGestureRecognizer *)sender
-{
-	CGPoint point = [sender locationInView:self.view];
-
-	//	NSLog(@"Point : %f", point.y);
-	if (point.y >= 170.0)
-	{
-		[UIView animateWithDuration:0.5 animations:^{
-			self.cameraHandle.alpha = 0;
-			self.scrollView.contentOffset = (CGPoint){0, -90.};
-		}];
-		[self.firstStepContainer arrangeForCamera];
-//		[self configureCapture];
-	}
-	self.cameraButton.hidden = NO;
-}
-
-- (void)configureCapture
-{
-	// Setting Session
-	self.captureSession = [AVCaptureSession new];
-	self.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
-
-	// Setting Device + Input
-	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-	AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-
-	if (input != nil && [self.captureSession canAddInput:input])
-		[self.captureSession addInput:input];
-
-	// Setting Output
-	self.imageOutput = [AVCaptureStillImageOutput new];
-	self.imageOutput.outputSettings = @{AVVideoCodecKey : AVVideoCodecJPEG};
-	if ([self.captureSession canAddOutput:self.imageOutput])
-		[self.captureSession addOutput:self.imageOutput];
-
-	// Preview
-	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
-
-	previewLayer.frame = self.view.bounds;
-	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer insertSublayer:previewLayer below:self.scrollView.layer];
-
-	[self.captureSession startRunning];
-}
-
-- (void)takePicture
-{
-	AVCaptureConnection *connection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
-
-	if (connection != nil)
-	{
-		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
-													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
-		 {
-			 if (error == nil)
-			 {
-				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-
-				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
-				 [self.captureSession stopRunning];
-			 }
-		 }];
 	}
 }
 

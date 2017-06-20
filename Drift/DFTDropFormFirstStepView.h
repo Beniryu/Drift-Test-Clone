@@ -14,5 +14,6 @@
 - (void)animateForward;
 - (void)animateReverse;
 - (void)arrangeForCamera;
+- (void)arrangeForCameraDismissal;
 
 @end

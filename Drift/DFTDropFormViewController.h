@@ -6,8 +6,23 @@
 //  Copyright © 2017 Thierry Ng. All rights reserved.
 //
 
+@import AVFoundation;
+
 #import <UIKit/UIKit.h>
 
+#import "DFTDropFormFirstStepView.h"
+
 @interface DFTDropFormViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
+
+#pragma mark
+#pragma mark - Capture
+@property (weak, nonatomic) IBOutlet UIButton *cameraRetryButton;
+@property (weak, nonatomic) IBOutlet UIButton *cameraValidateButton;
+
+@property (nonatomic) AVCaptureSession *captureSession;
+@property (nonatomic) AVCaptureStillImageOutput *imageOutput;
 
 @end

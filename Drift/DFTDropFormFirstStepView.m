@@ -97,6 +97,13 @@
 	}];
 }
 
+- (void)arrangeForCameraDismissal
+{
+	[UIView animateWithDuration:0.4 animations:^{
+		self.stepView.alpha = 1;
+	}];
+}
+
 - (void)animateTitleEditForward
 {
 	[UIView animateWithDuration:0.5 animations:^{
