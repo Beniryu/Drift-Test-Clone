@@ -94,6 +94,13 @@
 	}
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+
+	NSLog(@"View Did Appear");
+}
+
 - (void)configureScrollView {
 	//	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
@@ -126,12 +133,18 @@
 			self.cameraButton.hidden = NO;
 		}];
 		[self.firstStepContainer arrangeForCamera];
+
 //		[self configureCapture];
 	}
 }
 
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender
 {
+	if (self.cameraButton.hidden == NO)
+	{
+		[self dismissCamera];
+		return ;
+	}
 	DFTDropFormTransitionBlock block = nil;
 
 	block = ^(kDFTDropFormStepTransition transition) {
@@ -243,7 +256,7 @@
 
 	// Scrolling + completion bar
 	[UIView animateWithDuration:1 animations:^{
-		self.scrollView.contentOffset = (CGPoint){0, 0};
+		self.scrollView.contentOffset = (CGPoint){0, -20};
 
 		CGAffineTransform t = self.completionView.transform;
 		self.completionView.transform = CGAffineTransformTranslate(t, 0, -(self.completionView.frame.size.height * 0.4));

@@ -68,7 +68,7 @@
 		self.cameraRetryButton.alpha = 0;
 		self.cameraValidateButton.alpha = 0;
 		self.cameraButton.alpha = 0;
-		self.scrollView.contentOffset = CGPointZero;
+		self.scrollView.contentOffset = (CGPoint){0, -20};
 	} completion:^(BOOL finished) {
 
 		self.cameraValidateButton.hidden = YES;
