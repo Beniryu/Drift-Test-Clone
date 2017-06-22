@@ -21,6 +21,8 @@
 #pragma mark - Capture
 @property (weak, nonatomic) IBOutlet UIButton *cameraRetryButton;
 @property (weak, nonatomic) IBOutlet UIButton *cameraValidateButton;
+@property (weak, nonatomic) IBOutlet UIImageView *cameraHandle;
+@property (weak, nonatomic) IBOutlet UIView *cameraButton;
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureStillImageOutput *imageOutput;

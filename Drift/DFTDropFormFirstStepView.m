@@ -7,6 +7,7 @@
 //
 
 #import "DFTDropFormFirstStepView.h"
+#import <UITextView+Placeholder.h>
 
 @interface DFTDropFormFirstStepView () <UITextViewDelegate>
 
@@ -28,6 +29,12 @@
 
 	self.titleTextView.delegate = self;
 	self.descriptionTextView.delegate = self;
+
+	self.titleTextView.placeholder = @"Lorem ipsum machin";
+	self.titleTextView.placeholderLabel.font = self.titleTextView.font;
+	self.titleTextView.text = @"";
+	self.titleTextView.textContainer.maximumNumberOfLines = 3;
+	self.titleTextView.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
 
 	self.stepView.transform = CGAffineTransformMakeTranslation(0, 200);
 	self.stepView.alpha = 0.;

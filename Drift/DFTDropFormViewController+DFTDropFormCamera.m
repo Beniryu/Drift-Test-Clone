@@ -63,10 +63,17 @@
 
 - (void)dismissCamera
 {
-	NSLog(@"Test\nTest\nTest\nTest\nTest\nTest\n Stop");
 	[self.firstStepContainer arrangeForCameraDismissal];
 	[UIView animateWithDuration:0.4 animations:^{
+		self.cameraRetryButton.alpha = 0;
+		self.cameraValidateButton.alpha = 0;
+		self.cameraButton.alpha = 0;
 		self.scrollView.contentOffset = CGPointZero;
+	} completion:^(BOOL finished) {
+
+		self.cameraValidateButton.hidden = YES;
+		self.cameraRetryButton.hidden = YES;
+		self.cameraButton.hidden = YES;
 	}];
 }
 

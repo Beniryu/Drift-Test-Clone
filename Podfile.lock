@@ -24,6 +24,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - UITextView+Placeholder (1.2.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - Mantle (~> 2.1.0)
   - Mapbox-iOS-SDK (~> 3.5)
   - SDWebImage (~> 3.8)
+  - UITextView+Placeholder (~> 1.2)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -42,7 +44,8 @@ SPEC CHECKSUMS:
   Mantle: 2fa750afa478cd625a94230fbf1c13462f29395b
   Mapbox-iOS-SDK: f0158f986ded5fd0b4034b1b8801aeeb5556a26a
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: fbb07f4174765a955cf00bb4b6d8210019f4ae33
+PODFILE CHECKSUM: b469fed97731ba15afee337c108fd3fe1b9740ea
 
 COCOAPODS: 1.2.1

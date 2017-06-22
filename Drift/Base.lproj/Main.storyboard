@@ -3515,7 +3515,6 @@
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="Yzn-DW-b0g" firstAttribute="centerY" secondItem="iFv-g6-TZZ" secondAttribute="centerY" id="flm-7t-U9o"/>
                                                             <constraint firstAttribute="height" constant="44" id="jN9-Ih-9iY"/>
@@ -3523,17 +3522,16 @@
                                                         </constraints>
                                                     </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XGe-5L-F7z">
-                                                        <rect key="frame" x="20" y="384" width="331" height="80"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <rect key="frame" x="20" y="354" width="331" height="110"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="80" id="LcS-87-7oF"/>
+                                                            <constraint firstAttribute="height" constant="110" id="LcS-87-7oF"/>
                                                         </constraints>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <fontDescription key="fontDescription" name="Gotham-Medium" family="Gotham-Medium" pointSize="25"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbL-OF-qbP">
-                                                        <rect key="frame" x="20" y="272" width="100" height="100"/>
+                                                        <rect key="frame" x="20" y="242" width="100" height="100"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Step" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHo-TC-7S9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="46.5" height="23"/>
@@ -3591,15 +3589,15 @@
                                                         </constraints>
                                                     </imageView>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A4b-xQ-YeO" userLabel="Retry">
-                                                        <rect key="frame" x="68.5" y="319" width="37" height="30"/>
+                                                        <rect key="frame" x="68.5" y="289" width="37" height="30"/>
                                                         <state key="normal" title="Retry"/>
                                                     </button>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uj4-u4-whl" userLabel="Validate">
-                                                        <rect key="frame" x="265.5" y="319" width="55" height="30"/>
+                                                        <rect key="frame" x="265.5" y="289" width="55" height="30"/>
                                                         <state key="normal" title="Validate"/>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TtW-MR-TiF" userLabel="cameraButton">
-                                                        <rect key="frame" x="165.5" y="314" width="40" height="40"/>
+                                                        <rect key="frame" x="165.5" y="284" width="40" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="40" id="9U8-yk-hL4"/>

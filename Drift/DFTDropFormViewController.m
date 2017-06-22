@@ -18,8 +18,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *completionView;
-@property (weak, nonatomic) IBOutlet UIImageView *cameraHandle;
-@property (weak, nonatomic) IBOutlet UIView *cameraButton;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
 @property (weak, nonatomic) IBOutlet UITableView *stepTwoTableView;
@@ -123,7 +121,7 @@
 	{
 		[UIView animateWithDuration:0.5 animations:^{
 			self.cameraHandle.alpha = 0;
-			self.scrollView.contentOffset = (CGPoint){0, -90.};
+			self.scrollView.contentOffset = (CGPoint){0, -240.};
 		} completion:^(BOOL finished) {
 			self.cameraButton.hidden = NO;
 		}];

@@ -14,6 +14,9 @@ target 'Drift' do
   pod 'IQKeyboardManager', '~> 4.0.7'
   pod 'AMTagListView'
   pod 'lottie-ios'
+
+  # Misc
+  pod 'UITextView+Placeholder', '~> 1.2'
  
   # External SDK
   pod 'Mapbox-iOS-SDK', '~> 3.5'
