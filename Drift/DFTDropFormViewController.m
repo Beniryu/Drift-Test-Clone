@@ -128,7 +128,7 @@
 			self.cameraButton.hidden = NO;
 		}];
 		[self.firstStepContainer arrangeForCamera];
-		[self configureCapture];
+//		[self configureCapture];
 	}
 }
 
