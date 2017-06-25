@@ -163,4 +163,25 @@
 		[self animateDescriptionEditReverse];
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+	NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
+	NSDictionary *textAttributes = @{NSFontAttributeName : textView.font};
+	CGFloat textWidth = CGRectGetWidth(UIEdgeInsetsInsetRect(textView.frame, textView.textContainerInset));
+	NSString *checkString;
+
+	textWidth -= 2.0f * textView.textContainer.lineFragmentPadding;
+
+	checkString = ([text isEqualToString:@" "] ? [textView.text stringByAppendingString:@"w"] : newText);
+
+	CGRect boundingRect = [checkString boundingRectWithSize:CGSizeMake(textWidth, 0)
+												options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+											 attributes:textAttributes
+												context:nil];
+
+	NSUInteger numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
+	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 5);
+	return numberOfLines <= targetNumberOfLines;
+}
+
 @end
