@@ -17,7 +17,7 @@
 	self.cameraValidateButton.alpha = 0;
 
 	[self.cameraRetryButton addTarget:self action:@selector(relaunchCaptureSession) forControlEvents:UIControlEventTouchUpInside];
-	[self.cameraValidateButton addTarget:self action:@selector(dismissCamera) forControlEvents:UIControlEventTouchUpInside];
+	[self.cameraValidateButton addTarget:self action:@selector(dismissCamera:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)configureCapture
@@ -40,13 +40,19 @@
 		[self.captureSession addOutput:self.imageOutput];
 
 	// Preview
-	AVCaptureVideoPreviewLayer *previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+	self.previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
+	CGRect previewFrame = self.view.bounds;
 
-	previewLayer.frame = self.view.bounds;
-	previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-	[self.view.layer insertSublayer:previewLayer below:self.scrollView.layer];
+	previewFrame.origin.y = -self.view.frame.size.height;
+	self.previewLayer.frame = previewFrame;
+	self.previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+	[self.view.layer insertSublayer:self.previewLayer below:self.scrollView.layer];
 
 	[self.captureSession startRunning];
+
+	[UIView animateWithDuration:1 delay:1 options:UIViewAnimationOptionTransitionNone animations:^{
+		self.previewLayer.transform = CATransform3DMakeTranslation(0, self.view.frame.size.height, 0);
+	} completion:nil];
 }
 
 - (void)relaunchCaptureSession
@@ -61,9 +67,12 @@
 	}];
 }
 
-- (void)dismissCamera
+- (void)dismissCamera:(BOOL)removePicture
 {
 	[self.firstStepContainer arrangeForCameraDismissal];
+	[self.captureSession stopRunning];
+	if (removePicture)
+		[self.previewLayer removeFromSuperlayer];
 	[UIView animateWithDuration:0.4 animations:^{
 		self.cameraRetryButton.alpha = 0;
 		self.cameraValidateButton.alpha = 0;

@@ -26,5 +26,6 @@
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureStillImageOutput *imageOutput;
+@property AVCaptureVideoPreviewLayer *previewLayer;
 
 @end

@@ -134,7 +134,7 @@
 		}];
 		[self.firstStepContainer arrangeForCamera];
 
-//		[self configureCapture];
+		[self configureCapture];
 	}
 }
 
@@ -142,7 +142,7 @@
 {
 	if (self.cameraButton.hidden == NO)
 	{
-		[self dismissCamera];
+		[self dismissCamera:YES];
 		return ;
 	}
 	DFTDropFormTransitionBlock block = nil;

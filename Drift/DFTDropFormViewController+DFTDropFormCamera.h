@@ -14,7 +14,7 @@
 - (void)configureCameraActions;
 - (void)configureCapture;
 - (void)relaunchCaptureSession;
-- (void)dismissCamera;
+- (void)dismissCamera:(BOOL)removePicture;
 - (void)takePicture;
 
 @end
