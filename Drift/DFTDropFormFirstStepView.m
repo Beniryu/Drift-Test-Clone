@@ -199,9 +199,9 @@
 											 attributes:textAttributes
 												context:nil];
 
-	NSUInteger numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
-	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 4);
-	NSLog(@"number of lines : %ld - %ld", (long)numberOfLines, (long)targetNumberOfLines);
+	CGFloat numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
+	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 5);
+
 	return numberOfLines <= targetNumberOfLines;
 }
 
