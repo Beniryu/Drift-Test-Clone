@@ -201,8 +201,11 @@
 
 	CGFloat numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
 	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 5);
+	NSLog(@"line height : %ld\n", (long)textView.font.lineHeight);
+	NSLog(@"Bounding rect w:%ld h:%ld", (long)boundingRect.size.width, (long)boundingRect.size.height);
+	NSLog(@"number of lines : %f - %f", numberOfLines, boundingRect.size.height / textView.font.lineHeight);
 
-	return numberOfLines <= targetNumberOfLines;
+	return floorf(numberOfLines) <= targetNumberOfLines;
 }
 
 @end
