@@ -77,6 +77,7 @@
 		self.cameraRetryButton.alpha = 0;
 		self.cameraValidateButton.alpha = 0;
 		self.cameraButton.alpha = 0;
+		self.cameraHandle.alpha = 1;
 		self.scrollView.contentOffset = (CGPoint){0, -20};
 	} completion:^(BOOL finished) {
 

@@ -130,11 +130,12 @@
 			self.cameraHandle.alpha = 0;
 			self.scrollView.contentOffset = (CGPoint){0, -240.};
 		} completion:^(BOOL finished) {
+			self.cameraButton.alpha = 1;
 			self.cameraButton.hidden = NO;
 		}];
 		[self.firstStepContainer arrangeForCamera];
 
-		[self configureCapture];
+//		[self configureCapture];
 	}
 }
 

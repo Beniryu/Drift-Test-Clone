@@ -12,9 +12,13 @@
 @interface DFTDropFormFirstStepView () <UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *stepView;
+@property (weak, nonatomic) IBOutlet UIView *locationView;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *descriptionImageView;
+
+@property NSString *descriptionText;
 
 @end
 
@@ -44,6 +48,7 @@
 	self.tagView.alpha = 0.;
 	self.descriptionTextView.transform = CGAffineTransformMakeTranslation(0, 200);
 	self.descriptionTextView.alpha = 0.;
+	self.descriptionText = @"";
 }
 
 - (void)appear
@@ -83,6 +88,13 @@
 
 		 // Top
 		 self.stepView.transform = CGAffineTransformMakeTranslation(0, rect.size.height * 0.5);
+		 self.locationView.transform = CGAffineTransformMakeTranslation(0, rect.size.height * 0.5);
+
+		 // description
+		 self.descriptionText = self.descriptionTextView.text;
+		 self.descriptionTextView.text = @"";
+		 self.descriptionImageView.alpha = 1;
+
 	 } completion:nil];
 }
 
@@ -93,7 +105,12 @@
 		 if (CGAffineTransformIsIdentity(self.titleTextView.transform) == NO)
 			 self.titleTextView.transform = CGAffineTransformIdentity;
 		 self.stepView.transform = CGAffineTransformIdentity;
+		 self.locationView.transform = CGAffineTransformIdentity;
 
+		 if (self.descriptionText.length != 0)
+			 self.descriptionImageView.alpha = 0;
+	 } completion:^(BOOL finished) {
+		 self.descriptionTextView.text = self.descriptionText;
 	 }];
 }
 
@@ -135,6 +152,7 @@
 		self.stepView.alpha = 0;
 		self.titleTextView.alpha = 0;
 		self.tagView.alpha = 0;
+		self.descriptionImageView.alpha = 0;
 	}];
 }
 
@@ -144,6 +162,8 @@
 		self.stepView.alpha = 1;
 		self.titleTextView.alpha = 1;
 		self.tagView.alpha = 1;
+		if (self.descriptionTextView.text.length == 0)
+			self.descriptionImageView.alpha = 1;
 	}];
 }
 
@@ -180,7 +200,8 @@
 												context:nil];
 
 	NSUInteger numberOfLines = CGRectGetHeight(boundingRect) / textView.font.lineHeight;
-	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 5);
+	NSUInteger targetNumberOfLines = (textView == self.titleTextView ? 3 : 4);
+	NSLog(@"number of lines : %ld - %ld", (long)numberOfLines, (long)targetNumberOfLines);
 	return numberOfLines <= targetNumberOfLines;
 }
 
