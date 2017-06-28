@@ -72,7 +72,10 @@
 	[self.firstStepContainer arrangeForCameraDismissal];
 	[self.captureSession stopRunning];
 	if (removePicture)
+	{
 		[self.previewLayer removeFromSuperlayer];
+		self.previewLayer = nil;
+	}
 	[UIView animateWithDuration:0.4 animations:^{
 		self.cameraRetryButton.alpha = 0;
 		self.cameraValidateButton.alpha = 0;

@@ -3509,21 +3509,23 @@
                                                         <rect key="frame" x="20" y="504" width="331" height="88"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drop_description" translatesAutoresizingMaskIntoConstraints="NO" id="Yzn-DW-b0g">
-                                                                <rect key="frame" x="0.0" y="29" width="30" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="0vZ-gu-3S2"/>
                                                                     <constraint firstAttribute="height" constant="30" id="OfH-yp-yby"/>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
+                                                        <color key="backgroundColor" red="0.96993535760000005" green="0.46817010640000001" blue="0.44692367319999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstItem="Yzn-DW-b0g" firstAttribute="centerY" secondItem="iFv-g6-TZZ" secondAttribute="centerY" id="flm-7t-U9o"/>
+                                                            <constraint firstItem="Yzn-DW-b0g" firstAttribute="top" secondItem="iFv-g6-TZZ" secondAttribute="top" id="Ojw-Us-HYN"/>
                                                             <constraint firstAttribute="height" constant="88" id="jN9-Ih-9iY"/>
                                                             <constraint firstItem="Yzn-DW-b0g" firstAttribute="leading" secondItem="iFv-g6-TZZ" secondAttribute="leading" id="rri-2Y-xwY"/>
                                                         </constraints>
                                                     </view>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XGe-5L-F7z">
                                                         <rect key="frame" x="12" y="310" width="339" height="110"/>
+                                                        <color key="backgroundColor" red="1" green="0.41673477129999997" blue="0.41120087770000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="110" id="LcS-87-7oF"/>
                                                         </constraints>
@@ -3630,9 +3632,11 @@
                                                 <connections>
                                                     <outlet property="descriptionImageView" destination="Yzn-DW-b0g" id="ciD-Fv-vAb"/>
                                                     <outlet property="descriptionTextView" destination="iFv-g6-TZZ" id="V22-uQ-sz4"/>
+                                                    <outlet property="locationImageView" destination="i98-kM-8AT" id="uOZ-OH-dh7"/>
                                                     <outlet property="locationView" destination="eUw-5X-qic" id="CCC-j2-URW"/>
                                                     <outlet property="stepView" destination="sbL-OF-qbP" id="3kR-xe-nBk"/>
                                                     <outlet property="tagView" destination="Squ-FI-noN" id="bAi-FL-JFf"/>
+                                                    <outlet property="tagsImageView" destination="Hmi-AR-t5f" id="cnQ-0P-Cpo"/>
                                                     <outlet property="titleTextView" destination="XGe-5L-F7z" id="d9R-DD-g7p"/>
                                                 </connections>
                                             </view>

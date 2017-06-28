@@ -7,6 +7,7 @@
 //
 
 #import "DFTDropFormFirstStepView.h"
+#import "UIColor+DFTStyles.h"
 #import <UITextView+Placeholder.h>
 
 @interface DFTDropFormFirstStepView () <UITextViewDelegate>
@@ -17,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UIView *tagView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *descriptionImageView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *locationImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *tagsImageView;
 
 @property NSString *descriptionText;
 
@@ -49,6 +53,10 @@
 	self.descriptionTextView.transform = CGAffineTransformMakeTranslation(0, 200);
 	self.descriptionTextView.alpha = 0.;
 	self.descriptionText = @"";
+
+	self.locationImageView.tintColor = [UIColor dft_salmonColor];
+	self.tagsImageView.tintColor = [UIColor grayColor];
+	self.descriptionImageView.tintColor = [UIColor grayColor];
 }
 
 - (void)appear

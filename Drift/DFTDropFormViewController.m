@@ -124,18 +124,21 @@
 	CGPoint point = [sender locationInView:self.view];
 
 	//	NSLog(@"Point : %f", point.y);
-	if (point.y >= 170.0)
+	if (sender.state == UIGestureRecognizerStateBegan)
 	{
-		[UIView animateWithDuration:0.5 animations:^{
-			self.cameraHandle.alpha = 0;
-			self.scrollView.contentOffset = (CGPoint){0, -240.};
-		} completion:^(BOOL finished) {
-			self.cameraButton.alpha = 1;
-			self.cameraButton.hidden = NO;
-		}];
-		[self.firstStepContainer arrangeForCamera];
+		if (point.y >= 170.0)
+		{
+			[UIView animateWithDuration:0.5 animations:^{
+				self.cameraHandle.alpha = 0;
+				self.scrollView.contentOffset = (CGPoint){0, -240.};
+			} completion:^(BOOL finished) {
+				self.cameraButton.alpha = 1;
+				self.cameraButton.hidden = NO;
+			}];
+			[self.firstStepContainer arrangeForCamera];
 
-//		[self configureCapture];
+			[self configureCapture];
+		}
 	}
 }
 
