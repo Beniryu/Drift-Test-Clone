@@ -164,7 +164,7 @@ MGLMapView *mapViewShared;
 	UINavigationController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationControllerWithAddDrop"];
 
 	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
-	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point andColors:@[@0, @0, @0, @0, @0.3, @0.3, @1, @0.9]];
+	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point andColors:@[@0.14, @0.07, @0.07, @0.6, @0, @0, @0, @0.9]];
 
 	gradientLayer.frame = self.view.bounds;
 	[addDropVC.view.layer insertSublayer:gradientLayer atIndex:0];

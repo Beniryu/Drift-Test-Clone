@@ -22,7 +22,8 @@
 	{
 		self.gradientCenterPoint = centerPoint;
 		[self setNeedsDisplay];
-		self.colors = @[@0, @0, @0, @0, @0.08, @0.09, @0.11, @0.7];
+//		self.colors = @[@1, @1, @1, @1, @0.08, @0.09, @0.11, @0.7];
+		self.colors = @[@0, @0, @0, @1, @0, @0, @0, @1];
 	}
 	return (self);
 }
