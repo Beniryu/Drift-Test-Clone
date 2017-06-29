@@ -79,7 +79,7 @@
 	self.allTableView.dataSource = self;
 
 	self.allTableView.allowsMultipleSelection = YES;
-	self.allTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	self.allTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 
 - (IBAction)dismissScreen:(id)sender {
@@ -160,7 +160,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return (1);
+	return (1 + 3);
 }
 
 
@@ -176,15 +176,19 @@
 	view.clipsToBounds = YES;
 	cell.accessoryView = view;
 
-	cell.imageView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
-	cell.imageView.layer.cornerRadius = 19.25;
-	cell.imageView.clipsToBounds = YES;
-
-	cell.textLabel.textColor = [UIColor whiteColor];
-	cell.textLabel.text = @"Name of contact";
-	cell.detailTextLabel.text = @"Detail of contact";
-	cell.detailTextLabel.textColor = [UIColor whiteColor];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+	if (indexPath.row > 0)
+	{
+		cell.imageView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
+		cell.imageView.layer.cornerRadius = 19.25;
+		cell.imageView.clipsToBounds = YES;
+
+		cell.textLabel.textColor = [UIColor whiteColor];
+		cell.textLabel.text = @"Name of contact";
+		cell.detailTextLabel.text = @"Detail of contact";
+		cell.detailTextLabel.textColor = [UIColor whiteColor];
+	}
 	return (cell);
 }
 

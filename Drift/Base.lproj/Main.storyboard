@@ -862,6 +862,11 @@
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iHP-st-o54">
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <view key="tableFooterView" contentMode="scaleToFill" id="HcB-gM-WNB">
+                                                            <rect key="frame" x="0.0" y="72" width="375" height="1"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </view>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="JgC-08-C3R" detailTextLabel="bDY-ud-KJc" style="IBUITableViewCellStyleSubtitle" id="GRC-db-YDJ">
                                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
