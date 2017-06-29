@@ -863,7 +863,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <view key="tableFooterView" contentMode="scaleToFill" id="HcB-gM-WNB">
-                                                            <rect key="frame" x="0.0" y="72" width="375" height="1"/>
+                                                            <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
