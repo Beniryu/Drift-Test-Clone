@@ -7,10 +7,12 @@
 //
 
 #import "DFTDropSignalViewController.h"
+#import "UIColor+DFTStyles.h"
 
 @interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *titleImageView;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton *dismissButton;
 
@@ -28,6 +30,7 @@
 {
 	[super viewDidLoad];
 
+	self.titleImageView.tintColor = [UIColor dft_salmonColor];
 	[self configureScrollView];
 	[self configureRecentScreen];
 	[self configureGroupScreen];
