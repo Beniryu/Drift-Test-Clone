@@ -167,14 +167,20 @@
 
 	UIView *view = [UIView new];
 
-	view.frame = CGRectMake(0., 0., 30., 30.);
+	view.frame = CGRectMake(0., 0., 26., 26.);
 	view.backgroundColor = [UIColor redColor];
-	view.layer.cornerRadius = 15.;
+	view.layer.cornerRadius = 13.;
 	view.clipsToBounds = YES;
 	cell.accessoryView = view;
+
 	cell.imageView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
+	cell.imageView.layer.cornerRadius = 19.25;
+	cell.imageView.clipsToBounds = YES;
+
 	cell.textLabel.textColor = [UIColor whiteColor];
 	cell.textLabel.text = @"Name of contact";
+	cell.detailTextLabel.text = @"Detail of contact";
+	cell.detailTextLabel.textColor = [UIColor whiteColor];
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	return (cell);
 }
