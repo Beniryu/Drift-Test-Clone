@@ -167,10 +167,14 @@
 {
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 
-//	if ([self.allTableView.indexPathsForSelectedRows containsObject:indexPath])
-//		[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor whiteColor];
-//	else
-		[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor dft_salmonColor];
+	[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor dft_salmonColor];
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+	[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor whiteColor];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
