@@ -163,6 +163,15 @@
 	return (1 + 3);
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
+//	if ([self.allTableView.indexPathsForSelectedRows containsObject:indexPath])
+//		[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor whiteColor];
+//	else
+		[cell viewWithTag:42 + indexPath.row].backgroundColor = [UIColor dft_salmonColor];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -171,9 +180,10 @@
 	UIView *view = [UIView new];
 
 	view.frame = CGRectMake(0., 0., 26., 26.);
-	view.backgroundColor = [UIColor redColor];
+	view.backgroundColor = [UIColor whiteColor];
 	view.layer.cornerRadius = 13.;
 	view.clipsToBounds = YES;
+	view.tag = 42 + indexPath.row;
 	cell.accessoryView = view;
 
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
