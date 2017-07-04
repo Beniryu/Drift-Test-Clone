@@ -16,5 +16,6 @@
 - (void)createUser:(DFTUser *)user withCompletion:(DFTManagerCompletion)completion;
 - (void)editUser:(DFTUser *)user withCompletion:(DFTManagerCompletion)completion;
 - (void)deleteUser:(DFTUser *)user withCompletion:(DFTManagerCompletion)completion;
+- (void)allUsersWithCompletion:(DFTManagerCompletion)completion;
 
 @end

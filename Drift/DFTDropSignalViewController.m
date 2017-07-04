@@ -8,6 +8,7 @@
 
 #import "DFTDropSignalViewController.h"
 #import "UIColor+DFTStyles.h"
+#import "DFTUserManager.h"
 
 @interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -29,6 +30,12 @@
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+
+	DFTUserManager *manager = [DFTUserManager new];
+
+	[manager allUsersWithCompletion:^(id  _Nullable responseObject, NSError * _Nullable error) {
+		NSLog(@"%@", responseObject);
+	}];
 
 	self.titleImageView.tintColor = [UIColor dft_salmonColor];
 	[self configureScrollView];

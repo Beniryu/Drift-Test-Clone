@@ -12,6 +12,36 @@
 
 @implementation DFTUserManager
 
+- (void)allUsersWithCompletion:(DFTManagerCompletion)completion
+{
+	[[DFTNetworkClient sharedInstance] retrieveAllUsersWithCompletion:^(NSURLSessionDataTask * _Nonnull dataTask, id  _Nullable responseObject, NSError * _Nullable error)
+	{
+		completion(responseObject, error);
+
+		if (error)
+		{
+			NSLog(@"Network get all Users error : %@", error);
+			return ;
+		}
+
+		NSLog(@"response = %@", responseObject);
+		NSError *sError = nil;
+
+		NSArray<DFTUser *> *users = [MTLJSONAdapter modelsOfClass:[DFTUser class]
+													fromJSONArray:responseObject[@"ReturnMessage"]
+															error:&sError];
+
+		if (!sError)
+		{
+			if (completion)
+				completion(users, sError);
+		}
+		else
+			NSLog(@"User serialisation error");
+
+	}];
+}
+
 - (void)createUser:(DFTUser *)user withCompletion:(DFTManagerCompletion)completion
 {
     [[DFTNetworkClient sharedInstance] createUser:user

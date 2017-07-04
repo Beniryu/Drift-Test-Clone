@@ -10,8 +10,28 @@
 
 static const NSString *kDFTNetworkRouteUserCreate = @"user/create";
 static const NSString *kDFTNetworkRouteUserEdit = @"user/edit";
+static const NSString *kDFTNetworkRouteAllUsers = @"user/all";
 
 @implementation DFTNetworkClient (DFTUser)
+
+- (void)retrieveAllUsersWithCompletion:(DFTNetworkCompletion)completion
+{
+	NSError *error = nil;
+
+	[self GET:(NSString *)kDFTNetworkRouteAllUsers
+   parameters:nil
+	 progress:nil
+	  success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject)
+	 {
+		 if (completion)
+			 completion(task, responseObject, nil);
+	 }
+	  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+	 {
+		 if (completion)
+			 completion(task, nil, error);
+	 }];
+}
 
 - (void)createUser:(DFTUser *)user withCompletion:(DFTNetworkCompletion)completion
 {
