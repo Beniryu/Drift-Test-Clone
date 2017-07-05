@@ -24,6 +24,7 @@ typedef NS_ENUM(NSUInteger, kDFTDropPrivacyLevel)
 @property (nonatomic) NSNumber *ownerId;
 
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *dropDescription;
 @property (nonatomic) NSDate *dropDate;
 @property (nonatomic) NSString *backgroundPicture;
 @property (nonatomic) CLLocationDegrees latitude;

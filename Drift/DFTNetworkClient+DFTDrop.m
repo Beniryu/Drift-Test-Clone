@@ -69,6 +69,8 @@ static NSString *kDFTNetworkRouteDrop = @"drop/";
 
 	parameters = [MTLJSONAdapter JSONDictionaryFromModel:drop error:&error];
 
+	NSLog(@"======\n%@\n=======", parameters);
+
 	if (error == nil)
 	{
 		[self POST:route

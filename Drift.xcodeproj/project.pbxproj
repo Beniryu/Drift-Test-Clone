@@ -42,6 +42,7 @@
 		DD34C8641E61EC1B003853D6 /* DFTAddDropSettingsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */; };
 		DD34C8691E620D60003853D6 /* DFTAddDropStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */; };
 		DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */; };
+		DD36B8131F0C3758007FE477 /* DFTDropManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD36B8121F0C3758007FE477 /* DFTDropManager.m */; };
 		DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */; };
 		DD3B99B71E214FD40098208F /* UIFont+Drift.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B99B61E214FD40098208F /* UIFont+Drift.m */; };
 		DD3B9A0D1E258BDA0098208F /* DFTFeedHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD3B9A0C1E258BDA0098208F /* DFTFeedHeaderView.m */; };
@@ -158,6 +159,8 @@
 		DD34C8671E620BA5003853D6 /* DFTAddDropStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropStepCell.m; sourceTree = "<group>"; };
 		DD34C86A1E624495003853D6 /* DFTAddDropContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTAddDropContentCell.h; sourceTree = "<group>"; };
 		DD34C86B1E624495003853D6 /* DFTAddDropContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTAddDropContentCell.m; sourceTree = "<group>"; };
+		DD36B8111F0C3758007FE477 /* DFTDropManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTDropManager.h; sourceTree = "<group>"; };
+		DD36B8121F0C3758007FE477 /* DFTDropManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropManager.m; sourceTree = "<group>"; };
 		DD3B99AA1E15AB4F0098208F /* DFTMapboxDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapboxDelegate.h; sourceTree = "<group>"; };
 		DD3B99AB1E15AB4F0098208F /* DFTMapboxDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapboxDelegate.m; sourceTree = "<group>"; };
 		DD3B99B51E214FD40098208F /* UIFont+Drift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Drift.h"; sourceTree = "<group>"; };
@@ -715,6 +718,8 @@
 				DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */,
 				DDE840D71E6CAC1600B18B0C /* DFTDropFormManager.h */,
 				DDE840D81E6CAC1600B18B0C /* DFTDropFormManager.m */,
+				DD36B8111F0C3758007FE477 /* DFTDropManager.h */,
+				DD36B8121F0C3758007FE477 /* DFTDropManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -988,6 +993,7 @@
 				BDECA5A01EA52438008C5335 /* DFTOptionTableViewCell.m in Sources */,
 				DD3B99AC1E15AB4F0098208F /* DFTMapboxDelegate.m in Sources */,
 				DD7544CC1E958415002AEC38 /* DFTProfileViewController.m in Sources */,
+				DD36B8131F0C3758007FE477 /* DFTDropManager.m in Sources */,
 				09DAA0471E68D3FD00E92A1F /* DFTSegmentedControl.m in Sources */,
 				DD844CF51EE1FBB30068B9CE /* DFTDropFormFirstStepView.m in Sources */,
 				DD34C86C1E624495003853D6 /* DFTAddDropContentCell.m in Sources */,

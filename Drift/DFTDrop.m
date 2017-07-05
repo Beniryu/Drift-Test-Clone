@@ -18,6 +18,7 @@ const NSString *kDFTModelKeyDropLongitude = @"Longitude";
 const NSString *kDFTModelKeyDropDate = @"DateTime";
 const NSString *kDFTModelKeyDropOwnerId = @"IdUser";
 const NSString *kDFTModelKeyDropTitle = @"Title";
+const NSString *kDFTModelKeyDropDescription = @"Description";
 const NSString *kDFTModelKeyDropPicture = @"Picture";
 const NSString *kDFTModelKeyDropMapVisibility = @"MapVisibility";
 const NSString *kDFTModelKeyDropContentVisibility = @"ContentVisibility";
@@ -39,6 +40,8 @@ const NSString *kDFTModelKeyDropShares = @"Share";
 			  NSStringFromSelector(@selector(dropDate)) : kDFTModelKeyDropDate,
 			  NSStringFromSelector(@selector(ownerId)) : kDFTModelKeyDropOwnerId,
 			  NSStringFromSelector(@selector(title)) : kDFTModelKeyDropTitle,
+			  NSStringFromSelector(@selector(dropDescription)) :
+				  kDFTModelKeyDropDescription,
 			  NSStringFromSelector(@selector(backgroundPicture)) : kDFTModelKeyDropPicture,
 //			  NSStringFromSelector(@selector(mapVisibility)) : kDFTModelKeyDropMapVisibility,
 //			  NSStringFromSelector(@selector(contentVisibility)) : kDFTModelKeyDropContentVisibility,

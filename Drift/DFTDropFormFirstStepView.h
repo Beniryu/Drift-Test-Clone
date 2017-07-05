@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DFTDrop;
+
 @interface DFTDropFormFirstStepView : UIView
 
 - (void)appear;
@@ -15,5 +17,6 @@
 - (void)animateReverse;
 - (void)arrangeForCamera;
 - (void)arrangeForCameraDismissal;
+- (void)fillDrop:(DFTDrop *)drop;
 
 @end

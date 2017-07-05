@@ -8,6 +8,7 @@
 
 #import "DFTDropFormFirstStepView.h"
 #import "UIColor+DFTStyles.h"
+#import "DFTDrop.h"
 #import <UITextView+Placeholder.h>
 #import <AMTagListView.h>
 
@@ -220,6 +221,12 @@
 		if (self.descriptionTextView.text.length == 0)
 			self.descriptionImageView.alpha = 1;
 	}];
+}
+
+- (void)fillDrop:(DFTDrop *)drop
+{
+	drop.title = self.titleTextView.text;
+	drop.dropDescription = self.descriptionText;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

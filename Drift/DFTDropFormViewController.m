@@ -9,9 +9,11 @@
 #import "DFTDropFormManager.h"
 #import "DFTDropFormViewController.h"
 
+
+#import "DFTMapManager.h"
 #import "DFTOptionTableViewCell.h"
 #import "DFTDropSignalViewController.h"
-
+#import "DFTDropManager.h"
 #import "DFTDropFormViewController+DFTDropFormCamera.h"
 
 @interface DFTDropFormViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -21,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *firstStepHeight;
 @property (weak, nonatomic) IBOutlet UITableView *stepTwoTableView;
+
+@property (weak, nonatomic) IBOutlet UIView *saveButton;
 
 @property (nonatomic) DFTDropFormManager *manager;
 @property (nonatomic) NSInteger currentSection;
@@ -42,7 +46,8 @@
 	return (self);
 }
 
-- (void)commonInit {
+- (void)commonInit
+{
 	self.manager = [DFTDropFormManager new];
 	self.currentSection = 0;
 	self.firstAppearance = YES;
@@ -78,6 +83,9 @@
 	self.cameraButton.hidden = YES;
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(takePicture)];
 	[self.cameraButton addGestureRecognizer:tap];
+
+	UITapGestureRecognizer *saveTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(saveDrop)];
+	[self.saveButton addGestureRecognizer:saveTap];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -117,6 +125,20 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
 	return (NO);
+}
+
+- (void)saveDrop
+{
+	DFTDropManager *manager = [DFTDropManager new];
+
+	DFTDrop *drop = [DFTDrop new];
+
+	drop.dropDate = [NSDate new];
+	[self.firstStepContainer fillDrop:drop];
+	drop.latitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.latitude;
+	drop.longitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.longitude;
+
+	[manager createDrop:drop withCompletion:nil];
 }
 
 - (void)launchCamera:(UIPanGestureRecognizer *)sender
