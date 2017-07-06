@@ -104,15 +104,15 @@
 
 	if (connection != nil)
 	{
-		[self.captureSession stopRunning];
 		[self.imageOutput captureStillImageAsynchronouslyFromConnection:connection
 													  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
 		 {
 			 if (error == nil)
 			 {
-				 NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+				 self.imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
 
-				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:imageData], nil, nil, nil);
+				 UIImageWriteToSavedPhotosAlbum([UIImage imageWithData:self.imageData], nil, nil, nil);
+				 [self.captureSession stopRunning];
 			 }
 		 }];
 	}

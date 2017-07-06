@@ -20,6 +20,7 @@
 	[[DFTNetworkClient sharedInstance] createDrop:drop withCompletion:^(NSURLSessionDataTask * _Nonnull dataTask, id  _Nullable responseObject, NSError * _Nullable error) {
 		NSLog(@"%@", responseObject);
 		NSLog(@"error : %@", error);
+		completion(responseObject, error);
 	}];
 }
 

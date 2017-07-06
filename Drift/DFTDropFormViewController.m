@@ -135,10 +135,14 @@
 
 	drop.dropDate = [NSDate new];
 	[self.firstStepContainer fillDrop:drop];
+	drop.backgroundPicture = self.imageData;
 	drop.latitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.latitude;
 	drop.longitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.longitude;
 
-	[manager createDrop:drop withCompletion:nil];
+	[manager createDrop:drop withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error) {
+		if (error == nil)
+			[self dismissViewControllerAnimated:YES completion:nil];
+	}];
 }
 
 - (void)launchCamera:(UIPanGestureRecognizer *)sender

@@ -26,6 +26,7 @@
 
 @property (nonatomic) AVCaptureSession *captureSession;
 @property (nonatomic) AVCaptureStillImageOutput *imageOutput;
+@property (nonatomic) NSData *imageData;
 @property AVCaptureVideoPreviewLayer *previewLayer;
 
 @end

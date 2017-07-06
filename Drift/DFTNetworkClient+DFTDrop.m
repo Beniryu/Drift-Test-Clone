@@ -64,11 +64,12 @@ static NSString *kDFTNetworkRouteDrop = @"drop/";
 - (void)createDrop:(DFTDrop *)drop withCompletion:(DFTNetworkCompletion)completion
 {
 	NSString *route = [NSString stringWithFormat:@"%@/create", kDFTNetworkRouteDrop];
-	NSDictionary *parameters = nil;
+	NSMutableDictionary *parameters = nil;
 	NSError *error = nil;
 
-	parameters = [MTLJSONAdapter JSONDictionaryFromModel:drop error:&error];
+	parameters = [NSMutableDictionary dictionaryWithDictionary: [MTLJSONAdapter JSONDictionaryFromModel:drop error:&error]];
 
+	parameters[@"Picture"] = [drop.backgroundPicture base64EncodedStringWithOptions:0];
 	NSLog(@"======\n%@\n=======", parameters);
 
 	if (error == nil)
