@@ -10,6 +10,8 @@
 #import "UIColor+DFTStyles.h"
 #import "DFTUserManager.h"
 
+#import "DFTUserGroupCell.h"
+
 @interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -72,6 +74,8 @@
 {
 	self.groupCollectionView.delegate = self;
 	self.groupCollectionView.dataSource = self;
+
+	[self.groupCollectionView registerNib:[UINib nibWithNibName:@"DFTUserGroupCell" bundle:nil] forCellWithReuseIdentifier:@"GroupCell"];
 }
 
 - (void)configureNearbyScreen
@@ -145,7 +149,7 @@
 	}
 	else if (collectionView == self.groupCollectionView)
 	{
-		UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+		DFTUserGroupCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GroupCell" forIndexPath:indexPath];
 
 		return (cell);
 	}

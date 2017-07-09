@@ -168,6 +168,10 @@
 	}
 }
 
+- (IBAction)closeForm {
+	[self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender
 {
 	if (self.cameraButton.hidden == NO)

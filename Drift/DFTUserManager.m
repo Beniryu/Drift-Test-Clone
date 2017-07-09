@@ -16,7 +16,7 @@
 {
 	[[DFTNetworkClient sharedInstance] retrieveAllUsersWithCompletion:^(NSURLSessionDataTask * _Nonnull dataTask, id  _Nullable responseObject, NSError * _Nullable error)
 	{
-		completion(responseObject, error);
+//		completion(responseObject, error);
 
 		if (error)
 		{
