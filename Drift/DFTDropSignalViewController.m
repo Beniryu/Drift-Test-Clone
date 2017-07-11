@@ -216,7 +216,7 @@
 
 		cell.textLabel.textColor = [UIColor whiteColor];
 		cell.textLabel.text = self.allDataSource[indexPath.row - 1].firstName;
-		cell.detailTextLabel.text = @"On remplira plus tard askip";
+		cell.detailTextLabel.text = @"";
 		cell.detailTextLabel.textColor = [UIColor whiteColor];
 	}
 	return (cell);
