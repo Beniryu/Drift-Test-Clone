@@ -223,10 +223,22 @@
 	}];
 }
 
+- (NSArray *)dropTags
+{
+	NSMutableArray<NSString *> *tagsArray = @[].mutableCopy;
+
+	for (UIView<AMTag> *tag in self.tagList.tags)
+	{
+		[tagsArray addObject:tag.tagText];
+	}
+	return (tagsArray);
+}
+
 - (void)fillDrop:(DFTDrop *)drop
 {
 	drop.title = self.titleTextView.text;
 	drop.dropDescription = self.descriptionText;
+	drop.dropTags = [self dropTags];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

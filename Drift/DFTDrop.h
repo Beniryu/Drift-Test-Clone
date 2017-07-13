@@ -30,6 +30,8 @@ typedef NS_ENUM(NSUInteger, kDFTDropPrivacyLevel)
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
 
+@property (nonatomic) NSArray<NSString *> *dropTags;
+
 //@property (nonatomic) kDFTDropPrivacyLevel mapVisibility;
 //@property (nonatomic) kDFTDropPrivacyLevel contentVisibility;
 

@@ -138,7 +138,6 @@
 	drop.backgroundPicture = self.imageData;
 	drop.latitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.latitude;
 	drop.longitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.longitude;
-
 	[manager createDrop:drop withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error) {
 		if (error == nil)
 			[self dismissViewControllerAnimated:YES completion:nil];
@@ -288,7 +287,7 @@
 {
 	[self.firstStepContainer animateReverse];
 
-	// Scrolling + completion bar
+	// Scrolling + completion barf  qdvveqqev  qev
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, -20};
 
