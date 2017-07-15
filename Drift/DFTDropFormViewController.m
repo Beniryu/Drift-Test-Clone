@@ -139,10 +139,11 @@
 	drop.backgroundPicture = self.imageData;
 	drop.latitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.latitude;
 	drop.longitude = [DFTMapManager sharedInstance].mapView.userLocation.location.coordinate.longitude;
-	[manager createDrop:drop withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error) {
-		if (error == nil)
-			[self dismissViewControllerAnimated:YES completion:nil];
-	}];
+	[manager createDrop:drop withCompletion:^(id  _Nullable responseObject, NSError * _Nullable error)
+	 {
+		 if (error == nil)
+			 [self closeForm];
+	 }];
 }
 
 - (void)launchCamera:(UIPanGestureRecognizer *)sender
@@ -169,8 +170,11 @@
 	}
 }
 
-- (IBAction)closeForm {
-	[self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)closeForm
+{
+	[self dismissViewControllerAnimated:YES completion:^{
+		self.tabBarController.tabBar.hidden = NO;
+	}];
 }
 
 - (void)swipeUp:(UISwipeGestureRecognizer *)sender

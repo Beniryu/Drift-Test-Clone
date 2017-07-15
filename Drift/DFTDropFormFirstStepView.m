@@ -114,6 +114,7 @@
 		 self.titleTextView.transform = CGAffineTransformTranslate(t, -(rect.size.width * 0.5), rect.size.height * 0.5);
 		 self.titleTextView.alpha = 0.4;
 		 self.separator.alpha = 0.4;
+
 		 // Top
 		 self.stepView.transform = CGAffineTransformMakeTranslation(0, rect.size.height * 0.5);
 		 self.locationView.transform = CGAffineTransformMakeTranslation(0, rect.size.height * 0.5);
@@ -125,6 +126,7 @@
 		 self.descriptionText = self.descriptionTextView.text;
 		 self.descriptionTextView.text = @"";
 		 self.descriptionImageView.alpha = 1;
+		 self.descriptionImageView.image = [UIImage imageNamed:@"drop_description_b"];
 
 	 } completion:nil];
 }
@@ -145,6 +147,7 @@
 
 		 if (self.descriptionText.length != 0)
 			 self.descriptionImageView.alpha = 0;
+		 self.descriptionImageView.image = [UIImage imageNamed: @"drop_description"];
 	 } completion:^(BOOL finished) {
 		 self.descriptionTextView.text = self.descriptionText;
 	 }];
