@@ -72,6 +72,8 @@
 		DD844CF11EE1F38E0068B9CE /* DFTDropFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF01EE1F38E0068B9CE /* DFTDropFormViewController.m */; };
 		DD844CF51EE1FBB30068B9CE /* DFTDropFormFirstStepView.m in Sources */ = {isa = PBXBuildFile; fileRef = DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */; };
 		DD90899E1E661DC000737B33 /* DFTMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DD90899D1E661DC000737B33 /* DFTMapManager.m */; };
+		DD9C1B8A1F1A48F400567C20 /* DFTMiniOptionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9C1B881F1A48F400567C20 /* DFTMiniOptionCell.m */; };
+		DD9C1B8B1F1A48F400567C20 /* DFTMiniOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9C1B891F1A48F400567C20 /* DFTMiniOptionCell.xib */; };
 		DDA3C65D1E0C61FA00BF9BFE /* DFTFeedManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */; };
 		DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA3C65F1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m */; };
 		DDA59A481DD3DACB000B942B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDA59A471DD3DACB000B942B /* main.m */; };
@@ -219,6 +221,9 @@
 		DD844CF41EE1FBB30068B9CE /* DFTDropFormFirstStepView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTDropFormFirstStepView.m; sourceTree = "<group>"; };
 		DD90899C1E661DC000737B33 /* DFTMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMapManager.h; sourceTree = "<group>"; };
 		DD90899D1E661DC000737B33 /* DFTMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMapManager.m; sourceTree = "<group>"; };
+		DD9C1B871F1A48F400567C20 /* DFTMiniOptionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTMiniOptionCell.h; sourceTree = "<group>"; };
+		DD9C1B881F1A48F400567C20 /* DFTMiniOptionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTMiniOptionCell.m; sourceTree = "<group>"; };
+		DD9C1B891F1A48F400567C20 /* DFTMiniOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DFTMiniOptionCell.xib; sourceTree = "<group>"; };
 		DDA3C65B1E0C61FA00BF9BFE /* DFTFeedManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFTFeedManager.h; sourceTree = "<group>"; };
 		DDA3C65C1E0C61FA00BF9BFE /* DFTFeedManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFTFeedManager.m; sourceTree = "<group>"; };
 		DDA3C65E1E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DFTNetworkClient+DFTDrop.h"; sourceTree = "<group>"; };
@@ -429,6 +434,9 @@
 				DD34C8631E61EC1B003853D6 /* DFTAddDropSettingsTableView.m */,
 				BDECA59E1EA52438008C5335 /* DFTOptionTableViewCell.h */,
 				BDECA59F1EA52438008C5335 /* DFTOptionTableViewCell.m */,
+				DD9C1B871F1A48F400567C20 /* DFTMiniOptionCell.h */,
+				DD9C1B881F1A48F400567C20 /* DFTMiniOptionCell.m */,
+				DD9C1B891F1A48F400567C20 /* DFTMiniOptionCell.xib */,
 			);
 			name = TableViews;
 			sourceTree = "<group>";
@@ -883,6 +891,7 @@
 				09DAA0441E678DEC00E92A1F /* GOTHMBOL.TTF in Resources */,
 				09DAA0431E678DEC00E92A1F /* GOTHMBIT.TTF in Resources */,
 				EBC274241E9BA5ED006D20F4 /* Localizable.strings in Resources */,
+				DD9C1B8B1F1A48F400567C20 /* DFTMiniOptionCell.xib in Resources */,
 				092317EC1E5CF0A70043838D /* GOTHMMED.TTF in Resources */,
 				DDA59A711DD4E6F4000B942B /* Lato-HairlineItalic.ttf in Resources */,
 				092317E81E5CF0A70043838D /* GOTHMBOK.TTF in Resources */,
@@ -985,6 +994,7 @@
 				DD844CF11EE1F38E0068B9CE /* DFTDropFormViewController.m in Sources */,
 				09DAA03E1E67826C00E92A1F /* DFTFeedViewController.m in Sources */,
 				DD3D903E1DF3259100B8A6CF /* DFTNetworkClient+DFTUser.m in Sources */,
+				DD9C1B8A1F1A48F400567C20 /* DFTMiniOptionCell.m in Sources */,
 				DDFB79DB1E9ED0B40022000B /* DFTProfileStatCellCollectionViewCell.m in Sources */,
 				DDA3C6601E0C63BC00BF9BFE /* DFTNetworkClient+DFTDrop.m in Sources */,
 				DD4D6D701E315A0700E3605A /* DFTJellyTrigger.m in Sources */,

@@ -17,7 +17,6 @@
 {
 	[super awakeFromNib];
 	imgOption.tintColor = [UIColor dft_lightRedColor];
-	//    self.transform = CGAffineTransformMakeScale(0.75, 0.75);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

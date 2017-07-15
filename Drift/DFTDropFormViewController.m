@@ -11,10 +11,12 @@
 
 
 #import "DFTMapManager.h"
-#import "DFTOptionTableViewCell.h"
 #import "DFTDropSignalViewController.h"
 #import "DFTDropManager.h"
 #import "DFTDropFormViewController+DFTDropFormCamera.h"
+
+#import "DFTOptionTableViewCell.h"
+#import "DFTMiniOptionCell.h"
 
 @interface DFTDropFormViewController () <UIGestureRecognizerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -62,6 +64,8 @@
 
 	UIPanGestureRecognizer *swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(launchCamera:)];
 
+	self.cameraHandle.contentMode = UIViewContentModeCenter;
+	self.cameraHandle.backgroundColor = [UIColor whiteColor];
 	[self.cameraHandle addGestureRecognizer:swipe];
 	swipe.delegate = self;
 
@@ -102,13 +106,6 @@
 	}
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-	[super viewDidAppear:animated];
-
-	NSLog(@"View Did Appear");
-}
-
 - (void)configureScrollView {
 	//	self.scrollView.delegate = self;
 	self.scrollView.showsVerticalScrollIndicator = NO;
@@ -121,6 +118,11 @@
 	self.stepTwoTableView.scrollEnabled = NO;
 	self.stepTwoTableView.rowHeight = UITableViewAutomaticDimension;
 	self.stepTwoTableView.estimatedRowHeight = 44.;
+
+	NSString *miniCellName = NSStringFromClass([DFTMiniOptionCell class]);
+
+	[self.stepTwoTableView registerNib:[UINib nibWithNibName:miniCellName bundle:nil]
+				forCellReuseIdentifier:miniCellName];
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -148,7 +150,7 @@
 {
 	CGPoint point = [sender locationInView:self.view];
 
-	//	NSLog(@"Point : %f", point.y);
+		NSLog(@"Point : %f", point.y);
 	if (sender.state == UIGestureRecognizerStateBegan)
 	{
 		if (point.y >= 170.0)
@@ -287,7 +289,7 @@
 {
 	[self.firstStepContainer animateReverse];
 
-	// Scrolling + completion barf  qdvveqqev  qev
+	// Scrolling + completion
 	[UIView animateWithDuration:1 animations:^{
 		self.scrollView.contentOffset = (CGPoint){0, -20};
 
@@ -306,10 +308,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	DFTOptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"optionCell" forIndexPath:indexPath];
+	if (self.currentSection == 2)
+	{
+		DFTMiniOptionCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([DFTMiniOptionCell class]) forIndexPath:indexPath];
 
-	[cell configureWithIndexPath:indexPath];
-	return (cell);
+
+		return (cell);
+	}
+		DFTOptionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"optionCell" forIndexPath:indexPath];
+
+		[cell configureWithIndexPath:indexPath];
+		return (cell);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
