@@ -65,7 +65,6 @@
 	UIPanGestureRecognizer *swipe = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(launchCamera:)];
 
 	self.cameraHandle.contentMode = UIViewContentModeCenter;
-	self.cameraHandle.backgroundColor = [UIColor whiteColor];
 	[self.cameraHandle addGestureRecognizer:swipe];
 	swipe.delegate = self;
 
@@ -150,11 +149,12 @@
 {
 	CGPoint point = [sender locationInView:self.view];
 
-		NSLog(@"Point : %f", point.y);
-	if (sender.state == UIGestureRecognizerStateBegan)
+	// NSLog(@"Point : %f State : %ld", point.y, sender.state);
+	if (sender.state == UIGestureRecognizerStateChanged)
 	{
 		if (point.y >= 170.0)
 		{
+			sender.enabled = NO;
 			[UIView animateWithDuration:0.5 animations:^{
 				self.cameraHandle.alpha = 0;
 				self.scrollView.contentOffset = (CGPoint){0, -240.};
