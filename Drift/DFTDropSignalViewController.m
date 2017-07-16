@@ -12,6 +12,8 @@
 
 #import "DFTUserGroupCell.h"
 
+#import <UIImageView+AFNetworking.h>
+
 @interface DFTDropSignalViewController () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -210,12 +212,15 @@
 
 	if (indexPath.row > 0)
 	{
+		DFTUser *user = self.allDataSource[indexPath.row - 1];
+
+//		[cell.imageView setImageWithURL:user. placeholderImage:nil];
 		cell.imageView.image = [UIImage imageNamed:@"feed_cell_profile_pic_placeholder"];
 		cell.imageView.layer.cornerRadius = 19.25;
 		cell.imageView.clipsToBounds = YES;
 
 		cell.textLabel.textColor = [UIColor whiteColor];
-		cell.textLabel.text = self.allDataSource[indexPath.row - 1].firstName;
+		cell.textLabel.text = user.firstName;
 		cell.detailTextLabel.text = @"";
 		cell.detailTextLabel.textColor = [UIColor whiteColor];
 	}

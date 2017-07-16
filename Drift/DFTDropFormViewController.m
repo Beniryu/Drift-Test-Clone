@@ -172,6 +172,7 @@
 
 - (IBAction)closeForm
 {
+	[self.delegate didDismissForm:self];
 	[self dismissViewControllerAnimated:YES completion:^{
 		self.tabBarController.tabBar.hidden = NO;
 	}];

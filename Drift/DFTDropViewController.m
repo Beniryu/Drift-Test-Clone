@@ -162,6 +162,7 @@ MGLMapView *mapViewShared;
 //	DFTAddDropViewController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([DFTAddDropViewController class])];
 
 	UINavigationController *addDropVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NavigationControllerWithAddDrop"];
+	DFTDropFormViewController *formVC = (DFTDropFormViewController *)addDropVC.topViewController;
 
 	CGPoint point = (CGPoint){CGRectGetMidX(self.view.bounds), self.view.bounds.size.height / 3};
 	DFTRadialGradientLayer *gradientLayer = [[DFTRadialGradientLayer alloc] initWithCenterPoint:point andColors:@[@0.14, @0.07, @0.07, @0.6, @0, @0, @0, @0.9]];
@@ -169,18 +170,26 @@ MGLMapView *mapViewShared;
 	gradientLayer.frame = self.view.bounds;
 	[addDropVC.view.layer insertSublayer:gradientLayer atIndex:0];
 	addDropVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+	formVC.delegate = self;
 	addDropVC.navigationBarHidden = YES;
 
 	self.tabBarController.tabBar.hidden = YES;
 	self.bottomConstraint.constant = -50.;
 
 	[self.jellyTrigger setHidden:YES];
+
 	[self presentViewController:addDropVC animated:NO completion:nil];
 }
 
 -(void)creationDrop:(UIGestureRecognizer *)gestureRecognizer
 {
     [self contextSheet:nil didSelectItem:nil];
+}
+
+- (void)didDismissForm:(DFTDropFormViewController *)form
+{
+	self.tabBarController.tabBar.hidden = NO;
+	self.jellyTrigger.hidden = NO;
 }
 
 @end

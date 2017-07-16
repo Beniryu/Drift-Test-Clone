@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFTDropFormViewController.h"
 
-@interface DFTDropViewController : UIViewController
+@interface DFTDropViewController : UIViewController <DFTDropFormDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btnBulle;
 @property (weak, nonatomic) IBOutlet UIImageView *imgLocation;

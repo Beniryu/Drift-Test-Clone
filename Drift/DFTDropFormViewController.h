@@ -12,7 +12,17 @@
 
 #import "DFTDropFormFirstStepView.h"
 
+@class DFTDropFormViewController;
+
+@protocol DFTDropFormDelegate <NSObject>
+
+- (void)didDismissForm:(DFTDropFormViewController *)form;
+
+@end
+
 @interface DFTDropFormViewController : UIViewController
+
+@property UIViewController<DFTDropFormDelegate> *delegate;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet DFTDropFormFirstStepView *firstStepContainer;
